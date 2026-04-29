@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1776881576.62442 "main.aux" "main.bbl" "main" 1776881587.17776 0
-  "./references.bib" 1776856251 33469 db3a74cb687e13b8c47f335ceb4c4ebf ""
+["bibtex main"] 1777480618.67098 "main.aux" "main.bbl" "main" 1777480637.53218 0
+  "./references.bib" 1777480045 35759 d152f9606614c5437741996078963c4c ""
   "c:/texlive/2026/texmf-dist/bibtex/bst/base/unsrt.bst" 1776152433 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1776881585 27264 8ba441018dd1859a1fecf82e2e8fae32 "pdflatex"
+  "main.aux" 1777480633 28802 e2827c6ff61a1edbeb8cfa2c21a6e8cb "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1776881577.497 "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" "main.pdf" "main" 1776881587.17883 0
+["pdflatex"] 1777480620.20425 "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" "main.pdf" "main" 1777480637.5341 0
   "FAP_style.sty" 1776676557 1272 381e642b51f34f45cb190daf64732531 ""
-  "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" 1776881538 96433 82a26ace20b4b6a7caa9c5040331eb48 ""
+  "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" 1777480568 104646 614647332f816987e9ce090c7a99c32d ""
   "c:/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1776153980 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1776154780 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1776153456 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -278,6 +278,7 @@
   "figures/context_rcnn.png" 1776164840 61961 40524dd4945b83871d93f54a37709257 ""
   "figures/detection_methods.png" 1776164840 244398 06507c788cbbdcd7a55a8b4f52715330 ""
   "figures/doble_yolo.png" 1776164842 78221 0ada19a9f2983517c9bc0bc7fd0a6754 ""
+  "figures/eocr-ex.jpg" 1777480486 9440 37e8277a48561614606be7eabfd5e5b6 ""
   "figures/hourglass.png" 1776164840 108336 0fc521904a8254880425be92110dec2b ""
   "figures/intersec.png" 1776164840 188955 716cf00496769571ada799b5d5958b0f ""
   "figures/lenet.jpg" 1776681145 274782 86131d65dfa4309bec804cae42ef3413 ""
@@ -288,10 +289,12 @@
   "figures/lprnet-basicblock.png" 1776765348 30138 040608fbc593e30d4743599f98a81e66 ""
   "figures/mat-rec.jpg" 1776707232 974499 dbe9f72dc568c57db6f07d4fb57352c8 ""
   "figures/methodology_dl.jpg" 1776164842 133703 0599690e68ae1c2576095f4958042403 ""
+  "figures/ml.jpg" 1777480455 26196 1f032a842f5829c60a4cbd04a4edd07a ""
   "figures/musgd.png" 1776164842 880856 0a7ac562cc3ed7c0106a162a54600465 ""
   "figures/ocr-arc.png" 1776758355 34644 4fe10ddb691f8e361a8c3737cd5c84cb ""
   "figures/one-stage.jpg" 1776703668 584040 f01215537786cae7c6c56ea2625fd60a ""
   "figures/pcu.png" 1776164840 1032666 87ec26285435a9c4cb7cb4ef1d8c7c4e ""
+  "figures/plate-seg.jpg" 1777480520 24041 3b9762afd70e35d78fe5ddf70d13381c ""
   "figures/progloss.png" 1776164842 1170790 a6db4ea4729f67267920b07a29f69825 ""
   "figures/rsu_esc1.png" 1776164840 2492179 478e93b9c35347dd52f1b18f67ffd53d ""
   "figures/shine-example.png" 1776855233 1266123 d7962a0155574b15e4782e75eeba63fe ""
@@ -309,10 +312,10 @@
   "figures/yolo8_vdet.png" 1776164840 112590 44d39839171dd184cd4d2df43263e154 ""
   "figures/yolo_stats.png" 1776164842 502685 81988a12c7b480c7f8e0ad865330f9ab ""
   "figures/yolov7_veh.png" 1776164840 84851 e7a145cebdb05ca03d6160d657767863 ""
-  "main.aux" 1776881585 27264 8ba441018dd1859a1fecf82e2e8fae32 "pdflatex"
-  "main.bbl" 1776881577 9318 d4a71d4f4df3a65047ef3038b382cb45 "bibtex main"
-  "main.out" 1776881585 3374 d8c663f7f0f8f5506e91aa207577a6dd "pdflatex"
-  "main.tex" 1776881538 96433 82a26ace20b4b6a7caa9c5040331eb48 ""
+  "main.aux" 1777480633 28802 e2827c6ff61a1edbeb8cfa2c21a6e8cb "pdflatex"
+  "main.bbl" 1777480620 10450 d6c66d38228fd56369e2beb62059696d "bibtex main"
+  "main.out" 1777480633 3374 d8c663f7f0f8f5506e91aa207577a6dd "pdflatex"
+  "main.tex" 1777480568 104646 614647332f816987e9ce090c7a99c32d ""
   (generated)
   "main.aux"
   "main.log"

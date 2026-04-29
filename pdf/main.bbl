@@ -91,6 +91,26 @@ Laixiang Xu, Zihan Shang, Xiangjun Chen, Tiwei Zeng, Wenhao Dai, and Junmin Zhao
 Sai~Sirisha Nadiminti, Pranav~Kant Gaur, and Abhilash Bhardwaj.
 \newblock Exploration of an end-to-end automatic number-plate recognition neural network for indian datasets, 2022.
 
+\bibitem{9790745}
+Natalya Kharina and Sergei Chernyadyev.
+\newblock Software for car license plates recognition with minimal computing resources.
+\newblock In {\em 2022 24th International Conference on Digital Signal Processing and its Applications (DSPA)}, pages 1--4, 2022.
+
+\bibitem{10804754}
+Hasan Aljzaere, Atul~Chandra Nath, and Wolfram Hardt.
+\newblock German license plate recognition system using the yolov8 model and easyocr.
+\newblock In {\em 2024 IEEE CPMT Symposium Japan (ICSJ)}, pages 176--179, 2024.
+
+\bibitem{10710693}
+Emre Görgülü and Ahmet~Remzi Özcan.
+\newblock Deep learning-based turkish license plate recognition system on low-power microcontroller systems.
+\newblock In {\em 2024 8th International Artificial Intelligence and Data Processing Symposium (IDAP)}, pages 1--6, 2024.
+
+\bibitem{visapp09}
+Teófilo~E. de~Campos, Bodla~Rakesh Babu, and Manik Varma.
+\newblock Character recognition in natural images.
+\newblock In {\em Proceedings of the Fourth International Conference on Computer Vision Theory and Applications - Volume 2: VISAPP, (VISIGRAPP 2009)}, pages 273--280. INSTICC, SciTePress, 2009.
+
 \bibitem{neupane2023shinedeeplearningbasedaccessible}
 Dhiraj Neupane, Aashish Bhattarai, Sunil Aryal, Mohamed~Reda Bouadjenek, Uk-Min Seok, and Jongwon Seok.
 \newblock Shine: Deep learning-based accessible parking management system, 2023.

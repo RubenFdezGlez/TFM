@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Version 0.5 // April 2025
+%% Version 0.7 // May 2025
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Rubén Fernández González
 %%  - rferng19@estudiantes.unileon.es
@@ -495,6 +495,68 @@ La detección y reconocimiento de matrículas es una tarea muy importante cuando
 \end{itemize}
 
 El rendimiento conseguido se encuentra en un \textbf{99.3\%} de precisión considerando un IoU de 0.7 en las imágenes del subconjunto de \textbf{CCPD}: \textbf{ccpd\_base} y un \textbf{84.1\%} en el subconjunto \textbf{ccpd\_weather}. El reconocimiento se considera válido si el IoU es mayor que 0.6 y todos los caracteres se han reconocido correctamente; se ha conseguido un \textbf{98.5\%} de precisión en las imágenes del subconjunto \textbf{ccpd\_base} y un \textbf{85.1\%} en el subconjunto \textbf{ccpd\_challenge} con una tiempo de inferencia de 61 FPS. El hardware utilizado para el entrenamiento del modelo es un servidor GPU con 8 CPUs Intel Xeon E5-2682 v4 @ 2.50GHz, 60GB RAM y una Nvidia GPU Tesla P100 PCIe 16GB. La realización de las pruebas se realizaron en portátiles con 8 3.40 GHz Intel Core i7-6700 CPU, 24GB RAM y una Quadro M4000 GPU. 
+
+
+
+No siempre se tiene la potencia que se requiere para desplegar un programa que necesita gran cantidad de recursos: a veces es necesario crear un programa que use menos recursos. Natalya Kharina et Al.\cite{9790745} diseñan un programa que localiza, reconoce y segmentar matrículas en una entrada a un área restringida. El proceso, explicado con imágenes en la figura \ref{fig:ml} se divide en diferentes pasos:
+\begin{itemize}
+    \item \textbf{Preprocesamiento:} Mejora del contraste en la imagen en escala de grises y se binariza con un umbral dado por el método Otsu\footnote{Método de segmentación que sirve para binarizar imágenes de forma que se escoge el umbral que proporcione la mejor separación entre dos clases diferentes de píxeles en términos de sus niveles de intensidad.}.
+    \item \textbf{Localización de la matrícula:} Se buscan contornos en la imagen binaria, limitándose a contornos de entre 3.5 a 5 píxeles de rango, y el fragmento localizado (la supuesta matrícula detectada) se revisa para comparar su similitud con una matrícula real a partir de las siguientes características:
+    \begin{itemize}
+        \item Se calcula otro umbral para \textbf{obtener otra imagen binaria adicional} a partir de un fragmento de semitonos.
+        \item \textbf{Se calcula el coeficiente de cobertura de los píxeles negros} a partir de todos los píxeles de la imagen de la matrícula. Si este coeficiente no se incluye en los intervalos (0.1, 0.3] o (0.6, 0.75), este fragmento de imagen no se incluye para reconocer la matrícula.
+    \end{itemize}
+    \item \textbf{Rotación y normalización:} \textbf{La rotación aplica un filtro lineal} para suavizar la distorsión de la imagen y \textbf{se recorta} para prevenir información innecesaria de meterse en el fragmento de la matrícula.
+    \item \textbf{Segmentación:} La imagen de la matrícula \textbf{se binariza usando un umbral dinámico} en el algoritmo Otsu y se calcula el número de píxeles negros en cada columna. Se busca el final del caracter a lo largo del eje X para determinar el intervalo de espacio del símbolo: si es suficientemente largo, se considera como posible posición de un símbolo. Se aplica el mismo cálculo para averiguar la posición en el eje Y, calculando el índice de píxeles negros entre 2 columnas encontradas por la parte anterior. Finalmente, se recorta la imagen.
+    Para prevenir más falsos positivos, se revisa la proporción altura y longitud del recorte: si la longitud no es suficientemente grande, se busca el contorno más cercano al contorno izquierdo del lado derecho. 
+    \item \textbf{Reconocimiento de texto:} Escalado de los símbolos para tener tamaños similares en los caracteres y selección de los símbolos de acuerdo al coeficiente de correlación más alto entre el fragmento original y el patrón.
+\end{itemize}
+El conjunto de datos comprende 2000 imágenes de vehículos con sus matrículas visibles, obteniendo una probabilidad de reconocimiento correcto del \textbf{96\%}, donde la probabilidad de error en el reconocimiento es del 0.4\%, probabilidad de no reconocer del 3.5\% y un 1.5\% de falsos reconocimientos. El tiempo de procesamiento de una imagen se encuentra en torno a unos \textbf{35 ms} en un procesador AMD Ryzen 2600x.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/ml.jpg}
+    \caption{Resultados del algoritmo de reconocimiento de matrículas\\
+    \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/9790745}}}
+    \label{fig:ml}
+\end{figure}
+
+
+
+Los sistemas de reconocimiento de matrículas se pueden adaptar a un amplio rango de características; como Hasan Aljzaere et Al. \cite{10804754}, que desarrollan un sistema de reconocimiento en carreteras utilizando las tecnologías de \textbf{YOLOv8} y \textbf{EasyOCR}. Para probar este sistema, se ha extraído un dataset de 4000 imágenes en blanco y negro de vehículos alemanes de la página web \textbf{Roboflow}. El sistema empieza por detectar los vehículos que aparecen en los vídeos, con el uso del algoritmo SORT \textit{(Simple Online and Real-time Tracking Algorithm)} manteniendo la asociación entre el vehículo y la matrícula. Después de seguir al vehículo, se usará el sistema YOLO para detectar las matrículas, y, si la confianza en la detección supera el 85\%, triplicando su tamaño para pasarlo al algoritmo EasyOCR.
+
+La estructura del extractor de características del modelo YOLOv8 se divide en 3 partes fundamentales: CSB, C2f y SPPF. El módulo \textbf{CSB} con convoluciones 2D y la función de activación SiLU \textbf{ayuda en la extracción de características}, \textbf{C2f mejora el flujo del gradiente} y SPPF se encarga de aprender las características. A esta estructura le sigue el cuello \textbf{PAN-FPN}, \textbf{encargado de} utilizar semántica de alto nivel y la informaciñon de la ubicación para \textbf{mejorar el uso de características}. La última parte es la encargada de separar las tareas de clasificación y detección. 
+
+La tecnología EasyOCR es la encargada de transformar el texto de la imagen en una cadena de caracteres a través de librería de OpenCV, \textbf{comparando la imagen recortada con una plantilla guardada en una base de datos} (similar a la funcionalidad Template Matching), detectando texto en más de 80 lenguajes diferentes, en escenarios donde la orientación de caracteres puede ser compleja. Un ejemplo se puede ver sobre la figura \ref{fig:eocr-ex}.
+
+Este sistema da como resultados una precisión del \textbf{95\%} para la detección de matrículas y un índice de reconocimiento del \textbf{94\%} usando una confianza en el algoritmo EasyOCR del 85\%. El entrenamiento ha consistido de 1000 iteraciones
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/eocr-ex.jpg}
+    \caption{Ejemplo de reconocimiento de matrícula usando el algoritmo EasyOCr\\
+    \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/10804754}}}
+    \label{fig:eocr-ex}
+\end{figure}
+
+
+
+Para la detección y reconocimiento de matrículas en entornos restringidos y vehículos que rompen las leyes de tráfico, Debajit Sarma et Al.\cite{10710693} idean un sistema de tres partes fundamentales:
+\begin{itemize}
+    \item \textbf{Detección de la matrícula:} Se convierte la imagen de RGB a binaria (más eficiente computacionalmente), mejorando y suavizando la imagen con el uso de \textit{Gaussian Blurring} para eliminar el ruido; a esto le sigue la aplicación del umbral adaptativo \textit{(Adaptive Thresholding)}.
+    \item \textbf{Segmentación de caracteres:} La imagen \ref{fig:plate-seg} detalla los pasos involucrados en esta etapa; fundamental para la siguiente etapa ya que si no se pueden segmentar los caracteres, tampoco se pueden reconocer.
+    \item \textbf{Reconocimiento de caracteres:} Un framework de tensorflow junto con una CNN se encargan de reconocer las 36 clases (A-Z y 0-9). La CNN está compuesta de \textbf{3 capas convolucionales} con kernels de 5x5 y \textbf{2 capas totalmente conectadas}; de las cuales, una de ellas con un \textit{dropout} de 0.5 para prevenir el \textit{overfitting}. La red termina con una capa de \textit{softmax} para dar las probabilidades por clase.
+\end{itemize}
+
+Para probar el sistema propuesto se han escogido dos conjuntos de datos: el primero\footnote{El conjunto de datos es descargable de la página: \url{https://www.kaggle.com/datasets/andrewmvd/car-plate-detection}} consta de 443 imágenes de vehículos con diferentes condiciones de visibilidad y ángulos con la matrícula visible. El segundo contiene un subconjunto recortado de 1980 imágenes de caracteres y letras\cite{visapp09} (3410 en total) resultando en 55 imágenes por caracter con 45/10 para los conjuntos de entrenamiento y validación. Las pruebas indican un 95.75\% de precisión en el conjunto de caracteres.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/plate-seg.jpg}
+    \caption{Proceso de flujo de segmentación de matrículas\\
+    \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/10183638}}}
+    \label{fig:plate-seg}
+\end{figure}
 
 
 
