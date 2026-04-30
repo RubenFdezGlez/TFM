@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.14)  29 APR 2026 18:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.14)  30 APR 2026 17:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -986,170 +986,202 @@ File: figures/plate-seg.jpg Graphic file (type jpg)
 Package pdftex.def Info: figures/plate-seg.jpg  used on input line 555.
 (pdftex.def)             Requested size: 368.57964pt x 150.11624pt.
 [19]
-Overfull \hbox (3.30228pt too wide) in paragraph at lines 566--567
-\OT1/ppl/m/n/10.95 Pas-cal VOC para de-tecci[]on de ob-je-tos con la her-ramienta \OT1/ppl/b/n/10.95 make-sense.ai\OT1/ppl/m/n/10.95 . Las im[]agenes
- []
+<figures/lic-ex.png, id=395, 515.67656pt x 429.85594pt>
+File: figures/lic-ex.png Graphic file (type png)
+<use figures/lic-ex.png>
+Package pdftex.def Info: figures/lic-ex.png  used on input line 571.
+(pdftex.def)             Requested size: 368.57964pt x 307.24628pt.
 
-<figures/cl-dist.png, id=397, 840.13875pt x 494.59781pt>
-File: figures/cl-dist.png Graphic file (type png)
-<use figures/cl-dist.png>
-Package pdftex.def Info: figures/cl-dist.png  used on input line 575.
-(pdftex.def)             Requested size: 368.57964pt x 216.98221pt.
-<figures/shine-example.png, id=398, 871.75688pt x 623.32875pt>
-File: figures/shine-example.png Graphic file (type png)
-<use figures/shine-example.png>
-Package pdftex.def Info: figures/shine-example.png  used on input line 602.
-(pdftex.def)             Requested size: 368.57964pt x 263.53683pt.
-<figures/shine.png, id=399, 825.83531pt x 505.89pt>
-File: figures/shine.png Graphic file (type png)
-<use figures/shine.png>
-Package pdftex.def Info: figures/shine.png  used on input line 610.
-(pdftex.def)             Requested size: 368.57964pt x 225.78804pt.
-[20]
-<figures/vlms.png, id=414, 406.51875pt x 228.855pt>
-File: figures/vlms.png Graphic file (type png)
-<use figures/vlms.png>
-Package pdftex.def Info: figures/vlms.png  used on input line 632.
-(pdftex.def)             Requested size: 368.57964pt x 207.50409pt.
-<figures/vlms-cm.png, id=415, 607.51968pt x 301.125pt>
-File: figures/vlms-cm.png Graphic file (type png)
-<use figures/vlms-cm.png>
-Package pdftex.def Info: figures/vlms-cm.png  used on input line 681.
-(pdftex.def)             Requested size: 368.57964pt x 182.6935pt.
- [21]
-<figures/locnet.png, id=429, 286.06876pt x 132.495pt>
-File: figures/locnet.png Graphic file (type png)
-<use figures/locnet.png>
-Package pdftex.def Info: figures/locnet.png  used on input line 699.
-(pdftex.def)             Requested size: 368.57964pt x 170.71303pt.
-<figures/lprnet-backbone.png, id=430, 271.76532pt x 213.04594pt>
-File: figures/lprnet-backbone.png Graphic file (type png)
-<use figures/lprnet-backbone.png>
-Package pdftex.def Info: figures/lprnet-backbone.png  used on input line 707.
-(pdftex.def)             Requested size: 368.57964pt x 288.95518pt.
-<figures/lprnet-basicblock.png, id=431, 263.48438pt x 116.68594pt>
-File: figures/lprnet-basicblock.png Graphic file (type png)
-<use figures/lprnet-basicblock.png>
-Package pdftex.def Info: figures/lprnet-basicblock.png  used on input line 715.
-(pdftex.def)             Requested size: 368.57964pt x 163.23633pt.
- [22]
-<figures/ocr-arc.png, id=442, 708.39656pt x 221.32687pt>
-File: figures/ocr-arc.png Graphic file (type png)
-<use figures/ocr-arc.png>
-Package pdftex.def Info: figures/ocr-arc.png  used on input line 735.
-(pdftex.def)             Requested size: 368.57964pt x 115.15816pt.
- [23]
-<figures/lprmnist.png, id=459, 754.31813pt x 54.2025pt>
-File: figures/lprmnist.png Graphic file (type png)
-<use figures/lprmnist.png>
-Package pdftex.def Info: figures/lprmnist.png  used on input line 753.
-(pdftex.def)             Requested size: 368.57964pt x 26.48419pt.
-<figures/lenet.jpg, id=464, 386.78905pt x 113.75298pt>
-File: figures/lenet.jpg Graphic file (type jpg)
-<use figures/lenet.jpg>
-Package pdftex.def Info: figures/lenet.jpg  used on input line 772.
-(pdftex.def)             Requested size: 368.57964pt x 108.39795pt.
- [24]
-<figures/lenet_cm.jpg, id=474, 385.05457pt x 416.2752pt>
-File: figures/lenet_cm.jpg Graphic file (type jpg)
-<use figures/lenet_cm.jpg>
-Package pdftex.def Info: figures/lenet_cm.jpg  used on input line 782.
-(pdftex.def)             Requested size: 368.57964pt x 398.48268pt.
-<figures/yolo_stats.png, id=477, 1927.2pt x 842.14626pt>
-File: figures/yolo_stats.png Graphic file (type png)
-<use figures/yolo_stats.png>
-Package pdftex.def Info: figures/yolo_stats.png  used on input line 824.
-(pdftex.def)             Requested size: 368.57964pt x 161.05031pt.
-<figures/yolo26_arch.png, id=481, 531.48563pt x 487.8225pt>
-File: figures/yolo26_arch.png Graphic file (type png)
-<use figures/yolo26_arch.png>
-Package pdftex.def Info: figures/yolo26_arch.png  used on input line 836.
-(pdftex.def)             Requested size: 368.57964pt x 338.30246pt.
-<figures/progloss.png, id=483, 1308.89pt x 668.4975pt>
-File: figures/progloss.png Graphic file (type png)
-<use figures/progloss.png>
-Package pdftex.def Info: figures/progloss.png  used on input line 855.
-(pdftex.def)             Requested size: 368.57964pt x 188.23886pt.
- [25]
-<figures/musgd.png, id=499, 1063.975pt x 582.175pt>
-File: figures/musgd.png Graphic file (type png)
-<use figures/musgd.png>
-Package pdftex.def Info: figures/musgd.png  used on input line 886.
-(pdftex.def)             Requested size: 368.57964pt x 201.66785pt.
-
-Overfull \hbox (1.90065pt too wide) in paragraph at lines 923--924
-\OT1/ppl/m/n/10.95 basa-dos en el mod-elo DETR [[]34[]] en t[]erminos de rendimiento y efi-cien-cia us-ando un m[]etodo
- []
-
-[26]
-<figures/rsu_esc1.png, id=517, 1444.64719pt x 668.4975pt>
-File: figures/rsu_esc1.png Graphic file (type png)
-<use figures/rsu_esc1.png>
-Package pdftex.def Info: figures/rsu_esc1.png  used on input line 952.
-(pdftex.def)             Requested size: 368.57964pt x 170.5513pt.
- [27]
-<figures/bdd100k.png, id=530, 3011.25pt x 903.375pt>
-File: figures/bdd100k.png Graphic file (type png)
-<use figures/bdd100k.png>
-Package pdftex.def Info: figures/bdd100k.png  used on input line 966.
-(pdftex.def)             Requested size: 368.57964pt x 110.56447pt.
-<figures/bdd_example.png, id=531, 1284.8pt x 722.7pt>
-File: figures/bdd_example.png Graphic file (type png)
-<use figures/bdd_example.png>
-Package pdftex.def Info: figures/bdd_example.png  used on input line 974.
-(pdftex.def)             Requested size: 368.57964pt x 207.32802pt.
-<figures/uc3mlp_example.png, id=534, 2509.375pt x 469.755pt>
-File: figures/uc3mlp_example.png Graphic file (type png)
-<use figures/uc3mlp_example.png>
-Package pdftex.def Info: figures/uc3mlp_example.png  used on input line 988.
-(pdftex.def)             Requested size: 368.57964pt x 68.99796pt.
- [28]
-<figures/uc3mvri_example.png, id=547, 674.52pt x 192.72pt>
-File: figures/uc3mvri_example.png Graphic file (type png)
-<use figures/uc3mvri_example.png>
-Package pdftex.def Info: figures/uc3mvri_example.png  used on input line 1007.
-(pdftex.def)             Requested size: 368.57964pt x 105.31114pt.
-<figures/methodology_dl.jpg, id=549, 193.14922pt x 124.58125pt>
-File: figures/methodology_dl.jpg Graphic file (type jpg)
-<use figures/methodology_dl.jpg>
-Package pdftex.def Info: figures/methodology_dl.jpg  used on input line 1050.
-(pdftex.def)             Requested size: 368.57964pt x 237.76184pt.
- [29]
-Overfull \hbox (6.69722pt too wide) in paragraph at lines 1099--1100
-[]\OT1/ppl/b/n/10.95 Optimizer\OT1/ppl/m/n/10.95 : Es-coger el op-ti-mizador para el en-tre-namiento en-tre \OT1/ppl/b/n/10.95 SGD\OT1/ppl/m/n/10.95 , \OT1/ppl/b/n/10.95 Adam\OT1/ppl/m/n/10.95 , \OT1/ppl/b/n/10.95 AdamW\OT1/ppl/m/n/10.95 ,
- []
-
-[30] [31]
-Overfull \hbox (8.18459pt too wide) in paragraph at lines 1166--1177
+Overfull \hbox (74.54877pt too wide) in paragraph at lines 579--596
  [][] 
  []
 
-[32] (./main.bbl [33] [34] [35]
-Underfull \hbox (badness 10000) in paragraph at lines 149--152
+[20]
+<figures/tocr-ex.png, id=405, 1403.99532pt x 393.72093pt>
+File: figures/tocr-ex.png Graphic file (type png)
+<use figures/tocr-ex.png>
+Package pdftex.def Info: figures/tocr-ex.png  used on input line 612.
+(pdftex.def)             Requested size: 368.57964pt x 103.3563pt.
+
+Overfull \hbox (6.9036pt too wide) in paragraph at lines 622--623
+[]\OT1/ppl/m/n/10.95 La matr[]^^Pcula de-tec-tada por el mod-elo \OT1/ppl/b/n/10.95 YOLOv8 \OT1/ppl/m/n/10.95 se red-i-men-siona y mejora us-ando t[]ecnicas
+ []
+
+<figures/sys-easyocr.png, id=409, 515.67656pt x 782.925pt>
+File: figures/sys-easyocr.png Graphic file (type png)
+<use figures/sys-easyocr.png>
+Package pdftex.def Info: figures/sys-easyocr.png  used on input line 628.
+(pdftex.def)             Requested size: 368.57964pt x 559.60794pt.
+<figures/yolo8.png, id=410, 515.67656pt x 328.22626pt>
+File: figures/yolo8.png Graphic file (type png)
+<use figures/yolo8.png>
+Package pdftex.def Info: figures/yolo8.png  used on input line 636.
+(pdftex.def)             Requested size: 368.57964pt x 234.60486pt.
+[21]
+Overfull \hbox (3.30228pt too wide) in paragraph at lines 647--648
+\OT1/ppl/m/n/10.95 Pas-cal VOC para de-tecci[]on de ob-je-tos con la her-ramienta \OT1/ppl/b/n/10.95 make-sense.ai\OT1/ppl/m/n/10.95 . Las im[]agenes
+ []
+
+<figures/cl-dist.png, id=424, 840.13875pt x 494.59781pt>
+File: figures/cl-dist.png Graphic file (type png)
+<use figures/cl-dist.png>
+Package pdftex.def Info: figures/cl-dist.png  used on input line 656.
+(pdftex.def)             Requested size: 368.57964pt x 216.98221pt.
+<figures/shine-example.png, id=425, 871.75688pt x 623.32875pt>
+File: figures/shine-example.png Graphic file (type png)
+<use figures/shine-example.png>
+Package pdftex.def Info: figures/shine-example.png  used on input line 683.
+(pdftex.def)             Requested size: 368.57964pt x 263.53683pt.
+<figures/shine.png, id=426, 825.83531pt x 505.89pt>
+File: figures/shine.png Graphic file (type png)
+<use figures/shine.png>
+Package pdftex.def Info: figures/shine.png  used on input line 691.
+(pdftex.def)             Requested size: 368.57964pt x 225.78804pt.
+[22]
+<figures/vlms.png, id=441, 406.51875pt x 228.855pt>
+File: figures/vlms.png Graphic file (type png)
+<use figures/vlms.png>
+Package pdftex.def Info: figures/vlms.png  used on input line 713.
+(pdftex.def)             Requested size: 368.57964pt x 207.50409pt.
+<figures/vlms-cm.png, id=442, 607.51968pt x 301.125pt>
+File: figures/vlms-cm.png Graphic file (type png)
+<use figures/vlms-cm.png>
+Package pdftex.def Info: figures/vlms-cm.png  used on input line 762.
+(pdftex.def)             Requested size: 368.57964pt x 182.6935pt.
+ [23]
+<figures/locnet.png, id=457, 286.06876pt x 132.495pt>
+File: figures/locnet.png Graphic file (type png)
+<use figures/locnet.png>
+Package pdftex.def Info: figures/locnet.png  used on input line 780.
+(pdftex.def)             Requested size: 368.57964pt x 170.71303pt.
+<figures/lprnet-backbone.png, id=458, 271.76532pt x 213.04594pt>
+File: figures/lprnet-backbone.png Graphic file (type png)
+<use figures/lprnet-backbone.png>
+Package pdftex.def Info: figures/lprnet-backbone.png  used on input line 788.
+(pdftex.def)             Requested size: 368.57964pt x 288.95518pt.
+<figures/lprnet-basicblock.png, id=459, 263.48438pt x 116.68594pt>
+File: figures/lprnet-basicblock.png Graphic file (type png)
+<use figures/lprnet-basicblock.png>
+Package pdftex.def Info: figures/lprnet-basicblock.png  used on input line 796.
+(pdftex.def)             Requested size: 368.57964pt x 163.23633pt.
+ [24]
+<figures/ocr-arc.png, id=469, 708.39656pt x 221.32687pt>
+File: figures/ocr-arc.png Graphic file (type png)
+<use figures/ocr-arc.png>
+Package pdftex.def Info: figures/ocr-arc.png  used on input line 816.
+(pdftex.def)             Requested size: 368.57964pt x 115.15816pt.
+ [25]
+<figures/lprmnist.png, id=488, 754.31813pt x 54.2025pt>
+File: figures/lprmnist.png Graphic file (type png)
+<use figures/lprmnist.png>
+Package pdftex.def Info: figures/lprmnist.png  used on input line 834.
+(pdftex.def)             Requested size: 368.57964pt x 26.48419pt.
+ [26]
+<figures/lenet.jpg, id=501, 386.78905pt x 113.75298pt>
+File: figures/lenet.jpg Graphic file (type jpg)
+<use figures/lenet.jpg>
+Package pdftex.def Info: figures/lenet.jpg  used on input line 853.
+(pdftex.def)             Requested size: 368.57964pt x 108.39795pt.
+<figures/lenet_cm.jpg, id=503, 385.05457pt x 416.2752pt>
+File: figures/lenet_cm.jpg Graphic file (type jpg)
+<use figures/lenet_cm.jpg>
+Package pdftex.def Info: figures/lenet_cm.jpg  used on input line 863.
+(pdftex.def)             Requested size: 368.57964pt x 398.48268pt.
+<figures/yolo_stats.png, id=506, 1927.2pt x 842.14626pt>
+File: figures/yolo_stats.png Graphic file (type png)
+<use figures/yolo_stats.png>
+Package pdftex.def Info: figures/yolo_stats.png  used on input line 905.
+(pdftex.def)             Requested size: 368.57964pt x 161.05031pt.
+<figures/yolo26_arch.png, id=510, 531.48563pt x 487.8225pt>
+File: figures/yolo26_arch.png Graphic file (type png)
+<use figures/yolo26_arch.png>
+Package pdftex.def Info: figures/yolo26_arch.png  used on input line 917.
+(pdftex.def)             Requested size: 368.57964pt x 338.30246pt.
+<figures/progloss.png, id=512, 1308.89pt x 668.4975pt>
+File: figures/progloss.png Graphic file (type png)
+<use figures/progloss.png>
+Package pdftex.def Info: figures/progloss.png  used on input line 936.
+(pdftex.def)             Requested size: 368.57964pt x 188.23886pt.
+ [27]
+<figures/musgd.png, id=528, 1063.975pt x 582.175pt>
+File: figures/musgd.png Graphic file (type png)
+<use figures/musgd.png>
+Package pdftex.def Info: figures/musgd.png  used on input line 967.
+(pdftex.def)             Requested size: 368.57964pt x 201.66785pt.
+ [28]
+Overfull \hbox (1.90065pt too wide) in paragraph at lines 1004--1005
+\OT1/ppl/m/n/10.95 basa-dos en el mod-elo DETR [[]37[]] en t[]erminos de rendimiento y efi-cien-cia us-ando un m[]etodo
+ []
+
+<figures/rsu_esc1.png, id=545, 1444.64719pt x 668.4975pt>
+File: figures/rsu_esc1.png Graphic file (type png)
+<use figures/rsu_esc1.png>
+Package pdftex.def Info: figures/rsu_esc1.png  used on input line 1033.
+(pdftex.def)             Requested size: 368.57964pt x 170.5513pt.
+[29]
+<figures/bdd100k.png, id=558, 3011.25pt x 903.375pt>
+File: figures/bdd100k.png Graphic file (type png)
+<use figures/bdd100k.png>
+Package pdftex.def Info: figures/bdd100k.png  used on input line 1047.
+(pdftex.def)             Requested size: 368.57964pt x 110.56447pt.
+<figures/bdd_example.png, id=559, 1284.8pt x 722.7pt>
+File: figures/bdd_example.png Graphic file (type png)
+<use figures/bdd_example.png>
+Package pdftex.def Info: figures/bdd_example.png  used on input line 1055.
+(pdftex.def)             Requested size: 368.57964pt x 207.32802pt.
+<figures/uc3mlp_example.png, id=562, 2509.375pt x 469.755pt>
+File: figures/uc3mlp_example.png Graphic file (type png)
+<use figures/uc3mlp_example.png>
+Package pdftex.def Info: figures/uc3mlp_example.png  used on input line 1069.
+(pdftex.def)             Requested size: 368.57964pt x 68.99796pt.
+ [30]
+<figures/uc3mvri_example.png, id=575, 674.52pt x 192.72pt>
+File: figures/uc3mvri_example.png Graphic file (type png)
+<use figures/uc3mvri_example.png>
+Package pdftex.def Info: figures/uc3mvri_example.png  used on input line 1088.
+(pdftex.def)             Requested size: 368.57964pt x 105.31114pt.
+ [31]
+<figures/methodology_dl.jpg, id=584, 193.14922pt x 124.58125pt>
+File: figures/methodology_dl.jpg Graphic file (type jpg)
+<use figures/methodology_dl.jpg>
+Package pdftex.def Info: figures/methodology_dl.jpg  used on input line 1131.
+(pdftex.def)             Requested size: 368.57964pt x 237.76184pt.
+
+Overfull \hbox (6.69722pt too wide) in paragraph at lines 1180--1181
+[]\OT1/ppl/b/n/10.95 Optimizer\OT1/ppl/m/n/10.95 : Es-coger el op-ti-mizador para el en-tre-namiento en-tre \OT1/ppl/b/n/10.95 SGD\OT1/ppl/m/n/10.95 , \OT1/ppl/b/n/10.95 Adam\OT1/ppl/m/n/10.95 , \OT1/ppl/b/n/10.95 AdamW\OT1/ppl/m/n/10.95 ,
+ []
+
+[32] [33]
+Overfull \hbox (8.18459pt too wide) in paragraph at lines 1247--1258
+ [][] 
+ []
+
+[34] (./main.bbl [35] [36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 164--167
 []\OT1/ppl/m/n/10.95 UNSO: Or-tog-o-nal-izaci&#xF3;n Unifi-cada de New-ton Schulz ---
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--152
+Underfull \hbox (badness 10000) in paragraph at lines 164--167
 \OT1/ppl/m/n/10.95 q2bstudio.com.  []$\OT1/pcr/m/n/10.95 https : / / www . q2bstudio . com / nuestro-[]blog / 606893 /
  []
 
 
-Overfull \hbox (162.8544pt too wide) in paragraph at lines 149--152
+Overfull \hbox (162.8544pt too wide) in paragraph at lines 164--167
 \OT1/pcr/m/n/10.95 unificado-[]de-[]newton-[]schulz-[]metodo-[]de-[]ortogonalizacion-[]aplicado-[]en-[]calculos-[]cientificos$[]\OT1/ppl/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 5274) in paragraph at lines 163--166
+Underfull \hbox (badness 5274) in paragraph at lines 178--181
 []\OT1/ppl/m/n/10.95 Ramon Sanchez-Iborra, Vasileios Kou-vakis, Stylianos E. Trevlakis, Gon-zalo
  []
 
-) [36]
+[38]) [39]
 
 Package caption Warning: Unused \captionsetup[sub] on input line 17.
 See the caption package documentation for explanation.
 
-[37 <./figures/st_cnn_2.png>] [38 <./figures/two-stage.jpg> <./figures/one-stage.jpg>] [39 <./figures/mat-rec.jpg>] [40 <./figures/ml.jpg>] [41 <./figures/eocr-ex.jpg> <./figures/plate-seg.jpg> <./figures/cl-dist.png>] [42 <./figures/shine-example.png> <./figures/shine.png>] [43 <./figures/vlms.png> <./figures/vlms-cm.png> <./figures/locnet.png>] [44 <./figures/lprnet-backbone.png> <./figures/lprnet-basicblock.png> <./figures/ocr-arc.png>] [45 <./figures/lprmnist.png> <./figures/lenet.jpg> <./figures/lenet_cm.jpg>] [46 <./figures/yolo_stats.png (PNG copy)> <./figures/yolo26_arch.png>] [47 <./figures/progloss.png> <./figures/musgd.png> <./figures/rsu_esc1.png>] [48 <./figures/bdd100k.png (PNG copy)> <./figures/bdd_example.png (PNG copy)> <./figures/uc3mlp_example.png (PNG copy)> <./figures/uc3mvri_example.png>] [49 <./figures/methodology_dl.jpg>] (./main.aux)
+[40 <./figures/st_cnn_2.png>] [41 <./figures/two-stage.jpg> <./figures/one-stage.jpg>] [42 <./figures/mat-rec.jpg>] [43 <./figures/ml.jpg>] [44 <./figures/eocr-ex.jpg> <./figures/plate-seg.jpg>] [45 <./figures/lic-ex.png> <./figures/tocr-ex.png>] [46 <./figures/sys-easyocr.png>] [47 <./figures/yolo8.png> <./figures/cl-dist.png>] [48 <./figures/shine-example.png> <./figures/shine.png>] [49 <./figures/vlms.png> <./figures/vlms-cm.png> <./figures/locnet.png>] [50 <./figures/lprnet-backbone.png> <./figures/lprnet-basicblock.png> <./figures/ocr-arc.png>] [51 <./figures/lprmnist.png> <./figures/lenet.jpg> <./figures/lenet_cm.jpg>] [52 <./figures/yolo_stats.png (PNG copy)> <./figures/yolo26_arch.png>] [53 <./figures/progloss.png> <./figures/musgd.png> <./figures/rsu_esc1.png>] [54 <./figures/bdd100k.png (PNG copy)> <./figures/bdd_example.png (PNG copy)> <./figures/uc3mlp_example.png (PNG copy)> <./figures/uc3mvri_example.png>] [55 <./figures/methodology_dl.jpg>] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1158,10 +1190,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D8C663F7F0F8F5506E91AA207577A6DD;3374.
  ) 
 Here is how much of TeX's memory you used:
- 36142 strings out of 467349
- 821291 string characters out of 5419862
- 1372503 words of memory out of 5000000
- 64413 multiletter control sequences out of 15000+600000
+ 36193 strings out of 467349
+ 822316 string characters out of 5419862
+ 1375503 words of memory out of 5000000
+ 64450 multiletter control sequences out of 15000+600000
  655139 words of font info for 114 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,13n,104p,1993b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1244,10 +1276,10 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 <c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2026/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2026/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2026/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2026/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (49 pages, 18022708 bytes).
+Output written on main.pdf (55 pages, 19961724 bytes).
 PDF statistics:
- 766 PDF objects out of 1000 (max. 8388607)
- 616 compressed objects within 7 object streams
- 191 named destinations out of 1000 (max. 500000)
- 420 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 818 PDF objects out of 1000 (max. 8388607)
+ 654 compressed objects within 7 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 440 words of extra memory for PDF output out of 10000 (max. 10000000)
 

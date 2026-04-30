@@ -111,6 +111,21 @@ Teófilo~E. de~Campos, Bodla~Rakesh Babu, and Manik Varma.
 \newblock Character recognition in natural images.
 \newblock In {\em Proceedings of the Fourth International Conference on Computer Vision Theory and Applications - Volume 2: VISAPP, (VISIGRAPP 2009)}, pages 273--280. INSTICC, SciTePress, 2009.
 
+\bibitem{Meesad2025}
+Phayung Meesad and Wichan Thumthong.
+\newblock Advanced deep learning techniques for automated license plate recognition.
+\newblock {\em Scientific Reports}, 15(1):41194, Nov 2025.
+
+\bibitem{Pradhan2025}
+Gulmini Pradhan, Manas~Ranjan Prusty, Vipul~Singh Negi, and Suchismita Chinara.
+\newblock Advanced iot-integrated parking systems with automated license plate recognition and payment management.
+\newblock {\em Scientific Reports}, 15(1):2388, Jan 2025.
+
+\bibitem{Moussaoui2024}
+Hanae Moussaoui, Nabil~El Akkad, Mohamed Benslimane, Walid El-Shafai, Abdullah Baihan, Chaminda Hewage, and Rajkumar~Singh Rathore.
+\newblock Enhancing automated vehicle identification by integrating yolo v8 and ocr techniques for high-precision license plate detection and recognition.
+\newblock {\em Scientific Reports}, 14(1):14389, Jun 2024.
+
 \bibitem{neupane2023shinedeeplearningbasedaccessible}
 Dhiraj Neupane, Aashish Bhattarai, Sunil Aryal, Mohamed~Reda Bouadjenek, Uk-Min Seok, and Jongwon Seok.
 \newblock Shine: Deep learning-based accessible parking management system, 2023.

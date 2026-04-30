@@ -534,7 +534,7 @@ Este sistema da como resultados una precisión del \textbf{95\%} para la detecci
 \begin{figure}[htb]
 \centering
     \includegraphics[width=.85\textwidth]{figures/eocr-ex.jpg}
-    \caption{Ejemplo de reconocimiento de matrícula usando el algoritmo EasyOCr\\
+    \caption{Ejemplo de reconocimiento de matrícula usando el algoritmo EasyOcr\\
     \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/10804754}}}
     \label{fig:eocr-ex}
 \end{figure}
@@ -556,6 +556,87 @@ Para probar el sistema propuesto se han escogido dos conjuntos de datos: el prim
     \caption{Proceso de flujo de segmentación de matrículas\\
     \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/10183638}}}
     \label{fig:plate-seg}
+\end{figure}
+
+
+
+Phayung Meesad et Al.\cite{Meesad2025} combinan el algoritmo \textbf{YOLOv10} con un motor \textbf{Tesseract OCR} especialmente personalizado para la tarea de reconocimiento automatizado de matrículas (ALPR), fundamental para la gestión del tráfico, proteger la seguridad pública, peajes y el acceso a lugares restringidos. La combinación de estos dos algoritmos tiene como objetivo reconocer matrículas de vehículos con una mezcla de \textbf{caracteres tailandeses y latinos}, un problema complicado no resuelto en la literatura. El sistema propuesto toma como entrada imágenes o vídeo en tiempo real de cámaras de vigilancia y se somete a varias \textbf{funciones de preprocesamiento}: reducción del ruido, ajuste del contraste y técnicas de segmentación, que tienen mucha eficacia a la hora de asolar regiones de las matrículas.
+
+La parte de detección utiliza \textbf{modelos YOLO} avanzados ("avanzados" en su momento como YOLOv8, YOLOv9 o YOLOv10) para detectar las matrículas de las imágenes preprocesadas. Después de que la detección resulte correcta, un motor \textbf{Tesseract OCR}, adaptado a matrículas Tailandesas que presentan dos tipos de escritura y fuentes variables para mejorar el reconocimiento y solucionar los problemas lingüísticos inherentes en el conjunto de datos. El modelo \textbf{YOLOv10} destaca entre los modelos comparados en este estudio, característico gracias a sus \textbf{kernels dinámicos convolucionales (DCK)}, que mejora el proceso de extracción de características a costa de un mínimo aumento de la carga computacional. 
+
+El conjunto de datos consta de 50,000 imágenes y 10,000 trozos de vídeo (con una división de 80:20 para los conjuntos de entrenamiento y pruebas) en diferentes condiciones atmosféricas y de iluminación y con cambios notables en las matrículas con colores o fuentes, por ejemplo. Algunos ejemplos se pueden observar en la figura \ref{fig:thai-ex}. Las pruebas realizadas se llevaron a cabo en una NVIDIA A100 GPU de Google Colab comparando los detectores YOLOv5, YOLOv8, YOLOv9, YOLOv10, Faster R-CNN y SSD, cuyos resultados están descritos en la tabla \ref{tab:thai-res} y muestran la superioridad de YOLOv10 frente a los anteriores modelos YOLO. El reconocimiento también tuvo resultados satisfactorios: el motor Tesseract OCR alcanzó una tasa de reconocimiento del 99.16\% y un F1-score del 99.2\%.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/lic-ex.png}
+    \caption{Ejemplos de matrículas tailandesas\\
+    \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-24967-9}}}
+    \label{fig:thai-ex}
+\end{figure}
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+         \hline   
+         \textbf{Modelo} & \textbf{Entrenamiento (horas)} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Inference time}\\
+         \hline
+         \textbf{YOLOv5} & 15 h & 96.97\% & 97.90\% & 97.10\% & 97.5\% & 1.4 ms\\ 
+         \hline
+         \textbf{YOLOv8} & 17 h & 97.79\% & 98.20\% & 97.30\% & 97.7\% & 1.4 ms\\ 
+         \hline
+         \textbf{YOLOv9} & 20 h & 98.96\% & 99.8\% & 97.80\% & 98.8\% & 1.4 ms\\ 
+         \hline
+         \textbf{YOLOv10} & 25 h & 99.16\% & 99.8\% & 98.60\% & 99.2\% & 1 ms\\ 
+         \hline
+         \textbf{Faster R-CNN} & 45 h & 92\% & 92.50\% & 92\% & 92.2\% & 0.57\\ 
+         \hline
+         \textbf{SSD} & 28 h & 90\% & 91\% & 90.5\% & 90.7\% & 2.5 ms\\ 
+         \hline
+    \end{tabular}
+    \caption{Resultados de diferentes arquitecturas en el reconocimiento de matrículas tailandesas}
+    \label{tab:thai-res}
+\end{table}
+
+
+
+La gestión del aparcamiento urbano es un problema creciente debido a la limitación del espacio, con los métodos tradicionales fallando en los momentos con mayor tráfico y resultando en ineficiencias, uso inautorizado y pérdidas de dinero. El sistema propuesto por Gulmini Pradhan et Al.\cite{Pradhan2025} considera una cámara con una resolución mínima de 1080 con enfoque automático y HDR visualizando múltiples plazas de aparcamiento (incluyendo visión clara de las matrículas). Cuando el vehículo entra a la plaza, es detectado por un \textbf{sensor IR} que activa la \textbf{cámara}, la cual captura la matrícula. Después de que un modelo \textbf{YOLO} detecte el vehículo y compare su posición con la de la plaza, se verifica la información y se procede a capturar la matrícula y empezar el contador. Después de la verificación, la matrícula se captura usando la tecnología \textbf{OCR} y vinculándola con la base de datos de los vehículos. 
+
+Se aplica \textit{Gaussian Blurring} y \textit{thresholding} (aplicación de un umbral para convertir una imagen en binario) tanto en la imagen del vehículo como en la de la matrícual para reducir el ruido y segmentar la imagen, seguido de un contorneado para localizar y dibujar una bounding box alrededor de una matrícula. Gracias a la aplicación de estas técnicas en la imagen de la matrícula, se puede extraer el texto mejorado con la tecnología Tesseract OCR.
+
+Tesseract OCR es un motor óptico de reconocimiento de texto desarrollado por Google que analiza las características estructurales del texto, resultando en el reconocimiento de patrones en la imagen y transformándola en texto legible para la computadora. Énfasis en los sofisticados algoritmos de reconocimiento que disciernen los caracteres del resto de los elementos visuales irrelevantes en la imagen. Su versatilidad y fiabilidad hacen que sea una herramienta eficaz para una multitud de tareas e industrias que involucran el reconocimiento de texto.
+
+El sistema es eficaz tanto en los entornos con buena visibilidad como con baja, tal y como se puede apreciar en la figura \ref{fig:tocr-ex}, manteniendo una precisión en torno al \textbf{95\%} en condiciones de día y un \textbf{90\%} en condiciones de noche.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/tocr-ex.png}
+    \caption{Resultado de Tesseract OCR en varias matrículas\\
+    \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-86441-w}}}
+    \label{fig:tocr-ex}
+\end{figure}
+
+
+
+Hanae Moussaoui et Al.\cite{Moussaoui2024} proponen un nuevo sistema de detección y reconocimiento de matrículas usando el modelo \textbf{YOLOv8}, técnicas de procesamiento de imágenes y una técnica OCR para el reconocimiento de texto; el sistema completo se puede observar sobre la figura \ref{fig:sys-easyocr}.El conjunto de datos se crea a partir de \textbf{270} imágenes de Internet y \textbf{CVAT} (Computer Vision Annotation Tool), un programa de código abierto para etiquetar imágenes y vídeos. Estas imágenes contienen vehículos visibles desde distintos ángulos y varias condiciones de iluminación y se dividen en los subconjuntos de entrenamiento, validación y pruebas.
+
+La matrícula detectada por el modelo \textbf{YOLOv8} se redimensiona y mejora usando técnicas de preprocesamiento, como \textit{k-means clustering}, \textit{thresholding} y operaciones morfológicas. Este paso es crucial para reconocer los caracteres del texto, sobre todo con el ruido producido por la detección de bordes. De entre los modelos YOLO, se escoge la última versión de YOLO (hasta el momento de hacer el artículo), \textbf{YOLOv8}, debido a las mejoras en eficiencia y rendimiento como la introducción de \textbf{NMS (Non-Maximum Suppression)}, que redefine las bounding boxes con baja confianza o duplicadas. Algunos ejemplos de detección sobre varias matrículas se pueden observar en la figura \ref{fig:yolo8-ex}. De entre todas las técnicas \textbf{OCR}, se ha seleccionado \textbf{EasyOCR}, debido a su rápido procesamiento en tiempo real y simple uso en muchos programas en Python.
+
+Los resultados logran alcanzar una precisión del \textbf{74\%} en 40 iteraciones y un 96.37\% al cabo de 68 iteraciones.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/sys-easyocr.png}
+    \caption{Flujo del sistema de reconocimiento de matrículas con YOLO, técnicas de preprocesamiento y OCR\\
+    \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-86441-w}}}
+    \label{fig:sys-easyocr}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/yolo8.png}
+    \caption{Ejemplos de detección de matrículas usando el modelo YOLOv8\\
+    \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-86441-w}}}
+    \label{fig:yolo8-ex}
 \end{figure}
 
 

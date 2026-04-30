@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1777480618.67098 "main.aux" "main.bbl" "main" 1777480637.53218 0
-  "./references.bib" 1777480045 35759 d152f9606614c5437741996078963c4c ""
+["bibtex main"] 1777561491.87358 "main.aux" "main.bbl" "main" 1777561502.70236 0
+  "./references.bib" 1777553403 41947 4593e3360d7e7c5ace4e40ec523e5ed2 ""
   "c:/texlive/2026/texmf-dist/bibtex/bst/base/unsrt.bst" 1776152433 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1777480633 28802 e2827c6ff61a1edbeb8cfa2c21a6e8cb "pdflatex"
+  "main.aux" 1777561500 31196 f74812de6ead84d8b232493e3b78d7aa "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1777480620.20425 "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" "main.pdf" "main" 1777480637.5341 0
+["pdflatex"] 1777561492.79518 "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" "main.pdf" "main" 1777561502.70344 0
   "FAP_style.sty" 1776676557 1272 381e642b51f34f45cb190daf64732531 ""
-  "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" 1777480568 104646 614647332f816987e9ce090c7a99c32d ""
+  "c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex" 1777560347 113246 18a916890165b2c3b3aaa796376a46be ""
   "c:/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1776153980 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1776154780 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1776153456 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -283,6 +283,7 @@
   "figures/intersec.png" 1776164840 188955 716cf00496769571ada799b5d5958b0f ""
   "figures/lenet.jpg" 1776681145 274782 86131d65dfa4309bec804cae42ef3413 ""
   "figures/lenet_cm.jpg" 1776681673 657518 d0866272530eeb523b07b7636a19215f ""
+  "figures/lic-ex.png" 1777561451 153242 9453ea9bb9f9159f05fc28cf4e2e6afc ""
   "figures/locnet.png" 1776769554 31750 d8fc0113b66a71c301866f2e75f34f00 ""
   "figures/lprmnist.png" 1776772993 27072 6e15d4e3addd864642f29b281fc312cc ""
   "figures/lprnet-backbone.png" 1776765514 46761 211c478a684b98ed726dcd127a821c0d ""
@@ -301,6 +302,8 @@
   "figures/shine.png" 1776854870 364351 e3071f32b845823c78b437d0d25d28ff ""
   "figures/st_cnn_1.png" 1776671823 35159 d725c874ac837cf500a8c1d39b69b178 ""
   "figures/st_cnn_2.png" 1776675543 90288 abbf3f69cdd19de861ba2ba3a4b81c33 ""
+  "figures/sys-easyocr.png" 1777561439 115620 af1cdaf839a9a8dbc606d55518f464ea ""
+  "figures/tocr-ex.png" 1777561274 1191846 8b97277fd6e0c171d1c09e59bfbefdf9 ""
   "figures/tvap_example.png" 1776164842 196867 c604166bccba9ef56b7bf69000998823 ""
   "figures/two-stage.jpg" 1776701882 925385 e9aef9bf4183a3503f1dbf204829fe79 ""
   "figures/uc3mlp_example.png" 1776164842 1610423 f5c1a605d04b9e6a2a03d20b54eb2bc8 ""
@@ -309,13 +312,14 @@
   "figures/vlms-cm.png" 1776879816 52541 302f6aa490b62ed204633439be7e21e8 ""
   "figures/vlms.png" 1776874972 79941 7fc1c73ba09cf0abdc65da27ff41ee8d ""
   "figures/yolo26_arch.png" 1776164842 116023 22788bd7dcf04513fb5ca43d141154b2 ""
+  "figures/yolo8.png" 1777561419 651749 c9905d486168285b61b2f488aa4d2f05 ""
   "figures/yolo8_vdet.png" 1776164840 112590 44d39839171dd184cd4d2df43263e154 ""
   "figures/yolo_stats.png" 1776164842 502685 81988a12c7b480c7f8e0ad865330f9ab ""
   "figures/yolov7_veh.png" 1776164840 84851 e7a145cebdb05ca03d6160d657767863 ""
-  "main.aux" 1777480633 28802 e2827c6ff61a1edbeb8cfa2c21a6e8cb "pdflatex"
-  "main.bbl" 1777480620 10450 d6c66d38228fd56369e2beb62059696d "bibtex main"
-  "main.out" 1777480633 3374 d8c663f7f0f8f5506e91aa207577a6dd "pdflatex"
-  "main.tex" 1777480568 104646 614647332f816987e9ce090c7a99c32d ""
+  "main.aux" 1777561500 31196 f74812de6ead84d8b232493e3b78d7aa "pdflatex"
+  "main.bbl" 1777561492 11300 afdcfc0ec090c8028e754df8d061d48c "bibtex main"
+  "main.out" 1777561500 3374 d8c663f7f0f8f5506e91aa207577a6dd "pdflatex"
+  "main.tex" 1777560347 113246 18a916890165b2c3b3aaa796376a46be ""
   (generated)
   "main.aux"
   "main.log"
