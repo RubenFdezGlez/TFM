@@ -1,5 +1,5 @@
-train: '/kaggle/working/dataset/train/images'
-val: '/kaggle/working/dataset/val/images'
+train: '/home/ruben/clase/Practicas/datasets/train/images'
+val: '/home/ruben/clase/Practicas/datasets/val/images'
 
 nc: 6
 
