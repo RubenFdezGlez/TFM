@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
     # Train + Evaluation on the model
     results_val = model.train(data = "./datasets/train1.yaml",
-                              epochs = 100,
+                              epochs = 50,
                               device = device,
                               workers = 4, 
                               batch = 12,
@@ -123,7 +123,7 @@ if __name__ == '__main__':
                               optimizer = "auto",
                               pretrained = False,
                               weight_decay = 0.0001,
-                              freeze = 5,
+                              freeze = 0,
                               verbose = True,
                               plots = True,
                               exist_ok = True,
