@@ -102,9 +102,17 @@ After finishing downloading, the dataset should follow the next structure:
 </pre>
 
 
-5. ### Deploy web interface 
+### Deploy web interface 
 
 Run the application with the following command:
 ```bash
     uv run streamlit run st_yolo.py   
+```
+
+### DINO-DETR deploy
+
+Clone the model repository 
+```bash
+    git clone https://github.com/IDEA-Research/DINO
+    cd DINO
 ```
