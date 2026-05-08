@@ -169,10 +169,23 @@ Sudip Chakrabarty.
 Hao Zhang, Feng Li, Shilong Liu, Lei Zhang, Hang Su, Jun Zhu, Lionel~M. Ni, and Heung-Yeung Shum.
 \newblock Dino: Detr with improved denoising anchor boxes for end-to-end object detection, 2022.
 
-\bibitem{DBLP:journals/corr/abs-2005-12872}
-Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko.
-\newblock End-to-end object detection with transformers.
-\newblock {\em CoRR}, abs/2005.12872, 2020.
+\bibitem{liu2022dabdetrdynamicanchorboxes}
+Shilong Liu, Feng Li, Hao Zhang, Xiao Yang, Xianbiao Qi, Hang Su, Jun Zhu, and Lei Zhang.
+\newblock Dab-detr: Dynamic anchor boxes are better queries for detr, 2022.
+
+\bibitem{li2022dndetracceleratedetrtraining}
+Feng Li, Hao Zhang, Shilong Liu, Jian Guo, Lionel~M. Ni, and Lei Zhang.
+\newblock Dn-detr: Accelerate detr training by introducing query denoising, 2022.
+
+\bibitem{zhu2021deformabledetrdeformabletransformers}
+Xizhou Zhu, Weijie Su, Lewei Lu, Bin Li, Xiaogang Wang, and Jifeng Dai.
+\newblock Deformable detr: Deformable transformers for end-to-end object detection, 2021.
+
+\bibitem{tesseractocrTesseractWorlds}
+Tesseract~OCR Community.
+\newblock {T}esseract {O}{C}{R} — {T}he {W}orld's {B}est {O}pen {S}ource {O}{C}{R} {E}ngine --- tesseractocr.org.
+\newblock \url{https://tesseractocr.org}.
+\newblock [Accessed 07-05-2026].
 
 \bibitem{Sanchez-Iborra2026}
 Ramon Sanchez-Iborra, Vasileios Kouvakis, Stylianos~E. Trevlakis, Gonzalo Alarcon-Hellin, Theodoros Tsiftsis, Luis Bernal-Escobedo, Rodrigo Asensio-Garriga, Alexandros-Apostolos~A. Boulogeorgos, and Antonio Skarmeta.

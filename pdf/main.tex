@@ -174,7 +174,7 @@ Otro avance necesario en la gestión del tráfico es el de anomalías, Seyed H.H
 
 En cámaras de monitorización estáticas, las imágenes son tomadas automáticamente: sin tener la garantía de que los objetos de interés (en este caso los vehículos) se puedan apreciar con claridad, ya sea por clima, la localización de la cámara o que el objeto es parcialmente observable. Para resolver este problema, Sara Beery et Al.\cite{beery2020contextrcnnlongterm} deciden crear una CNN con un módulo de atención de forma que se aprovecha el contexto temporal de los frames no etiquetados para mejorar la precisión, \textbf{Context R-CNN}. En este modelo, donde la base es una \textbf{Faster R-CNN}, las bounding boxes candidatas de la primera parte primero se pasan a través de 2 módulos de atención que indexan en dos depósitos de memoria para \textbf{proveer contexto local y global}. Estos módulos devuelven un vector de características que se pasa a la segunda parte del modelo \textbf{Faster R-CNN} de forma normal. 
 
-En la figura \ref{fig:context-rcnn} se puede ver el modelo completo. Esta propuesta alcanza un \textbf{42.6\%} de mAP en el dataset CityCam\footnote{El dataset es accesible por \url{https://web.tecnico.ulisboa.pt/~ist12390/public_html/citycam/}}.
+En la figura \ref{fig:context-rcnn} se puede ver el modelo completo. Esta propuesta alcanza un \textbf{42.6\%} de mAP en el dataset CityCam\footnote{El dataset es accesible por \href{https://web.tecnico.ulisboa.pt/~ist12390/public_html/citycam/}{CityCam}}.
 
 \begin{figure}[htb]
 \centering
@@ -190,7 +190,7 @@ La gestión automática de la entrada y salida de vehículos en aparcamientos es
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/doble_yolo.png}
+    \includegraphics[width=.75\textwidth]{figures/doble_yolo.png}
     \caption{Esquema de flujo de la tarea de detección de vehículos y de matrículas\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2312.02699}}}
     \label{fig:doble-yolo}
@@ -208,7 +208,7 @@ La congestión del tráfico es un grave problema para países superpoblados, sob
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/pcu.png}
+    \includegraphics[width=.75\textwidth]{figures/pcu.png}
     \caption{Resultado del sistema con el conteo de vehículos y el temporizador del semáforo\\
     \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=\&arnumber=10984828}}}
     \label{fig:pcu}
@@ -220,7 +220,7 @@ Este siguiente proyecto de B. Shyamala Gowri et Al.\cite{10988348} desarrolla un
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.65\textwidth]{figures/yolo8_vdet.png}
+    \includegraphics[width=.5\textwidth]{figures/yolo8_vdet.png}
     \caption{Rendimiento de YOLOv8 frente a otros detectores en detección de vehículos\\
     \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/10988348}}}
     \label{fig:yolo8-vdet}
@@ -358,13 +358,13 @@ Este siguiente trabajo de Liang Liang et Al.\cite{s24103088} contribuye con un a
 
 Esta tarea no es un problema que se ha podido resolver recientemente; ya hace 8 años, Hui Li et Al.\cite{LI201814} crean un sistema de detección y reconocimiento de matrículas usando redes neuronales profundas (DNNs). Una red neuronal se entrena con imágenes de texto para poder reconocer las letras y números de la matrícula y se entrena una segunda red neuronal para diferenciar entre la matrícula y otras apariciones de caracteres alfanuméricos. La primera CNN consta de 4 capas con la estructura visible en la figura \ref{fig:st-cnn-1}, para reconocer 26 letras, 10 números y una clase para no-caracteres.
 
-Para detectar las matrículas, se redimensiona la entrada en 12 escalas y se calcula el mapa de caracteres en cada escala evaluando la segunda CNN con un \textbf{método de ventana deslizante} para no perder ningún caracter cerca de los bordes. Las \textit{bounding boxes} candidatas se generan en cada escala usando el algoritmo \textbf{RLSA}\footnote{Método de segmentación de bloques y discriminación de texto: \url{https://github.com/Vasistareddy/pythonRLSA}}, donde píxeles vecinos se conectan si hay cierto espaciado menor que un umbral fijo, y el análisis \textbf{CCA} que produce las \textit{bounding boxes iniciales}. 
+Para detectar las matrículas, se redimensiona la entrada en 12 escalas y se calcula el mapa de caracteres en cada escala evaluando la segunda CNN con un \textbf{método de ventana deslizante} para no perder ningún caracter cerca de los bordes. Las \textit{bounding boxes} candidatas se generan en cada escala usando el algoritmo \textbf{RLSA}\footnote{Método de segmentación de bloques y discriminación de texto: \href{https://github.com/Vasistareddy/pythonRLSA}{PythonRLSA}}, donde píxeles vecinos se conectan si hay cierto espaciado menor que un umbral fijo, y el análisis \textbf{CCA} que produce las \textit{bounding boxes iniciales}. 
 
 Además, las \textit{bounding boxes} producidas se someten a un proceso de refinamiento para \textbf{filtrar las matrículas en términos de limitaciones geométricas} o \textbf{redimensionar en casos donde no se haya reconocido la matrícula completa}. Finalmente, se entrena una tercera CNN de 36 clases, con la estructura de la figura \ref{fig:st-cnn-2}, para extraer las características de la imagen de la matrícula devuelta por la segunda CNN y una red neuronal recurrente bidireccional (BRNN) con LSTM\footnote{Arquitectura que permite que las RNNs puedan aprender dependencias a largo plazo en secuencias de datos.} para reorganizar la secuencia de características. Una CTC recibe la salida de la RNN y devuelve la matrícula en los caracteres alfanuméricos.
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/st_cnn_1.png}
+    \includegraphics[width=.5\textwidth]{figures/st_cnn_1.png}
     \caption{Estructura de la primera CNN\\
     \footnotesize{Fuente: \textit{https://www.sciencedirect.com/science/article/pii/S0262885618300155}}}
     \label{fig:st-cnn-1}
@@ -372,7 +372,7 @@ Además, las \textit{bounding boxes} producidas se someten a un proceso de refin
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/st_cnn_2.png}
+    \includegraphics[width=.5\textwidth]{figures/st_cnn_2.png}
     \caption{Estructura de la tercera CNN\\
     \footnotesize{Fuente: \textit{https://www.sciencedirect.com/science/article/pii/S0262885618300155}}}
     \label{fig:st-cnn-2}
@@ -384,8 +384,8 @@ Este proceso se ha podido probar usando una NVIDIA Tesla K40c GPU con 6GB de VRA
 
 Hay una multitud de métodos de Deep Learning que sirven para reconocer matrículas. Laixiang Xu et Al.\cite{XU2026108842} presentan un repaso sobre varias formas de atajar esta tarea. El primer paso es la presentación de varios conjuntos de datos (por resumir, sólo se presentan algunos variados, no los mejores para este trabajo):
 \begin{itemize}
-    \item\textbf{OCR Dataset\footnote{El dataset es accesible por: \url{https://www.kaggle.com/datasets/trainingdatapro/license-plates-1-209-438-ocr-plates}}:} Contiene 3.8M+ de imágenes de matrículas etiquetadas.
-    \item \textbf{License Plate Digits Classification Dataset\footnote{el dataset es accesible por: \url{https://www.kaggle.com/datasets/aladdinss/license-plate-digits-classification-dataset}}:} Está especializado en el reconocimiento de los dígitos de las matrículas.
+    \item\textbf{OCR Dataset\footnote{El dataset es accesible por: \href{https://www.kaggle.com/datasets/trainingdatapro/license-plates-1-209-438-ocr-plates}{OCRPlates}}:} Contiene 3.8M+ de imágenes de matrículas etiquetadas.
+    \item \textbf{License Plate Digits Classification Dataset\footnote{el dataset es accesible por: \href{https://www.kaggle.com/datasets/aladdinss/license-plate-digits-classification-dataset}{LPDigits}}:} Está especializado en el reconocimiento de los dígitos de las matrículas.
     \item \textbf{PKU\footnote{el dataset es accesible por: \url{https://github.com/PKU-IMRE/PKU-Vehicles}}:} 10 millones de imágenes de vehículos con varias localizaciones, iluminación y condiciones atmosféricas.
     \item \textbf{RodoSol-ALPR\footnote{el dataset es accesible por: \url{https://github.com/raysonlaroca/rodosol-alpr-dataset}}:} 20000 imágenes de 1.280 x 720 píxeles, capturadas de día y noche y en días claros y lluviosos en distintos peajes de Brasil.
 \end{itemize}
@@ -515,7 +515,7 @@ El conjunto de datos comprende 2000 imágenes de vehículos con sus matrículas 
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/ml.jpg}
+    \includegraphics[width=.25\textwidth]{figures/ml.jpg}
     \caption{Resultados del algoritmo de reconocimiento de matrículas\\
     \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/9790745}}}
     \label{fig:ml}
@@ -533,7 +533,7 @@ Este sistema da como resultados una precisión del \textbf{95\%} para la detecci
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/eocr-ex.jpg}
+    \includegraphics[width=.5\textwidth]{figures/eocr-ex.jpg}
     \caption{Ejemplo de reconocimiento de matrícula usando el algoritmo EasyOcr\\
     \footnotesize{Fuente: \textit{https://ieeexplore.ieee.org/document/10804754}}}
     \label{fig:eocr-ex}
@@ -548,7 +548,7 @@ Para la detección y reconocimiento de matrículas en entornos restringidos y ve
     \item \textbf{Reconocimiento de caracteres:} Un framework de tensorflow junto con una CNN se encargan de reconocer las 36 clases (A-Z y 0-9). La CNN está compuesta de \textbf{3 capas convolucionales} con kernels de 5x5 y \textbf{2 capas totalmente conectadas}; de las cuales, una de ellas con un \textit{dropout} de 0.5 para prevenir el \textit{overfitting}. La red termina con una capa de \textit{softmax} para dar las probabilidades por clase.
 \end{itemize}
 
-Para probar el sistema propuesto se han escogido dos conjuntos de datos: el primero\footnote{El conjunto de datos es descargable de la página: \url{https://www.kaggle.com/datasets/andrewmvd/car-plate-detection}} consta de 443 imágenes de vehículos con diferentes condiciones de visibilidad y ángulos con la matrícula visible. El segundo contiene un subconjunto recortado de 1980 imágenes de caracteres y letras\cite{visapp09} (3410 en total) resultando en 55 imágenes por caracter con 45/10 para los conjuntos de entrenamiento y validación. Las pruebas indican un 95.75\% de precisión en el conjunto de caracteres.
+Para probar el sistema propuesto se han escogido dos conjuntos de datos: el primero\footnote{El conjunto de datos es descargable de la página \href{https://www.kaggle.com/datasets/andrewmvd/car-plate-detection}{CarPlateDetection}} consta de 443 imágenes de vehículos con diferentes condiciones de visibilidad y ángulos con la matrícula visible. El segundo contiene un subconjunto recortado de 1980 imágenes de caracteres y letras\cite{visapp09} (3410 en total) resultando en 55 imágenes por caracter con 45/10 para los conjuntos de entrenamiento y validación. Las pruebas indican un 95.75\% de precisión en el conjunto de caracteres.
 
 \begin{figure}[htb]
 \centering
@@ -568,7 +568,7 @@ El conjunto de datos consta de 50,000 imágenes y 10,000 trozos de vídeo (con u
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/lic-ex.png}
+    \includegraphics[width=.5\textwidth]{figures/lic-ex.png}
     \caption{Ejemplos de matrículas tailandesas\\
     \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-24967-9}}}
     \label{fig:thai-ex}
@@ -576,21 +576,21 @@ El conjunto de datos consta de 50,000 imágenes y 10,000 trozos de vídeo (con u
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|c|}
          \hline   
-         \textbf{Modelo} & \textbf{Entrenamiento (horas)} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Inference time}\\
+         \textbf{Modelo} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Inference time}\\
          \hline
-         \textbf{YOLOv5} & 15 h & 96.97\% & 97.90\% & 97.10\% & 97.5\% & 1.4 ms\\ 
+         \textbf{YOLOv5} & 96.97\% & 97.90\% & 97.10\% & 97.5\% & 1.4 ms\\ 
          \hline
-         \textbf{YOLOv8} & 17 h & 97.79\% & 98.20\% & 97.30\% & 97.7\% & 1.4 ms\\ 
+         \textbf{YOLOv8} & 97.79\% & 98.20\% & 97.30\% & 97.7\% & 1.4 ms\\ 
          \hline
-         \textbf{YOLOv9} & 20 h & 98.96\% & 99.8\% & 97.80\% & 98.8\% & 1.4 ms\\ 
+         \textbf{YOLOv9} & 98.96\% & 99.8\% & 97.80\% & 98.8\% & 1.4 ms\\ 
          \hline
-         \textbf{YOLOv10} & 25 h & 99.16\% & 99.8\% & 98.60\% & 99.2\% & 1 ms\\ 
+         \textbf{YOLOv10} & 99.16\% & 99.8\% & 98.60\% & 99.2\% & 1 ms\\ 
          \hline
-         \textbf{Faster R-CNN} & 45 h & 92\% & 92.50\% & 92\% & 92.2\% & 0.57\\ 
+         \textbf{Faster R-CNN} & 92\% & 92.50\% & 92\% & 92.2\% & 4.5 ms\\ 
          \hline
-         \textbf{SSD} & 28 h & 90\% & 91\% & 90.5\% & 90.7\% & 2.5 ms\\ 
+         \textbf{SSD} & 90\% & 91\% & 90.5\% & 90.7\% & 2.5 ms\\ 
          \hline
     \end{tabular}
     \caption{Resultados de diferentes arquitecturas en el reconocimiento de matrículas tailandesas}
@@ -609,7 +609,7 @@ El sistema es eficaz tanto en los entornos con buena visibilidad como con baja, 
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/tocr-ex.png}
+    \includegraphics[width=.75\textwidth]{figures/tocr-ex.png}
     \caption{Resultado de Tesseract OCR en varias matrículas\\
     \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-86441-w}}}
     \label{fig:tocr-ex}
@@ -625,7 +625,7 @@ Los resultados logran alcanzar una precisión del \textbf{74\%} en 40 iteracione
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/sys-easyocr.png}
+    \includegraphics[width=.35\textwidth]{figures/sys-easyocr.png}
     \caption{Flujo del sistema de reconocimiento de matrículas con YOLO, técnicas de preprocesamiento y OCR\\
     \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-86441-w}}}
     \label{fig:sys-easyocr}
@@ -633,7 +633,7 @@ Los resultados logran alcanzar una precisión del \textbf{74\%} en 40 iteracione
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/yolo8.png}
+    \includegraphics[width=.75\textwidth]{figures/yolo8.png}
     \caption{Ejemplos de detección de matrículas usando el modelo YOLOv8\\
     \footnotesize{Fuente: \textit{https://www.nature.com/articles/s41598-025-86441-w}}}
     \label{fig:yolo8-ex}
@@ -680,7 +680,7 @@ La figura \ref{fig:shine} provee toda la información acerca del funcionamiento 
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/shine-example.png}
+    \includegraphics[width=.75\textwidth]{figures/shine-example.png}
     \caption{Post-procesado de (a) Matrícula (b) Marca\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2302.00837}}}
     \label{fig:shine-example}
@@ -702,7 +702,7 @@ La identificación automática de matrículas de vehículos se pueden usar para 
     \item \textbf{Training Plate Dateset:} 600 imágenes sintéticas para hacer fine-tuning al modelo \textit{PaliGemma}, cada una con un tamaño de 120 x 50 píxeles, rotadas en 5 grados, se difuminaron y se sometieron a ruidos Gaussianos y "sal y pimienta".
     \item \textbf{Diverse Car Dateset:} 140 imágenes extraídas de Internet etiquetadas por mayoría en votación 3 modelos distintos 
 \end{itemize}
-La solución propuesta es una combinación de Inteligencia Artificial de procesado lenguaje y visual de las VLMs para entender los caracteres sin necesidad de preprocesado. El diagrama de la solución se puede observar en la figura \ref{fig:vlms}. Después de incluir en las pruebas de reconocimiento 3 modelos de OCR: EasyOCR, KerasOCR y Tesseract, los resultados observados en la figura \ref{tab:res-vlms} indican que estos modelos OCR que mostraban buenos resultados en este tipo de tareas, fallan al intentar reconocer las imágenes del dataset \textbf{Malaysian license plates}\footnote{Tesseract está basado en redes LSTM, EasyOCR usa el algoritmo \textit{Character-Region Awareness for Text detection (CRAFT)} junto con RCNNs y KerasOCR usa el algoritmo CRAFT usa RCNNs o transformadores.}. De entre los VLMs preentrenados, GPT-4o destaca reconociendo correctamente 222 de las 258 matrículas, seguido de su versión más pequeña, GPT-4o, y superando ambos con una buena diferencia al resto de VLMs, sean pequeñas o grandes. 
+La solución propuesta es una combinación de Inteligencia Artificial de procesado lenguaje y visual de las VLMs para entender los caracteres sin necesidad de preprocesado. El diagrama de la solución se puede observar en la figura \ref{fig:vlms}. Después de incluir en las pruebas de reconocimiento 3 modelos de OCR: EasyOCR, KerasOCR y Tesseract, los resultados observados en la figura \ref{tab:res-vlms} indican que estos modelos OCR que mostraban buenos resultados en este tipo de tareas, fallan al intentar reconocer las imágenes del dataset \textbf{Malaysian license plates}\footnote{Tesseract está basado en redes LSTM, EasyOCR usa el algoritmo Character-Region Awareness for Text detection (CRAFT) junto con RCNNs y KerasOCR usa el algoritmo CRAFT usa RCNNs o transformadores.}. De entre los VLMs preentrenados, GPT-4o destaca reconociendo correctamente 222 de las 258 matrículas, seguido de su versión más pequeña, GPT-4o, y superando ambos con una buena diferencia al resto de VLMs, sean pequeñas o grandes. 
 
 Sin embargo, el modelo que destaca es VehiclePaliGemma, identificando 226 matrículas correctamente; una diferencia considerable con su modelo sin hacer \textit{fine-tuning}, que sólo pudo identificar 178. Además el modelo es capaz de predecir la matrícula de un vehículo a una velocidad de 7 FPS en una A100-80GB GPU. Para analizar más en profundidad los resultados es necesario observar la figura \ref{fig:vlms-cm}, donde los modelos fallan más al intentar identificar los caracteres. 
 
@@ -710,7 +710,7 @@ Cuanto más claro sea una celda, menos veces ha conseguido el modelo identificar
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/vlms.png}
+    \includegraphics[width=.75\textwidth]{figures/vlms.png}
     \caption{Diagrama de uso de VLMs para reconocer caracteres en matrículas\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2412.14197}}}
     \label{fig:vlms}
@@ -777,7 +777,7 @@ Con la idea de gestionar de manera eficiente el tráfico, la seguridad, el recon
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/locnet.png}
+    \includegraphics[width=.5\textwidth]{figures/locnet.png}
     \caption{Red de ubicación (LocNet)\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/1806.10447}}}
     \label{fig:locnet}
@@ -785,7 +785,7 @@ Con la idea de gestionar de manera eficiente el tráfico, la seguridad, el recon
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/lprnet-backbone.png}
+    \includegraphics[width=.5\textwidth]{figures/lprnet-backbone.png}
     \caption{Extractor de características del modelo LPRNet\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/1806.10447}}}
     \label{fig:lprnet-backbone}
@@ -793,7 +793,7 @@ Con la idea de gestionar de manera eficiente el tráfico, la seguridad, el recon
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/lprnet-basicblock.png}
+    \includegraphics[width=.5\textwidth]{figures/lprnet-basicblock.png}
     \caption{Bloque básico del extractor de características del modelo LPRNet\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/1806.10447}}}
     \label{fig:lprnet-basicblock}
@@ -813,7 +813,7 @@ El conjunto de datos creado es \textbf{PTITPlates}, que fue etiquetado con la he
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/ocr-arc.png}
+    \includegraphics[width=.75\textwidth]{figures/ocr-arc.png}
     \caption{Arquitectura OCR\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2309.12972}}}
     \label{fig:ocr-arc}
@@ -831,7 +831,7 @@ Los conjuntos de datos propuestos son: un nuevo dataset sintético LPR-MNIST y e
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.85\textwidth]{figures/lprmnist.png}
+    \includegraphics[width=.75\textwidth]{figures/lprmnist.png}
     \caption{Ejemplos del dataset LPR-MNIST\\
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2506.17051}}}
     \label{fig:lpr-mnist}
@@ -870,27 +870,6 @@ Este modelo logra altos resultados de rendimiento en los datasets de UFPR, con u
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 % --------------------
 \section{Métodos seleccionados}
 % --------------------
@@ -907,6 +886,8 @@ YOLO26\cite{sapkota2026yolo26keyarchitecturalenhancements}, publicado en Septiem
     \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2509.25164}}}
     \label{fig:yolo-stats}
 \end{figure}
+
+
 
 \subsubsection{Arquitectura de YOLO26}
 
@@ -999,17 +980,67 @@ Aunque YOLO se creó con la principal finalidad de la tarea de detección, se ha
 \end{table}
 
 
+
 \subsection{DINO-DETR}
 
-DINO-DETR\cite{zhang2022dino} es un detector de objetos end-to-end que mejora anteriores modelos basados en el modelo DETR\cite{DBLP:journals/corr/abs-2005-12872} en términos de rendimiento y eficiencia usando un método contrastativo para eliminar ruido en el entrenamiento, selección de consultas mixtas para inicializar los puntos clave y un esquema \textit{"look forward twice"} para predecir las \textit{bounding boxes}. Este modelo logra alcanzar un 49.4 de AP en 12 iteraciones y un 51.3 en 24, mejorando en 6.0 y 2.7, respectivamente al modelo DN-DETR. Este modelo se encuentra disponible a través de: \url{https://github.com/IDEA-Research/DIN}. 
+\textbf{DINO-DETR}\cite{zhang2022dino} \textit{(Improved DeNoising Anchor Boxes\footnote{Los detectores \textit{anchor-based} dividen la imagen en una red, y en cada celda de la red se generan varias cajas de anclaje para tener en cuenta múltiples formas. El contrario sería un detector \textit{anchor-less} como YOLO26, que predice directamente el centro del objeto y el tamaño usando sólo el mapa de características.})} es el segundo detector de objetos mejora previos modelos DETR en términos de eficiencia y rendimiento. Este alcanza un \textbf{49.4\%AP} en 12 iteraciones y un \textbf{51.3\%AP} en el dataset COCO con un extractor de características ResNet-50 y características multiescala. 
+
+La base de este algoritmo (DETR) es un detector basado en un Transformador que modela la detección de objetos como una tarea de predicción y asigna las etiquetas por emparejamiento de grafos bipartitos\footnote{Forma de emparejar vértices de dos conjuntos diferentes de forma que cada vértice esté conectado por un borde a 1 solo vértice del otro conjunto.}. 
+DINO es una arquitectura extremo a extremo \textit{(end-to-end)} que contiene un extractor de características, un codificador y un decodificador de un transformador de múltiples capas y múltiples cabezas de predicción; esta arquitectura se puede observar en la figura \ref{fig:dino-detr}. Siguiendo el modelo DAB-DETR\cite{liu2022dabdetrdynamicanchorboxes}, se implementan unas colas en el decodificador como cajas de anclaje dinámicas y se refinan a lo largo de las capas del decodificador. Del modelo DN-DETR\cite{li2022dndetracceleratedetrtraining} se añaden etiquetas y cajas reales con ruido en el decodificador para ayudar a estabilizar el emparejamiento por bipartición durante el entrenamiento.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.80\textwidth]{figures/dino-detr.png}
+    \caption{Estructura de la arquitectura DINO-DETR, donde las K mejores características del codificador se utilizan para inicializar las colas posicionales del decodificador y las colas de contenido como parámetros aprendibles.\\
+    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
+    \label{fig:dino-detr}
+\end{figure}
+
+Las mejoras se sitúan en el transformador, tanto con el codificador como con el descodificador:
+\begin{itemize}
+    \item \textbf{Las K mejores características del codificador de la última capa se seleccionan para inicializar las colas posicionales para el decodificador}, mientras que las colas de contenido se mantienen como parámetros con posibilidad de aprendizaje. 
+    \item \textbf{Contrastive DeNoising Training:} El codificador contiene una parte \textbf{CDN} \textit{(Contrastive Denoising)} con dos colas, positiva y negativa como se puede observar en la figura \ref{fig:cdn}, y dos hiperparámetros $\lambda_1$ y $\lambda_2$. Las colas positivas con un ruido menor a $\lambda_1$ se esperan que reconstruyan su caja. Las colas negativas con un ruido mayor que $\lambda_1$ y menor que $\lambda_2$ se predicen como "no objeto". Este método selecciona los \textit{anchors} o colas de mayor calidad para predecir las \textit{bounding boxes}, evitando el solapamiento de múltiples \textit{bounding boxes} para un mismo objeto y eliminando \textit{GT boxes} alejadas del objeto al que pertenecen.
+    \item \textbf{Mixed Query Selection:} \textbf{Se inicializan las cajas de anclaje usando la información de posición asociada con las K características seleccionadas de la última capa del codificador}, manteniendo las colas estáticas de contenido generadas por una transformación lineal de las características seleccionadas de la última capa del codificador. La estructura de esta implementación se puede observar en la figura \ref{fig:mixed-query}.
+    \item \textbf{Look Forward Twice:} Nueva propuesta de predicción de \textit{bounding boxes}, donde \textbf{las actualizaciones de cada capa se influencian de las pérdidas de la misma capa y de la siguiente capa} (una predicción de la siguiente caja)\footnote{Las actualizaciones se sacan del modelo Deformable DETR, donde cada valor está comprendido entre 0 y 1. Dadas 2 cajas, se aplica la función sigmoidal inversa, se suman y se transforma la suma con otra función sigmoidal.}. Esta estructura se puede observar en la figura \ref{fig:lf-twice}, en comparación con la anterior propuesta de predicción de \textit{bounding boxes} del modelo Deformable DETR\cite{zhu2021deformabledetrdeformabletransformers}.
+\end{itemize}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.80\textwidth]{figures/cdn.png}
+    \caption{Estructura de la red CDN y sus grupos. Asumiendo que el centro del cuadrado es una GT \textit{(ground truth) box}, los puntos dentro del cuadrado interior se consideran positivos y los que se encuentran entre el interior y el exterior se consideran negativos.\\
+    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
+    \label{fig:cdn}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.80\textwidth]{figures/dino-fw.png}
+    \caption{Estructura del modelo DINO\\
+    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
+    \label{fig:dino-fw}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.80\textwidth]{figures/mixed-query.png}
+    \caption{Estructura del encoder-decoder del modelo DINO que implementa una selección mixta de colas\\
+    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
+    \label{fig:mixed-query}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.80\textwidth]{figures/lf-twice.png}
+    \caption{Comparación de actualización de cajas entre Deformable DETR y DINO-DETR\\
+    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
+    \label{fig:lf-twice}
+\end{figure}
 
 
-\subsection{DFEM-Net}
-\url{https://github.com/ahtarv/DFEM-Net}
 
+\subsection{Tesseract OCR}
 
-
-
+Como intérprete y lector del texto de las matrículas, se ha seleccionado Tesseract OCR\cite{tesseractocrTesseractWorlds}. Este motor óptico de reconocimiento de caracteres de código abierto utiliza redes neuronales LSTM \textit{(Long Short Term Memory)} para extraer el texto de las imágenes con un 99\% de precisión en más de 100 idiomas.
 
 
 
@@ -1099,7 +1130,7 @@ Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. Los m
 \section{Métricas}
 % --------------------
 \label{sec:metrics}
-Para poder validar de forma equitativa los distintos métodos, se tienen que seguir unas métricas a seguir para todos. Para empezar, se tiene que hablar del tiempo de procesamiento por imagen, ya que la velocidad de inferencia es prioritaria a la hora de detectar y reconocer claramente el vehículo y su matrícula.
+Para poder validar de forma equitativa los distintos métodos de detección, se tienen que seguir unas métricas a seguir para todos. Para empezar, se tiene que hablar del tiempo de procesamiento por imagen, ya que la velocidad de inferencia es prioritaria a la hora de detectar y reconocer claramente el vehículo y su matrícula.
 
 \begin{itemize}
     \item \textbf{mAP50}: Precisión media de las detecciones, calculada con un umbral de intersección (IoU) de 0,5.
@@ -1118,6 +1149,9 @@ Para poder validar de forma equitativa los distintos métodos, se tienen que seg
 
 En el caso de las métricas de Precision, Recall y F1-score, para hacer la media del dataset entero hay dos opciones: (1) \textbf{Macro}: El sumatorio del \textit{f1-score} de cada clase entre el número de clases y (2) \textbf{Ponderada}: Considerar el número de instancias de cada clase, siendo las clases con mayor número de imágenes las que más aportan a la media.
 
+Además 
+
+
 
 % --------------------
 \section{Metodología experimental}
@@ -1135,29 +1169,33 @@ La metodología que se ha empleado es la habitual en el desarrollo de programas 
 \end{figure}
 
 
-\subsection{Extracción y estructuración de los datos}
+
+\subsection{Preprocesado de datos}
 
 %[TODO] Despues de seleccionar el/los dataset/s, introducirlo/s con su propia estructura, tamaño de imagen, etiquetas, división...
 
-Ya que el modelo YOLO necesita un estructurado concreto, lo primero es construir un programa personalizado que ...
+Ya que el modelo YOLO necesita un estructurado concreto, lo primero es construir un programa personalizado que modifique la estructura de los conjuntos de datos utilizados para entrenar y validar los modelos
+
+para que sigan el \textbf{formato <class\_id> <center\_x> <center\_y> <width> <height>}, correspondiendo al número identificador de la clase, las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Estos cuatro últimos valores están normalizados al rango [0,1].
 
 La estructura del conjunto de datos que tiene que seguir YOLO es de la siguiente forma:
-% \dirtree{%
-%     .1 *.py.
-%     .1 datasets.
-%     .2 test.
-%     .2 train.
-%     .2 val.
-%     .3 images.
-%     .4 labels.
-% }
+\dirtree{%
+    .1 *.py.
+    .1 datasets.
+    .2 test.
+    .2 train.
+    .2 val.
+    .3 images.
+    .4 labels.
+}
 
-\subsection{Preprocesado de datos}
+
+
 
 
 \subsection{Entrenamiento}
 
-En este apartado se mostrarán los diferentes parámetros y configuraciones aplicadas o que se han probado en los entrenamientos de los modelos.
+En este apartado se mostrarán los diferentes parámetros y configuraciones aplicadas o que se han probado en los entrenamientos de los modelos YOLO y DINO-DETR.
 
 
 \subsubsection{YOLO}
@@ -1212,6 +1250,34 @@ Gracias a Ultralytics \footnote{Toda la información de la librería de Ultralyt
     \item \textbf{Project}: Nombre del directorio donde se guardarán los resultados de entrenamiento.
 \end{itemize}
 
+El entrenamiento de este modelo YOLO consta de:
+
+\begin{lstlisting}
+results_val = model.train(data = "./datasets/vehicles/train1.yaml",
+                            epochs = 50,
+                            device = device,
+                            workers = 4, 
+                            batch = 16,
+                            patience = 25,
+                            cos_lr = True,
+                            optimizer = "auto",
+                            pretrained = False,
+                            weight_decay = 0.0001,
+                            freeze = 0,
+                            verbose = True,
+                            plots = True,
+                            exist_ok = True,
+                            save_period = 25,
+                            name = "y26_1",
+)
+\end{lstlisting}
+
+
+
+\subsection{DINO-DETR}
+
+
+
 
 \subsection{Rastreo del Overfitting}
 
@@ -1228,7 +1294,11 @@ En los experimentos realizados se ha prestado especial atención a la diferencia
 
 Todo el desarrollo de las prácticas se subirá al siguiente repositorio de \textbf{GitHub}:\\ \url{https://github.com/RubenFdezGlez/MURIA-Practicas}. 
 
-Este repositorio incluirá, además del código necesario para la ejecución del sistema, un \textbf{README} detallado con información sobre la implementación y la guía de instalación del programa.
+Este repositorio incluirá, además del código necesario para la ejecución del sistema, un \textbf{README} detallado con información sobre la implementación y la guía de instalación de:
+\begin{itemize}
+    \item Entrenamiento, validación y pruebas del modelo YOLO.
+    \item Despliegue de la aplicación web para la detección de vehículos.
+\end{itemize}
 
 
 
@@ -1238,37 +1308,10 @@ Este repositorio incluirá, además del código necesario para la ejecución del
 \section{CREDITS}
 % --------------------
 \label{sec:credits}
-Review the following link for your information: \footnote{https://www.elsevier.com/researcher/author/policies-and-guidelines/credit-author-statement} “CRediT (Contributor Roles Taxonomy) was introduced to recognize individual author contributions, reducing authorship disputes and facilitating collaboration”. More informally, it is a paragraph usually introduced at the end of research papers that recognizes the individual work of each author. You will see this in most of the papers you will be reviewing. 
-
-The group will include a paragraph like the CRediT statement indicating who collaborated on each section and task of the research proposal. Not all the original CRediT Terms would be applicable, so the group could use the following:
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{|l|p{10cm}|}
-\hline
-\textbf{Term} & \textbf{Definition} \\ \hline
-Investigation & Conducting a research and investigation process \\ \hline
-Resources & Collected or gathered datasets mentioned in the study \\ \hline
-Writing - Original Draft & Preparation of the research proposal, explicitly writing the initial draft. \\ \hline
-Writing - Review \& Editing & Critical review, commentary, or revision \\ \hline
-Visualization & Preparation of visual data, including figures and summary tables \\ \hline
-Supervision & Oversight and leadership responsibility for the research activity planning and execution, including external mentorship to the core team \\ \hline
-Project POC & Responsibility for being the point of contact with the professor for doubts and task upload. \\ \hline
-\end{tabular}
-\caption{Definitions of Research Terms}
-\label{tab:definitions}
-\end{table}
+% Review the following link for your information: \footnote{https://www.elsevier.com/researcher/author/policies-and-guidelines/credit-author-statement} “CRediT (Contributor Roles Taxonomy) was introduced to recognize individual author contributions, reducing authorship disputes and facilitating collaboration”. More informally, it is a paragraph usually introduced at the end of research papers that recognizes the individual work of each author. You will see this in most of the papers you will be reviewing. 
 
 
-For a group of three people, this could be a template.
-\begin{itemize}
-\item N\_Surname\_01 contributed to the Investigation of XXXX methods and participated in Writing - Original Draft, preparing the initial manuscript. Additionally, they served as the Project POC, acting as the main point of contact for the professor to address any doubts or concerns.
 
-\item N\_Surname\_02 also participated in the Investigation of YYYY methods and Writing - Original Draft, contributing to the research process and drafting the manuscript. They were responsible for resources, collecting and organizing datasets, and studying materials essential for the project.
-
-\item N\_Surname\_03 equally contributed to the Investigation of ZZZZ methods and Writing - Original Draft, engaging in the research and drafting activities. They took charge of Visualization, preparing figures and summary tables to present the study findings effectively, and provided Supervision, ensuring oversight and leadership throughout the research activities.
- 
-\end{itemize}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1281,6 +1324,4 @@ For a group of three people, this could be a template.
 \bibliography{references.bib} 
 
 \newpage
-
-
 \end{document}
