@@ -1,0 +1,12 @@
+train: '/home/ruben/clase/Practicas/datasets/bdd100k_yolo/train/images'
+val: '/home/ruben/clase/Practicas/datasets/bdd100k_yolo/val/images'
+
+nc: 6
+
+names:
+  0: car
+  1: truck
+  2: bus
+  3: train
+  4: motor
+  5: bike

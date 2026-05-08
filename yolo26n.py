@@ -1,19 +1,26 @@
-# Import necessary libraries
-from pathlib import Path
+"""
+    Importación de paquetes
 
+    cv2: Se utiliza para la lectura y manipulación de imágenes, así como para la visualización de los resultados de detección.
+    json: Se emplea para cargar los archivos JSON que contienen las anotaciones de las imágenes en el conjunto de datos.
+    os: Se utiliza para la gestión de archivos y directorios, como la creación de carpetas y la copia de archivos.
+    pathlib: Se utiliza para recorrer la carpeta de imágenes para encontrar todas, estén en subcarpetas o no.
+    shutil: Se emplea para copiar archivos de imágenes a las carpetas correspondientes después de reorganizar el conjunto de datos.
+    torch: Permite el uso de la GPU para acelerar el entrenamiento y la inferencia del modelo.
+    ultralytics: Proporciona la implementación, entrenamiento y validación del modelo YOLO, que se utiliza para la detección de vehículos.
+"""
 import cv2
 import json
+from pathlib import Path
 import os
 import shutil
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import ultralytics
 from ultralytics import YOLO
-import yaml
 
-# Reorganizer class explicit for BDD100K on Kaggle
-class DatasetReorganizer:
+
+class BDDDatasetReorganizer:
     def __init__(self, images_path, labels_path, classes_names, dst_path):
         self.images_path = images_path
         self.labels_path = labels_path
@@ -88,21 +95,23 @@ class DatasetReorganizer:
         self.splitDataset(train_data, "train")
         self.splitDataset(val_data, "val")
         
-                    
+
+def getYOLOModel():
+    return YOLO("yolo26n").to(device)        
 
 
 if __name__ == '__main__':
 
     classes = ['car', 'truck', 'bus', 'train', 'motor', 'bike']
 
-    dr = DatasetReorganizer(
+    dr = BDDDatasetReorganizer(
         images_path = "./bdd100k/",
         labels_path = "./bdd100k_labels_release/bdd100k/labels/",
         classes_names = classes,
-        dst_path = "./datasets/"
+        dst_path = "./datasets/bdd100k_yolo/"
     )
 
-    if os.path.exists("./datasets/train") == False:
+    if os.path.exists("./datasets/bdd100k_yolo/train") == False:
         dr.organize()
 
     # Initial cleanup and setup
@@ -110,23 +119,46 @@ if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Load the model
-    model = YOLO("yolo26n").to(device)
+    vehicle_det_model = getYOLOModel()
 
     # Train + Evaluation on the model
-    results_val = model.train(data = "./datasets/train1.yaml",
+    results_vehicle_det = vehicle_det_model.train(data = "./datasets/bdd100k_yolo/train1.yaml",
                               epochs = 50,
-                              device = device,
-                              workers = 4, 
-                              batch = 12,
                               patience = 25,
-                              cos_lr = True,
-                              optimizer = "auto",
-                              pretrained = False,
-                              weight_decay = 0.0001,
-                              freeze = 0,
-                              verbose = True,
-                              plots = True,
-                              exist_ok = True,
+                              batch = 64,
                               save_period = 25,
-                              name = "y26_1",
+                              cache = True,
+                              device = device,
+                              workers = 1,     
+                              name = "y26_v",
+                              exist_ok = True,
+                              pretrained = False,
+                              optimizer = "auto",
+                              verbose = True,
+                              multi_scale = 0.25,
+                              cos_lr = True,
+                              weight_decay = 0.0001,
+                              freeze = 0,                            
+                              plots = True,
+    )
+
+    license_plate_det_model = getYOLOModel()
+    results_license_plate_det = license_plate_det_model.train(data = "./datasets/UC3M-LP/train1.yaml",
+                              epochs = 10,
+                              patience = 25,
+                              batch = 64,
+                              save_period = 25,
+                              cache = True,
+                              device = device,
+                              workers = 1,     
+                              name = "y26_lp",
+                              exist_ok = True,
+                              pretrained = False,
+                              optimizer = "auto",
+                              verbose = True,
+                              multi_scale = 0.25,
+                              cos_lr = True,
+                              weight_decay = 0.0001,
+                              freeze = 0,                            
+                              plots = True,
     )
