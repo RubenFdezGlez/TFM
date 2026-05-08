@@ -67,7 +67,11 @@ The Python packages needed for the programs to work are gonna be installed from 
     uv pip install -r requirements.txt
 ```
 
-### Dataset download for model training
+### Dataset download and structurize for model training
+
+#### Vehicle datasets
+
+##### BDD-100K dataset
 
 The dataset can be download manually from the following URL: [BDD100K](https://www.kaggle.com/datasets/solesensei/solesensei_bdd100k) or following the next instructions to use the Kaggle CLI:
 
@@ -96,11 +100,37 @@ After finishing downloading, the dataset should follow the next structure:
     ├── st_yolo.py
     ├── README.md
     └── datasets
-        └── train1.yaml
+        └── bdd100k_yolo
+            └── train1.yaml
     └── models
         └── best.pt
 </pre>
 
+
+#### License plates
+
+##### UC3M-LP
+
+1. Enter the following link and download the dataset: https://edatos.consorciomadrono.es/dataset.xhtml?persistentId=doi:10.21950/OS5W4Z. The downloaded file, **UC3M-LP.zip**, must be extracted on the datasets folder.
+```bash
+    unzip UC3M-LP.zip
+```
+
+2. Due to the fact that there is a premade script already done, we can use it for the YOLO training. We start cloning the dataset:
+```bash
+    git clone https://github.com/ramajoballester/UC3M-LP.git
+    cd UC3M-LP
+```
+
+3. Install the required dependencies:
+```bash
+    pip install -r requirements.txt
+```
+
+4. Run the script to transform the dataset to YOLO format. It will create 2 versions of the dataset, one for LP detection from the whole image and another one for LP recognition from the cropped LP region. The script will resize the images to the specified dimensions and save the resulting images and labels in in new directories. You can specify the desired dimensions for the images as arguments of the script.
+```bash
+    python3 scripts/labels2yolo.py . 640 320
+```
 
 ### Deploy web interface 
 
@@ -109,7 +139,7 @@ Run the application with the following command:
     uv run streamlit run st_yolo.py   
 ```
 
-### DINO-DETR deploy
+### DINO-DETR model installation
 
 Clone the model repository 
 ```bash

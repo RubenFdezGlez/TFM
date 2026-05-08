@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the CSV file
-df = pd.read_csv("results.csv")
+df = pd.read_csv("./runs/detect/y26_1/results.csv")
 
 # Plot box_loss train vs validation
 plt.figure(figsize=(10, 5))
