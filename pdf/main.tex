@@ -1174,18 +1174,21 @@ La metodología que se ha empleado es la habitual en el desarrollo de programas 
 
 %[TODO] Despues de seleccionar el/los dataset/s, introducirlo/s con su propia estructura, tamaño de imagen, etiquetas, división...
 
-Ya que el modelo YOLO necesita un estructurado concreto, lo primero es construir un programa personalizado que modifique la estructura de los conjuntos de datos utilizados para entrenar y validar los modelos
+Ya que el modelo YOLO necesita un estructurado concreto, lo primero es construir programas y/o funciones personalizadas que modifiquen la estructura de los conjuntos de datos utilizados para entrenar y validar los modelos.
 
-para que sigan el \textbf{formato <class\_id> <center\_x> <center\_y> <width> <height>}, correspondiendo al número identificador de la clase, las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Estos cuatro últimos valores están normalizados al rango [0,1].
+Los modelos YOLO requieren que un archivo con etiquetas para cada imagen con varias líneas (una por objeto) con el formato \textbf{<class\_id> <center\_x> <center\_y> <width> <height>}, correspondiendo al número identificador de la clase (número entero comprendido entre 0 y el número de clases menos 1), las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Estos cuatro últimos valores están normalizados al rango [0,1].
 
 La estructura del conjunto de datos que tiene que seguir YOLO es de la siguiente forma:
 \dirtree{%
     .1 *.py.
     .1 datasets.
-    .2 test.
-    .2 train.
-    .2 val.
-    .3 images.
+    .2 bdd100k_yolo.
+    .2 UC3M-LP.
+    .3 *.yaml.
+    .3 test.
+    .3 train.
+    .3 val.
+    .4 images.
     .4 labels.
 }
 
@@ -1205,17 +1208,25 @@ Gracias a Ultralytics \footnote{Toda la información de la librería de Ultralyt
 \begin{itemize}
     \item \textbf{Model}: Modelo que será entrenado.
 
+    \item \textbf{Data}: Archivo de configuración del dataset con formato \textit{.yaml}. En este archivo se fijan las rutas a las carpetas de entrenamiento, validación y pruebas, el número de clases y la asignación de IDs a cada clase. El archivo usado para entrenar el modelo YOLO se puede observar en la figura \ref{fig:yaml}.
+
     \item \textbf{Epochs}: Cada época representa una pasada por el dataset entero.
     
     \item \textbf{Time}: Tiempo máximo del entrenamiento. Si este campo no está vacío, se usará en vez del parámetro de las iteraciones.
+    
+    \item \textbf{Patience}: Número de etapas que hay que esperar antes de parar el entrenamiento durante las cuales las métricas de validación no mejoran.
 
     \item \textbf{Batch}: El tamaño de lote significa el número de datos de entrenamiento procesadas por el modelo en una sola iteración. En vez de procesarse el dataset entero, este se divide en unos grupos de datos o \textit{batches}.
+
+    \item \textbf{Imgsz}: Tamaño de imagen usado en el entrenamiento. Si las imágenes del conjunto de datos no están a este tamaño se redimensionan antes de introducirlas en el modelo.
 
     \item \textbf{Device}: Especifica si se quiere usar la \textbf{CPU}, una única \textbf{GPU} o múltiples \textbf{GPUs} para maximizar la eficiencia del modelo y tardar mucho menos en este proceso.
 
     \item \textbf{Workers}: Número de hilos trabajadores para la carga de datos. Influye especialmente en la velocidad del procesamiento si se está usando la \textit{GPU}.
 
     \item \textbf{Optimizer}: Escoger el optimizador para el entrenamiento entre \textbf{SGD}, \textbf{Adam}, \textbf{AdamW}, etc. Afecta a la estabilidad y a la velocidad de convergencia. Por defecto, se selecciona por sí solo en función del modelo.
+    
+    \item \textbf{Multiscale}: Permite redimensionar un paquete de imágenes (por ejemplo, un valor de 0.25 crearía imágenes de 0.75x a 1.25x).
 
     \item \textbf{Cos\_lr}: Se utiliza un \textit{scheduler} o programador de la tasa de aprendizaje coseno, ajustando la tasa de aprendizaje siguiendo una curva coseno a lo largo de los \textit{epochs} para mejorar la convergencia.
 
@@ -1231,12 +1242,6 @@ Gracias a Ultralytics \footnote{Toda la información de la librería de Ultralyt
 
     \item \textbf{Cache}: Decide si se quiere guardar en memoria RAM o disco las imágenes del conjunto de datos. Mejora la velocidad de entrenamiento a costa de un mayor uso de memoria.
 
-    \item \textbf{Data}: Archivo de configuración del dataset con formato \textit{.yaml}. En este archivo se fijan las rutas a las carpetas de entrenamiento, validación y pruebas, el número de clases y la asignación de IDs a cada clase. El archivo usado para entrenar el modelo YOLO se puede observar en la figura %\ref{fig:yaml}.
-
-    \item \textbf{Imgsz}: Tamaño de imagen usado en el entrenamiento. Si las imágenes del conjunto de datos no están a este tamaño se redimensionan antes de introducirlas en el modelo.
-
-    \item \textbf{Patience}: Número de etapas que hay que esperar antes de parar el entrenamiento durante las cuales las métricas de validación no mejoran.
-
     \item \textbf{Plots}: Dibujar gráficas de las métricas de entrenamiento y validación al acabar de entrenar el modelo. Además, se guardan varias imágenes con las predicciones hechas por el modelo YOLO para comprobar su rendimiento. 
 
     \item \textbf{Exist\_ok}: Decidir si se sobrescribe la carpeta donde se guardan los archivos de entrenamiento.
@@ -1249,6 +1254,13 @@ Gracias a Ultralytics \footnote{Toda la información de la librería de Ultralyt
     
     \item \textbf{Project}: Nombre del directorio donde se guardarán los resultados de entrenamiento.
 \end{itemize}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/yaml.png}
+    \caption{Ejemplo de archivo .yaml de configuración para entrenar un modelo YOLO}
+    \label{fig:yaml}
+\end{figure}
 
 El entrenamiento de este modelo YOLO consta de:
 
@@ -1274,7 +1286,10 @@ results_val = model.train(data = "./datasets/vehicles/train1.yaml",
 
 
 
+
+
 \subsection{DINO-DETR}
+
 
 
 
@@ -1283,7 +1298,21 @@ results_val = model.train(data = "./datasets/vehicles/train1.yaml",
 
 Con el objetivo de evaluar el rendimiento del modelo y detectar posibles indicios de sobreajuste durante el entrenamiento, se ha realizado un seguimiento detallado de los valores de pérdida (loss\_rates), los cuales se registraron durante el entrenamiento en cada iteración en los conjuntos de entrenamiento y validación. El análisis de estas gráficas permite observar el comportamiento del modelo y determinar si está memorizando los datos de entrenamiento en lugar de generalizar correctamente.
 
-En los experimentos realizados se ha prestado especial atención a la diferencia entre las pérdidas tanto de entrenamiento como de validación ya que dependiendo del diferencial entre ellas podría llevar al sobreajuste.
+En los experimentos realizados se ha prestado especial atención a la diferencia entre las pérdidas tanto de entrenamiento como de validación ya que dependiendo del diferencial entre ellas podría llevar al sobreajuste. Estas pérdidas se extraen de un archivo csv creado automáticamente por el entrenamiento del modelo YOLO, que, a cada iteración extrae las siguientes métricas: \textbf{epoch, time, train/box_loss, train/cls_loss, train/dfl_loss, metrics/precision(B), metrics/recall(B), metrics/mAP50(B), metrics/mAP50-95(B), val/box_loss, val/cls_loss y val/dfl_loss}. Aunque es muy útil seguir la evolución de las métricas como precision, recall o mAP50-95, para rastrear signos de overfitting o underfitting. En la figuras \ref{fig:g-ms} y \ref{fig:g-no-ms} se pueden ver dos configuraciones diferentes de entrenamiento para la detección de vehículos: en la primera figura se utiliza el parámetro \textit{multiscale}, que redimensiona las imágenes por cierto valor durante el entrenamiento, mientras que en la segunda no se utiliza este parámetro. De valores similares, ambas gráficas dotan de un problema: el underfitting; en ambas gráficas la pérdida de validación se mantiene inferior a la de entrenamiento, lo que significa que el modelo tenía demasiada penalización durante el entrenamiento. 
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/g_no_ms.png}
+    \caption{Gráfica de la evolución de las pérdida de detección de entrenamiento y validación sin multiscale}
+    \label{fig:g-no-ms}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/g_ms.png}
+    \caption{Gráfica de la evolución de las pérdida de detección de entrenamiento y validación con multiscale}
+    \label{fig:g-ms}
+\end{figure}
 
 
 

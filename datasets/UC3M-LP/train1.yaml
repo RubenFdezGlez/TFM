@@ -1,2 +1,4 @@
 train: '/home/ruben/clase/Practicas/datasets/UC3M-LP/.-yolo/LP/images/train'
 val: '/home/ruben/clase/Practicas/datasets/UC3M-LP/.-yolo/LP/images/val'
+
+nc: 1

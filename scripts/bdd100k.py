@@ -117,8 +117,8 @@ if __name__ == '__main__':
     classes = ['car', 'truck', 'bus', 'train', 'motor', 'bike']
 
     dr = BDDDatasetReorganizer(
-        images_path = "./bdd100k/",
-        labels_path = "./bdd100k_labels_release/bdd100k/labels/",
+        images_path = "./../bdd100k/",
+        labels_path = "./../bdd100k_labels_release/bdd100k/labels/",
         classes_names = classes,
-        dst_path = "./datasets/bdd100k_yolo/"
+        dst_path = "./../datasets/bdd100k_yolo/"
     )
