@@ -13,9 +13,11 @@ def reset_session_state():
     st.session_state.imagen_actual = None
     st.session_state.file_uploader = None
 
-
+"""
+    Import the model and send it to the GPU, if available.
+"""
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-vehicle_model = YOLO('./models/best.pt').to(device)
+vehicle_model = YOLO('./models/v_det/best.pt').to(device)
 
 st.set_page_config(layout="wide", page_title="Detección de Vehículos", page_icon="🚗")
 st.title("Vehicle Detection interface")
@@ -29,12 +31,12 @@ with st.sidebar:
     st.header("Selecciona una opción:")
 
     entrada = st.radio("Fuente de imagen", 
-                       ("Archivo", "Camara"),
-                       index=0 if st.session_state.modo_entrada == "Archivo" else 1,
+                       ("Archivo", "Camara", "Video"),
+                       index=0 if st.session_state.modo_entrada == "Archivo" else 1 if st.session_state.modo_entrada == "Camara" else 2,
                        on_change=reset_session_state,
                        horizontal=True)
 
-    st.session_state.modo_entrada = "Archivo" if entrada == "Archivo" else "Camara"
+    st.session_state.modo_entrada = "Archivo" if entrada == "Archivo" else "Camara" if entrada == "Camara" else "Video"
 
     st.divider()
 
@@ -79,4 +81,3 @@ with st.container():
 st.subheader("Resultado de la detección:")
 if st.session_state.imagen_actual is not None:
     st.image(st.session_state.imagen_actual, caption="Imagen con Detecciones", channels="BGR", width='stretch')
-    
