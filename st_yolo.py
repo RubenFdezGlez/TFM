@@ -72,7 +72,7 @@ def combineDetections(v_results, lp_results, img):
         cls = int(box.cls[0].item())
         label = lp_model.names[cls]
         cv2.rectangle(img_copy, (x1, y1), (x2, y2), (255, 0, 0), 2)
-        cv2.putText(img_copy, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 2)
+        cv2.putText(img_copy, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 4)
     
     return img_copy
 
