@@ -41,7 +41,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 
 After UV have finished installing, we proceed to create a new environment. This project packages will be detached from other environment or projects on the computer. You can use any name on the environment, here it will be used "muriap".
 ```bash
-uv venv muriap
+uv venv muriap --python 3.12
 ```
 
 The environment is activated through different commands depending on the OS:
@@ -73,6 +73,11 @@ The Python packages needed for the programs to work are gonna be installed from 
 uv pip install -r requirements.txt
 ```
 
+NOTE: The environment (and the packages installed) has been tested using CUDA 13.2 so if you are using another version consider reinstalling PyTorch with the following command:
+```bash
+uv pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu132 
+```
+
 
 ___
 
@@ -93,6 +98,11 @@ The dataset can be download manually from the following URL: [BDD100K](https://w
 
 ```bash
 export KAGGLE_API_TOKEN=xxxxxxxxxxxxxx
+```
+
+4. Download the dataset:
+```bash
+kaggle datasets download solesensei/solesensei_bdd100k -p datasets --unzip -o -q
 ```
 
 As there is no need for image segmentation, the folder bdd100k_seg can be deleted.
@@ -140,18 +150,6 @@ pip install -r requirements.txt
 4. Run the script to transform the dataset to YOLO format. It will create 2 versions of the dataset, one for LP detection from the whole image and another one for LP recognition from the cropped LP region. The script will resize the images to the specified dimensions and save the resulting images and labels in in new directories. You can specify the desired dimensions for the images as arguments of the script.
 ```bash
 python3 scripts/labels2yolo.py . 640 320
-```
-
-
-___
-
-
-### DINO-DETR model installation
-
-Clone the model repository:
-```bash
-git clone https://github.com/IDEA-Research/DINO
-cd DINO
 ```
 
 
