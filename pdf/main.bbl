@@ -165,9 +165,17 @@ Sudip Chakrabarty.
 \newblock \url{https://www.q2bstudio.com/nuestro-blog/606893/unificado-de-newton-schulz-metodo-de-ortogonalizacion-aplicado-en-calculos-cientificos}.
 \newblock [Accessed 09-04-2026].
 
-\bibitem{zhang2022dino}
-Hao Zhang, Feng Li, Shilong Liu, Lei Zhang, Hang Su, Jun Zhu, Lionel~M. Ni, and Heung-Yeung Shum.
-\newblock Dino: Detr with improved denoising anchor boxes for end-to-end object detection, 2022.
+\bibitem{zhao2024detrsbeatyolosrealtime}
+Yian Zhao, Wenyu Lv, Shangliang Xu, Jinman Wei, Guanzhong Wang, Qingqing Dang, Yi~Liu, and Jie Chen.
+\newblock Detrs beat yolos on real-time object detection, 2024.
+
+\bibitem{carion2020endtoendobjectdetectiontransformers}
+Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko.
+\newblock End-to-end object detection with transformers, 2020.
+
+\bibitem{zhu2021deformabledetrdeformabletransformers}
+Xizhou Zhu, Weijie Su, Lewei Lu, Bin Li, Xiaogang Wang, and Jifeng Dai.
+\newblock Deformable detr: Deformable transformers for end-to-end object detection, 2021.
 
 \bibitem{liu2022dabdetrdynamicanchorboxes}
 Shilong Liu, Feng Li, Hao Zhang, Xiao Yang, Xianbiao Qi, Hang Su, Jun Zhu, and Lei Zhang.
@@ -177,9 +185,46 @@ Shilong Liu, Feng Li, Hao Zhang, Xiao Yang, Xianbiao Qi, Hang Su, Jun Zhu, and L
 Feng Li, Hao Zhang, Shilong Liu, Jian Guo, Lionel~M. Ni, and Lei Zhang.
 \newblock Dn-detr: Accelerate detr training by introducing query denoising, 2022.
 
-\bibitem{zhu2021deformabledetrdeformabletransformers}
-Xizhou Zhu, Weijie Su, Lewei Lu, Bin Li, Xiaogang Wang, and Jifeng Dai.
-\newblock Deformable detr: Deformable transformers for end-to-end object detection, 2021.
+\bibitem{chen2023groupdetrfastdetr}
+Qiang Chen, Xiaokang Chen, Jian Wang, Shan Zhang, Kun Yao, Haocheng Feng, Junyu Han, Errui Ding, Gang Zeng, and Jingdong Wang.
+\newblock Group detr: Fast detr training with group-wise one-to-many assignment, 2023.
+
+\bibitem{yao2021efficientdetrimprovingendtoend}
+Zhuyu Yao, Jiangbo Ai, Boxun Li, and Chi Zhang.
+\newblock Efficient detr: Improving end-to-end object detector with dense prior, 2021.
+
+\bibitem{roh2022sparsedetrefficientendtoend}
+Byungseok Roh, JaeWoong Shin, Wuhyun Shin, and Saehoon Kim.
+\newblock Sparse detr: Efficient end-to-end object detection with learnable sparsity, 2022.
+
+\bibitem{li2023litedetrinterleaved}
+Feng Li, Ailing Zeng, Shilong Liu, Hao Zhang, Hongyang Li, Lei Zhang, and Lionel~M. Ni.
+\newblock Lite detr : An interleaved multi-scale encoder for efficient detr, 2023.
+
+\bibitem{meng2023conditionaldetrfasttraining}
+Depu Meng, Xiaokang Chen, Zejia Fan, Gang Zeng, Houqiang Li, Yuhui Yuan, Lei Sun, and Jingdong Wang.
+\newblock Conditional detr for fast training convergence, 2023.
+
+\bibitem{wang2022anchordetrquerydesign}
+Yingming Wang, Xiangyu Zhang, Tong Yang, and Jian Sun.
+\newblock Anchor detr: Query design for transformer-based object detection, 2022.
+
+\bibitem{zhang2022dinodetrimproveddenoising}
+Hao Zhang, Feng Li, Shilong Liu, Lei Zhang, Hang Su, Jun Zhu, Lionel~M. Ni, and Heung-Yeung Shum.
+\newblock Dino: Detr with improved denoising anchor boxes for end-to-end object detection, 2022.
+
+\bibitem{he2015deepresiduallearningimage}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition, 2015.
+
+\bibitem{ding2021repvggmakingvggstyleconvnets}
+Xiaohan Ding, Xiangyu Zhang, Ningning Ma, Jungong Han, Guiguang Ding, and Jian Sun.
+\newblock Repvgg: Making vgg-style convnets great again, 2021.
+
+\bibitem{shao2019objects365}
+Shuai Shao, Zeming Li, Tianyuan Zhang, Chao Peng, Gang Yu, Jing Li, Xiangyu Zhang, and Jian Sun.
+\newblock Objects365: A large-scale, high-quality dataset for object detection.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on Computer Vision}, pages 8425--8434, 2019.
 
 \bibitem{tesseractocrTesseractWorlds}
 Tesseract~OCR Community.

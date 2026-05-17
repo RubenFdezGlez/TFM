@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Version 0.7 // May 2025
+%% Version 0.8 // May 2025
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Rubén Fernández González
 %%  - rferng19@estudiantes.unileon.es
@@ -981,59 +981,42 @@ Aunque YOLO se creó con la principal finalidad de la tarea de detección, se ha
 
 
 
-\subsection{DINO-DETR}
+\subsection{RT-DETR}
 
-\textbf{DINO-DETR}\cite{zhang2022dino} \textit{(Improved DeNoising Anchor Boxes\footnote{Los detectores \textit{anchor-based} dividen la imagen en una red, y en cada celda de la red se generan varias cajas de anclaje para tener en cuenta múltiples formas. El contrario sería un detector \textit{anchor-less} como YOLO26, que predice directamente el centro del objeto y el tamaño usando sólo el mapa de características.})} es el segundo detector de objetos mejora previos modelos DETR en términos de eficiencia y rendimiento. Este alcanza un \textbf{49.4\%AP} en 12 iteraciones y un \textbf{51.3\%AP} en el dataset COCO con un extractor de características ResNet-50 y características multiescala. 
-
-La base de este algoritmo (DETR) es un detector basado en un Transformador que modela la detección de objetos como una tarea de predicción y asigna las etiquetas por emparejamiento de grafos bipartitos\footnote{Forma de emparejar vértices de dos conjuntos diferentes de forma que cada vértice esté conectado por un borde a 1 solo vértice del otro conjunto.}. 
-DINO es una arquitectura extremo a extremo \textit{(end-to-end)} que contiene un extractor de características, un codificador y un decodificador de un transformador de múltiples capas y múltiples cabezas de predicción; esta arquitectura se puede observar en la figura \ref{fig:dino-detr}. Siguiendo el modelo DAB-DETR\cite{liu2022dabdetrdynamicanchorboxes}, se implementan unas colas en el decodificador como cajas de anclaje dinámicas y se refinan a lo largo de las capas del decodificador. Del modelo DN-DETR\cite{li2022dndetracceleratedetrtraining} se añaden etiquetas y cajas reales con ruido en el decodificador para ayudar a estabilizar el emparejamiento por bipartición durante el entrenamiento.
-
-\begin{figure}[htb]
-\centering
-    \includegraphics[width=.80\textwidth]{figures/dino-detr.png}
-    \caption{Estructura de la arquitectura DINO-DETR, donde las K mejores características del codificador se utilizan para inicializar las colas posicionales del decodificador y las colas de contenido como parámetros aprendibles.\\
-    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
-    \label{fig:dino-detr}
-\end{figure}
-
-Las mejoras se sitúan en el transformador, tanto con el codificador como con el descodificador:
+\textbf{RT-DETR}\cite{zhao2024detrsbeatyolosrealtime} es, como su propio nombre indica, el primer detector end-to-end en tiempo real: debido al impacto negativo del uso de la función NMS en los modelos YOLO (anteriores a YOLO26, el cual elimina esta función), estos modelos perdían precisión y velocidad. Estos detectores de objetos se caracterizan por un proceso optimizado cuya base de este algoritmo (DETR)\cite{carion2020endtoendobjectdetectiontransformers} es un detector basado en un transformador que modela la detección de objetos como una tarea de predicción y asigna las etiquetas por emparejamiento de grafos bipartitos\footnote{Forma de emparejar vértices de dos conjuntos diferentes de forma que cada vértice esté conectado por un borde a 1 solo vértice del otro conjunto.}. A pesar de tener bastantes ventajas, DETR sufría de una cconvergencia en el entrenamiento muy lenta, un coste computacional alto y unas colas difíciles de optimizar; algo que los modelos DETR posteriores tratan de solucionar: 
 \begin{itemize}
-    \item \textbf{Las K mejores características del codificador de la última capa se seleccionan para inicializar las colas posicionales para el decodificador}, mientras que las colas de contenido se mantienen como parámetros con posibilidad de aprendizaje. 
-    \item \textbf{Contrastive DeNoising Training:} El codificador contiene una parte \textbf{CDN} \textit{(Contrastive Denoising)} con dos colas, positiva y negativa como se puede observar en la figura \ref{fig:cdn}, y dos hiperparámetros $\lambda_1$ y $\lambda_2$. Las colas positivas con un ruido menor a $\lambda_1$ se esperan que reconstruyan su caja. Las colas negativas con un ruido mayor que $\lambda_1$ y menor que $\lambda_2$ se predicen como "no objeto". Este método selecciona los \textit{anchors} o colas de mayor calidad para predecir las \textit{bounding boxes}, evitando el solapamiento de múltiples \textit{bounding boxes} para un mismo objeto y eliminando \textit{GT boxes} alejadas del objeto al que pertenecen.
-    \item \textbf{Mixed Query Selection:} \textbf{Se inicializan las cajas de anclaje usando la información de posición asociada con las K características seleccionadas de la última capa del codificador}, manteniendo las colas estáticas de contenido generadas por una transformación lineal de las características seleccionadas de la última capa del codificador. La estructura de esta implementación se puede observar en la figura \ref{fig:mixed-query}.
-    \item \textbf{Look Forward Twice:} Nueva propuesta de predicción de \textit{bounding boxes}, donde \textbf{las actualizaciones de cada capa se influencian de las pérdidas de la misma capa y de la siguiente capa} (una predicción de la siguiente caja)\footnote{Las actualizaciones se sacan del modelo Deformable DETR, donde cada valor está comprendido entre 0 y 1. Dadas 2 cajas, se aplica la función sigmoidal inversa, se suman y se transforma la suma con otra función sigmoidal.}. Esta estructura se puede observar en la figura \ref{fig:lf-twice}, en comparación con la anterior propuesta de predicción de \textit{bounding boxes} del modelo Deformable DETR\cite{zhu2021deformabledetrdeformabletransformers}.
+    \item \textbf{Acelerar la convergencia}: Deformable DETR\cite{zhu2021deformabledetrdeformabletransformers} mejora la eficiencia del mecanismo de atención con características multiescala. DAB-DETR\cite{liu2022dabdetrdynamicanchorboxes} y DN-DETR\cite{li2022dndetracceleratedetrtraining} introducen un esquema iterativo de refinamiento y un entrenamiento con supresión de ruido, mientras que Group-DETR\cite{chen2023groupdetrfastdetr} introduce una asignación \textit{one-to-many} por grupos.
+    \item \textbf{Reducción del coste computacional}: Efficient DETR\cite{yao2021efficientdetrimprovingendtoend} y Sparse DETR\cite{roh2022sparsedetrefficientendtoend} reducen el número de capas del codificador-decodificador o el número de colas, mientras que Lite DETR\cite{li2023litedetrinterleaved} reduce la frecuencia de actualización de características de bajo nivel de forma intercalada.
+    \item \textbf{Optimización de inicialización de las colas}: Conditional DETR\cite{meng2023conditionaldetrfasttraining} y Anchor DETR\cite{wang2022anchordetrquerydesign} reducen la dificultad computacional de las colas, Deformable DETR\cite{zhu2021deformabledetrdeformabletransformers} propone un DETR de doble etapa con un selector de colas mixtas y DINO\cite{zhang2022dinodetrimproveddenoising} aprovecha este mismo selector para inicializar de manera más eficaz las colas.
 \end{itemize}
 
-\begin{figure}[htb]
-\centering
-    \includegraphics[width=.80\textwidth]{figures/cdn.png}
-    \caption{Estructura de la red CDN y sus grupos. Asumiendo que el centro del cuadrado es una GT \textit{(ground truth) box}, los puntos dentro del cuadrado interior se consideran positivos y los que se encuentran entre el interior y el exterior se consideran negativos.\\
-    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
-    \label{fig:cdn}
-\end{figure}
+Este modelo, cuya arquitectura se puede observar en la figura \ref{fig:rt-detr}, consiste en un extractor de características (backbone), un codificador híbrido eficiente y un decodificador de transformador con cabezas de predicción auxiliares:
+\begin{itemize}
+    \item \textbf{Backbone}: Sirve como el extractor de características principal para transformar los píxeles de la imagen en mapas de características multiescala que el codificador puede refinar. Las arquitecturas que se han seleccionado para probarse junto al codificador-decodificador son ResNet50 y ResNet101\cite{he2015deepresiduallearningimage} como sustitutos de los modelos L y X de YOLO; para los modelos más ligeros, como los S y L de YOLO se modifican tanto el backbone (por ResNet34 y ResNet18) y además se modifican el número de capas en el codificador-decodificador.
+    
+    \item \textbf{Efficient Hybrid Encoder}: El mecanismo de atención de Deformable DETR reduce el coste computacional, pero incrementa la longitud de la secuencia de características multiescala lo que deriva en que el codificador se convierta en un cuello de botella, usando el 49\% de los GFLOPs del modelo y contribuyendo solamente un 11\% de AP. El nuevo codificador propuesto consiste en dos módulos:
+    \begin{itemize}
+        \item \textbf{Attention based Intra-scale Feature Interaction (AIFI)}: \textbf{AIFI} reduce el coste computacional al ejecutar las interacciones intraescalares con un codificador de única escala sólo en la última etapa del \textbf{backbone}; en vez de aplicar este mecanismo de atención tanto en características de alto nivel (lo que captura la conexión entre entidades conceptuales y mejora el reconocimiento de objetos) como en las de bajo nivel, sólo se aplica en las de alto nivel, ya que es innecesario debido a la falta de entidades conceptuales y también para evitar la repetición de interacciones entre características con las de alto nivel.
+        \item \textbf{CNN based Cross-scale Feature Fusion (CCFF)}: \textbf{CCFF} se optimiza en base al módulo de fusión de escalas, que inserta varios bloques de fusión compuestos por capas convolucionales en la ruta de fusión. El bloque de fusión contiene dos convoluciones 1×1, N \textbf{RepBlocks}\cite{ding2021repvggmakingvggstyleconvnets} para fusionar características, y las salidas de las dos rutas se fusionan mediante suma elemento a elemento.
+    \end{itemize}
+    Teniendo en cuenta que las características de las 3 últimas etapas del \textbf{backbone} se conocen como {$S_3$, $S_4$ y $S_5$} y \textit{Reshape} representa restaurar al mismo tamaño que $S_5$,los cálculos del codificador se pueden resumir en:
+    \begin{math}
+        Q = K = V = Flatten(S_5)
+        F_5 = Reshape(AIFI(Q, K, V))
+        O = CCFF({S_3, S_4, S_5})
+    \end{math}
+
+    \item \textbf{Decoder with Uncertainty-minimal Query Selection}: Para reducir la dificultad de optimizar las colas de objetos, anteriores trabajos proponían esquemas de selección de colas (proceso durante el cual se escogían las mejores características del codificador para inicializar las colas de objetos) que, al tratar de medir el rendimiento sobre una característica, incluía tanto la clasificación como la detección, lo que resultaba en inicializaciones subóptimas. En cambio, RT-DETR propone un esquema de selección de colas con mínima incertidumbre, que construye y optimiza la incertidumbre para modelar la unión latente de variables de las características del codificador (lo que proporciona al decodificador colas de alta calidad). Esta incertidumbre se construye a partir de la discrepancia entre las predicciones de la localización y las de clasificación.
+\end{itemize}
+
+Las comparaciones con modelos YOLO muestran resultados muy satisfactorios en una GPU T4 (ya que el propósito es usar un modelo ligero se compararán únicamente modelos \textbf{YOLO-S} con el modelo RT-DETR que usa ResNet18) al entrenar RT-DETR en el dataset \textbf{Objects365}\cite{shao2019objects365} y hacer \textit{fine-tuning} en \textbf{COCO} con un entrenamiento de 72 iteraciones y alcanzando un \textbf{238/217 FPS} con los modelos con 2/3 capas del decodificador y 45.5\%/46.5\% de $AP_{val}$. En comparación, el modelo YOLOv8-S alcanza 136 FPS y 44.9\% de $AP_{val}$; esta leve mejora en la precisión aumenta considerablemente al usar los modelos RT-DETR más grandes, llegando a 52.2\% de $AP_{val}$ y 125 FPS con el modelo RT-DETR-R50 de 6 capas.
 
 \begin{figure}[htb]
 \centering
-    \includegraphics[width=.80\textwidth]{figures/dino-fw.png}
-    \caption{Estructura del modelo DINO\\
-    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
-    \label{fig:dino-fw}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-    \includegraphics[width=.80\textwidth]{figures/mixed-query.png}
-    \caption{Estructura del encoder-decoder del modelo DINO que implementa una selección mixta de colas\\
-    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
-    \label{fig:mixed-query}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-    \includegraphics[width=.80\textwidth]{figures/lf-twice.png}
-    \caption{Comparación de actualización de cajas entre Deformable DETR y DINO-DETR\\
-    \footnotesize{Fuente: \textit{https://arxiv.org/pdf/2203.03605}}}
-    \label{fig:lf-twice}
+    \includegraphics[width=.85\textwidth]{figures/rt-detr.png}
+    \caption{Vista general del modelo RT-DETR.\\
+    \footnotesize{Fuente: \textit{https://arxiv.org/html/2601.12882v1}}}
+    \label{fig:rt-detr}
 \end{figure}
 
 
@@ -1180,11 +1163,12 @@ Los modelos YOLO requieren que un archivo con etiquetas para cada imagen con var
 
 La estructura del conjunto de datos que tiene que seguir YOLO es de la siguiente forma:
 \dirtree{%
-    .1 *.py.
+    .1 st\_yolo.py.
+    .1 yolo26n.py.
+    .1 models.
     .1 datasets.
-    .2 bdd100k_yolo.
-    .2 UC3M-LP.
-    .3 *.yaml.
+    .2 UC3MLP.
+    .3 train1.yaml.
     .3 test.
     .3 train.
     .3 val.
@@ -1298,7 +1282,7 @@ results_val = model.train(data = "./datasets/vehicles/train1.yaml",
 
 Con el objetivo de evaluar el rendimiento del modelo y detectar posibles indicios de sobreajuste durante el entrenamiento, se ha realizado un seguimiento detallado de los valores de pérdida (loss\_rates), los cuales se registraron durante el entrenamiento en cada iteración en los conjuntos de entrenamiento y validación. El análisis de estas gráficas permite observar el comportamiento del modelo y determinar si está memorizando los datos de entrenamiento en lugar de generalizar correctamente.
 
-En los experimentos realizados se ha prestado especial atención a la diferencia entre las pérdidas tanto de entrenamiento como de validación ya que dependiendo del diferencial entre ellas podría llevar al sobreajuste. Estas pérdidas se extraen de un archivo csv creado automáticamente por el entrenamiento del modelo YOLO, que, a cada iteración extrae las siguientes métricas: \textbf{epoch, time, train/box_loss, train/cls_loss, train/dfl_loss, metrics/precision(B), metrics/recall(B), metrics/mAP50(B), metrics/mAP50-95(B), val/box_loss, val/cls_loss y val/dfl_loss}. Aunque es muy útil seguir la evolución de las métricas como precision, recall o mAP50-95, para rastrear signos de overfitting o underfitting. En la figuras \ref{fig:g-ms} y \ref{fig:g-no-ms} se pueden ver dos configuraciones diferentes de entrenamiento para la detección de vehículos: en la primera figura se utiliza el parámetro \textit{multiscale}, que redimensiona las imágenes por cierto valor durante el entrenamiento, mientras que en la segunda no se utiliza este parámetro. De valores similares, ambas gráficas dotan de un problema: el underfitting; en ambas gráficas la pérdida de validación se mantiene inferior a la de entrenamiento, lo que significa que el modelo tenía demasiada penalización durante el entrenamiento. 
+En los experimentos realizados se ha prestado especial atención a la diferencia entre las pérdidas tanto de entrenamiento como de validación ya que dependiendo del diferencial entre ellas podría llevar al sobreajuste. Estas pérdidas se extraen de un archivo csv creado automáticamente por el entrenamiento del modelo YOLO, que, a cada iteración extrae las siguientes métricas: \textbf{epoch, time, train/box\_loss, train/cls\_loss, train/dfl\_loss, metrics/precision(B), metrics/recall(B), metrics/mAP50(B), metrics/mAP50-95(B), val/box\_loss, val/cls\_loss y val/dfl\_loss}. Aunque es muy útil seguir la evolución de las métricas como precision, recall o mAP50-95, para rastrear signos de overfitting o underfitting. En la figuras \ref{fig:g-ms} y \ref{fig:g-no-ms} se pueden ver dos configuraciones diferentes de entrenamiento para la detección de vehículos: en la primera figura se utiliza el parámetro \textit{multiscale}, que redimensiona las imágenes por cierto valor durante el entrenamiento, mientras que en la segunda no se utiliza este parámetro. De valores similares, ambas gráficas dotan de un problema: el underfitting; en ambas gráficas la pérdida de validación se mantiene inferior a la de entrenamiento, lo que significa que el modelo tenía demasiada penalización durante el entrenamiento. 
 
 \begin{figure}[htb]
 \centering
