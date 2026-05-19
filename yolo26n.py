@@ -29,7 +29,7 @@ if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     vehicle_det_model = getYOLOModel(device)
-    results_vehicle_det = vehicle_det_model.train(data = "./datasets/bdd100k_yolo/train1.yaml",
+    results_vehicle_det = vehicle_det_model.train(data = "./datasets/bdd100k_yolo/yolo.yaml",
                               epochs = 50,
                               patience = 10,
                               batch = 64,
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     )
 
     license_plate_det_model = getYOLOModel(device)
-    results_license_plate_det = license_plate_det_model.train(data = "./datasets/UC3M-LP/train1.yaml",
+    results_license_plate_det = license_plate_det_model.train(data = "./datasets/UC3M-LP/yolo.yaml",
                               epochs = 25,
                               patience = 5,
                               batch = 64,

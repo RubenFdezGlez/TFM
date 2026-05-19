@@ -102,13 +102,28 @@ export KAGGLE_API_TOKEN=xxxxxxxxxxxxxx
 
 4. Download the dataset:
 ```bash
-kaggle datasets download solesensei/solesensei_bdd100k -p datasets --unzip -o -q
+uv run kaggle datasets download solesensei/solesensei_bdd100k -p datasets --unzip -o -q
 ```
 
 As there is no need for image segmentation, the folder bdd100k_seg can be deleted.
 ```bash
 rmdir -rf bdd100k_seg
 ```
+
+5. Execute the script to convert it to yolo format:
+```bash
+uv run .\scripts\bdd100k.py
+```
+
+6. To convert it to COCO format, the library **yolococo** exports everything to a .json file so it can be used to train models with this format.
+```bash
+uv run yolococo yolo2coco --images .\bdd100k_yolo\test\images\ --labels .\bdd100k_yolo\test\labels\ --classes .\classes.txt  --bbox-round 3 --file-name-mode name --out .\bdd100k_yolo\test\test.json
+
+uv run yolococo yolo2coco --images .\bdd100k_yolo\train\images\ --labels .\bdd100k_yolo\train\labels\ --classes .\classes.txt  --bbox-round 3 --file-name-mode name --out .\bdd100k_yolo\train\train.json
+
+uv run yolococo yolo2coco --images .\bdd100k_yolo\val\images\ --labels .\bdd100k_yolo\val\labels\ --classes .\classes.txt  --bbox-round 3 --file-name-mode name --out .\bdd100k_yolo\val\val.json
+```
+
 
 After finishing downloading, the dataset should follow the next structure:
 
@@ -121,10 +136,14 @@ After finishing downloading, the dataset should follow the next structure:
     ├── README.md
     └── datasets
         └── bdd100k_yolo
-            └── train1.yaml
+            ├── train
+            ├── test
+            ├── val
+            └── yolo.yaml
     └── models
         └── best.pt
 </pre>
+
 
 
 ### License plate datasets
