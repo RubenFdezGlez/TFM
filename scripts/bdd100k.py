@@ -33,7 +33,7 @@ class BDDDatasetReorganizer:
 
     def createFolders(self):
         """Create the necessary folders for the YOLO dataset."""
-        for split in ["train", "test", "val"]:
+        for split in ["train", "val"]:
             os.makedirs(os.path.join(self.dst_path, split), exist_ok=True)
             os.makedirs(os.path.join(self.dst_path, split, "images"), exist_ok=True)
             os.makedirs(os.path.join(self.dst_path, split, "labels"), exist_ok=True)
@@ -58,7 +58,7 @@ class BDDDatasetReorganizer:
 
         Args:
             data (dict): Dictionary containing image annotations and labels.
-            split (str): Dataset split (train, test, val) to which the images and labels belong.
+            split (str): Dataset split (train, val) to which the images and labels belong.
         """
         self.createFolders()
 
@@ -117,8 +117,8 @@ if __name__ == '__main__':
     classes = ['car', 'truck', 'bus', 'train', 'motor', 'bike']
 
     dr = BDDDatasetReorganizer(
-        images_path = "./../bdd100k/",
-        labels_path = "./../bdd100k_labels_release/bdd100k/labels/",
+        images_path = "./../datasets/bdd100k/",
+        labels_path = "./../datasets/bdd100k_labels_release/bdd100k/labels/",
         classes_names = classes,
         dst_path = "./../datasets/bdd100k_yolo/"
     )

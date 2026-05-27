@@ -100,6 +100,11 @@ The dataset can be download manually from the following URL: [BDD100K](https://w
 export KAGGLE_API_TOKEN=xxxxxxxxxxxxxx
 ```
 
+**ADDITIONAL NOTE: If you encounter any error such as KeyError: 'username', execute the next command with your kaggle username and the API token generated previously:**
+```bash
+echo '{"username":"your_username","key":"your_apitoken"}' > ~/.kaggle/kaggle.json
+```
+
 4. Download the dataset:
 ```bash
 uv run kaggle datasets download solesensei/solesensei_bdd100k -p datasets --unzip -o -q
@@ -117,31 +122,24 @@ uv run .\scripts\bdd100k.py
 
 6. To convert it to COCO format, the library **yolococo** exports everything to a .json file so it can be used to train models with this format.
 ```bash
-uv run yolococo yolo2coco --images .\bdd100k_yolo\test\images\ --labels .\bdd100k_yolo\test\labels\ --classes .\classes.txt  --bbox-round 3 --file-name-mode name --out .\bdd100k_yolo\test\test.json
+uv run yolococo yolo2coco --images datasets/bdd100k_yolo/train/images/ --labels datasets/bdd100k_yolo/train/labels --classes classes.txt  --bbox-round 3 --file-name-mode name --out datasets/bdd100k_yolo/train/train.json
 
-uv run yolococo yolo2coco --images .\bdd100k_yolo\train\images\ --labels .\bdd100k_yolo\train\labels\ --classes .\classes.txt  --bbox-round 3 --file-name-mode name --out .\bdd100k_yolo\train\train.json
-
-uv run yolococo yolo2coco --images .\bdd100k_yolo\val\images\ --labels .\bdd100k_yolo\val\labels\ --classes .\classes.txt  --bbox-round 3 --file-name-mode name --out .\bdd100k_yolo\val\val.json
+uv run yolococo yolo2coco --images datasets/bdd100k_yolo/val/images --labels datasets/bdd100k_yolo/val/labels --classes classes.txt  --bbox-round 3 --file-name-mode name --out datasets/bdd100k_yolo/val/val.json
 ```
 
 
-After finishing downloading, the dataset should follow the next structure:
+After all of these changes, the complete dataset should look like these:
 
 <pre>
-    ├── bdd100k
-    ├── bdd100k_labels_release
-    ├── README.md
-    ├── yolo26n.py
-    ├── st_yolo.py
     ├── README.md
     └── datasets
         └── bdd100k_yolo
             ├── train
-            ├── test
+                └── train.json
             ├── val
+                └── val.json
             └── yolo.yaml
     └── models
-        └── best.pt
 </pre>
 
 
