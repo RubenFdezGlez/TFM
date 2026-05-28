@@ -2,24 +2,24 @@
     Package imports:
 
     camera_input_live: A streamlit component to capture live video feed from the camera.
-    cv2: Used for modifying the image to draw the bounding boxes and the license plate text.
+    cv2: Modifies the image to draw the bounding boxes and the license plate text.
     numpy: Used for image manipulation and conversion between PIL and OpenCV formats.
     PIL: Used for image manipulation and conversion between OpenCV and PIL formats.
-    pytesseract: Used for extracting text from the detected license plate regions.
+    pytesseract: Extracts the text from the detected license plate regions.
     streamlit: Used for creating the web interface for uploading images and displaying results.
-    torch: Enabling GPU usage to accelerate model training and inference.
-    ultralytics: Provides the implementation, training and validation of the YOLO model, which is used for vehicle detection.
+    tempfile: Used to store the video in the video processing option.
+    torch: Enables GPU usage to accelerate model inference.
+    ultralytics: Provides the loading of the YOLO model, which is used for vehicle and license plate detection.
 """
 from camera_input_live import camera_input_live
-from PIL import Image
-from ultralytics import YOLO
-
 import cv2
 import numpy as np
+from PIL import Image
 import pytesseract
 import streamlit as st
 import tempfile
 import torch
+from ultralytics import YOLO
 
 
 def reset_session_state():
