@@ -83,7 +83,7 @@ vehicle_model, lp_model = load_models(device)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  
 
 st.set_page_config(layout="wide", page_title="Detección de Vehículos", page_icon="🚗")
-st.title("Vehicle Detection interface")
+st.title("Detección de vehículos y matrículas")
 
 if 'modo_entrada' not in st.session_state:
     st.session_state.modo_entrada = "Archivo"
