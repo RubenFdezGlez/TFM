@@ -1,4 +1,4 @@
-# MURIA-Practicas
+# TFM - Ruben Fernandez Gonzalez
 This is a repository for the implementation of an intelligent system for the detection, identification, and analysis of vehicles in real-world environments (on-board cameras and fixed points such as toll booths) using Deep Learning. The system will integrate computer vision and deep learning techniques to detect and identify vehicles in real-time video.
 
 
@@ -68,7 +68,7 @@ source .muriap/bin/activate
 
 ## Package installation
 
-The Python packages needed for the programs to work are gonna be installed from the file named requirements.txt.
+The Python packages needed for the programs to work are gonna be installed from the file named requirements.txt. ADDITIONAL_NOTE: If this command gives an error on the torch library, execute the next command with your specific version of CUDA:
 ```bash
 uv pip install -r requirements.txt
 ```
@@ -234,4 +234,9 @@ ___
 Run the application with the following command:
 ```bash
 uv run streamlit run st_yolo.py   
+```
+
+NOTE: If there are errors in several elements like **TypeError: Failed to fetch dynamically imported module** clear the cache of Streamlit with the following command:
+```bash
+uv run streamlit cache clear
 ```
