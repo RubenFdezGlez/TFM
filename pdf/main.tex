@@ -1132,7 +1132,14 @@ Para poder validar de forma equitativa los distintos métodos de detección, se 
 
 En el caso de las métricas de Precision, Recall y F1-score, para hacer la media del dataset entero hay dos opciones: (1) \textbf{Macro}: El sumatorio del \textit{f1-score} de cada clase entre el número de clases y (2) \textbf{Ponderada}: Considerar el número de instancias de cada clase, siendo las clases con mayor número de imágenes las que más aportan a la media.
 
-Además 
+Además de estas métricas, se analizará también la diferenciación entre clases, es decir, fallos al clasificar correctamente la categoría de cada vehículo detectado. Esto se podría visualizar a través de la pérdida de clasificación en el entrenamiento, por ejemplo, pero se va a usar una matriz de confusión como la de la figura \ref{fig:cm} para ver que problemas tienen los modelos en situaciones donde no solo el modelo tenga problemas para detectar el vehículo, sino también para identificar exactamente qué es.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=0.85\textwidth]{figures/confmatrix.png}
+    \caption{Ejemplo de matriz de confusión}
+    \label{fig:cm}
+\end{figure}
 
 
 
@@ -1270,11 +1277,73 @@ results_val = model.train(data = "./datasets/vehicles/train1.yaml",
 
 
 
+Es habitual encontrarse este apartado en la sección de preprocesamiento de datos, pero debido a que en este caso del modelo YOLO, se pueden enviar parámetros de data augmentation a través de la misma función que los hiperparámetros:
+\begin{itemize}
+    \item \textbf{hsv\_h}: Ajusta la tonalidad de la imagen para ayudar al modelo a generalizar ante diferentes condiciones de iluminación. Por defecto, tiene el valor 0.015 (0.0 - 1.0).
+    \item \textbf{hsv\_s}: Ajusta la saturación de la imagen para ayudar al modelo a generalizar ante distintos entornos. Por defecto, tiene el valor 0.7 (0.0 - 1.0).
+    \item \textbf{hsv\_v}: Ajusta el brillo de la imagen para ayudar al modelo a generalizar ante diferentes condiciones de iluminación. Por defecto, tiene el valor 0.4 (0.0 - 1.0).
+    \item \textbf{degrees}: Aplica una rotación aleatoria a la imagen en el rango determinado para ayudar al modelo a reconocer objetos en distintas rotaciones. Por defecto, tiene el valor 0 (0.0 - 180).
+    \item \textbf{translate}: Aplica una traslación horizontal y vertical a la imagen por el valor determinado para ayudar al modelo a reconocer objetos parcialmente visibles. Por defecto, tiene el valor 0.1 (0.0 - 1.0).    
+    \item \textbf{scale}: Escala la imagen por un valor determinado para ayudar al modelo a reconocer objetos a distintas distancias. Por defecto, tiene el valor 0.5 (0 - 1).
+    \item \textbf{shear}: Recorta la imagen por un grado determinado para ayudar al modelo a reconocer objetos desde diferentes ángulos. Por defecto, tiene el valor 0 (-180 - 180).
+    \item \textbf{perspective}: Aplica una transformación de perspectiva a la imagen para ayudar al modelo a reconocer objetos en espacios 3D. Por defecto, tiene el valor 0 (0.0 - 0.001).
+    \item \textbf{flipud}: Voltea la imagen de arriba hacia abajo con una probabilidad determinada. Por defecto, tiene el valor 0 (0.0 - 1.0).
+    \item \textbf{fliplr}: Voltea la imagen de izquierda hacia derecha con una probabilidad determinada para ayudar al modelo a reconocer objetos simétricos. Por defecto, tiene el valor 0 (0.0 - 1.0).
+    \item \textbf{bgr}: Cambia los canales de la imagen de RGB a BGR para corregir el desorden de los canales. Por defecto, tiene el valor 0 (0.0 - 1.0).
+    \item \textbf{mosaic}: Combina 4 imágenes en una única para ayudar al modelo a entender escenarios complejos. Por defecto, tiene el valor 1 (0.0 - 1.0). 
+    \item \textbf{mixup}: Mezcla 2 imágenes y sus etiquetas, creando una imagen compuesta e introduciendo ruido en las etiquetas. Por defecto, tiene el valor 0 (0.0 - 1.0).
+    \item \textbf{cutmix}: Combina porciones de 2 imágenes, creando una mezcla parcial con distintas regiones. Por defecto, tiene el valor 0 (0.0 - 1.0). 
+    \item \textbf{copy\_paste}: Copia y pega objetos entre imágenes. Por defecto, tiene el valor 0 (0.0 - 1.0). 
+    \item \textbf{copy\_paste\_mode}: Especifica el modo de copia y pega. Por defecto, tiene el valor \textit{flip} (flip/mixup).
+    \item \textbf{auto\_augment}: Aplica un aumento a la imagen. Por defecto, tiene el valor \textit{randaugment} (randaugment/autoaugment/augmix).
+    \item \textbf{erasing}: Borra regiones aleatorias de la imagen para ayudar al modelo a enfocarse en características menos obvias. Por defecto, tiene el valor 0.4 (0.0 - 1.0).
+\end{itemize}
 
 
-\subsection{DINO-DETR}
 
+\subsubsection{DINO-DETR}
 
+Gracias a la librería de \textbf{Huggingface}, \textbf{transformers}\footnote{Toda la información de la librería de transformers es de código abierto y está disponible en \url{https://huggingface.co/docs/transformers}}, está a disposición de estudiantes e investigadores una librería entera con montones de recursos para poder entrenar y validar diferentes tipos de transformadores. De entre todos los parámetros disponibles, para el entrenamiento de este modelo se han utilizado o experimentado con los siguientes:
+\begin{itemize}
+    \item \textbf{output\_dir}: 
+    \item \textbf{per\_device\_train\_batch\_size} y \textbf{per\_device\_val\_batch\_size}: Tamaño de lote por dispositivo. 
+    \item \textbf{num\_train\_epochs}: Número total de iteraciones sobre los conjuntos de entrenamiento y validación.
+    \item \textbf{learning\_rate}: Tasa de aprendizaje inicial del optimizador.
+    \item \textbf{lr\_scheduler\_type}: Tipo de optimizador de la tasa de aprendizaje que se va a usar.
+    \item \textbf{warmup\_steps}: Número de iteraciones para que la tasa de aprendizaje pase de 0 al valor fijado por el anterior parámetro.
+    \item \textbf{optim}: Optimizador que se va a usar.
+    \item \textbf{weight\_decay}: Valor de regularización L2, que penaliza los pesos grandes para evitar que el modelo se sobreajuste a los datos de entrenamiento (overfitting).
+    \item \textbf{gradient\_accumulation\_steps}: Pasos de actualización para acumular gradientes antes de hacer el pase \textit{backward/update}. Simula grandes lotes sin memoria adicional.
+    \item \textbf{fp16}: Activa el entrenamiento de precisión mixto float16 (FP16).
+    \item \textbf{logging\_strategy}: Estrategía de generación de \textit{logs} 
+\end{itemize}
+
+Los parámetros de entrenamiento utilizados se enumeran a continuación:
+
+\begin{lstlisting}
+training_args = TrainingArguments(
+    output_dir="/kaggle/working/rtdetr-custom",
+    per_device_train_batch_size=20,
+    per_device_eval_batch_size=20,
+    gradient_accumulation_steps=2,
+    dataloader_num_workers=4,
+    num_train_epochs=30,
+    learning_rate=1e-5,
+    logging_steps=50,
+    save_steps=500,
+    eval_strategy="epoch",
+    save_strategy="epoch",
+    remove_unused_columns=False,
+    fp16=True,
+    load_best_model_at_end=True,
+    metric_for_best_model="eval_loss",
+    greater_is_better=False,
+    save_total_limit=3,
+    lr_scheduler_type="cosine",
+    warmup_steps=50,
+    weight_decay=0.05,
+)
+\end{lstlisting}
 
 
 
