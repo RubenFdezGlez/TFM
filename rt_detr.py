@@ -1,7 +1,7 @@
 """
     Package imports:
 
-    albumentations: Provic
+    albumentations: Provides multiple Data Augmentation functions to apply to the dataset.
     torch: Enabling GPU usage to accelerate model training and inference.
 """
 import albumentations as A
@@ -28,7 +28,7 @@ model = AutoModelForObjectDetection.from_pretrained(checkpoint,
                                                     id2label=id2label,
                                                     label2id=label2id,
                                                     ignore_mismatched_sizes=True).to(device)
-processor = AutoImageProcessor.from_pretrained(checkpoint, use_fast=True)
+processor = AutoImageProcessor.from_pretrained(checkpoint, backend="torchvision")
 # Configure processor for the target size
 processor.size = {"height": 640, "width": 640}
 processor.do_resize = True  # Ensure processor resizes
@@ -160,24 +160,41 @@ def collate_fn(batch):
 
 training_args = TrainingArguments(
     output_dir="./output/rtdetr",
-    per_device_train_batch_size=24,
-    per_device_eval_batch_size=24,
+
+    # Training Duration and Batch Size
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
     dataloader_num_workers=4,
-    num_train_epochs=1,
-    learning_rate=2.5e-5,
-    logging_steps=50,
+    num_train_epochs=30,
+    #max_steps=300,
+
+    # Learning Rate & Scheduler
+    learning_rate=5e-5,
+    lr_scheduler_type="cosine",
+    warmup_steps=5,
+
+    # Optimizer
+    optim="adamw_torch",
+    weight_decay=0.01,
+    adam_beta1=0.9,
+    adam_beta2=0.999, 
+
+    # Mixed Precision Training
+    fp16=True, # Do not change
+
     save_steps=500,
     eval_strategy="epoch",
     save_strategy="epoch",
     remove_unused_columns=False,
-    fp16=True,
+    
+
     load_best_model_at_end=True,
     metric_for_best_model="eval_loss",
     greater_is_better=False,
     save_total_limit=3,
-    lr_scheduler_type="cosine",
-    warmup_steps=50,
-    weight_decay=0.1,
+    
+    
+    logging_strategy="epoch",
 )
 
 trainer = Trainer(
