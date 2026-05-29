@@ -73,7 +73,7 @@ The Python packages needed for the programs to work are gonna be installed from 
 uv pip install -r requirements.txt
 ```
 
-NOTE: The environment (and the packages installed) has been tested using CUDA 13.2 so if you are using another version consider reinstalling PyTorch with the following command:
+NOTE: The environment (and the packages installed) has been tested using CUDA 13.2 so if you are using another version consider reinstalling PyTorch with the following command (and changing the CUDA version):
 ```bash
 uv pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu132 
 ```
@@ -233,7 +233,7 @@ ___
 
 Run the application with the following command:
 ```bash
-uv run streamlit run st_yolo.py   
+uv run streamlit run .\web_app\st_yolo.py   
 ```
 
 NOTE: If there are errors in several elements like **TypeError: Failed to fetch dynamically imported module** clear the cache of Streamlit with the following command:

@@ -2,17 +2,18 @@
     Package imports:
 
     albumentations: Provides multiple Data Augmentation functions to apply to the dataset.
+    numpy: To transform the image on transform function to numpy array.
     torch: Enabling GPU usage to accelerate model training and inference.
+    transformers: Provides the implementation, training and validation of the RT-DETR model
 """
 import albumentations as A
 import numpy as np
 import torch
-from transformers import AutoModelForObjectDetection, AutoImageProcessor, EarlyStoppingCallback
+from transformers import AutoModelForObjectDetection, AutoImageProcessor, EarlyStoppingCallback, TrainingArguments, Trainer
 from torch.utils.data import Dataset
 import json
 import os
 from PIL import Image
-from transformers import TrainingArguments, Trainer
 
 
 """
@@ -28,13 +29,10 @@ model = AutoModelForObjectDetection.from_pretrained(checkpoint,
                                                     id2label=id2label,
                                                     label2id=label2id,
                                                     ignore_mismatched_sizes=True).to(device)
-processor = AutoImageProcessor.from_pretrained(checkpoint, backend="torchvision")
-# Configure processor for the target size
-processor.size = {"height": 640, "width": 640}
-processor.do_resize = True  # Ensure processor resizes
-processor.do_rescale = True  # Scale pixel values to [0,1]
-processor.do_normalize = True  # Normalize with ImageNet stats
-
+processor = AutoImageProcessor.from_pretrained(checkpoint, 
+                                               do_resize=True, 
+                                               size={"width": 640, "height": 640},
+                                               backend="torchvision")
 
 train_transform = A.Compose([
     # Geometric (preserving identity)
@@ -60,14 +58,13 @@ train_transform = A.Compose([
     # Noise (small amount for robustness)
     A.GaussNoise(p=0.1),
 
-    # Resize to the same size as the YOLO model works
-    A.Resize(height=640, width=640, p=1),
-], bbox_params=A.BboxParams(format="coco", label_fields=["category_ids"], min_visibility=0.3, min_area=25),
+], bbox_params=A.BboxParams(format="coco", label_fields=["category_ids"], 
+                            min_visibility=0.3, min_area=25, min_width=1, min_height=1),
 )
 
 val_transform = A.Compose(
-    [A.Resize(height=640, width=640, p=1),],
-    bbox_params=A.BboxParams(format="coco", label_fields=["category_ids"]),
+    [A.NoOps(),],
+    bbox_params=A.BboxParams(format="coco", label_fields=["category_ids"], min_area=1, min_width=1, min_height=1),
 )
 
 class VehicleLP(Dataset):
@@ -169,7 +166,7 @@ training_args = TrainingArguments(
     #max_steps=300,
 
     # Learning Rate & Scheduler
-    learning_rate=5e-5,
+    learning_rate=1e-4,
     lr_scheduler_type="cosine",
     warmup_steps=5,
 
@@ -193,8 +190,11 @@ training_args = TrainingArguments(
     greater_is_better=False,
     save_total_limit=3,
     
-    
+    # Logging & Monitoring Training
     logging_strategy="epoch",
+
+    # Logging
+    disable_tqdm=True,
 )
 
 trainer = Trainer(
