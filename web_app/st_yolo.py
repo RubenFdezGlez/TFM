@@ -6,6 +6,7 @@
     numpy: Used for image manipulation and conversion between PIL and OpenCV formats.
     PIL: Used for image manipulation and conversion between OpenCV and PIL formats.
     pytesseract: Extracts the text from the detected license plate regions.
+    re: Regex library for checking if the license plates introduced are correct.
     streamlit: Used for creating the web interface for uploading images and displaying results.
     tempfile: Used to store the video in the video processing option.
     torch: Enables GPU usage to accelerate model inference.
@@ -16,6 +17,7 @@ import cv2
 import numpy as np
 from PIL import Image
 import pytesseract
+import re
 import streamlit as st
 import tempfile
 import torch
@@ -77,10 +79,63 @@ def combineDetections(v_results, lp_results, img):
     return img_copy
 
 
-# Import the models and load Tesseract OCR to be used on the detections.
+@st.cache_resource
+def load_lp():
+    """Load the license plates from the file."""
+    lps = []
+
+    file = open("./web_app/lp.txt", "r")
+    for line in file:
+        lps.append(line)
+    file.close()
+
+    return lps
+
+
+    
+
+
+@st.dialog("Lista de matrículas")
+def lp_list():
+    st.write("Añade matrículas para lanzar una advertencia cuando se detecte.")
+    col1, col2 = st.columns(2)
+    with col1:
+        with st.popover("Añadir matrícula"):
+            lp = st.text_input("Introduce la matrícula. Sólo se permiten formatos de: 1234 XYZ, ...")
+            if st.button("Añadir matrícula"):
+                if re.search("[0-9]{4} [A-Z]{3}", lp):
+                    st.session_state.lps.append(lp) 
+                else:
+                    st.write(":red[La matrícula introducida no tiene el formato correcto.]")
+                   
+    with col2:
+        save_lp = st.button("Guardar")
+    
+    if save_lp:
+        file = open("./web_app/lp.txt", "w")
+        [file.write(lp + "\n") for lp in st.session_state.lps]
+        file.close()
+
+    with st.container():
+
+        for idx, lp in enumerate(st.session_state.lps):
+            cont_col1, cont_col2 = st.columns([3,1])
+
+            with cont_col1:
+                st.write(lp) 
+            with cont_col2:
+                if st.button("Remove"):
+                    st.session_state.lps.pop(idx)
+                    st.rerun()
+        
+
+
+# Import the models and the license plate list and load Tesseract OCR to be used on the detections.
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 vehicle_model, lp_model = load_models(device)
+st.session_state.lps = load_lp()
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  
+
 
 st.set_page_config(layout="wide", page_title="Detección de Vehículos", page_icon="🚗")
 st.title("Detección de vehículos y matrículas")
@@ -103,12 +158,20 @@ with st.sidebar:
     st.header("Selecciona una opción:")
 
     entrada = st.radio("Fuente de imagen", 
-                       ("Archivo", "Camara", "Video"),
-                       index=0 if st.session_state.modo_entrada == "Archivo" else 1 if st.session_state.modo_entrada == "Camara" else 2,
+                       ("Archivo", "Camara", "Video", "Multi-cam"),
+                       index=0 if st.session_state.modo_entrada == "Archivo" else 1 if st.session_state.modo_entrada == "Camara" else 2 if st.session_state.modo_entrada == "Multi-cam" else 3,
                        on_change=reset_session_state,
                        horizontal=True)
 
-    st.session_state.modo_entrada = "Archivo" if entrada == "Archivo" else "Camara" if entrada == "Camara" else "Video"
+    st.session_state.modo_entrada = "Archivo" if entrada == "Archivo" else "Camara" if entrada == "Camara" else "Video"\
+          if entrada == "Video" else "Multi-cam" 
+
+    st.divider()
+
+    if "lp_list" not in st.session_state:
+        st.write("Lista de matrículas")
+        if st.button("Cambiar"):
+            lp_list()
 
     st.divider()
 
@@ -165,7 +228,7 @@ with st.container():
             else:
                 st.error("No se pudo acceder a la cámara. Por favor, verifica tu conexión y permisos.")
     # Option for single video files
-    else:
+    elif st.session_state.modo_entrada == "Video":
         uploaded_file = st.file_uploader("Sube una imagen", 
                                          type=['mp4', 'avi', 'mov', 'mkv', 'webm'],
                                          accept_multiple_files=False,
@@ -221,6 +284,8 @@ with st.container():
                         st.session_state.video_processing = False
                         break
                 cap.release()
+    else:
+        print("IDK")
 
 # Shows the detections only on the single image option
 if st.session_state.imagen_actual is not None:
