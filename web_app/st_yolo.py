@@ -45,6 +45,10 @@ def load_models(device):
 
     return vehicle_model, lp_model
 
+@st.dialog("Matrícula detectada")
+def lp_detected(lp):
+    st.write(f":red[La matrícula {lp} ha sido detectada]")
+
 
 def combineDetections(v_results, lp_results, img):
     """Joins both vehicle detection and license plate detection with the recognition on the license plate on a single image: with the bounding boxes and the license plate characters visible on the image.
@@ -69,12 +73,19 @@ def combineDetections(v_results, lp_results, img):
         cropped_img = img[y1:y2, x1:x2]
 
         text = getTesseractText(cropped_img)
+        text = text.replace(" ", "")
 
         conf = box.conf[0].item()
         cls = int(box.cls[0].item())
         label = lp_model.names[cls]
         cv2.rectangle(img_copy, (x1, y1), (x2, y2), (255, 0, 0), 2)
         cv2.putText(img_copy, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 4)
+
+        file = open("./web_app/lp.txt", "r")
+        for line in file:
+            if line != "" and text == line:
+                lp_detected(text)
+        file.close()
     
     return img_copy
 
@@ -86,24 +97,55 @@ def load_lp():
 
     file = open("./web_app/lp.txt", "r")
     for line in file:
-        lps.append(line)
+        if line != "":
+            lps.append(line)
     file.close()
 
     return lps
 
 
-    
+def valid_lp(lp):
+    """Check if the license plate has the correct structure"""
+    # Matrícula normal de vehículos (también se aplica a taxis y VCTs)
+    if re.fullmatch(r'[0-9]{4}[A-Z]{3}', lp):
+        return True 
+    # Matrícula antigua provincial numérica
+    if re.fullmatch(r'[A-Z][0-9]{6}', lp):
+        return True 
+    # Matrícula antigua provincial alfanumérica
+    if re.fullmatch(r'[A-Z][0-9]{4}[A-Z]{2}', lp):
+        return True 
+    # Matrícula histórica
+    elif re.fullmatch(r'H[0-9]{4}[A-Z]{3}', lp):
+        return True
+    # Matrícula de fuerzas del estado
+    elif re.fullmatch(r'(PGC|CNP|ET|EA|FN|E[0-9]|CGPC)[0-9]{4}B', lp):
+        return True
+    # Matrícula de remolques y semiremolques
+    elif re.fullmatch(r'[A-Z][A-Z]{3}', lp):
+        return True
+    # Matrícula de ciclomotores
+    elif re.fullmatch(r'C[0-9]{4}[A-Z]{3}', lp):
+        return True
+    # Matrícula temporal
+    elif re.fullmatch(r'P[0-9]{4}[A-Z]{3}', lp):
+        return True
+    # Matrícula diplomáticas
+    elif re.fullmatch(r'((CD|CC)[0-9]{2}|(TA|OI)[0-9]{3})[0-9]{3}', lp):
+        return True
+    return False
 
 
 @st.dialog("Lista de matrículas")
 def lp_list():
-    st.write("Añade matrículas para lanzar una advertencia cuando se detecte.")
+    """Opens the list """
+    st.write("Añade matrículas para lanzar una advertencia cuando se detecte. Pulsa el botón guardar para poder almacenar las matrículas en el archivo.")
     col1, col2 = st.columns(2)
     with col1:
         with st.popover("Añadir matrícula"):
-            lp = st.text_input("Introduce la matrícula. Sólo se permiten formatos de: 1234 XYZ, ...")
+            lp = st.text_input("Introduce la matrícula. Sólo se permiten formatos de matrículas españolas y sin espacios.")
             if st.button("Añadir matrícula"):
-                if re.search("[0-9]{4} [A-Z]{3}", lp):
+                if valid_lp(lp):
                     st.session_state.lps.append(lp) 
                 else:
                     st.write(":red[La matrícula introducida no tiene el formato correcto.]")
@@ -113,8 +155,9 @@ def lp_list():
     
     if save_lp:
         file = open("./web_app/lp.txt", "w")
-        [file.write(lp + "\n") for lp in st.session_state.lps]
+        [file.write(lp.replace("\n","") + "\n") for lp in st.session_state.lps]
         file.close()
+        st.rerun()
 
     with st.container():
 
@@ -124,9 +167,9 @@ def lp_list():
             with cont_col1:
                 st.write(lp) 
             with cont_col2:
-                if st.button("Remove"):
+                if st.button("Remove", key=str(idx)+lp):
                     st.session_state.lps.pop(idx)
-                    st.rerun()
+                    # st.rerun()
         
 
 
