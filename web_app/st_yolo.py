@@ -19,6 +19,7 @@ from PIL import Image
 import pytesseract
 import re
 import streamlit as st
+from streamlit_webrtc import webrtc_streamer
 import tempfile
 import torch
 from ultralytics import YOLO
@@ -306,7 +307,6 @@ with st.container():
 
             if cap.isOpened():
                 video_placeholder = st.empty()
-                frame_count = 0
 
                 while cap.isOpened():
                     ret, frame = cap.read()
@@ -328,7 +328,73 @@ with st.container():
                         break
                 cap.release()
     else:
-        print("IDK")
+        st.info("Mostrando la función multi-cámara. Asegúrate de que las cámaras estén conectadas y funcionando.")
+        with st.spinner("Accediendo a las cámaras"):
+            col1, col2 = st.columns(2)
+
+            placeholder1 = col1.empty()
+            placeholder3 = col1.empty()
+            placeholder2 = col2.empty()
+            placeholder4 = col2.empty()
+
+            # Inicializar capturas con diferentes índices
+            cap1 = cv2.VideoCapture(0)
+            cap2 = cv2.VideoCapture(1)
+            cap3 = cv2.VideoCapture(2)
+            cap4 = cv2.VideoCapture(3)
+
+            if not cap1.isOpened():
+                st.error("No se pudo abrir la cámara 1")
+            if not cap2.isOpened():
+                st.warning("No se pudo abrir la cámara 2")
+            if not cap3.isOpened():
+                st.warning("No se pudo abrir la cámara 3")
+            if not cap4.isOpened():
+                st.warning("No se pudo abrir la cámara 4")
+
+            while cap1.isOpened() or cap2.isOpened() or cap3.isOpened() or cap4.isOpened():
+                # Leer frames
+                ret1, frame1 = cap1.read() if cap1.isOpened() else (False, None)
+                ret2, frame2 = cap2.read() if cap2.isOpened() else (False, None)
+                ret3, frame3 = cap3.read() if cap3.isOpened() else (False, None)
+                ret4, frame4 = cap4.read() if cap4.isOpened() else (False, None)
+                
+                if ret1 and frame1 is not None:
+                    frame1 = cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB)
+
+                    v_results = vehicle_model.predict(frame1, device=device, conf=v_conf_threshold)
+                    lp_results = lp_model.predict(frame1, device=device, conf=lp_conf_threshold)
+                    img_detected = combineDetections(v_results, lp_results, frame1)
+
+                    placeholder1.image(frame1, caption="Cámara 1", use_container_width=True)
+                
+                if ret2 and frame2 is not None:
+                    frame2 = cv2.cvtColor(frame2, cv2.COLOR_BGR2RGB)
+
+                    v_results = vehicle_model.predict(frame2, device=device, conf=v_conf_threshold)
+                    lp_results = lp_model.predict(frame2, device=device, conf=lp_conf_threshold)
+                    img_detected = combineDetections(v_results, lp_results, frame2)
+
+                    placeholder2.image(img_detected, caption="Cámara 2", use_container_width=True)
+
+                if ret3 and frame3 is not None:
+                    frame3 = cv2.cvtColor(frame3, cv2.COLOR_BGR2RGB)
+
+                    v_results = vehicle_model.predict(frame3, device=device, conf=v_conf_threshold)
+                    lp_results = lp_model.predict(frame3, device=device, conf=lp_conf_threshold)
+                    img_detected = combineDetections(v_results, lp_results, frame3)
+
+                    placeholder2.image(img_detected, caption="Cámara 3", use_container_width=True)
+
+                if ret4 and frame4 is not None:
+                    frame4 = cv2.cvtColor(frame4, cv2.COLOR_BGR2RGB)
+
+                    v_results = vehicle_model.predict(frame4, device=device, conf=v_conf_threshold)
+                    lp_results = lp_model.predict(frame4, device=device, conf=lp_conf_threshold)
+                    img_detected = combineDetections(v_results, lp_results, frame4)
+
+                    placeholder2.image(img_detected, caption="Cámara 2", use_container_width=True)
+
 
 # Shows the detections only on the single image option
 if st.session_state.imagen_actual is not None:
