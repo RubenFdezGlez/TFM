@@ -46,8 +46,10 @@ def load_models(device):
 
     return vehicle_model, lp_model
 
+
 @st.dialog("Matrícula detectada")
 def lp_detected(lp):
+    """Shows a dialog when a license plate that is on the list of plates to detect is found in the image."""
     st.write(f":red[La matrícula {lp} ha sido detectada]")
 
 
@@ -107,6 +109,7 @@ def load_lp():
 
 def valid_lp(lp):
     """Check if the license plate has the correct structure"""
+
     # Matrícula normal de vehículos (también se aplica a taxis y VCTs)
     if re.fullmatch(r'[0-9]{4}[A-Z]{3}', lp):
         return True 
@@ -139,7 +142,8 @@ def valid_lp(lp):
 
 @st.dialog("Lista de matrículas")
 def lp_list():
-    """Opens the list """
+    """Opens the list of license plates to be detected and allows the user to add or remove plates from the list. The list is stored in a text file and is loaded when the app is opened."""
+
     st.write("Añade matrículas para lanzar una advertencia cuando se detecte. Pulsa el botón guardar para poder almacenar las matrículas en el archivo.")
     col1, col2 = st.columns(2)
     with col1:
@@ -170,9 +174,7 @@ def lp_list():
             with cont_col2:
                 if st.button("Remove", key=str(idx)+lp):
                     st.session_state.lps.pop(idx)
-                    # st.rerun()
         
-
 
 # Import the models and the license plate list and load Tesseract OCR to be used on the detections.
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -332,10 +334,17 @@ with st.container():
         with st.spinner("Accediendo a las cámaras"):
             col1, col2 = st.columns(2)
 
-            placeholder1 = col1.empty()
-            placeholder3 = col1.empty()
-            placeholder2 = col2.empty()
-            placeholder4 = col2.empty()
+            with col1:
+                placeholder1 = st.empty()
+                bt1 = st.button("Informe cámara 1")
+                placeholder3 = st.empty()
+                bt2 = st.button("Informe cámara 3")
+
+            with col2:
+                placeholder2 = st.empty()
+                bt2 = st.button("Informe cámara 2")
+                placeholder4 = st.empty()
+                bt4 = st.button("Informe cámara 4")
 
             # Inicializar capturas con diferentes índices
             cap1 = cv2.VideoCapture(0)
