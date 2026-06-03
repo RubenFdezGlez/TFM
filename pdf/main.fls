@@ -1,8 +1,8 @@
-PWD c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf
+PWD c:/Users/Usuario/Documents/TFM/pdf
 INPUT c:/texlive/2026/texmf.cnf
 INPUT c:/texlive/2026/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/Usuario/Documents/MURIA - Practicas/MURIA-Practicas/pdf/main.tex
+INPUT c:/Users/Usuario/Documents/TFM/pdf/main.tex
 OUTPUT main.log
 INPUT c:/texlive/2026/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2026/texmf-dist/tex/latex/base/article.cls
@@ -691,6 +691,11 @@ INPUT ./figures/rt-detr.png
 INPUT ./figures/rt-detr.png
 INPUT ./figures/rt-detr.png
 INPUT ./figures/rt-detr.png
+INPUT ./figures/t-ocr.png
+INPUT ./figures/t-ocr.png
+INPUT ./figures/t-ocr.png
+INPUT ./figures/t-ocr.png
+INPUT ./figures/t-ocr.png
 INPUT ./figures/rsu_esc1.png
 INPUT ./figures/rsu_esc1.png
 INPUT ./figures/rsu_esc1.png
@@ -716,6 +721,11 @@ INPUT ./figures/uc3mvri_example.png
 INPUT ./figures/uc3mvri_example.png
 INPUT ./figures/uc3mvri_example.png
 INPUT ./figures/uc3mvri_example.png
+INPUT ./figures/confmatrix.png
+INPUT ./figures/confmatrix.png
+INPUT ./figures/confmatrix.png
+INPUT ./figures/confmatrix.png
+INPUT ./figures/confmatrix.png
 INPUT ./figures/methodology_dl.jpg
 INPUT ./figures/methodology_dl.jpg
 INPUT ./figures/methodology_dl.jpg

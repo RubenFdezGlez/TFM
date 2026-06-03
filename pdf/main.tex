@@ -1025,7 +1025,23 @@ Las comparaciones con modelos YOLO muestran resultados muy satisfactorios en una
 
 Como intérprete y lector del texto de las matrículas, se ha seleccionado Tesseract OCR\cite{tesseractocrTesseractWorlds}. Este motor óptico de reconocimiento de caracteres de código abierto utiliza redes neuronales LSTM \textit{(Long Short Term Memory)} para extraer el texto de las imágenes con un 99\% de precisión en más de 100 idiomas.
 
+Como la librería más popular de los algoritmos OCR (tecnología de inteligencia artificial para buscar y reconocer texto en imágenes), Tesseract trabaja buscando patrones en píxeles, letras, palabras y frases con un enfoque en dos pasos llamado reconocimiento adaptativo resumido en la figura \ref{fig:t-ocr}. Se requiere de una etapa para el reconocimiento de caracteres y una segunda para rellenar las letras de las cuales no estaba seguro el algoritmo, pero que encajan con la palabra, frase o contexto.
 
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/t-ocr.png}
+    \caption{Esquema del funcionamiento del algoritmo Tesseract OCR\\
+    \footnotesize{Fuente: \textit{https://tesseractocr.blogspot.com/2020/12/how-tesseract-ocr-works.html}}}
+    \label{fig:t-ocr}
+\end{figure}
+
+El primer paso es un análisis de componentes conectados que guarda los contornos de los componentes y los agrupa en \textit{Blobs} por anidación. Esta etapa, aunque computacionalmente costosa, facilita la detección de texto inverso (como si fuera un contraste de blanco y negro) gracias a la anidación de contornos y las relaciones entre contornos hijo y padre. Los \textit{Blobs} se agrupan a su vez en líneas de texto, y se analizan líneas y regiones para determinar si se trata de texto de espaciado fijo o proporcional. 
+
+Las líneas de texto se descomponen en palabras dependiendo del tipo de espaciado entre caracteres, mientras que el texto con espaciado fijo se descompone en celdas de caracteres; el texto proporcional se descompone en palabras usando espacios fijos y variables. El siguiente paso es el reconocimiento por dos pasos:
+\begin{itemize}
+    \item En el primer paso se intentan reconocer las palabras; de las que cada una se pasa a un clasificador adaptativo como dato de entrenamiento. Este clasificador ahora tiene más posibilidades de reconocer texto con mayor precisión.
+    \item Segundo paso para intentar reconocer las palabras que no se reconocieron con la suficiente claridad. Esta fase resuelve espacios variables y explora alternativas para localizar texto con menor tamaño de fuente.    
+\end{itemize}
 
 
 
@@ -1035,7 +1051,6 @@ Como intérprete y lector del texto de las matrículas, se ha seleccionado Tesse
 % --------------------
 
 Se han investigado y recopilado varios conjuntos de datos desde varias fuente, sobre todo desde Kaggle y Github. Los mejores datasets para el proyecto tendrían que tener tanto imágenes del mismo vehículo desde diferentes ángulos/cámaras como que la matrícula sea legible. Lamentablemente, el tipo de datasets que cumplan ambas funciones son bastante raros, aunque se han podido sacar 2 datasets que lo cumplen y otros dos que, aunque no hay posibilidad de variedad de cámaras hacia el mismo objetivo, aportan con gran cantidad de vehículos y sus matrículas.
-
 
 
 \subsection{Multi-perspective traffic video analysis}
