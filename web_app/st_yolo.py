@@ -11,7 +11,6 @@
     streamlit: Used for creating the web interface for uploading images and displaying results.
     tempfile: Used to store the video in the video processing option.
     torch: Enables GPU usage to accelerate model inference.
-    threading: Uses multiple threads to process the different camera inputs.
     ultralytics: Provides the loading of the YOLO model, which is used for vehicle and license plate detection.
     xlsxwriter: Module for creating Excel files and write information like date, time and location into them.
     zoneInfo: Gets the time information for the local zone (Madrid).
@@ -27,7 +26,7 @@ import streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import tempfile
 import torch
-import threading
+from threading import Thread
 from ultralytics import YOLO
 import xlsxwriter
 from zoneinfo import ZoneInfo
@@ -218,6 +217,11 @@ def lp_list():
 
 
 def generate_report(cam_number, location):
+    """Generates an Excel report with the date, time and location of the detections for each camera.
+    Args:
+        cam_number (str): The number of the camera for which the report is being generated.
+        location (str): The location of the camera, to be included in the report.
+    """
     report = xlsxwriter.Workbook(f'report_camera_{cam_number}.xlsx')
     rep_sheet = report.add_worksheet()
 
@@ -234,49 +238,135 @@ def generate_report(cam_number, location):
 
 
 def changePredictionState(index):
+    """Changes the state of the prediction for the camera with the given index. If the state is "Activar predicción", it changes to "Parar predicción" and vice versa. This state is used to determine whether to perform the detection on the camera feed or not.
+    Args:
+        index (int): The index of the camera for which the prediction state is being changed.
+    """
     st.session_state.predictions_state[index] = "Activar predicción" if st.session_state.predictions_state[index] == "Parar predicción" else "Parar predicción"
 
 
-def predict_camera_live(camera_num, placeholder):
-    while cap.isOpened():
+class CameraFeed:
+    """Class to handle the camera feed and perform the detection on it. It captures the video feed from the camera, performs the detection on each frame and updates the placeholder with the detected frame.
 
-            ret, frame = cap.read() if cap.isOpened() else (False, None)
+    Args:
+        camera_num (int): The index of the camera to be accessed.
+        device (torch.device): The device to perform the detection on, either CPU or GPU.
+        vehicle_model (YOLO): The loaded YOLO model for vehicle detection.
+        lp_model (YOLO): The loaded YOLO model for license plate detection.
+        v_conf_threshold (float): The confidence threshold for vehicle detection.
+        lp_conf_threshold (float): The confidence threshold for license plate detection.
+        placeholder (streamlit.delta_generator.DeltaGenerator): The placeholder to update with the detected frames.
+    """
+    def __init__(self, camera_num, device, vehicle_model, lp_model, 
+                 v_conf_threshold, lp_conf_threshold):
+        self.camera_num = camera_num
+        self.cap = cv2.VideoCapture(camera_num)      
+        self.device = device
+        self.vehicle_model = vehicle_model
+        self.lp_model = lp_model
+        self.v_conf_threshold = v_conf_threshold
+        self.lp_conf_threshold = lp_conf_threshold
+        self.placeholder = None
+
+    def set_placeholder(self, placeholder):
+        """Sets the placeholder to be updated with the detected frames.
+        Args:
+            placeholder (streamlit.delta_generator.DeltaGenerator): The placeholder to update with the detected frames.
+        """
+        self.placeholder = placeholder
+
+    def update_frame(self):
+        """Captures a frame from the camera feed, performs the detection on it and updates the placeholder with the detected frame. If the prediction state for this camera is "Parar predicción", it performs the detection and updates the placeholder with the detected frame. If the prediction state is "Activar predicción", it updates the placeholder with the original frame without performing detection.
+        Returns:
+            success (bool): True if the frame was captured and processed successfully, False otherwise.
+        """
+        if not self.cap.isOpened():
+            return False
             
-            if ret and frame is not None:
+        ret, frame = self.cap.read()
+        
+        if ret and frame is not None:      
+            if st.session_state.predictions_state[self.camera_num] == "Parar predicción":
+                frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                
+                v_results = self.vehicle_model.predict(frame_rgb, device=self.device, 
+                                                       conf=self.v_conf_threshold)
+                lp_results = self.lp_model.predict(frame_rgb, device=self.device, 
+                                                   conf=self.lp_conf_threshold)
+                img_detected = combineDetections(v_results, lp_results, frame_rgb)
+                
+                if self.placeholder:
+                    self.placeholder.image(img_detected, caption=f"Cámara {self.camera_num}", 
+                                          width="stretch")
+            else:
+                frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                if self.placeholder:
+                    self.placeholder.image(frame_rgb, caption=f"Cámara {self.camera_num}", 
+                                          width="stretch")
+            return True
+        return False
 
-                if st.session_state.predictions_state[camera_num] == "Parar predicción":
-                    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
-                    v_results = vehicle_model.predict(frame, device=device, conf=v_conf_threshold)
-                    lp_results = lp_model.predict(frame, device=device, conf=lp_conf_threshold)
-                    img_detected = combineDetections(v_results, lp_results, frame)
-
-                    placeholder.image(img_detected, caption=f"Cámara {camera_num}", width="stretch")
-                else:
-                    placeholder.image(frame, caption=f"Cámara {camera_num}", width="stretch")
+    def release(self):
+        """Releases the video capture object when it is no longer needed."""
+        if self.cap:
+            self.cap.release()
 
 
-def createMultiCamSection(camera_num, coords):
-    placeholder = st.empty()
-    col1, col2 = st.columns(2)
-    with col1:
-        report = st.button(f"Informe cámara {camera_num}", key=f"rep{camera_num}")
-    with col2:
-        pred = st.button(st.session_state.predictions_state[camera_num], key=f"inf{camera_num}")
+def setup_camera_feeds(coords):
+    """Sets up the camera feeds for the multi-camera option. It creates a CameraFeed object for each camera, sets the placeholder for each camera and starts a thread to update the frames for each camera.
 
-    if report:
-        generate_report(f"{camera_num}", coords[camera_num])
-    if pred:
-        changePredictionState(camera_num)
+    Args:
+        coords (list): A list of strings containing the coordinates of each camera, to be included in the reports.
+    Returns: 
+        cameras (list): A list of CameraFeed objects for each camera.
+    """
+    cameras = []
+
+    col1_cam, col2_cam = st.columns(2)
+    with col1_cam:
+        for i in range(0, 3, 2):
     
-    cap = cv2.VideoCapture(camera_num)
+            placeholder = st.empty()
+            try:
+                camera = CameraFeed(i, device, vehicle_model, lp_model, v_conf_threshold, lp_conf_threshold)
+                camera.set_placeholder(placeholder)
+                cameras.append(camera)
+            except: 
+                st.warning(f"La cámara con el índice {i} no está conectada. Revisa tu configuración y vuelve a intentarlo.")
+            finally:
+                col1_1, col2_1 = st.columns(2)
+                with col1_1:
+                    report = st.button(f"Informe cámara {i}", key=f"rep{i}")
+                with col2_1:
+                    pred = st.button(st.session_state.predictions_state[i], key=f"inf{i}")
 
-    if not cap.isOpened():
-        st.warning(f"No se pudo abrir la cámara {camera_num}")   
+                if report:
+                    generate_report(f"{i}", coords[i])
+                if pred:
+                    changePredictionState(i)
 
-    predict_camera_live(camera_num, placeholder)
+    with col2_cam:
+        for i in range(1, 4, 2):    
+            print(i)
+            placeholder = st.empty()
+            try:
+                camera = CameraFeed(i, device, vehicle_model, lp_model, v_conf_threshold, lp_conf_threshold)
+                camera.set_placeholder(placeholder)
+                cameras.append(camera)
+            except: 
+                st.warning(f"La cámara con el índice {i} no está conectada. Revisa tu configuración y vuelve a intentarlo.")
+            finally:
+                col1_2, col2_2 = st.columns(2)
+                with col1_2:
+                    report = st.button(f"Informe cámara {i}", key=f"rep{i}")
+                with col2_2:
+                    pred = st.button(st.session_state.predictions_state[i], key=f"inf{i}")
 
-    return placeholder, report, pred
+                if report:
+                    generate_report(f"{i}", coords[i])
+                if pred:
+                    changePredictionState(i)
+    return cameras        
 
 
 # Import the models and the license plate list and load Tesseract OCR to be used on the detections.
@@ -408,7 +498,6 @@ with st.container():
         
         if stop_button:
             st.session_state.video_processing = False
-            print(st.session_state.modo_entrada)
  
         # Open the video capture on the file, read each frame and do detection on each one
         if st.session_state.video_processing:
@@ -435,19 +524,10 @@ with st.container():
 
     # Option for multiple inputs or cameras
     elif st.session_state.modo_entrada == "Multi-cam":
-        print(st.session_state.modo_entrada)
         st.info("Mostrando la función multi-cámara. Asegúrate de que las cámaras estén conectadas y funcionando.")
         with st.spinner("Accediendo a las cámaras"):
             coords = ["42.588778, -5.576272", "42.596464, -5.577549", "42.588778, -5.576272", "42.596464, -5.577549"]
-            col1, col2 = st.columns(2)
-
-            with col1:
-                for i in range(0, 3, 2):
-                    createMultiCamSection(i, coords[i])
-
-            with col2:
-                for i in range(1, 3, 2):
-                    createMultiCamSection(i, coords[i])
+            setup_camera_feeds(coords)
 
 
 # Shows the detections only on the single image option
