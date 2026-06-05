@@ -5,6 +5,7 @@
     cv2: Modifies the image to draw the bounding boxes and the license plate text.
     datatime: Gets the current time for the reports.
     numpy: Used for image manipulation and conversion between PIL and OpenCV formats.
+    os: Pre-creates the folder for storing the reports.
     PIL: Used for image manipulation and conversion between OpenCV and PIL formats.
     pytesseract: Extracts the text from the detected license plate regions.
     re: Regex library for checking if the license plates introduced are correct.
@@ -19,6 +20,7 @@ from camera_input_live import camera_input_live
 import cv2
 from datetime import datetime
 import numpy as np
+import os
 from PIL import Image
 import pytesseract
 import re
@@ -222,7 +224,8 @@ def generate_report(cam_number, location):
         cam_number (str): The number of the camera for which the report is being generated.
         location (str): The location of the camera, to be included in the report.
     """
-    report = xlsxwriter.Workbook(f'report_camera_{cam_number}.xlsx')
+    os.makedirs("./reports", exist_ok=True)
+    report = xlsxwriter.Workbook(f'./reports/report_camera_{cam_number}.xlsx')
     rep_sheet = report.add_worksheet()
 
     dt = datetime.now().astimezone(ZoneInfo('Europe/Madrid'))
@@ -230,8 +233,10 @@ def generate_report(cam_number, location):
     labels = ["Date", "Time", "Location"]
     data = [dt.strftime("%d/%m/%Y"), dt.strftime("%X"), location]
 
-    for column, (label, dat) in enumerate((labels, data)):
+    for column, label in enumerate(labels):
         rep_sheet.write(0, column, label)
+
+    for column, dat in enumerate(data):
         rep_sheet.write(1, column, dat)
 
     report.close()
@@ -260,7 +265,7 @@ class CameraFeed:
     def __init__(self, camera_num, device, vehicle_model, lp_model, 
                  v_conf_threshold, lp_conf_threshold):
         self.camera_num = camera_num
-        self.cap = cv2.VideoCapture(camera_num)      
+        self.cap = cv2.VideoCapture(camera_num)
         self.device = device
         self.vehicle_model = vehicle_model
         self.lp_model = lp_model
@@ -325,47 +330,40 @@ def setup_camera_feeds(coords):
     col1_cam, col2_cam = st.columns(2)
     with col1_cam:
         for i in range(0, 3, 2):
-    
             placeholder = st.empty()
-            try:
-                camera = CameraFeed(i, device, vehicle_model, lp_model, v_conf_threshold, lp_conf_threshold)
-                camera.set_placeholder(placeholder)
-                cameras.append(camera)
-            except: 
-                st.warning(f"La cámara con el índice {i} no está conectada. Revisa tu configuración y vuelve a intentarlo.")
-            finally:
-                col1_1, col2_1 = st.columns(2)
-                with col1_1:
-                    report = st.button(f"Informe cámara {i}", key=f"rep{i}")
-                with col2_1:
-                    pred = st.button(st.session_state.predictions_state[i], key=f"inf{i}")
 
-                if report:
-                    generate_report(f"{i}", coords[i])
-                if pred:
-                    changePredictionState(i)
+            camera = CameraFeed(i, device, vehicle_model, lp_model, v_conf_threshold, lp_conf_threshold)
+            camera.set_placeholder(placeholder)
+            cameras.append(camera)
+
+            col1_1, col2_1 = st.columns(2)
+            with col1_1:
+                report = st.button(f"Informe cámara {i}", key=f"rep{i}")
+            with col2_1:
+                pred = st.button(st.session_state.predictions_state[i], key=f"inf{i}")
+
+            if report:
+                generate_report(f"{i}", coords[i])
+            if pred:
+                changePredictionState(i)
 
     with col2_cam:
         for i in range(1, 4, 2):    
-            print(i)
+            
             placeholder = st.empty()
-            try:
-                camera = CameraFeed(i, device, vehicle_model, lp_model, v_conf_threshold, lp_conf_threshold)
-                camera.set_placeholder(placeholder)
-                cameras.append(camera)
-            except: 
-                st.warning(f"La cámara con el índice {i} no está conectada. Revisa tu configuración y vuelve a intentarlo.")
-            finally:
-                col1_2, col2_2 = st.columns(2)
-                with col1_2:
-                    report = st.button(f"Informe cámara {i}", key=f"rep{i}")
-                with col2_2:
-                    pred = st.button(st.session_state.predictions_state[i], key=f"inf{i}")
+            camera = CameraFeed(i, device, vehicle_model, lp_model, v_conf_threshold, lp_conf_threshold)
+            camera.set_placeholder(placeholder)
+            cameras.append(camera)
+            col1_2, col2_2 = st.columns(2)
+            with col1_2:
+                report = st.button(f"Informe cámara {i}", key=f"rep{i}")
+            with col2_2:
+                pred = st.button(st.session_state.predictions_state[i], key=f"inf{i}")
 
-                if report:
-                    generate_report(f"{i}", coords[i])
-                if pred:
-                    changePredictionState(i)
+            if report:
+                generate_report(f"{i}", coords[i])
+            if pred:
+                changePredictionState(i)
     return cameras        
 
 
