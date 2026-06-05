@@ -233,7 +233,7 @@ ___
 
 Run the application with the following command:
 ```bash
-uv run streamlit run .\web_app\st_yolo.py   
+uv run streamlit run .\web\app.py   
 ```
 
 NOTE: If there are errors in several elements like **TypeError: Failed to fetch dynamically imported module** clear the cache of Streamlit with the following command:
