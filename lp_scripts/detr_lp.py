@@ -2,28 +2,32 @@
     Package imports:
 
     albumentations: Provides multiple Data Augmentation functions to apply to the dataset.
+    json: To read the COCO formatted annotations for the dataset.
+    os: To handle file paths and directories.
+    PIL: To read and manipulate images.
     numpy: To transform the image on transform function to numpy array.
     torch: Enabling GPU usage to accelerate model training and inference.
     transformers: Provides the implementation, training and validation of the RT-DETR model
 """
 import albumentations as A
+import json
 import numpy as np
+import os
+from PIL import Image
 import torch
 from transformers import AutoModelForObjectDetection, AutoImageProcessor, EarlyStoppingCallback, TrainingArguments, Trainer
 from torch.utils.data import Dataset
-import json
-import os
-from PIL import Image
 
 
 """
-
+    Initialize the RT-DETR model and processor
 """
 checkpoint = "PekingU/rtdetr_r18vd_coco_o365"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-id2label = {0: "car", 1: "truck", 2: "bus", 3: "train", 4: "motor", 5: "bike"}
-label2id = {"car": 0, "truck": 1, "bus": 2, "train": 3, "motor": 4, "bike": 5}
+
+id2label = {0: "license_plate"}
+label2id = {"license_plate": 0}
 
 model = AutoModelForObjectDetection.from_pretrained(checkpoint,
                                                     id2label=id2label,
@@ -67,7 +71,7 @@ val_transform = A.Compose(
     bbox_params=A.BboxParams(format="coco", label_fields=["category_ids"], min_area=1, min_width=1, min_height=1),
 )
 
-class VehicleLP(Dataset):
+class LicensePlate(Dataset):
 
     def __init__(self, csv_file, root_dir, transform=None):
         self.root_dir = root_dir
@@ -132,15 +136,15 @@ class VehicleLP(Dataset):
             "annotations": {"image_id": image_id, "annotations": annotations}
         }
 
-train_dataset = VehicleLP(
-    root_dir='./datasets/bdd100k_yolo/train/images',
-    csv_file='./datasets/bdd100k_yolo/train/train.json',
+train_dataset = LicensePlate(
+    root_dir='./datasets/UC3M-LP/train/images',
+    csv_file='./datasets/UC3M-LP/train/train.json',
     transform=train_transform
 )
 
-val_dataset = VehicleLP(
-    root_dir='./datasets/bdd100k_yolo/val/images',
-    csv_file='./datasets/bdd100k_yolo/val/val.json',
+val_dataset = LicensePlate(
+    root_dir='./datasets/UC3M-LP/val/images',
+    csv_file='./datasets/UC3M-LP/val/val.json',
     transform=val_transform
 )
 
@@ -156,7 +160,7 @@ def collate_fn(batch):
 
 
 training_args = TrainingArguments(
-    output_dir="./output/rtdetr",
+    output_dir="./output/lp/rtdetr",
 
     # Training Duration and Batch Size
     per_device_train_batch_size=16,
