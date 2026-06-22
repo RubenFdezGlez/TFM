@@ -2,10 +2,10 @@
     Package imports:
 
     albumentations: Provides multiple Data Augmentation functions to apply to the dataset.
-    json: To read the COCO formatted annotations for the dataset.
-    os: To handle file paths and directories.
-    PIL: To read and manipulate images.
     numpy: To transform the image on transform function to numpy array.
+    json: To read the COCO formatted annotations for the dataset.
+    os: Returns the image path when extracting a 
+    PIL: To read and manipulate images.
     torch: Enabling GPU usage to accelerate model training and inference.
     transformers: Provides the implementation, training and validation of the RT-DETR model
 """
@@ -67,7 +67,7 @@ train_transform = A.Compose([
 )
 
 val_transform = A.Compose(
-    [A.NoOps(),],
+    [A.NoOp(),],
     bbox_params=A.BboxParams(format="coco", label_fields=["category_ids"], min_area=1, min_width=1, min_height=1),
 )
 
@@ -137,14 +137,14 @@ class LicensePlate(Dataset):
         }
 
 train_dataset = LicensePlate(
-    root_dir='./datasets/UC3M-LP/train/images',
-    csv_file='./datasets/UC3M-LP/train/train.json',
+    root_dir='./datasets/UC3M-LP/.-yolo/LP/images/train',
+    csv_file='./datasets/UC3M-LP/.-yolo/LP/train/train.json',
     transform=train_transform
 )
 
 val_dataset = LicensePlate(
-    root_dir='./datasets/UC3M-LP/val/images',
-    csv_file='./datasets/UC3M-LP/val/val.json',
+    root_dir='./datasets/UC3M-LP/.-yolo/LP/images/val',
+    csv_file='./datasets/UC3M-LP/.-yolo/LP/val/val.json',
     transform=val_transform
 )
 
@@ -163,22 +163,21 @@ training_args = TrainingArguments(
     output_dir="./output/lp/rtdetr",
 
     # Training Duration and Batch Size
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=16,
+    per_device_train_batch_size=12,
+    per_device_eval_batch_size=12,
     dataloader_num_workers=4,
-    num_train_epochs=30,
-    #max_steps=300,
+    num_train_epochs=40, # Changing 
 
     # Learning Rate & Scheduler
-    learning_rate=1e-4,
-    lr_scheduler_type="cosine",
-    warmup_steps=5,
+    learning_rate=5e-5,
+    # lr_scheduler_type="cosine",
+    # warmup_steps=5,
 
     # Optimizer
-    optim="adamw_torch",
-    weight_decay=0.01,
-    adam_beta1=0.9,
-    adam_beta2=0.999, 
+    optim="adamw_torch_fused",
+    # weight_decay=0.01,
+    # adam_beta1=0.9,
+    # adam_beta2=0.999, 
 
     # Mixed Precision Training
     fp16=True, # Do not change
@@ -207,7 +206,7 @@ trainer = Trainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     data_collator=collate_fn,
-    callbacks=[EarlyStoppingCallback(early_stopping_patience=10)],
+    callbacks=[EarlyStoppingCallback(early_stopping_patience=25)],
 )
 
 trainer.train()

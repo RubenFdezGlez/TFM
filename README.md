@@ -169,6 +169,13 @@ pip install -r requirements.txt
 python3 scripts/labels2yolo.py . 640 320
 ```
 
+5. To convert it to COCO format, we continue using the library **yolococo**.
+```bash
+uv run yolococo yolo2coco --images datasets/UC3M-LP/.-yolo/LP/images/train --labels datasets/UC3M-LP/.-yolo/LP/labels/train --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/UC3M-LP/.-yolo/LP/train/train.json
+
+uv run yolococo yolo2coco --images datasets/UC3M-LP/.-yolo/LP/images/val --labels datasets/UC3M-LP/.-yolo/LP/labels/val --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/UC3M-LP/.-yolo/LP/val/val.json
+```
+
 
 ___
 

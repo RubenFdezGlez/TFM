@@ -1,109 +1,236 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Version 0.8 // May 2025
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Rubén Fernández González
-%%  - rferng19@estudiantes.unileon.es
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[11pt]{article}
-\usepackage{FAP_style}
-\usepackage{comment}
+% Tipo de documento:
+\documentclass[12pt,a4paper,onecolumn,oneside]{report}
+\newcommand{\mychapter}[2]{
+	\setcounter{chapter}{#1}
+	\setcounter{section}{0}
+	\chapter*{#2}
+	\addcontentsline{toc}{chapter}{#2}
+}
 
+% Importación de paquetes
+\usepackage[a4paper, top=3cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry} % Márgenes según formato.
+\usepackage[utf8]{inputenc} % Codificación UTF-8.
+\usepackage[T1]{fontenc}    % Para usar caracteres con tilde.
+\usepackage[spanish,es-tabla]{babel} % Escritura en castellano.
+\usepackage{eurosym}  % Para el símbolo del EURO (€).
+\usepackage{graphicx} % Paquete de imágenes.
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage[usenames,dvipsnames]{color} % Texto en colores.
+\usepackage{xcolor}   % Extra colors.
+\usepackage{url}      % Para escritura de URLs.
+\usepackage[breaklinks]{hyperref} % Hiperreferencias.
+\usepackage{amsmath,amssymb} % Para los símbolos matemáticos.
+\usepackage{cite}     % Para las citas de referencias (crea el superíndice).
+\usepackage{listings} % Para coloreado de código fuente.
+\usepackage{verbatim} % Para textos tipo consola y otros formatos.
+\usepackage{fancyvrb} % Más opciones de verbatim.
+\usepackage{parskip}  % OPCIONAL: Separa los párrafos con una línea en blanco.
+\usepackage{fancyhdr} % Para el tamaño y estilo de los encabezados.
+\usepackage{lastpage}
 \usepackage{multirow}
-\usepackage{diagbox}
-\usepackage{xfrac}
-\usepackage{tikz}
-\usepackage{caption, subcaption}
-% \usepackage{lscape}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+\usepackage{longtable}
+\usepackage{colortbl}
 \usepackage[export]{adjustbox}
-\usepackage{xcolor}
+\usepackage{caption}  % Para personalizar los pies de foto.
+\usepackage[all]{nowidow} % Para el control de líneas viudas y huérfanas (líneas sueltas en páginas nuevas):
+\usepackage[nottoc]{tocbibind}    % Incluye el apartado "Referencias" en el índice.
+%\def\spanishrefname{Bibliografía} % Para que ponga "Bibliografía" en lugar de "Referencias". SÓLO se aplica a formato "article". En "report" ya pone "Bibliografía".
+\usepackage{dirtree}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{doi}
+\usepackage{xurl}
 
-%% ===============================================
-%% Setting the line spacing (3 options: only pick one)
-% \doublespacing
-% \singlespacing
-\onehalfspacing
-%% ===============================================
+\setlength{\parindent}{15pt} % Sangría de párrafos estándar (15 puntos). Necesario incluirla si se usa el paquete 'parskip'.
 
-\setlength{\droptitle}{-5em} %% Don't touch
+\captionsetup{figurename=Figura, tablename=Tabla, labelsep=colon, labelfont=bf, font=small, justification=centering} % Opciones del paquete caption para los pies de imágenes y tablas
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SET THE TITLE
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TITLE:
-\title{Sistema Inteligente de Detección, Identificación y Análisis de Vehículos
+\setlength{\unitlength}{1 cm} % Unidad de trabajo de medidas.
+
+\renewcommand*{\baselinestretch}{1.5} % Altura del INTERLINEADO.
+\renewcommand{\shorthandsspanish}{}    % Para que corte las palabras según el castellano.
+
+
+% Propiedades para el PDF generado (METADATOS):
+\newcommand{\authorNames}{Rubén Fernández González}
+\newcommand{\pdftitle}{Sistema Inteligente de Detección, Identificación y Análisis de Vehículos}
+\hypersetup{
+  pdftitle={\pdftitle},% Título
+  pdfauthor={\authorNames},% Autor
+  pdfsubject={\pdftitle \ - \authorNames},% Asunto
 }
 
-% AUTHORS:
-\author{Rubén Fernández González\\
-    \href{mailto:rferng19@estudiantes.unileon.es}{\texttt{rferng19@estudiantes.unileon.es}
-    }
-}    
-% DATE:
-\date{\today}
+% Para la representación de código fuente:
+% Para Python:
+\lstset{
+	language=Python,
+	basicstyle=\scriptsize,
+	frame=single,
+	numbers=left,
+	numberstyle=\scriptsize,
+	stepnumber=1,
+	numbersep=9pt,
+	backgroundcolor=\color{White},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	captionpos=b,
+	breaklines=true,
+	keywordstyle=\color{blue}\bfseries,
+	stringstyle=\color{orange}\bfseries,
+	commentstyle=\color{green}\bfseries
+}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\fancypagestyle{headings}{% Redefine el estilo "headings".
+	\fancyhf{} % Clear all header and footer fields.
+	\lhead{\small \it Máster en Robótica e Inteligencia Artificial} 
+	\rhead{\small \it Página \thepage \hspace{1pt} de \pageref{LastPage}}      % Nº de página a la derecha. Tamaño "small".
+	\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+ \rfoot{\small \it Rubén Fernández González}
+}
+
+% Ajustes para división manual de palabras:
+\hyphenation{Python} % Impide que la palabra Python sea dividida al acabar una línea.
+
+
+
+%%%%%% INICIO DEL DOCUMENTO: %%%%%%
+
 \begin{document}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ABSTRACT
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\setstretch{.8}
-\maketitle
-% %%%%%%%%%%%%%%%%%%
-\begin{abstract}
-% Insert the abstract content here--------------------------------------
-Esta es una propuesta de investigación sobre el diseño e implementación de una prueba de concepto de un sistema inteligente para la detección, identificación y análisis de vehículos en entornos reales (cámaras embarcadas y puntos fijos como peajes). El sistema integrará técnicas de visión por computador y de aprendizaje profundo para detectar e identificar vehículos en vídeo en tiempo real.
-% A paragraph summarizing the content of the Research proposal, including (i) the research line selected, (ii) the problem to be solved, (iii) the selected algorithm/method and (iv) the results obtained from that algorithm/method in different datasets from the literature
 
-% END CONTENT ABS------------------------------------------
+% Página de TÍTULO (portada):
+\begin{titlepage}
 
-\textit{\textbf{Keywords: } Detección de vehículos, Identificación, Deep Learning, Cámaras embarcadas} \\ %% <-- Keywords HERE!
-\noindent
+\begin{picture}(0,0)
+\put(-2,-1){\includegraphics[height=3cm]{figures/ule.jpg}}
+\put(13,-1){\includegraphics[width=3cm]{figures/escudo_ing.png}}
+\end{picture}
 
-\end{abstract}
-}
+\begin{center}
+\textbf{{\Large \bf Escuela de Ingenierías}}\\[1.0cm]  % Salto de línea dejando 1.2cm.
+\textbf{{\Large \bf Industrial, Informática y Aeroespacial}}\\[2.5cm]
+{\Large \bf MÁSTER EN ROBÓTICA E INTELIGENCIA ARTIFICIAL}\\[2.5cm]
+{\Large Trabajo de Fin de Máster}\\[1.5cm]
+{\Large \textbf{Sistema inteligente de detección, identificación y análisis de vehículos\\[1.0cm]}}
+{\Large \textbf{Intelligent system on vehicle detection, identification and analysis\\[2.0cm]}}
+\end{center}
 
 
+\begin{flushright}
+{\bf Autor: Rubén Fernández González}\\[0.5cm]
+{\bf Tutor: Eduardo Fidalgo Fernández}\\[0.5cm]
+\end{flushright}
+\begin{center}
+\Huge{(Julio, 2026)}
+\end{center}
+\end{titlepage}
+
+
+% Página de FIRMAS:
+\newpage
+\thispagestyle{empty} % Página no numerada.
+
+\setlength\LTpre{0pt}
+\begin{longtable}{{|l|}}
+    \hline
+    \multicolumn{1}{|c|}{}\\
+    \multicolumn{1}{|c|}{\textbf{UNIVERSIDAD DE LEÓN}}\\
+    \multicolumn{1}{|c|}{\textbf{Escuela de Ingenierías Industrial, Informática y Aeroespacial}}\\
+    \multicolumn{1}{|c|}{\textbf{MÁSTER EN ROBÓTICA E INTELIGENCIA ARTIFICIAL}}\\
+    \multicolumn{1}{|c|}{\textbf{Trabajo de Fin de Máster}}\\
+    \multicolumn{1}{|c|}{}\\ 
+    \hline
+    \multicolumn{1}{|l|}{\textbf{ALUMNO}: Rubén Fernández González}\\ \hline
+    \multicolumn{1}{|l|}{\textbf{TUTOR}: Eduardo Fidalgo Fernández}\\ 
+    \hline
+    \multicolumn{1}{|p{16cm}|}{\textbf{TÍTULO}: Sistema inteligente de detección, identificación y análisis de vehículos}\\ 
+    \hline
+    \multicolumn{1}{|l|}{\textbf{CONVOCATORIA}: Julio, 2026}\\ 
+    \hline
+\end{longtable}
+
+\vspace{-1em}
+\begin{longtable}{|p{16cm}|}
+    \textbf{RESUMEN}:\\
+    El objetivo de este proyecto ha sido realizar un programa...\\
+    \hline
+\end{longtable}
+
+\vspace{-1em}
+\begin{longtable}{|p{16cm}|}    
+    \textbf{ABSTRACT}:\\
+    The objective of this project has been to develop a program...\\
+    \hline
+    \textbf{Palabras clave}: Detección, Redes neuronales, YOLO, vehículos, RT-DETR, reconocimiento, Tesseract, OCR, CNN.\\
+    \hline
+\end{longtable}
+
+\newpage
+\pagestyle{plain}
+
+\setcounter{page}{1} % Esta página es la 1.
+
+
+% Página con el ÍNDICE GENERAL
+\tableofcontents
+
+% Página con el ÍNDICE DE FIGURAS
+\listoffigures
+
+% Página con el ÍNDICE DE TABLAS
+\listoftables
 
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BODY OF THE DOCUMENT
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Página con el GLOSARIO:
+\mychapter{0}{Glosario de términos}
+\label{chap:glosario}
+% A partir de aquí ya se incluye el encabezado en las páginas:
+\pagestyle{headings}
 
-% --------------------
-\section{Introducción}
-% --------------------
+% Al ser un capítulo sin número, hay que indicarle qué título añadir al encabezado de la página:
+\markboth{GLOSARIO}{} 
 
-La detección e identificación de vehículos en tiempo real es una tarea muy importante actualmente, debido al crecimiento de la industria de coches autónomos (y otros también no autónomos), donde unos sensores se encargan de detectar otros vehículos en las proximidades para poder razonar y actuar gracias a esta información, como pueden ser unos sensores en distintas partes del vehículo para que, al aparcar, puedan detectar y medir distancias a un vehículo próximo. Y no solo es importante para los coches autónomos también lo es para:
-\begin{itemize}
-    \item \textbf{Control del tráfico:} Se puede implementar un programa para que detecte y cuente la cantidad y tipo de vehículos de una intersección para variar dinámicamente el estado de los semáforos.
-    \item \textbf{Coches robados:} Simplemente se puede hacer una detección de los coches y compararlos uno a uno con una base de datos de coches, o vehículos en general, robados y poder realizar avisos a la policía.
-\end{itemize}
-
-La detección y reconocimiento precisa de un vehículo no es una tarea sencilla, incluso para los humanos diferenciar entre muchas marcas existentes y aún más, entre los diferentes modelos de cada una de las marcas, es una tarea sumamente compleja. Las redes neuronales permiten hacer esta tarea de forma eficaz y precisa, pudiéndose comunicar con otro tipo de programas de señales o emergencias, por ejemplo.
-
-En general, la mayoría de investigadores usan alguno de los tantos modelos YOLO existentes. Ya que YOLO destaca en cualquier tipo de tarea gracias a su flexibilidad, es especialmente prominente a dar buenos resultados en la tarea de detección y reconocimiento de vehículos. Un ejemplo claro puede ser el caso del proyecto de \textbf{Sarvesh Shirulkar} et Al.\cite{ramzan2023enhancingvehicleentranceparking} con YOLO para controlar las señales de tráfico según las detecciones del modelo YOLO. Otro ejemplo es el de \textbf{Anning Ji y Xintao Ma}\cite{JI2025804}, en el que utilizan como base un modelo YOLO10 al que se le modifica la parte de extracción de características. Aunque estos modelos predominen la elección de investigadores, hay otras opciones con diferentes arquitecturas que pueden ser muy útiles en determinados escenarios, como puede ser la red neuronal de \textbf{Leyre Encio} et Al.\cite{articleEncio} basada en CenterNet, que trata de asimilar un diseño similar a la de los transformadores con su \textit{encoder-decoder}.
-
-En la sección \ref{sec:literatureReview} o \textbf{Estado del arte}, se nombran varios métodos, principalmente con modelos YOLO, para detectar y reconocer todo tipo de vehículos en distintos entornos. Los modelos (o métodos) seleccionados se explicarán detalladamente en la sección \ref{sec:selectedMethod} o \textbf{Métodos seleccionados}. En la sección \ref{sec:datasets} o \textbf{Datasets} se disponen los conjuntos de datos de vehículos que se van a utilizar para entrenar y probar los modelos. 
+% (Glosario de términos en orden alfabético)
+\begin{description}
+    \item[] 
+\end{description}
 
 
 
+%%%% Inicio de los CAPÍTULOS %%%%
+\newpage
+\renewcommand{\thepage}{\arabic{page}}
+%\setcounter{page}{1} % Esta página es la 1.
 
 
-% --------------------
-\section{Estado del arte}
-% --------------------
-% Insert the content of the proposed solutions here. Text from the guide is inserted as a reference for you to be aware of where the text could be inserted in LaTeX.
-\label{sec:literatureReview}
 
-\subsection{Detección de vehículos}
+\chapter{Introducción}
+\label{Introducción}
+
+\section{Contexto del problema}
+
+ 
+
+\section{Objetivos}
+
+El objetivo principal de este trabajo ...
+
+\section{Estructura del trabajo}
+El documento se estructura en diferentes secciones: ...
+
+
+\chapter{Estado del arte}
+\label{Estado del arte}
+
+...
+
+
+\section{Detección de vehículos}
 
 K. Saiveena y P. Praaven\cite{SAIVEENA2026111086} tienen un enfoque de detección y segmentación de vehículos basado en \textit{Edge Intelligence} (EI), una rama de \textit{Deep Learning}. El programa, \textbf{ViT-YOLOv5}, se divide en dos partes fundamentales: la primera es un ViT \textit{(Vision Transformer)}, encargado de \textbf{extraer y procesar las características} de las imágenes sustituyendo la labor del extractor de características del detector \textbf{YOLOv5} \footnote{Accesible a través de GitHub: \url{https://github.com/ultralytics/yolov5}}: \textbf{CSPDarknet}. Esta integración permite capturar de manera más eficiente tanto las características globales como las locales. La segunda parte consta del detector \textbf{YOLOv5}, que se encarga de generar las predicciones de clase, su confianza y las \textit{bounding boxes}. Para medir el rendimiento de este proyecto se obtuvieron 4 datasets de vehículos (dirigidos a detección de objetos principalmente) de la web de Kaggle \footnote{Accesibles a través de: \href{https://www.kaggle.com/datasets/sakshamjn/vehicle-detection-8-classes-object-detection}{Sakshamjn}, \href{https://www.kaggle.com/datasets/saumyapatel/traffic-vehicles-object-detection}{Saumyapatel}, \href{https://www.kaggle.com/datasets/seyeon040768/car-detection-dataset}{Seyeon} y \href{https://www.kaggle.com/datasets/nadinpethiyagoda/vehicle-dataset-for-yolo}{Nadinpethiyagoda}}, alcanzando un \textit{accuracy} de \textbf{97.25\%}, \textbf{94.42\%}, \textbf{94\%} y \textbf{95.7\%} para cada dataset, respectivamente. Un análisis profundo con diferentes configuraciones y modelos se puede observar en la figura \ref{fig:vit-yolo}, con diferencias notables entre el \textbf{YOLOv5} base y el modificado con el transformador, \textbf{ViT-YOLOv5}. Este modelo se ha entrenado en una NVIDIA Tesla V100 GPU de 32GB de RAM.
 
@@ -869,15 +996,14 @@ Este modelo logra altos resultados de rendimiento en los datasets de UFPR, con u
 
 
 
+\chapter{Métodos seleccionados}
+\label{Métodos seleccionados}
 
-% --------------------
-\section{Métodos seleccionados}
-% --------------------
-\label{sec:selectedMethod}
+Para este proyecto se han escogido dos implementaciones completamente diferentes para hacer comparaciones entre ellas tanto en el rendimiento como en la precisión en la tarea de detección. Los métodos seleccionados son:
 
 \subsection{YOLOv26n}
 
-YOLO26\cite{sapkota2026yolo26keyarchitecturalenhancements}, publicado en Septiembre de 2025, es la versión más novedosa entre los modelos YOLO, con más mejoras en cuestión de eficiencia, precisión y despliegue en dispositivos de menor rendimiento; algo que se puede observar en la figura \ref{fig:yolo-stats}. 
+YOLO26\cite{sapkota2026yolo26keyarchitecturalenhancements}, publicado en Septiembre de 2025, es la versión más novedosa entre los modelos YOLO, con más mejoras en cuestión de eficiencia, precisión y despliegue en dispositivos de menor rendimiento; algo que se puede observar en la figura \ref{fig:yolo-stats} en comparación con anteriores modelos. 
 
 \begin{figure}[htb]
 \centering
@@ -954,7 +1080,7 @@ Esta nueva arquitectura, visible en la figura \ref{fig:yolo26-arch}, elimina el 
 
 
 
-\subsubsection{Modelos}
+\subsubsection{Modelos YOLO}
 
 Aunque YOLO se creó con la principal finalidad de la tarea de detección, se han ido creando distintos modelos a lo largo de las versiones de YOLO con diferentes fines: clasificación, segmentación de instancias, detección de puntos claves/poses y detección de objetos orientados. Actualmente, Ultralytics construye 5 modelos distintos con la misma estructura, aunque con diferentes tamaños de capas. Para esta última versión de detección de YOLO, YOLO26, hay 5 modelos más o menos potentes (dependiendo del número de parámetros), cuyas especificaciones se pueden observar en la tabla \ref{tab:yolo-models} usando imágenes de 640 x 640 píxeles, redimensionadas del conjunto de datos COCO.
 
@@ -1045,17 +1171,28 @@ Las líneas de texto se descomponen en palabras dependiendo del tipo de espaciad
 
 
 
-% --------------------
-\section{Datasets}
-\label{sec:datasets}
-% --------------------
+\chapter{Metodología experimental}
+\label{Metodología experimental}
+
+La metodología que se ha empleado es la habitual en el desarrollo de programas relacionados con \textit{Machine Learning} y/o \textit{Deep Learning}, similar al de la figura \ref{fig:metodologia-dl}: (1) Recogida de datos, (2) Procesamiento de los datos, (3) Selección de los modelos, (4) Entrenamiento de los modelos, (5) Validación del modelo y resultados.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/methodology_dl.jpg}
+    \caption{Metodología del diagnóstico y clasificación de Alzheimer con CNNs\\
+    \footnotesize{Fuente: \textit{https://peerj.com/articles/cs-1177/}}}
+    \label{fig:metodologia-dl}
+\end{figure}
+
+
+
+\section{Extracción de datos}
 
 Se han investigado y recopilado varios conjuntos de datos desde varias fuente, sobre todo desde Kaggle y Github. Los mejores datasets para el proyecto tendrían que tener tanto imágenes del mismo vehículo desde diferentes ángulos/cámaras como que la matrícula sea legible. Lamentablemente, el tipo de datasets que cumplan ambas funciones son bastante raros, aunque se han podido sacar 2 datasets que lo cumplen y otros dos que, aunque no hay posibilidad de variedad de cámaras hacia el mismo objetivo, aportan con gran cantidad de vehículos y sus matrículas.
 
-
 \subsection{Multi-perspective traffic video analysis}
 
-Este conjunto de datos\cite{Sanchez-Iborra2026} está comprendido por 3 escenarios distintos, las cuales a su vez se dividen en 3 perspectivas distintas (cámara del coche, dron y cámara de vigilancia), que a su vez cada una se divide en 2 secuencias de vídeo distintas grabadas a una resolución de \textbf{1920 x 1080} a \textbf{60 fotogramas por segundo}; el total de secuencias de vídeo alcanzando 18. Un ejemplo de fotograma del dataset se puede observar en la figura \ref{fig:rsu-esc1}. Ya que este conjunto de datos no lleva ninguna etiqueta asociada a alguno de los vídeos, se utilizará únicamente para el conjunto de pruebas.
+Este conjunto de datos \cite{Sanchez-Iborra2026} está comprendido por 3 escenarios distintos, las cuales a su vez se dividen en 3 perspectivas distintas (cámara del coche, dron y cámara de vigilancia), que a su vez cada una se divide en 2 secuencias de vídeo distintas grabadas a una resolución de \textbf{1920 x 1080} a \textbf{60 fotogramas por segundo}; el total de secuencias de vídeo alcanzando 18. Un ejemplo de fotograma del dataset se puede observar en la figura \ref{fig:rsu-esc1}. Ya que este conjunto de datos no trae ningún 
 
 \begin{figure}[htb]
 \centering
@@ -1066,10 +1203,9 @@ Este conjunto de datos\cite{Sanchez-Iborra2026} está comprendido por 3 escenari
 \end{figure}
 
 
-
 \subsection{Bdd100k}
 
-Este conjunto de datos\cite{bdd100k} es uno de los más grandes y diversos en cuestión de imágenes de vehículos con anotaciones precisas. Como sugiere el nombre, el dataset consta de 100,000 vídeos grabados desde una cámara acoplada en la parte delantera interior del vehículo; cada uno dura 40 segundos y están grabados a una resolución de \textbf{720 píxeles} a \textbf{30 fps}. Para mantener un dataset diverso, Bdd100k cubre diferentes condiciones climáticas y periodos del día. Las anotaciones incluyen tanto las de detección como las de segmentación y cubren 10 categorías diferentes, como los autobuses y las señales, pudiéndose observar en la figura \ref{fig:bdd} el número de apariciones de cada una de ellas en el dataset. Un ejemplo del conjunto de datos se puede observar en la figura \ref{fig:bdd-example}. Este conjunto de datos se utilizará inicialmente para entrenar y validar (para que el modelo se adapte bien a nuevos datos) los modelos.
+Este conjunto de datos \cite{bdd100k} es uno de los más grandes y diversos en cuestión de imágenes de vehículos con anotaciones precisas. Como sugiere el nombre, el dataset consta de 100,000 vídeos grabados desde una cámara acoplada en la parte delantera interior del vehículo; cada uno dura 40 segundos y están grabados a una resolución de \textbf{720 píxeles} a \textbf{30 fps}. Para mantener un dataset diverso, Bdd100k cubre diferentes condiciones climáticas y periodos del día. Las anotaciones incluyen tanto las de detección como las de segmentación y cubren 10 categorías diferentes, como los autobuses y las señales, pudiéndose observar en la figura \ref{fig:bdd} el número de apariciones de cada una de ellas en el dataset. Un ejemplo del conjunto de datos se puede observar en la figura \ref{fig:bdd-example}.
 
 \begin{figure}[htb]
 \centering
@@ -1088,10 +1224,9 @@ Este conjunto de datos\cite{bdd100k} es uno de los más grandes y diversos en cu
 \end{figure}
 
 
-
 \subsection{UC3M-LP}
 
-Este conjunto de datos creado por investigadores de la universidad Carlos III de Madrid\cite{RAMAJOBALLESTER2024104608} es presentado para la tarea de \textbf{detección de matrículas y reconocimiento de caracteres} junto a otro dataset de gran tamaño para reidentificación de vehículos: UC3M-VRI. Se almacenan 1975 imágenes de 2547 vehículos distintos, lo que hacen 2547 matrículas, sumando un total de 12757 caracteres. Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. La variedad de imágenes es amplia en cuestión de luz: 2185 imágenes de día y 362 de noche; la distancia de la cámara al vehículo es de entre 1 y 20 metros y la perspectiva cambia en cada imagen. El conjunto se ha probado en diferentes modelos de detección, incluyendo varias arquitecturas YOLO (varios modelos de los YOLOv3, YOLOv4 y YOLOv5), EfficientDet, ATSS y ASFF, siendo el resultado más notable el de \textbf{YOLO5s} con un tamaño de imagen de \textbf{1280 píxeles}, consiguiendo un \textbf{mAP@0.5 de 98.8\%} y un \textbf{mAP@0.5-0.95 de 89.3\%}. En el caso del reconocimiento de la matrícula, utilizando el mismo modelo con el tamaño de imagen de \textbf{640 píxeles y el optimizador AdamW} se consigue un \textbf{mAP@0.5 de 97.6\%} y un \textbf{mAP@0.5-0.95 de 76.4\%}.
+Este conjunto de datos creado por investigadores de la universidad Carlos III de Madrid \cite{RAMAJOBALLESTER2024104608} es presentado para la tarea de \textbf{detección de matrículas y reconocimiento de caracteres} junto a otro dataset de gran tamaño para reidentificación de vehículos: UC3M-VRI. Se almacenan 1975 imágenes de 2547 vehículos distintos, lo que hacen 2547 matrículas, sumando un total de 12757 caracteres. Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. La variedad de imágenes es amplia en cuestión de luz: 2185 imágenes de día y 362 de noche; la distancia de la cámara al vehículo es de entre 1 y 20 metros y la perspectiva cambia en cada imagen. El conjunto se ha probado en diferentes modelos de detección, incluyendo varias arquitecturas YOLO (varios modelos de los YOLOv3, YOLOv4 y YOLOv5), EfficientDet, ATSS y ASFF, siendo el resultado más notable el de \textbf{YOLO5s} con un tamaño de imagen de \textbf{1280 píxeles}, consiguiendo un \textbf{mAP@0.5 de 98.8\%} y un \textbf{mAP@0.5-0.95 de 89.3\%}. En el caso del reconocimiento de la matrícula, utilizando el mismo modelo con el tamaño de imagen de \textbf{640 píxeles y el optimizador AdamW} se consigue un \textbf{mAP@0.5 de 97.6\%} y un \textbf{mAP@0.5-0.95 de 76.4\%}.
 
 \begin{figure}[htb]
 \centering
@@ -1102,15 +1237,14 @@ Este conjunto de datos creado por investigadores de la universidad Carlos III de
 \end{figure}
 
 
-
 \subsection{UC3M-VRI}
 
-Este conjunto de datos es la otra mitad de la investigación del dataset anterior\cite{RAMAJOBALLESTER2024104608} y está orientado a reidentificación de vehículos. Se almacenan 1611 imágenes de 286 vehículos distintos todas sacadas de día y divididas en dos subconjuntos:
+Este conjunto de datos es la otra mitad de la investigación del dataset anterior \cite{RAMAJOBALLESTER2024104608} y está orientado a reidentificación de vehículos. Se almacenan 1611 imágenes de 286 vehículos distintos todas sacadas de día y divididas en dos subconjuntos:
 \begin{itemize}
     \item \textbf{Conjunto de carretera:} 458 imágenes de 201 vehículos diferentes, sacadas a una distancia de entre 5 a 7 metros con una sola perspectiva.
     \item \textbf{Conjunto de intersección:} 1153 imágenes de 85 vehículos diferentes, sacadas a una distancia de entre 10 y 20 metros usando 2 cámaras para realizar diferentes planos sobre los vehículos que aparecen.
 \end{itemize}
-Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. Los modelos seleccionados son EfficientNetB0 y FastReid, cada uno con otros 2 modelos que han sido entrenados en datasets diferentes: \textbf{Stanford-Cars}\cite{6755945}, \textbf{VeRi-776} y \textbf{VeRi-Wild}. El modelo con mayores resultados ha sido FastReid (entrenado en VeRi-776) con un 97.9\% de accuracy con el test positivo-negativo (se selecciona una imagen (positiva) y se selecciona una segunda del resto de clases (negativa)) en el subdataset de carreteras y un 87.8\% de accuracy en el subdataset de intersecciones.
+Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. Los modelos seleccionados son EfficientNetB0 y FastReid, cada uno con otros 2 modelos que han sido entrenados en datasets diferentes: \textbf{Stanford-Cars} \cite{6755945}, \textbf{VeRi-776} y \textbf{VeRi-Wild}. El modelo con mayores resultados ha sido FastReid (entrenado en VeRi-776) con un 97.9\% de accuracy con el test positivo-negativo (se selecciona una imagen (positiva) y se selecciona una segunda del resto de clases (negativa)) en el subdataset de carreteras y un 87.8\% de accuracy en el subdataset de intersecciones.
 
 \begin{figure}[htb]
 \centering
@@ -1122,87 +1256,54 @@ Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. Los m
 
 
 
+\section{Preprocesado de datos}
 
+Ya que el dataset tenía una estructura diferente a la pedida por los modelos YOLO, se ha creado una función que reconstruya toda esta estructura de forma que quede de la siguiente forma:
 
-% --------------------
-\section{Métricas}
-% --------------------
-\label{sec:metrics}
-Para poder validar de forma equitativa los distintos métodos de detección, se tienen que seguir unas métricas a seguir para todos. Para empezar, se tiene que hablar del tiempo de procesamiento por imagen, ya que la velocidad de inferencia es prioritaria a la hora de detectar y reconocer claramente el vehículo y su matrícula.
-
-\begin{itemize}
-    \item \textbf{mAP50}: Precisión media de las detecciones, calculada con un umbral de intersección (IoU) de 0,5.
-
-    \item \textbf{mAP50-95}: Media entre todas las precisiones medias entre el umbral IoU 0,50 y 0,95, ambos umbrales incluidos.
-
-    \item \textbf{Precisión}: En una clase, es el número de predicciones correctas para esta clase entre el número total de predicciones para esta misma clase.
-
-    \item \textbf{Recall}: En una clase, es el número de predicciones correctas para esta clase entre el número total de instancias de esta misma clase.
-
-    \item \textbf{F1-score}: Es una métrica especializada para cuando las clases están desbalanceadas, es decir, el número de instancias de cada clase no es el mismo para cada una. Se calcula primero para cada clase con la ecuación:
-    \begin{gather*}
-        F1score = 2 \times \dfrac{Precision \times Recall}{Precision + Recall}
-    \end{gather*}
-\end{itemize}
-
-En el caso de las métricas de Precision, Recall y F1-score, para hacer la media del dataset entero hay dos opciones: (1) \textbf{Macro}: El sumatorio del \textit{f1-score} de cada clase entre el número de clases y (2) \textbf{Ponderada}: Considerar el número de instancias de cada clase, siendo las clases con mayor número de imágenes las que más aportan a la media.
-
-Además de estas métricas, se analizará también la diferenciación entre clases, es decir, fallos al clasificar correctamente la categoría de cada vehículo detectado. Esto se podría visualizar a través de la pérdida de clasificación en el entrenamiento, por ejemplo, pero se va a usar una matriz de confusión como la de la figura \ref{fig:cm} para ver que problemas tienen los modelos en situaciones donde no solo el modelo tenga problemas para detectar el vehículo, sino también para identificar exactamente qué es.
-
-\begin{figure}[htb]
-\centering
-    \includegraphics[width=0.85\textwidth]{figures/confmatrix.png}
-    \caption{Ejemplo de matriz de confusión}
-    \label{fig:cm}
-\end{figure}
-
-
-
-% --------------------
-\section{Metodología experimental}
-\label{sec:met-exp}
-% --------------------
-
-La metodología que se ha empleado es la habitual en el desarrollo de programas relacionados con \textit{Machine Learning} y/o \textit{Deep Learning}, similar al de la figura \ref{fig:metodologia-dl}: (1) Recogida de datos, (2) Procesamiento de los datos, (3) Selección de los modelos, (4) Entrenamiento de los modelos, (5) Validación del modelo y resultados.
-
-\begin{figure}[htb]
-\centering
-    \includegraphics[width=.85\textwidth]{figures/methodology_dl.jpg}
-    \caption{Metodología del diagnóstico y clasificación de Alzheimer con CNNs\\
-    \footnotesize{Fuente: \textit{https://peerj.com/articles/cs-1177/}}}
-    \label{fig:metodologia-dl}
-\end{figure}
-
-
-
-\subsection{Preprocesado de datos}
-
-%[TODO] Despues de seleccionar el/los dataset/s, introducirlo/s con su propia estructura, tamaño de imagen, etiquetas, división...
-
-Ya que el modelo YOLO necesita un estructurado concreto, lo primero es construir programas y/o funciones personalizadas que modifiquen la estructura de los conjuntos de datos utilizados para entrenar y validar los modelos.
-
-Los modelos YOLO requieren que un archivo con etiquetas para cada imagen con varias líneas (una por objeto) con el formato \textbf{<class\_id> <center\_x> <center\_y> <width> <height>}, correspondiendo al número identificador de la clase (número entero comprendido entre 0 y el número de clases menos 1), las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Estos cuatro últimos valores están normalizados al rango [0,1].
-
-La estructura del conjunto de datos que tiene que seguir YOLO es de la siguiente forma:
 \dirtree{%
-    .1 st\_yolo.py.
-    .1 yolo26n.py.
-    .1 models.
-    .1 datasets.
-    .2 UC3MLP.
-    .3 train1.yaml.
-    .3 test.
-    .3 train.
-    .3 val.
-    .4 images.
-    .4 labels.
+.1 *.py.
+.1 datasets.
+.2 bdd100k_yolo.
+.3 train1.yaml.
+.3 train.
+.4 images.
+.5 *.jpg.
+.4 labels.
+.5 *.txt.
+.3 test.
+.3 val.
+.2 UC3M-LP.
+}
+
+Ahora que se tienen todas las imágenes para poder entrenar, validar y probar el modelo YOLO, se tienen que transformar las etiquetas por defecto del conjunto de datos al formato \textbf{<class\_id> <center\_x> <center\_y> <width> <height>}, correspondientes al número identificador de la clase, las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Estos cuatro últimos valores están normalizados al rango [0,1].
+
+Esta estructura es la requerida para YOLO, pero el modelo RT-DETR requiere una estructura COCO (ya que este modelo fue entrenado en este dataset). Sin embargo, esta adición es muy sencilla, pues en vez de tener que generar un archivo \textbf{.txt} por cada imagen, el formato COCO necesita de un archivo \textbf{.json} por cada conjunto (entrenamiento, validación y pruebas) y que se puede transformar directamente con el paquete yolococo y donde el archivo .txt almacena una lista de las clases del dataset en orden y en 3 líneas diferentes. 
+\begin{lstlisting}
+uv run yolococo yolo2coco --images datasets/bdd100k_yolo/train/images/ --labels datasets/bdd100k_yolo/train/labels --classes classes.txt  --bbox-round 3 --file-name-mode name --out datasets/bdd100k_yolo/train/train.json
+
+uv run yolococo yolo2coco --images datasets/bdd100k_yolo/val/images --labels datasets/bdd100k_yolo/val/labels --classes classes.txt  --bbox-round 3 --file-name-mode name --out datasets/bdd100k_yolo/val/val.json
+\end{lstlisting}
+
+El esquema de archivos quedaría de la siguiente manera:
+\dirtree{%
+.1 *.py.
+.1 datasets.
+.2 bdd100k_yolo.
+.3 train1.yaml.
+.3 train.
+.4 train.json.
+.4 images.
+.5 *.jpg.
+.4 labels.
+.5 *.txt.
+.3 test.
+.3 val.
+.2 UC3M-LP.
 }
 
 
 
-
-
-\subsection{Entrenamiento}
+\section{Entrenamiento}
 
 En este apartado se mostrarán los diferentes parámetros y configuraciones aplicadas o que se han probado en los entrenamientos de los modelos YOLO y DINO-DETR.
 
@@ -1382,43 +1483,460 @@ En los experimentos realizados se ha prestado especial atención a la diferencia
     \label{fig:g-ms}
 \end{figure}
 
+\section{Métricas}
 
+Para poder validar de forma equitativa los distintos métodos de detección, se tienen que seguir unas métricas a seguir para todos. Para empezar, se tiene que hablar del tiempo de procesamiento por imagen, ya que la velocidad de inferencia es prioritaria a la hora de detectar y reconocer claramente el vehículo y su matrícula.
 
-% --------------------
-\section{Implementaciones en Python}
-% --------------------
-\label{sec:python}
-
-Todo el desarrollo de las prácticas se subirá al siguiente repositorio de \textbf{GitHub}:\\ \url{https://github.com/RubenFdezGlez/MURIA-Practicas}. 
-
-Este repositorio incluirá, además del código necesario para la ejecución del sistema, un \textbf{README} detallado con información sobre la implementación y la guía de instalación de:
 \begin{itemize}
-    \item Entrenamiento, validación y pruebas del modelo YOLO.
-    \item Despliegue de la aplicación web para la detección de vehículos.
+    \item \textbf{mAP50}: Precisión media de las detecciones, calculada con un umbral de intersección (IoU) de 0,5.
+
+    \item \textbf{mAP50-95}: Media entre todas las precisiones medias entre el umbral IoU 0,50 y 0,95, ambos umbrales incluidos.
+
+    \item \textbf{Precisión}: En una clase, es el número de predicciones correctas para esta clase entre el número total de predicciones para esta misma clase.
+
+    \item \textbf{Recall}: En una clase, es el número de predicciones correctas para esta clase entre el número total de instancias de esta misma clase.
+
+    \item \textbf{F1-score}: Es una métrica especializada para cuando las clases están desbalanceadas, es decir, el número de instancias de cada clase no es el mismo para cada una. Se calcula primero para cada clase con la ecuación:
+    \begin{gather*}
+        F1score = 2 \times \dfrac{Precision \times Recall}{Precision + Recall}
+    \end{gather*}
+\end{itemize}
+
+En el caso de las métricas de Precision, Recall y F1-score, para hacer la media del dataset entero hay dos opciones: (1) \textbf{Macro}: El sumatorio del \textit{f1-score} de cada clase entre el número de clases y (2) \textbf{Ponderada}: Considerar el número de instancias de cada clase, siendo las clases con mayor número de imágenes las que más aportan a la media.
+
+Además de estas métricas, se analizará también la diferenciación entre clases, es decir, fallos al clasificar correctamente la categoría de cada vehículo detectado. Esto se podría visualizar a través de la pérdida de clasificación en el entrenamiento, por ejemplo, pero se va a usar una matriz de confusión como la de la figura \ref{fig:cm} para ver que problemas tienen los modelos en situaciones donde no solo el modelo tenga problemas para detectar el vehículo, sino también para identificar exactamente qué es.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=0.85\textwidth]{figures/confmatrix.png}
+    \caption{Ejemplo de matriz de confusión}
+    \label{fig:cm}
+\end{figure}
+
+
+
+
+\chapter{Resultados experimentales}
+\label{Resultados experimentales}
+
+En este apartado se presentan los resultados obtenidos tras el entrenamiento, evaluación y pruebas de los distintos modelos de detección de vehículos y matrículas. Se comparan los rendimientos alcanzados por cada método, así como la precisión en la inferencia sobre las imágenes de prueba. Para ello, como antes se explicó en la extracción de datos, se guardó un 20\% de todo el conjunto de datos solamente para calcular estos resultados (conjunto de pruebas); lo que equivaldría a \textbf{14197 imágenes}.
+
+\section{Resultados de rendimiento}
+
+El apartado de rendimiento de un modelo es muy importante debido a la necesidad de generar predicciones de detección de objetos de forma lo más rápida posible, casi instantáneamente. En la tabla \ref{Res-Rendimiento} se comparan los modelos utilizados en función de estas métricas: (1) \textbf{Tiempo medio por imagen}, (2) \textbf{Tiempo en total} del dataset, y (3) \textbf{Frames Por Segundo (FPS)} que son capaces de ejecutar de forma constante.
+
+\begin{table}[ht]
+    \centering
+    \caption{Resultados de rendimiento}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Método} & \textbf{Tiempo por imagen} & \textbf{Tiempo total} & \textbf{FPS}\\
+        \hline
+        \textbf{YOLOv26} & 0 ms & 0 s & 0 FPS\\
+        \hline
+        \textbf{RT-DETR} & 0 ms & 0 s & 0 FPS\\
+        \hline
+    \end{tabular}
+    \label{Res-Rendimiento}
+\end{table}
+
+
+
+\section{Resultados de detección de vehículos}
+
+En este apartado, el principal objetivo es detectar correctamente los vehículos que salgan en la imagen. 
+
+
+
+\section{Resultados de detección de matrículas}
+
+...
+
+\section{Limitaciones detectadas}
+
+...
+
+\section{Modelo seleccionado}
+
+...
+
+
+
+\chapter{Aplicación web}
+\label{Aplicación web}
+
+...
+
+\section{El producto de desarrollo}
+
+Casos de uso...
+
+
+
+\chapter{Legislación y normativa}
+\label{Legislación y normativa}
+
+\section{Normativa nacional}
+
+\begin{itemize}
+    \item \textbf{Ley de acceso electrónico de los ciudadanos a los Servicios Públicos} \url{https://boe.es/buscar/pdf/2007/BOE-A-2007-12352-consolidado.pdf}. Reconocimiento de los ciudadanos a relacionarse con las entidades públicas por vía electrónica, asegurando la disponibilidad, el acceso, la integridad, la confidencialidad y la conservación de los datos y servicios que gestionen: No aplica debido a que esta aplicación no pertenece ni hay una relación con las Administraciones Públicas.
+    
+    \item \textbf{Real Decreto sobre accesibilidad de los sitios web y aplicaciones para dispositivos móviles del sector público} \url{https://www.boe.es/buscar/pdf/2018/BOE-A-2018-12699-consolidado.pdf}. Derecho a la accesibilidad de la información textual y no textual, documentos y formularios, contenidos multimedia y los procesos de identificación, autenticación, firma y pago para garantizar la igualdad de todas los usuarios (sin discriminar a ninguno): No se puede aplicar esta normativa a este proyecto debido a que está sujeto al sector público. Sin embargo, se han intentado seguir las recomendaciones de accesibilidad en la medida de lo posible para este tipo de proyectos.
+    
+    \item \textbf{Esquema nacional de interoperabilidad} \url{https://www.boe.es/buscar/pdf/2010/BOE-A-2010-1331-consolidado.pdf}. Asegurar los criterios y recomendaciones de seguridad, normalización y conservación de la información en la administración pública: Esta ley no es aplicable tampoco para esta aplicación, al tener el mismo ámbito de aplicación que la Ley 11/2007, de 22 de junio y explicado en el primer punto. 
+    
+    \item \textbf{Esquema nacional de seguridad} \url{https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-7191}. Proteger la información tratada y los servicios prestados por las entidades con objeto de asegurar el acceso, la confidencialidad, la integridad, la autenticidad, la disponibilidad y la conservación de los datos: Este esquema no se puede aplicar por los siguientes motivos: (1) No se pertenece ni hay relación con el sector público y (2) No se trata información clasificada.
+    
+    \item \textbf{Ley Orgánica de protección de datos personales y garantía de los derechos digitales} \url{https://www.boe.es/boe/dias/2018/12/06/pdfs/BOE-A-2018-16673.pdf}. Respetar el tratamiento de los datos personales de las personas físicas y la libre circulación de estos: La ley orgánica de datos personales no se puede aplicar debido a que no se recolectan ni se usan datos personales de ningún tipo.
+    
+    \item \textbf{Reglamento General de Protección de Datos} \url{https://www.boe.es/doue/2016/119/L00001-00088.pdf}. Establecer las normativas para la protección y libre circulación de los datos personales de las personas físicas: Al igual que en la ley del punto anterior, no se utilizan datos personales de ningún tipo.
+
+    \item \textbf{Ley de Propiedad Intelectual} \url{https://www.boe.es/boe/dias/2019/03/02/pdfs/BOE-A-2019-2974.pdf}: Durante el desarrollo de este proyecto se han utilizado imágenes, datasets y modelos de redes neuronales que pueden estar protegidos por la legislación vigente. Se ha procurado en todo momento citar adecuadamente las fuentes utilizadas y no vulnerar los derechos de autor. Asimismo, cualquier contenido generado a partir de estos recursos ha sido producido de forma original dentro del marco del proyecto.
+\end{itemize}
+
+\section{Licencias}
+
+Los modelos y datasets utilizados durante el desarrollo de este proyecto tienen una serie de licencias a atribuir, incluso teniendo en cuenta el objetivo académico y experimental de este proyecto.
+
+Para empezar, la citación de los datasets ...
+
+Se ha utilizado un modelo \textbf{YOLO} diferentes desarrollados por Ultralytics. Ambos han sido proporcionados a través de su framework con el mismo nombre.
+
+\begin{itemize}
+    \item \textbf{Fuente}: \url{https://github.com/ultralytics/ultralytics}
+
+    \item \textbf{AGPL 3.0 Software License o Ultralytics License}
+
+    \item \textbf{Permisos}: Uso libre para fines académicos o no comerciales. Para uso comercial, sería necesario solicitar una licencia específica a Ultralytics. La redistribución o modificación requiere atribución y mantener el mismo tipo de licencia.
+\end{itemize}
+
+Todos los modelos utilizados han sido integrados respetando sus respectivas licencias. En ningún momento se ha modificado su arquitectura interna ni se han distribuido fuera del entorno local de desarrollo. Su uso se limita a un entorno académico y experimental, en el contexto de un Trabajo de Fin de Máster.
+
+
+
+\chapter{Gestión de proyecto software}
+\label{Gestión de proyecto software}
+
+\section{Diseño del sistema}
+
+La arquitectura general del sistema sigue...
+
+
+\section{Control de versiones}
+
+Se ha utilizado el sistema de control de versiones \textbf{Git}, en combinación con la plataforma \textbf{GitHub} para almacenar y organizar todo el desarrollo del proyecto. Todo el código para entrenar, validar y probar los diferentes modelos se encuentra en el repositorio de este proyecto: \url{https://github.com/RubenFdezGlez/TFM}. Debido al objetivo experimental de este trabajo, solamente se han utilizado confirmaciones secuenciales en la rama principal \textit{main}. En este repositorio se almacenan únicamente los ejecutables y otros archivos necesarios (como los requisitos de instalación), por lo que los archivos grandes como los datasets no se encuentran aquí.
+
+A lo largo del desarrollo se han realizado varios \textit{commits}, con el fin de registrar los cambios en el desarrollo del proyecto mediante confirmaciones descriptivas como la de la figura \ref{fig:git} que permiten volver atrás o revisar el historial.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/git.png}
+    \caption{Ejemplo de commit en GitHub}
+    \label{fig:git}
+\end{figure}
+
+
+
+\section{Requisitos del sistema}
+
+Esta sección sirve para definir qué debe hacer el sistema y cómo debe comportarse o en qué condiciones debe funcionar. 
+
+\subsection{Requisitos funcionales}
+
+Las acciones concretas que el sistema debe ser capaz de realizar se describen en la tabla...
+
+
+
+\subsection{Requisitos no funcionales}
+
+Las condiciones de calidad bajo las que debe funcionar el sistema se describen en la tabla...
+
+
+
+\section{Planificación del trabajo}
+\label{Plan de trabajo}
+
+En esta sección se describe la planificación temporal y técnica del proyecto, con el fin de estructurar de forma ordenada las fases de desarrollo, facilitar el seguimiento de los avances y optimizar los recursos disponibles. Para ello, se ha seguido un enfoque basado en fases iterativas de desarrollo y prueba.
+
+Para el desarrollo del proyecto se han seguido las siguientes fases:
+
+\begin{enumerate}
+    \item \textbf{Estudio inicial}: ...
+
+    \item \textbf{Preparación y preprocesamiento del dataset}: ...
+
+    \item \textbf{Entrenamiento de modelos}: ...
+
+    \item \textbf{Evaluación}: ...
+
+    \item \textbf{Implementación web}: ...
+
+    \item \textbf{Documentación}: ...
+\end{enumerate}
+
+\section{Cronograma}
+
+El desarrollo ha durado en torno a los cinco meses. La tabla \ref{Actividades} indica las duraciones de cada una de las fases y en la figura ... se muestra el cronograma del proyecto a lo largo de los meses.
+
+\begin{table}[ht]
+    \centering
+    \caption{Duración de las partes del proyecto (en días)}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Tarea} & \textbf{Duración} & \textbf{Fecha de inicio} & \textbf{Fecha final}\\
+        \hline
+        Estado del arte & . & . & .\\
+        \hline
+        Preparación del dataset & . & . & .\\
+        \hline
+        Entrenamiento de modelos & . & . & .\\
+        \hline
+        Evaluación & . & . & .\\
+        \hline
+        Implementación web & . & . & .\\
+        \hline
+        Documentación & . & . & .\\
+        \hline
+    \end{tabular}
+    \label{Actividades}
+\end{table}
+
+
+
+\section{Presupuesto}
+
+En una empresa o desarrollo dirigido a hacer un producto o servicio, tener en cuenta los costes de desarrollo y mantenimiento de un proyecto es primordial para cualquier empresa que desarrolle software. En la tabla ... se puede visualizar el coste total del trabajo.
+
+\subsection{Coste hardware}
+
+Para el desarrollo del proyecto se utilizaron dos equipos diferentes explicados en el apartado \ref{Entorno y herramientas}. El coste de estos equipos se puede observar en la tabla ....
+
+
+Ya que los equipos tienen mayor vida útil que la duración de este trabajo, al coste total se le resta una porción de este coste \textbf{(costo imputable)} en función de su uso. El \textbf{costo final (Cf)} es una cantidad equivalente a la guiada por esta fórmula:
+
+\begin{gather*}
+    Cf = (C \times U \times D) / P 
+\end{gather*}
+
+Donde:
+\begin{itemize}
+    \item \textbf{Coste (C)}: Coste total (PVP) del producto.
+    
+    \item \textbf{\% Uso (U)}: Porcentaje de uso que se le da al producto durante el desarrollo.
+    
+    \item \textbf{Dedicación (D)}: Cantidad de tiempo que se usa el producto.
+    
+    \item \textbf{Periodo de deprecación (P)}: Periodo de garantía del producto según el fabricante.
+\end{itemize}
+
+El costo real para este proyecto, suponiendo que los equipos van a estar en uso un 100\% del tiempo durante un periodo de dedicación de 4 meses, se ve reflejado en la tabla ... .
+
+
+\subsection{Coste de personal}
+
+En la siguiente tabla ... se refleja el sueldo bruto \footnote{Los sueldos brutos se han obtenido de la página web \url{https://www.salaryexpert.com/salary/job/artificial-intelligence-engineer/spain}} que perciben los empleados durante el desarrollo del proyecto; junto a los costes de la seguridad social y los costes del empleador (se fijan 4 meses).
+
+Los costes de la seguridad social y del empleador se han sacado de la página de Cuestiones Laborales \footnote{\url{https://www.cuestioneslaborales.es/porcentaje-de-cotizacion-a-la-seguridad-social-del-trabajador-y-empresa/}}. Donde la cotización a cargo de la empresa se divide en: \textbf{(2)} Cotizaciones comunes (23,6\%) y \textbf{(1)} Formación, desempleo, FOGASA, accidentes, etc. (en torno al 6,3\%).
+
+
+
+\subsection{Coste software}
+
+En la tabla ... se enumeran los recursos software utilizados durante el desarrollo del proyecto. Ya que todos estos fueron gratuitos o de código abierto, no tuvieron repercusión alguna en el coste. Si se desplegara este mismo proyecto en un entorno privado, habría que añadirle como mínimo la licencia de Ultralytics, con un costo aproximado de 150€. Otros posibles costos adicionales podrían ser un sistema de almacenamiento en la nube o un servidor donde desplegar el programa web.
+
+
+
+\section{Gestión de riesgos}
+
+A lo largo del desarrollo de este proyecto, se han identificado distintos factores que podrían comprometer su ejecución, resultados y tiempos de entrega.  La tabla \ref{Gestion-riesgos} recoge los principales riesgos detectados, junto con su impacto y probabilidad. En las siguientes tablas (\ref{R1}, \ref{R2}, \ref{R3}, \ref{R4}, \ref{R5}, \ref{R6}, \ref{R7}, \ref{R8}) se muestra: para cada riesgo, sus causas y estrategias a seguir para mitigarlo.
+
+\begin{table}[ht]
+    \centering
+    \caption{Gestión de riesgos por categoría}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Riesgo} & \textbf{Categoría} & \textbf{Impacto} & \textbf{Probabilidad}\\
+        \hline
+        R1 & Incompatibilidad entre librerías & Técnico & Alta & Baja\\
+        \hline
+        R2 & Errores de memoria & Rendimiento & Alta & Alta\\
+        \hline
+        R3 & Dataset con errores & Formato & Alta & Media\\
+        \hline
+        R4 & Pérdida de datos & Humano & Alta & Muy Baja\\
+        \hline
+        R5 & Errores al integrar modelos & Técnico & Media & Media\\
+        \hline
+        R6 & Tiempo insuficiente & Humano & Alta & Media\\
+        \hline
+        R7 & Escasa precisión & Técnico & Alta & Alta\\
+        \hline
+        R8 & Overfitting en el entrenamiento & Técnico & Alta & Media\\
+        \hline
+    \end{tabular}
+    \label{Gestion-riesgos}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo incompatibilidad entre librerías}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R1}}\\
+        \hline 
+        \textbf{Causa} &  Diferencias entre versiones entre PyTorch, Ultralytics, etc.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Revisión manual de las versiones de las librerías de modelos que pudieran generar conflictos.\\
+        \hline
+    \end{tabularx}
+    \label{R1}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo errores de memoria}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R2}}\\
+        \hline 
+        \textbf{Causa} & Sobrecarga de GPU o errores CUDA. Uso intensivo de la gráfica durante el entrenamiento. Limpieza de memoria de GPU o CPU no realizada efectivamente.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Implementación de limpieza automática de la RAM a través de la librería \textit{PyTorch}.\\
+        \hline
+    \end{tabularx}
+    \label{R2}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo dataset con errores}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R3}}\\
+        \hline 
+        \textbf{Causa} &  Dataset con etiquetas, imágenes o errores en su estructura.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Script para la revisión automática para revisar el dataset entero en busca de errores en las etiquetas, carpetas y otro tipo de fallos en el conjunto de datos.\\
+        \hline
+    \end{tabularx}
+    \label{R3}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo pérdida de datos}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R4}}\\
+        \hline 
+        \textbf{Causa} &  Fallos de disco al guardar o errores humanos.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Guardado periódico en el repositorio con cambios importantes. Impresión de registros con las ejecuciones.\\
+        \hline
+    \end{tabularx}
+    \label{R4}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo errores al integrar modelos}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R5}}\\
+        \hline 
+        \textbf{Causa} &  Modelos incompatibles entre sí o en Flask.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Comprobación de las librerías necesarias y pruebas de compatibilidad.\\
+        \hline
+    \end{tabularx}
+    \label{R5}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo tiempo insuficiente}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R6}}\\
+        \hline 
+        \textbf{Causa} &  Retrasos en fases anteriores.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Optimización de las pruebas y del tiempo requerido.\\
+        \hline
+    \end{tabularx}
+    \label{R6}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo escasa precisión}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R7}}\\
+        \hline 
+        \textbf{Causa} &  Sobreajuste, datos insuficientes o mal preprocesamiento.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Optimización al cambiar hiperparámetros durante el entrenamiento. Validación cruzada para parar antes el entrenamiento.\\
+        \hline
+    \end{tabularx}
+    \label{R7}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Riesgo overfitting en el entrenamiento}
+    \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{R8}}\\
+        \hline 
+        \textbf{Causa} &  Dataset de pequeño tamaño o imágenes demasiado similares.\\
+        \hline 
+        \textbf{Estrategia de mitigación} & Ampliación de datos con cambios de color, tamaño, contraste, etc.\\
+        \hline
+    \end{tabularx}
+    \label{R8}
+\end{table}
+
+La identificación y gestión de estos riesgos ha permitido anticipar problemas y tomar las decisiones proactivas necesarias, asegurando la continuidad del desarrollo y minimizando su impacto en los objetivos del proyecto.
+
+
+
+
+
+\chapter{Conclusión y posibles mejoras}
+\label{Conclusión}
+
+El proyecto ha cumplido con los objetivos planteados, demostrando la viabilidad técnica de aplicar redes neuronales al problema de la detección, identificación y análisis de vehículos. Los resultados obtenidos avalan la validez del enfoque y asientan una base sólida para futuras ampliaciones. Posibles mejoras permitirían incrementar la precisión y escalabilidad del sistema en distintos escenarios.
+
+
+
+\section{Problemas encontrados}
+
+A pesar de los buenos resultados...
+
+
+
+\section{Mejoras y ampliación a futuro}
+
+Algunas de las propuestas de mejora aplicables a este proyecto pueden ser:
+
+\begin{itemize}
+    \item ...
 \end{itemize}
 
 
 
+\section{Agradecimientos}
 
+Quiero expresar mi más sincero agradecimiento a mi tutor...
 
-% --------------------
-\section{CREDITS}
-% --------------------
-\label{sec:credits}
-% Review the following link for your information: \footnote{https://www.elsevier.com/researcher/author/policies-and-guidelines/credit-author-statement} “CRediT (Contributor Roles Taxonomy) was introduced to recognize individual author contributions, reducing authorship disputes and facilitating collaboration”. More informally, it is a paragraph usually introduced at the end of research papers that recognizes the individual work of each author. You will see this in most of the papers you will be reviewing. 
-
+También agradecer a ...
 
 
 
+%%%% BIBLIOGRAFÍA %%%%
+\renewcommand\bibname{Lista de referencias}
+\bibliographystyle{splncs04} % Fichero con el formato de la bibliografía.
+\bibliography{references}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% REFERENCES SECTION
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\medskip
-
-\bibliography{references.bib} 
-
-\newpage
 \end{document}
