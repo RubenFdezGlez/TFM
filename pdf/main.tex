@@ -1519,7 +1519,8 @@ Además de estas métricas, se analizará también la diferenciación entre clas
 \chapter{Resultados experimentales}
 \label{Resultados experimentales}
 
-En este apartado se presentan los resultados obtenidos tras el entrenamiento, evaluación y pruebas de los distintos modelos de detección de vehículos y matrículas. Se comparan los rendimientos alcanzados por cada método, así como la precisión en la inferencia sobre las imágenes de prueba. Para ello, como antes se explicó en la extracción de datos, se guardó un 20\% de todo el conjunto de datos solamente para calcular estos resultados (conjunto de pruebas); lo que equivaldría a \textbf{14197 imágenes}.
+En este apartado se presentan los resultados obtenidos tras el entrenamiento, evaluación y pruebas de los distintos modelos de detección de vehículos y matrículas. Se comparan los rendimientos alcanzados por cada método, así como la precisión en la inferencia sobre las imágenes de prueba. Para ello, como antes se explicó en la extracción de datos, se utiliza el subconjunto de pruebas del dataset CCPD para calcular estos resultados.
+
 
 \section{Resultados de rendimiento}
 
@@ -1541,24 +1542,58 @@ El apartado de rendimiento de un modelo es muy importante debido a la necesidad 
 \end{table}
 
 
-
 \section{Resultados de detección de vehículos}
 
-En este apartado, el principal objetivo es detectar correctamente los vehículos que salgan en la imagen. 
+En este apartado, el principal objetivo es detectar correctamente los vehículos que salgan en la imagen. La tabla \ref{Res-Deteccion-V} detalla los resultados obtenidos.
 
+\begin{table}[ht]
+    \centering
+    \caption{Resultados de detección}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Método} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{mAP50} & \textbf{mAP50-95}\\
+        \hline
+        \textbf{YOLOv26n} & 0\% & 0\% & 0\% & 0\% & 46.12\%\\
+        \hline
+        \textbf{RT-DETR} & 0\% & 0\% & 0\% & 0\% & 0\%\\
+        \hline
+    \end{tabular}
+    \label{Res-Deteccion-V}
+\end{table}
 
 
 \section{Resultados de detección de matrículas}
 
-...
+En este apartado, el principal objetivo es detectar correctamente el entorno de la matrícula de los vehículos que salgan en la imagen. La tabla \ref{Res-Deteccion-LP} detalla los resultados obtenidos.
+
+\begin{table}[ht]
+    \centering
+    \caption{Resultados de detección}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Método} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{mAP50} & \textbf{mAP50-95}\\
+        \hline
+        \textbf{YOLOv26n} & 0\% & 0\% & 0\% & 0\% & 46.12\%\\
+        \hline
+        \textbf{RT-DETR} & 0\% & 0\% & 0\% & 0\% & 0\%\\
+        \hline
+    \end{tabular}
+    \label{Res-Deteccion-LP}
+\end{table}
+
 
 \section{Limitaciones detectadas}
 
-...
+Aunque los resultados globales son satisfactorios, ... %TODO
+
 
 \section{Modelo seleccionado}
 
-...
+El método seleccionado ha sido la integración del modelo \textbf{X} para vehículos y el modelo \textbf{Y} . Ambos se integran en una aplicación web que permite la carga de imágenes o la lectura desde cámara en tiempo real. Tras comparar varias configuraciones de modelos, se optó por usar esta combinación por ofrecer los mejores resultados de detección y rendimiento. %TODO
+ 
+... %TODO
+
+Esta configuración, ... , es la más óptima para este proyecto y su integración en la aplicación web.
 
 
 
@@ -1566,6 +1601,7 @@ En este apartado, el principal objetivo es detectar correctamente los vehículos
 \label{Aplicación web}
 
 ...
+
 
 \section{El producto de desarrollo}
 
@@ -1594,11 +1630,12 @@ Casos de uso...
     \item \textbf{Ley de Propiedad Intelectual} \url{https://www.boe.es/boe/dias/2019/03/02/pdfs/BOE-A-2019-2974.pdf}: Durante el desarrollo de este proyecto se han utilizado imágenes, datasets y modelos de redes neuronales que pueden estar protegidos por la legislación vigente. Se ha procurado en todo momento citar adecuadamente las fuentes utilizadas y no vulnerar los derechos de autor. Asimismo, cualquier contenido generado a partir de estos recursos ha sido producido de forma original dentro del marco del proyecto.
 \end{itemize}
 
+
 \section{Licencias}
 
 Los modelos y datasets utilizados durante el desarrollo de este proyecto tienen una serie de licencias a atribuir, incluso teniendo en cuenta el objetivo académico y experimental de este proyecto.
 
-Para empezar, la citación de los datasets ...
+Para empezar, la citación de los cinco datasets utilizados, los cuales
 
 Se ha utilizado un modelo \textbf{YOLO} diferentes desarrollados por Ultralytics. Ambos han sido proporcionados a través de su framework con el mismo nombre.
 
