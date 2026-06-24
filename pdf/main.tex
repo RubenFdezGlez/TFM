@@ -1666,12 +1666,12 @@ Todos los modelos utilizados han sido integrados respetando sus respectivas lice
 
 \section{Diseño del sistema}
 
-La arquitectura general del sistema sigue...
+La arquitectura general del sistema sigue una clara y sencilla arquitectura cliente-servidor donde el cliente es el navegador web del usuario y el servidor es la aplicación Streamlit. El sistema desarrollado consiste en una aplicación web implementada en Python mediante Streamlit que permite realizar tareas de detección de vehículos y matrículas utilizando modelos de \textit{Deep Learning} previamente entrenados y reconocimiento de caracteres en matrículas usando un modelo OCR. La aplicación admite diferentes fuentes de entrada (imágenes, vídeos y cámaras) y devuelve como salida las imágenes o fotogramas con las detecciones obtenidas y los caracteres de la matrícula.
 
 
 \section{Control de versiones}
 
-Se ha utilizado el sistema de control de versiones \textbf{Git}, en combinación con la plataforma \textbf{GitHub} para almacenar y organizar todo el desarrollo del proyecto. Todo el código para entrenar, validar y probar los diferentes modelos se encuentra en el repositorio de este proyecto: \url{https://github.com/RubenFdezGlez/TFM}. Debido al objetivo experimental de este trabajo, solamente se han utilizado confirmaciones secuenciales en la rama principal \textit{main}. En este repositorio se almacenan únicamente los ejecutables y otros archivos necesarios (como los requisitos de instalación), por lo que los archivos grandes como los datasets no se encuentran aquí.
+Se ha utilizado el sistema de control de versiones \textbf{Git}, en combinación con la plataforma \textbf{GitHub} para almacenar y organizar todo el desarrollo del proyecto. Todo el código para entrenar, validar y probar los diferentes modelos se encuentra en el repositorio de este proyecto: \url{https://github.com/RubenFdezGlez/TFM}. Debido al objetivo experimental de este trabajo, solamente se han utilizado confirmaciones secuenciales en la rama principal \textit{main}. En este repositorio se almacenan los ejecutables de Python (entrenamiento de los modelos y despliegue de la aplicación web), los pesos de los modelos entrenados, el documento en PDF y otros archivos necesarios (como los requisitos de instalación), por lo que los archivos grandes como los datasets no se encuentran aquí.
 
 A lo largo del desarrollo se han realizado varios \textit{commits}, con el fin de registrar los cambios en el desarrollo del proyecto mediante confirmaciones descriptivas como la de la figura \ref{fig:git} que permiten volver atrás o revisar el historial.
 
@@ -1690,14 +1690,56 @@ Esta sección sirve para definir qué debe hacer el sistema y cómo debe comport
 
 \subsection{Requisitos funcionales}
 
-Las acciones concretas que el sistema debe ser capaz de realizar se describen en la tabla...
+Las acciones concretas que el sistema debe ser capaz de realizar se describen en la tabla \ref{Req-Func}:
 
+\begin{table}[ht]
+    \centering
+    \caption{Requisitos funcionales}
+    \begin{tabularx}{1\textwidth}{| c | >{\centering\arraybackslash}X |}
+        \hline
+        \textbf{ID} & \textbf{Requisito}\\
+        \hline
+        RF1 & El sistema debe permitir al usuario subir una imagen o vídeo.\\
+        \hline
+        RF2 & El sistema debe detectar automáticamente la presencia de uno o varios vehículos en la imagen.\\
+        \hline
+        RF3 & El sistema debe detectar automáticamente la presencia de una o más matrículas en la imagen.\\
+        \hline
+        RF4 & El sistema debe mostrar la imagen con las \textit{bounding boxes} y las matrículas.\\
+        \hline
+        RF5 & El sistema debe permitir capturar vídeo a través de una o más webcams.\\
+        \hline
+        RF6 & El sistema debe permitir procesar vídeo en tiempo real mostrando detecciones y matrículas.\\
+        \hline
+    \end{tabularx}
+    \label{Req-Func}
+\end{table}
 
 
 \subsection{Requisitos no funcionales}
 
-Las condiciones de calidad bajo las que debe funcionar el sistema se describen en la tabla...
+Las condiciones de calidad bajo las que debe funcionar el sistema se describen en la tabla \ref{Req-No-Func}:
 
+\begin{table}[ht]
+    \centering
+    \caption{Requisitos no funcionales}
+    \begin{tabularx}{1\textwidth}{| c | >{\centering\arraybackslash}X |}
+        \hline
+        \textbf{ID} & \textbf{Requisito}\\
+        \hline
+        RNF1 & El sistema debe ser accesible desde una interfaz web sencilla e intuitiva.\\
+        \hline
+        RNF2 & El tiempo de inferencia por imagen debe ser inferior a 100ms en GPU.\\
+        \hline
+        RNF3 & El sistema debe poder ser desplegado localmente sin conexión a Internet.\\
+        \hline
+        RNF4 & El sistema debe mantener una precisión mínima en las detecciones del 85\% en mAP50.\\
+        \hline
+        RNF5 & El código debe seguir buenas prácticas y ser fácilmente ampliable.\\
+        \hline
+    \end{tabularx}
+    \label{Req-No-Func}
+\end{table}
 
 
 \section{Planificación del trabajo}
@@ -1708,17 +1750,16 @@ En esta sección se describe la planificación temporal y técnica del proyecto,
 Para el desarrollo del proyecto se han seguido las siguientes fases:
 
 \begin{enumerate}
-    \item \textbf{Estudio inicial}: ...
+    \item \textbf{Estudio inicial}: Aquí se hace todo el estudio previo sobre el estado del arte. La detección de vehículos y/o matrículas junto con el reconocimiento de estas últimas es un campo muy ampliable en el que montones de investigadores han realizado trabajos y proyectos 
 
-    \item \textbf{Preparación y preprocesamiento del dataset}: ...
+    \item \textbf{Preparación y preprocesamiento de los conjuntos de datos}: (1) Obtención y depósito de los datasets originales, (2)
+    Transformación de los datasets a los distintos formatos YOLO y COCO con el uso de scripts y librerías.
 
-    \item \textbf{Entrenamiento de modelos}: ...
+    \item \textbf{Entrenamiento y evaluación de modelos}: Entrenar los modelos de detección mientras se observa si existe una adaptación excesiva a los datos de entrenamiento usando los resultados de validación de cada entrenamiento. Observar las tendencias y resultados de los modelos y ajustar los parámetros en función de los datos observados.
 
-    \item \textbf{Evaluación}: ...
+    \item \textbf{Implementación web}: Desarrollar la aplicación web con interfaz en Streamlit con los requisitos funcionales indicados anteriormente.
 
-    \item \textbf{Implementación web}: ...
-
-    \item \textbf{Documentación}: ...
+    \item \textbf{Documentación}: Redacción de la memoria del proyecto.
 \end{enumerate}
 
 \section{Cronograma}
@@ -1732,7 +1773,7 @@ El desarrollo ha durado en torno a los cinco meses. La tabla \ref{Actividades} i
         \hline
         \textbf{Tarea} & \textbf{Duración} & \textbf{Fecha de inicio} & \textbf{Fecha final}\\
         \hline
-        Estado del arte & . & . & .\\
+        Estado del arte & . & 18/03/2026 & .\\
         \hline
         Preparación del dataset & . & . & .\\
         \hline
@@ -1742,7 +1783,7 @@ El desarrollo ha durado en torno a los cinco meses. La tabla \ref{Actividades} i
         \hline
         Implementación web & . & . & .\\
         \hline
-        Documentación & . & . & .\\
+        Documentación & . & . & 15/07/2026\\
         \hline
     \end{tabular}
     \label{Actividades}
@@ -1756,8 +1797,24 @@ En una empresa o desarrollo dirigido a hacer un producto o servicio, tener en cu
 
 \subsection{Coste hardware}
 
-Para el desarrollo del proyecto se utilizaron dos equipos diferentes explicados en el apartado \ref{Entorno y herramientas}. El coste de estos equipos se puede observar en la tabla ....
+Para el desarrollo del proyecto se utilizaron dos equipos diferentes explicados en el apartado \ref{Entorno y herramientas}. El coste de estos equipos se puede observar en la tabla \ref{Coste-HW}.
 
+\begin{table}[ht]
+    \centering
+    \caption{Coste de las herramientas de hardware}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Equipo} & \textbf{Coste por unidad} & \textbf{Número de unidades} & \textbf{Coste total}\\
+        \hline
+        Portátil MSI & 1000€ & 1 & 1000€\\
+        \hline
+        GPU Titan & 300€ & 1 & 300€\\
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Coste total}} & \textbf{1300€}\\
+        \hline
+    \end{tabular}
+    \label{Coste-HW}
+\end{table}
 
 Ya que los equipos tienen mayor vida útil que la duración de este trabajo, al coste total se le resta una porción de este coste \textbf{(costo imputable)} en función de su uso. El \textbf{costo final (Cf)} es una cantidad equivalente a la guiada por esta fórmula:
 
@@ -1776,12 +1833,49 @@ Donde:
     \item \textbf{Periodo de deprecación (P)}: Periodo de garantía del producto según el fabricante.
 \end{itemize}
 
-El costo real para este proyecto, suponiendo que los equipos van a estar en uso un 100\% del tiempo durante un periodo de dedicación de 4 meses, se ve reflejado en la tabla ... .
+El costo real para este proyecto, suponiendo que los equipos van a estar en uso un 100\% del tiempo durante un periodo de dedicación de 4 meses, se ve reflejado en la tabla \ref{Costes-Imp}.
+
+\begin{table}[ht]
+    \centering
+    \caption{Costes imputables sobre los equipos usados}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Equipo} & \textbf{Coste} & \textbf{\% Uso} & \textbf{Dedicación} & \textbf{Periodo} & \textbf{Coste}\\
+        & & & & \textbf{deprecación} & \textbf{computable}\\
+        \hline
+        Portátil MSI & 1000€ & 100\% & 4 meses & 24 meses & 166,67€\\
+        \hline
+        GPU Titan & 300€ & 100\% & 4 meses & 24 meses & 50€\\
+        \hline
+        \multicolumn{5}{|c|}{\textbf{Coste final}} & \textbf{216,67€}\\
+        \hline
+    \end{tabular}
+    \label{Costes-Imp}
+\end{table}
 
 
 \subsection{Coste de personal}
 
-En la siguiente tabla ... se refleja el sueldo bruto \footnote{Los sueldos brutos se han obtenido de la página web \url{https://www.salaryexpert.com/salary/job/artificial-intelligence-engineer/spain}} que perciben los empleados durante el desarrollo del proyecto; junto a los costes de la seguridad social y los costes del empleador (se fijan 4 meses).
+En la siguiente tabla \ref{Coste-Personal} se refleja el sueldo bruto \footnote{Los sueldos brutos se han obtenido de la página web \url{https://www.salaryexpert.com/salary/job/artificial-intelligence-engineer/spain}} que perciben los empleados durante el desarrollo del proyecto; junto a los costes de la seguridad social y los costes del empleador (se fijan 4 meses).
+
+\begin{table}[ht]
+    \centering
+    \caption{Coste de los empleados}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Rol} & \textbf{Horas} & \textbf{Sueldo bruto} & \textbf{Total} & \textbf{Costes } & \textbf{Costes}\\
+        & \textbf{totales} & \textbf{por hora} & & \textbf{seguridad} & \textbf{empleador (2)}\\
+        & & & & \textbf{social (1)} & \\
+        \hline
+        Ingeniero IA & 140 h & 30,26€/h & 4236,4€ & 266,89€ & 999,79€\\ 
+        \hline
+        Desarrollador Web & . & . & . & . & .\\
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Coste total}} & \textbf{.} & \textbf{.} & \textbf{.}\\
+        \hline
+    \end{tabular}
+    \label{Coste-Personal}
+\end{table}
 
 Los costes de la seguridad social y del empleador se han sacado de la página de Cuestiones Laborales \footnote{\url{https://www.cuestioneslaborales.es/porcentaje-de-cotizacion-a-la-seguridad-social-del-trabajador-y-empresa/}}. Donde la cotización a cargo de la empresa se divide en: \textbf{(2)} Cotizaciones comunes (23,6\%) y \textbf{(1)} Formación, desempleo, FOGASA, accidentes, etc. (en torno al 6,3\%).
 
@@ -1789,7 +1883,49 @@ Los costes de la seguridad social y del empleador se han sacado de la página de
 
 \subsection{Coste software}
 
-En la tabla ... se enumeran los recursos software utilizados durante el desarrollo del proyecto. Ya que todos estos fueron gratuitos o de código abierto, no tuvieron repercusión alguna en el coste. Si se desplegara este mismo proyecto en un entorno privado, habría que añadirle como mínimo la licencia de Ultralytics, con un costo aproximado de 150€. Otros posibles costos adicionales podrían ser un sistema de almacenamiento en la nube o un servidor donde desplegar el programa web.
+\subsection{Coste software}
+
+En la tabla \ref{Coste-SW} se enumeran los costes asociados a los recursos software utilizados durante el desarrollo del proyecto. Ya que todos estos son gratuitos o de código abierto, no tienen repercusión alguna en el coste de un proyecto similar a este. Si se desplegara este mismo proyecto en un entorno privado, habría que añadirle como mínimo la licencia de Ultralytics, con un costo aproximado de 150€. Otros posibles costos adicionales podrían ser un sistema de almacenamiento en la nube o un servidor donde desplegar el programa web.
+
+\begin{table}[ht]
+    \centering
+    \caption{Costes de software}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Concepto} & \textbf{Coste unitario} & \textbf{Uso} & \textbf{Coste periódico} & \textbf{Coste total}\\
+        \hline
+        Ultralytics License & 0 & 0 & 0 & 0€\\
+        \hline
+        Datasets & 0 & 0 & 0 & 0€\\
+        \hline
+        Streamlit & 0 & 0 & 0 & 0€\\
+        \hline
+        Python & 0 & 0 & 0 & 0€\\
+        \hline
+        \multicolumn{4}{|c|}{\textbf{Coste total}} & \textbf{0€}\\
+        \hline
+    \end{tabular}
+    \label{Coste-SW}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Coste total del proyecto}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Concepto} & \textbf{Coste}\\
+        \hline
+        Coste del hardware & 216,67€\\
+        \hline
+        Coste del software & 0€\\
+        \hline
+        Coste de personal & .\\
+        \hline
+        {\textbf{Coste total del proyecto}} & \textbf{.}\\
+        \hline
+    \end{tabular}
+    \label{Coste-Total}
+\end{table}
 
 
 
@@ -1975,9 +2111,9 @@ Algunas de las propuestas de mejora aplicables a este proyecto pueden ser:
 
 \section{Agradecimientos}
 
-Quiero expresar mi más sincero agradecimiento a mi tutor...
+Quiero expresar mi más sincero agradecimiento a mi tutor, el profesor Eduardo Fidalgo Fernández, por su constante apoyo, orientación y paciencia durante el desarrollo de este Trabajo de Fin de Máster. Su ayuda y conocimiento han sido más que importantes para poder llevar a cabo exitosamente este proyecto.
 
-También agradecer a ...
+También agradecer a los profesores de las asignaturas de Visión Artificial del Máster, por los conocimientos adquiridos y el entorno de aprendizaje que han hecho posible el desarrollo de este trabajo con muchas menos dificultades.
 
 
 
