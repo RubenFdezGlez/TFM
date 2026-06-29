@@ -1,0 +1,66 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Rendimiento de diferentes modelos y configuraciones en los datasets de vehículos \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S0045790626001588}}}}{16}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Resultados de YOLOv8 (izquierda) y DFEM-Net (derecha) en 4 distintas imágenes del dataset TVAP-Normal \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S026322412600045X}}}}{17}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Ejemplo de detección de vehículos sobre una vista UAV \footnotesize {Fuente: \textit {https://www.sciencedirect.com/org/science/article/pii/S1546221826000974}}}}{18}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Arquitectura de una FPN bidireccional (BiFPN) \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S1110016825007999}}}}{18}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Arquitectura de una Context R-CNN \footnotesize {Fuente: \textit {https://arxiv.org/pdf/1912.03538}}}}{20}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Esquema de flujo de la tarea de detección de vehículos y de matrículas \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2312.02699}}}}{21}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Resultado del sistema con el conteo de vehículos y el temporizador del semáforo \footnotesize {Fuente: \textit {https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=\&arnumber=10984828}}}}{22}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Rendimiento de YOLOv8 frente a otros detectores en detección de vehículos \footnotesize {Fuente: \textit {https://ieeexplore.ieee.org/document/10988348}}}}{23}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Sistema de detección de vehículos con intersecciones \footnotesize {Fuente: \textit {https://ieeexplore.ieee.org/document/9858960}}}}{24}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Arquitectura de YOLOv7-veh \footnotesize {Fuente: \textit {https://ieeexplore.ieee.org/document/10828068}}}}{25}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Arquitectura de la red AR-VDN \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S0926580526001342}}}}{26}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Arquitectura Hourglass \footnotesize {Fuente: \textit {https://www.researchgate.net/publication/389643765\_Enhanced\_Nighttime\_Vehicle\_Detection\_for\_On-board\_Processing}}}}{28}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Funcionamiento de distintos métodos de detección de vehículos \footnotesize {Fuente: \textit {https://www.mdpi.com/1424-8220/24/10/3088}}}}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Estructura de la primera CNN \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S0262885618300155}}}}{31}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Estructura de la tercera CNN \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S0262885618300155}}}}{32}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Flujo de un detector de dos etapas en reconocimiento de matrículas \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S0893608026003047}}}}{33}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Flujo de un detector de una etapa en reconocimiento de matrículas \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S0893608026003047}}}}{33}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Estructura de un modelo de Deep Learning para el reconocimiento de matrículas \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S0893608026003047}}}}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Resultados del algoritmo de reconocimiento de matrículas \footnotesize {Fuente: \textit {https://ieeexplore.ieee.org/document/9790745}}}}{38}{figure.caption.28}%
+\contentsline {figure}{\numberline {2.20}{\ignorespaces Ejemplo de reconocimiento de matrícula usando el algoritmo EasyOcr \footnotesize {Fuente: \textit {https://ieeexplore.ieee.org/document/10804754}}}}{39}{figure.caption.29}%
+\contentsline {figure}{\numberline {2.21}{\ignorespaces Proceso de flujo de segmentación de matrículas \footnotesize {Fuente: \textit {https://ieeexplore.ieee.org/document/10183638}}}}{40}{figure.caption.30}%
+\contentsline {figure}{\numberline {2.22}{\ignorespaces Ejemplos de matrículas tailandesas \footnotesize {Fuente: \textit {https://www.nature.com/articles/s41598-025-24967-9}}}}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {2.23}{\ignorespaces Resultado de Tesseract OCR en varias matrículas \footnotesize {Fuente: \textit {https://www.nature.com/articles/s41598-025-86441-w}}}}{43}{figure.caption.33}%
+\contentsline {figure}{\numberline {2.24}{\ignorespaces Flujo del sistema de reconocimiento de matrículas con YOLO, técnicas de preprocesamiento y OCR \footnotesize {Fuente: \textit {https://www.nature.com/articles/s41598-025-86441-w}}}}{44}{figure.caption.34}%
+\contentsline {figure}{\numberline {2.25}{\ignorespaces Ejemplos de detección de matrículas usando el modelo YOLOv8 \footnotesize {Fuente: \textit {https://www.nature.com/articles/s41598-025-86441-w}}}}{45}{figure.caption.35}%
+\contentsline {figure}{\numberline {2.26}{\ignorespaces Distribución de clases del conjunto de datos del sistema Shine \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2302.00837}}}}{46}{figure.caption.36}%
+\contentsline {figure}{\numberline {2.27}{\ignorespaces Post-procesado de (a) Matrícula (b) Marca \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2302.00837}}}}{47}{figure.caption.38}%
+\contentsline {figure}{\numberline {2.28}{\ignorespaces Componentes del sistema Shine \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2302.00837}}}}{48}{figure.caption.39}%
+\contentsline {figure}{\numberline {2.29}{\ignorespaces Diagrama de uso de VLMs para reconocer caracteres en matrículas \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2412.14197}}}}{49}{figure.caption.40}%
+\contentsline {figure}{\numberline {2.30}{\ignorespaces Mapa de calor de la precisión de reconocimiento de caracteres en diferentes VLMs. \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2412.14197}}}}{51}{figure.caption.42}%
+\contentsline {figure}{\numberline {2.31}{\ignorespaces Red de ubicación (LocNet) \footnotesize {Fuente: \textit {https://arxiv.org/pdf/1806.10447}}}}{51}{figure.caption.43}%
+\contentsline {figure}{\numberline {2.32}{\ignorespaces Extractor de características del modelo LPRNet \footnotesize {Fuente: \textit {https://arxiv.org/pdf/1806.10447}}}}{52}{figure.caption.44}%
+\contentsline {figure}{\numberline {2.33}{\ignorespaces Bloque básico del extractor de características del modelo LPRNet \footnotesize {Fuente: \textit {https://arxiv.org/pdf/1806.10447}}}}{52}{figure.caption.45}%
+\contentsline {figure}{\numberline {2.34}{\ignorespaces Arquitectura OCR \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2309.12972}}}}{53}{figure.caption.46}%
+\contentsline {figure}{\numberline {2.35}{\ignorespaces Ejemplos del dataset LPR-MNIST \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2506.17051}}}}{54}{figure.caption.47}%
+\contentsline {figure}{\numberline {2.36}{\ignorespaces Arquitectura de LeNet-5 modificada \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S016792602600009X}}}}{55}{figure.caption.48}%
+\contentsline {figure}{\numberline {2.37}{\ignorespaces Arquitectura de LeNet-5 modificada \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S016792602600009X}}}}{56}{figure.caption.49}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Compensación entre velocidad y precisión entre los distintos modelos YOLO \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2509.25164}}}}{57}{figure.caption.50}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Arquitectura del modelo YOLO26 para detección y segmentación \footnotesize {Fuente: \textit {https://arxiv.org/pdf/2509.25164}}}}{58}{figure.caption.52}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Estrategia de priorización del sistema Progloss \footnotesize {Fuente: \textit {https://arxiv.org/html/2601.12882v1}}}}{59}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Concepto visual esperado de la optimización dinámica de MuSGD \footnotesize {Fuente: \textit {https://arxiv.org/html/2601.12882v1}}}}{61}{figure.caption.54}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Vista general del modelo RT-DETR. \footnotesize {Fuente: \textit {https://arxiv.org/html/2601.12882v1}}}}{64}{figure.caption.57}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Esquema del funcionamiento del algoritmo Tesseract OCR \footnotesize {Fuente: \textit {https://tesseractocr.blogspot.com/2020/12/how-tesseract-ocr-works.html}}}}{65}{figure.caption.58}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Metodología del diagnóstico y clasificación de Alzheimer con CNNs \footnotesize {Fuente: \textit {https://peerj.com/articles/cs-1177/}}}}{67}{figure.caption.59}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Fotograma del escenario 1 con la perspectiva de una RSU \footnotesize {Fuente: \textit {https://zenodo.org/records/18375218}}}}{68}{figure.caption.60}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Estadísticas de los diferentes tipos de objetos en el dataset Bdd100k \footnotesize {Fuente: \textit {https://bair.berkeley.edu/blog/2018/05/30/bdd/}}}}{69}{figure.caption.61}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ejemplo del dataset Bdd100k \footnotesize {Fuente: \textit {https://www.kaggle.com/datasets/solesensei/solesensei\_bdd100k}}}}{69}{figure.caption.62}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Ejemplo del dataset UA\_DETRAC \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S1077314220300035}}}}{70}{figure.caption.63}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ejemplos del dataset UC3M-LP \footnotesize {Fuente: \textit {https://github.com/ramajoballester/UC3M-LP}}}}{71}{figure.caption.64}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Ejemplos del dataset UC3M-VRI \footnotesize {Fuente: \textit {https://github.com/ramajoballester/UC3M-VRI}}}}{72}{figure.caption.65}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Ejemplo del dataset CCPD \footnotesize {Fuente: \textit {https://github.com/detectRecog/CCPD}}}}{82}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Ejemplo de archivo .yaml de configuración para entrenar un modelo YOLO}}{83}{figure.caption.68}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Gráfica de la evolución de las pérdida de detección de entrenamiento y validación sin multiscale}}{83}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Gráfica de la evolución de las pérdida de detección de entrenamiento y validación con multiscale}}{83}{figure.caption.71}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Ejemplo de matriz de confusión}}{84}{figure.caption.72}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Ejemplo de commit en GitHub}}{93}{figure.caption.76}%
+\addvspace {10\p@ }

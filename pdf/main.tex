@@ -156,7 +156,7 @@
 \vspace{-1em}
 \begin{longtable}{|p{16cm}|}
     \textbf{RESUMEN}:\\
-    El objetivo de este proyecto ha sido realizar un programa...\\
+    El objetivo de este proyecto ha sido realizar un programa que pueda realizar múltiples funciones útiles para \\
     \hline
 \end{longtable}
 
@@ -197,10 +197,40 @@
 
 % (Glosario de términos en orden alfabético)
 \begin{description}
-    \item[] 
+
+\item[AP] \textit{Average Precision}, es una métrica de detección de objetos que cuantifica la precisión del modelo a la hora de detectar los objetos correctamente con la menor cantidad de falsos positivos posible.
+
+\item[Bounding Box] Las cajas delimitadoras son un marco rectangular trazado alrededor de un objeto de interés en una imagen, como puede ser un objeto o un animal. En tareas abordadas por modelos como YOLO, los recuadros delimitadores representan la ubicación y el tamaño correcto de los objetos en los datos de entrenamiento, que enseña al modelo a localizar objetos con precisión \footnote{Definición extraída de \url{https://www.ultralytics.com/es/glossary/bounding-box}}.
+
+\item[CNN]: En Inglés \textit{Convolutional Neural Network} o Redes Neuronales Convolucionales, es un tipo de red neuronal profunda diseñada para tareas que requieren reconocimiento de objetos, como clasificación de imágenes, segmentación y detección de estos a partir de imágenes.
+
+\item[Data Augmentation] El aumento de datos es el suministro adicional de datos en \textit{Deep Learning} para aumentar el tamaño y variabilidad del conjunto de datos.
+
+\item[Dataset]: Es un conjunto de datos cuyo contenido es específico de una tarea en concreto. Los datasets son uno de los integrantes más importantes de la Inteligencia Artificial, conteniendo toda la información que la aplicación necesita para aprender, validar y probar su funcionamiento.
+
+\item[Deep Learning]: Es un subcampo del \textit{Machine Learning} que usa Redes Neuronales Multicapa para simular el funcionamiento de la toma de decisiones del cerebro humano en un ordenador.
+
+\item[FLOPS]: Los \textit{FLOPS} son una medida de rendimiento que mide el número de operaciones en coma flotante por segundo que un ordenador puede hacer. FLOPs son el número de operaciones en coma flotante que un programa necesitar ejecutar para terminar con su función.
+
+\item[IoU]: \textit{Intersection over Union} es una métrica de evaluación en tareas de detección de objetos calculada a partir de dividir el área de intersección de la \textit{bounding box} predicha y la real entre el área de unión de las dos \textit{bounding boxes}.
+
+\item[Machine Learning]: Es una categoría de la Inteligencia Artificial que trata de desarrollar algoritmos descubran patrones recurrentes en ciertos conjuntos de datos con el objetivo de empeñar tareas específicas.
+
+\item[mAP]: \textit{Mean Average Precision} es la métrica más utilizada en la tarea de la detección de objetos. Se calcula como la media ponderada de las AP de cada una de las clases que se utilizan en el problema.
+
+\item[MLP]: \textit{Multilayer Perceptron} es una red neuronal con sus nodos totalmente conectados entre sí. La entrada es insertada en la red, atraviesa una o varias capas de nodos ocultas y se transforma en otro dato hasta su salida en la última capa. El objetivo es construir relaciones complejas entre la entrada y la salida.
+
+\item[PCA]: \textit{Principal Component Analysis} es una técnica que reduce el número de características manteniendo la máxima información. PCA usa álgebra lineal para estandarizar los datos y seleccionar dónde hay un cambio de valor más amplio, que es donde se ubican los datos más valiosos.
+
+\item[Puntos locales extremos]: Denominado también \textit{Local extrema}, son valores mínimos y máximos en una curva o trazo que cambia de dirección en múltiples ocasiones. Estos se detectan comprobando si su valor en una imagen es menor o mayor que el de todos sus píxeles colindantes.
+
+\item[One-stage Detector]: Los detectores de una sola fase son una clase de modelos de \textit{Deep Learning} diseñados para ser más eficientes y veloces que sus contrapartes de dos etapas. La segunda diferencia clave con estos últimos es la fusión de las acciones de detección y clasificación en una sola pasada en la red neuronal.
+
+\item[Overfitting]: Problema en \textit{Machine Learning} en el que el modelo que se está entrenando se sobreajusta demasiado al conjunto de datos. En vez de saber generalizar para cualquier conjunto de datos, el modelo intenta memorizar directamente los resultados. Se puede resolver aumentando el conjunto de datos y/o aplicando \textit{Data Augmentation} al dataset existente o con ciertos métodos de regularización.
+	
+\item[YOLO]: Siglas de \textit{You Only Look Once}, es un modelo de detección de imágenes y segmentación de objetos desarrollado en la Universidad de Washington por Joseph Redmon y Ali Farhadi \footnote{Definición extraída de \url{https://docs.ultralytics.com/es/}}. Lanzado en 2015, rápidamente ganó popularidad debido a su alta precisión y rendimiento, llevando al modelo a ser constantemente actualizado y revisado hasta la actualidad, donde se está desarrollando la versión YOLOv12.
+
 \end{description}
-
-
 
 %%%% Inicio de los CAPÍTULOS %%%%
 \newpage
@@ -214,21 +244,49 @@
 
 \section{Contexto del problema}
 
- 
+La Inteligencia Artificial se está implementando actualmente en cualquier trabajo o proyecto sin ningún tipo de control y sin importar si es realmente necesario. Un ejemplo claro es el artículo de investigación de Gina Belmonte et Al.\cite{BELMONTE2025103154} en el que entrenan un modelo para segmentar tejido cerebral, concretamente para aplicaciones de neuroimagen y radioterapia. Otro ejemplo de tarea muy importante actualmente, debido al crecimiento de la industria de coches autónomos, es la detección e identificación de vehículos en tiempo real, donde unos sensores se encargan de detectar otros vehículos en las proximidades para poder razonar y actuar gracias a esta informacion, como puede ser al aparcar, puedan detectar y medir distancias a un vehículo próximo. Y no sólo es importante para los coches autónomos también lo es para:
+\begin{itemize}
+    \item \textbf{Control del tráfico:} Se puede implementar un programa para que detecte y cuente la cantidad y tipo de vehículos de una intersección para variar dinámicamente el estado de los semaforos.
+    \item \textbf{Coches robados:} Simplemente se puede hacer una deteccion de los coches y compararlos uno a uno con una base de datos de coches (o vehículos en general) robados y poder realizar avisos a las autoridades.
+\end{itemize}
+
+Este tipo de programas son una realidad muy común ya, con múltiples investigaciones y proyectos en partes del mundo variadas como China o India para algunas de las implementaciones de detección de vehículos y/o matrículas Un ejemplo claro puede ser el caso del proyecto de Sarvesh Shirulkar et Al.\cite{10984828} con YOLO para controlar las senales de tráfico según las detecciones del modelo YOLO. Otro ejemplo es el de Anning Ji y Xintao Ma\cite{JI2025804}, en el que utilizan como base un modelo YOLO10 al que se le modifica la parte de extraccion de características. Aunque estos modelos predominen la eleccion de investigadores, hay otras opciones con diferentes arquitecturas que pueden ser muy útiles en escenarios similares, como puede ser la red neuronal de Leyre Encio et Al.\cite{articleEncio} basada en CenterNet, que trata de reproducir un diseño similar a la de los transformadores con su codificador-decodificador.
 
 \section{Objetivos}
 
-El objetivo principal de este trabajo ...
+El objetivo principal de este proyecto es la realización de un programa que pueda ayudar en gran medida a la gestión del tráfico urbano mediante la detección, reconocimiento y lectura de vehículos y matrículas. Este sistema debe realizar estas tareas en un tiempo ínfimo (en cuestión de centésimas de segundo) y con una gran precisión
+
+Los objetos secundarios son:
+\begin{itemize}
+    \item Analizar el estado del arte en la materia de
+\end{itemize}
 
 \section{Estructura del trabajo}
-El documento se estructura en diferentes secciones: ...
+
+El documento se estructura en diferentes secciones:
+
+En el capítulo \ref{Introducción} o \textbf{Introducción}, se introduce el problema que se quiere solucionar con el uso del Deep Learning, revisando el uso de tecnologías en situaciones con problemas similares.
+
+La investigación previa al proyecto se nombra en el capítulo \ref{Estado del arte} o \textbf{Estudio del arte}, con varios de los métodos usados a lo largo de los últimos años para resolver el problema de la detección de objetos enfocado específicamente a detectar vehículos y matrículas.
+
+Los pasos y procesos que se han seguido en el proceso de experimentación se relatan en el capítulo \ref{Metodología experimental} o \textbf{Metodología experimental}, desde la selección de datos y modelos hasta las pruebas llevadas a cabo con múltiples configuraciones.
+
+Para poder comparar la eficacia los experimentos anteriores realizados con otros proyectos anteriores, en el capítulo \ref{Resultados experimentales} o \textbf{Resultados experimentales} se muestran las comparativas entre el rendimiento de las arquitecturas usadas, usando varias métricas y gráficas como la velocidad y las probabilidades de detección y clasificación. Además, se muestra la solución y los motivos de esta elección.
+
+Para comprobar el funcionamiento del programa en un entorno real se ha creado una aplicación web, descrita en el capítulo \ref{Aplicación web} o \textbf{Aplicación web}, por la que se puede probar el modelo escogido detectando a través de imágenes, vídeos o a través de una o más cámaras.
+
+Las normativas y licencias aplicables a este proyecto se comentan en el capítulo \ref{Legislación y normativa} o \textbf{Legislación y Normativa}, como leyes de aplicaciones web o licencias de los modelos y datasets utilizados durante el desarrollo.
+
+Todo trabajo lleva incorporado un desarrollo, así que en el capítulo \ref{Gestión de proyecto software} o \textbf{Gestión del proyecto software} se habla de la gestión que se ha llevado a cabo en el proyecto, los posibles riesgos que se pudiesen producir (o que se han producido) y el coste de desplegar este mismo proyecto en un entorno real.
+
+Por último, en el capítulo \ref{Conclusión} o \textbf{Conclusión} se discuten los problemas encontrados durante el desarrollo del proyecto, las posibles ampliaciones aplicables, opiniones personales sobre este trabajo y los agradecimientos.
+
 
 
 \chapter{Estado del arte}
 \label{Estado del arte}
 
-...
-
+En la mayoría de artículos, los investigadores usan alguno de los tantos modelos YOLO existentes. Ya que este tipo de modelos destaca en cualquier tipo de tarea gracias a su flexibilidad, es especialmente prominente a dar buenos resultados en la tarea de deteccion y reconocimiento tanto de vehículos como de matrículas.
 
 \section{Detección de vehículos}
 
@@ -1188,11 +1246,11 @@ La metodología que se ha empleado es la habitual en el desarrollo de programas 
 
 \section{Extracción de datos}
 
-Se han investigado y recopilado varios conjuntos de datos desde varias fuente, sobre todo desde Kaggle y Github. Los mejores datasets para el proyecto tendrían que tener tanto imágenes del mismo vehículo desde diferentes ángulos/cámaras como que la matrícula sea legible. Lamentablemente, el tipo de datasets que cumplan ambas funciones son bastante raros, aunque se han podido sacar 2 datasets que lo cumplen y otros dos que, aunque no hay posibilidad de variedad de cámaras hacia el mismo objetivo, aportan con gran cantidad de vehículos y sus matrículas.
+Se han investigado y recopilado varios conjuntos de datos desde varias fuente, sobre todo desde Kaggle y Github. Los mejores datasets para el proyecto tendrían que tener tanto imágenes del mismo vehículo desde diferentes ángulos/cámaras como que la matrícula sea legible. Lamentablemente, el tipo de datasets que cumplan ambas funciones son bastante raros, aunque se han podido sacar 2 datasets que lo cumplen y otros que, aunque no hay posibilidad de variedad de cámaras hacia el mismo objetivo, aportan con gran cantidad de vehículos y sus matrículas.
 
 \subsection{Multi-perspective traffic video analysis}
 
-Este conjunto de datos \cite{Sanchez-Iborra2026} está comprendido por 3 escenarios distintos, las cuales a su vez se dividen en 3 perspectivas distintas (cámara del coche, dron y cámara de vigilancia), que a su vez cada una se divide en 2 secuencias de vídeo distintas grabadas a una resolución de \textbf{1920 x 1080} a \textbf{60 fotogramas por segundo}; el total de secuencias de vídeo alcanzando 18. Un ejemplo de fotograma del dataset se puede observar en la figura \ref{fig:rsu-esc1}. Ya que este conjunto de datos no trae ningún 
+Este conjunto de datos \cite{Sanchez-Iborra2026} está comprendido por 3 escenarios distintos, las cuales a su vez se dividen en 3 perspectivas distintas (cámara del coche, dron y cámara de vigilancia), que a su vez cada una se divide en 2 secuencias de vídeo distintas grabadas a una resolución de \textbf{1920 x 1080} a \textbf{60 fotogramas por segundo}; el total de secuencias de vídeo alcanzando 18. Un ejemplo de fotograma del dataset se puede observar en la figura \ref{fig:rsu-esc1}.
 
 \begin{figure}[htb]
 \centering
@@ -1201,7 +1259,6 @@ Este conjunto de datos \cite{Sanchez-Iborra2026} está comprendido por 3 escenar
     \footnotesize{Fuente: \textit{https://zenodo.org/records/18375218}}}
     \label{fig:rsu-esc1}
 \end{figure}
-
 
 \subsection{Bdd100k}
 
@@ -1223,6 +1280,19 @@ Este conjunto de datos \cite{bdd100k} es uno de los más grandes y diversos en c
     \label{fig:bdd-example}
 \end{figure}
 
+
+\subsection{UA-DETRAC}
+
+UA-DETRAC\cite{WEN2020102907} es un conjunto de datos creado por investigadores de la universidad de Albany, para la detección y seguimiento de múltiples vehículos en escenas de tráfico real. El conjunto está formado por 100 vídeos desafiantes para los modelos que juntan en total más de 140.000 bounding boxes con anotaciones manuales que incluyen iluminación, vehículo (coches, autobuses, camiones) u oclusión, además de las bounding boxes. Estos vídeos, grabados a 25 fps a una resolución de 960x540 píxeles, han sido seleccionados a partir de más de 10 horas de secuencias de imágenes en 24 localizaciones diferentes 
+La figura \ref{fig:detrac-example} muestra varios ejemplos del dataset con distintas situaciones de visibilidad e iluminación.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/detrac_example.jpg}
+    \caption{Ejemplo del dataset UA\_DETRAC\\
+    \footnotesize{Fuente: \textit{https://www.sciencedirect.com/science/article/pii/S1077314220300035}}}
+    \label{fig:detrac-example}
+\end{figure}
 
 \subsection{UC3M-LP}
 
@@ -1256,24 +1326,50 @@ Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. Los m
 
 
 
+\subsection{CCPD}
+
+El último dataset en la lista\cite{xu2018towards}, está enfocado a la detección y reconocimiento de matrículas en entornos con condiciones no controlables, como pueden ser rotaciones, nieve, niebla, distorsiones, iluminación o la ambigüedad en las imágenes. Este conjunto de datos, consolidado gracias a millones de coches está extraído de aparcamientos a lo largo de todas las calles de una capital de provincia en China. El conjunto de imágenes supera las 250.000, con una resolución de 720x1160 y anotaciones detalladas puestas en el nombre de la propia imagen. Por ejemplo, una imagen con nombre "025-95\_113-154\&383\_386\&473-386\&473\_177\&454\_154\&383\_363\&402-0\_0\_22\_27\_27\_33\_16-37-15.jpg" se puede dividir en siete campos, delimitados por el guión (-):
+\begin{itemize}
+    \item Relación entre el área de la matrícula y el área total de la imagen.
+
+    \item Grado de inclinación horizontal y grado de inclinación vertical.
+
+    \item Las coordenadas de los vértices superior izquierdo e inferior derecho del recuadro delimitador.
+
+    \item Las coordenadas exactas (x, y) de los cuatro vértices de la matrícula. Estas coordenadas comienzan por el vértice inferior derecho.
+
+    \item Número de matrícula: cada número de matrícula se compone de un carácter chino, una letra y cinco letras o números.
+\end{itemize}
+
+Un ejemplo de matrícula del dataset se encuentra en la figura \ref{fig:ccpd-example}.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/ccpd_example.png}
+    \caption{Ejemplo del dataset CCPD\\
+    \footnotesize{Fuente: \textit{https://github.com/detectRecog/CCPD}}}
+    \label{fig:ccpd-example}
+\end{figure}
+
+
+
 \section{Preprocesado de datos}
 
-Ya que el dataset tenía una estructura diferente a la pedida por los modelos YOLO, se ha creado una función que reconstruya toda esta estructura de forma que quede de la siguiente forma:
+Ya que los datasets tienen por defecto una estructura diferente a la pedida por los modelos YOLO y/o COCO, se han creado varios programas sencillos que reconstruyen los conjuntos de datos, creando unos nuevos, de forma que cada uno de los dataset quede con la siguiente estructura:
 
-\dirtree{%
-.1 *.py.
-.1 datasets.
-.2 bdd100k_yolo.
-.3 train1.yaml.
-.3 train.
-.4 images.
-.5 *.jpg.
-.4 labels.
-.5 *.txt.
-.3 test.
-.3 val.
-.2 UC3M-LP.
-}
+% \dirtree{%
+% .1 datasets.
+% .2 bdd100k_yolo.
+% .3 yolo.yaml.
+% .3 train.
+% .4 images.
+% .5 *.jpg.
+% .4 labels.
+% .5 *.txt.
+% .4 train.json
+% .3 test.
+% .3 val.
+% }
 
 Ahora que se tienen todas las imágenes para poder entrenar, validar y probar el modelo YOLO, se tienen que transformar las etiquetas por defecto del conjunto de datos al formato \textbf{<class\_id> <center\_x> <center\_y> <width> <height>}, correspondientes al número identificador de la clase, las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Estos cuatro últimos valores están normalizados al rango [0,1].
 
@@ -1285,21 +1381,21 @@ uv run yolococo yolo2coco --images datasets/bdd100k_yolo/val/images --labels dat
 \end{lstlisting}
 
 El esquema de archivos quedaría de la siguiente manera:
-\dirtree{%
-.1 *.py.
-.1 datasets.
-.2 bdd100k_yolo.
-.3 train1.yaml.
-.3 train.
-.4 train.json.
-.4 images.
-.5 *.jpg.
-.4 labels.
-.5 *.txt.
-.3 test.
-.3 val.
-.2 UC3M-LP.
-}
+% \dirtree{%
+% .1 *.py.
+% .1 datasets.
+% .2 bdd100k_yolo.
+% .3 train1.yaml.
+% .3 train.
+% .4 train.json.
+% .4 images.
+% .5 *.jpg.
+% .4 labels.
+% .5 *.txt.
+% .3 test.
+% .3 val.
+% .2 UC3M-LP.
+% }
 
 
 

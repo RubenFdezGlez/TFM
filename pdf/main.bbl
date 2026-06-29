@@ -1,0 +1,340 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{q2bstudioUNSOOrtogonalizacixF3n}
+{U}{N}{S}{O}: {O}rtogonalizaci\&\#x{F}3;n {U}nificada de {N}ewton {S}chulz ---
+  q2bstudio.com.
+  \url{https://www.q2bstudio.com/nuestro-blog/606893/unificado-de-newton-schulz-metodo-de-ortogonalizacion-aplicado-en-calculos-cientificos},
+  [Accessed 09-04-2026]
+
+\bibitem{aldahoul2024advancingvehicleplaterecognition}
+AlDahoul, N., Tan, M.J.T., Tera, R.R., Karim, H.A., Lim, C.H., Mishra, M.K.,
+  Zaki, Y.: Advancing vehicle plate recognition: Multitasking visual language
+  models with vehiclepaligemma (2024), \url{https://arxiv.org/abs/2412.14197}
+
+\bibitem{10804754}
+Aljzaere, H., Nath, A.C., Hardt, W.: German license plate recognition system
+  using the yolov8 model and easyocr. In: 2024 IEEE CPMT Symposium Japan
+  (ICSJ). pp. 176--179 (2024). \doi{10.1109/ICSJ62869.2024.10804754}
+
+\bibitem{ALNUSAYRI2026}
+Alnusayri, M., Mujtaba, G., Almujally, N.A., Aitarbi, S.S., Algarni, A., Jalal,
+  A., Park, J.: Traffic vision: Uav-based vehicle detection and traffic pattern
+  analysis via deep learning classifier. Computers, Materials and Continua
+  \textbf{86}(3) (2026). \doi{https://doi.org/10.32604/cmc.2025.071804},
+  \url{https://www.sciencedirect.com/science/article/pii/S1546221826000974}
+
+\bibitem{beery2020contextrcnnlongterm}
+Beery, S., Wu, G., Rathod, V., Votel, R., Huang, J.: Context r-cnn: Long term
+  temporal context for per-camera object detection (2020),
+  \url{https://arxiv.org/abs/1912.03538}
+
+\bibitem{BELMONTE2025103154}
+Belmonte, G., Ciancia, V., Massink, M.: Symbolic and hybrid ai for brain tissue
+  segmentation using spatial model checking. Artificial Intelligence in
+  Medicine  \textbf{167},  103154 (2025).
+  \doi{https://doi.org/10.1016/j.artmed.2025.103154},
+  \url{https://www.sciencedirect.com/science/article/pii/S0933365725000892}
+
+\bibitem{visapp09}
+de~Campos, T.E., Babu, B.R., Varma, M.: Character recognition in natural
+  images. In: Proceedings of the Fourth International Conference on Computer
+  Vision Theory and Applications - Volume 2: VISAPP, (VISIGRAPP 2009). pp.
+  273--280. INSTICC, SciTePress (2009). \doi{10.5220/0001770102730280}
+
+\bibitem{carion2020endtoendobjectdetectiontransformers}
+Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov, A., Zagoruyko, S.:
+  End-to-end object detection with transformers (2020),
+  \url{https://arxiv.org/abs/2005.12872}
+
+\bibitem{chakrabarty2026yolo26analysisnmsfreeend}
+Chakrabarty, S.: Yolo26: An analysis of nms-free end to end framework for
+  real-time object detection (2026), \url{https://arxiv.org/abs/2601.12882}
+
+\bibitem{chen2023groupdetrfastdetr}
+Chen, Q., Chen, X., Wang, J., Zhang, S., Yao, K., Feng, H., Han, J., Ding, E.,
+  Zeng, G., Wang, J.: Group detr: Fast detr training with group-wise
+  one-to-many assignment (2023), \url{https://arxiv.org/abs/2207.13085}
+
+\bibitem{tesseractocrTesseractWorlds}
+Community, T.O.: {T}esseract {O}{C}{R} — {T}he {W}orld's {B}est {O}pen
+  {S}ource {O}{C}{R} {E}ngine --- tesseractocr.org.
+  \url{https://tesseractocr.org}, [Accessed 07-05-2026]
+
+\bibitem{ding2021repvggmakingvggstyleconvnets}
+Ding, X., Zhang, X., Ma, N., Han, J., Ding, G., Sun, J.: Repvgg: Making
+  vgg-style convnets great again (2021), \url{https://arxiv.org/abs/2101.03697}
+
+\bibitem{dolatabadi2025revolutionizingtrafficmanagementaipowered}
+DolatAbadi, S.H.H., Hashemi, S.M.H., Hosseini, M., AliHosseini, M.A.:
+  Revolutionizing traffic management with ai-powered machine vision: A step
+  toward smart cities (2025), \url{https://arxiv.org/abs/2503.02967}
+
+\bibitem{articleEncio}
+Encío, L., Fuertes, D., Del-Blanco, C., Aguilar, I., Perez, C., Jevtić, A.,
+  Jaureguizar, F., García, N.: Enhanced nighttime vehicle detection for
+  on-board processing. IEEE Access  \textbf{PP}, ~1--1 (01 2025).
+  \doi{10.1109/ACCESS.2025.3548837}
+
+\bibitem{10988348}
+Gowri, B.S., S, H.H., M, A.K., N~S, A.: You only look once version 8
+  (yolov8)-driven emergency vehicle detection and graph neural networks (gnns)
+  based traffic signal prioritization. In: 2025 5th International Conference on
+  Trends in Material Science and Inventive Materials (ICTMIM). pp. 1662--1667
+  (2025). \doi{10.1109/ICTMIM65579.2025.10988348}
+
+\bibitem{10828068}
+Gu, C., Du, H., Zhang, X., Li, L., Yang, Z., Liu, G.: Yolov7 vehicle target
+  detection algorithm based on attention mechanism. In: 2024 IEEE 6th
+  International Conference on Civil Aviation Safety and Information Technology
+  (ICCASIT). pp. 349--352 (2024). \doi{10.1109/ICCASIT62299.2024.10828068}
+
+\bibitem{9858960}
+Guan, X., Sun, X.: Vehicle identification and traffic statistics system in
+  traffic intersection. In: 2022 4th International Conference on Intelligent
+  Control, Measurement and Signal Processing (ICMSP). pp. 851--854 (2022).
+  \doi{10.1109/ICMSP55950.2022.9858960}
+
+\bibitem{10710693}
+Görgülü, E., Özcan, A.R.: Deep learning-based turkish license plate
+  recognition system on low-power microcontroller systems. In: 2024 8th
+  International Artificial Intelligence and Data Processing Symposium (IDAP).
+  pp.~1--6 (2024). \doi{10.1109/IDAP64064.2024.10710693}
+
+\bibitem{he2015deepresiduallearningimage}
+He, K., Zhang, X., Ren, S., Sun, J.: Deep residual learning for image
+  recognition (2015), \url{https://arxiv.org/abs/1512.03385}
+
+\bibitem{JI2025804}
+Ji, A., Ma, X.: Vehicle detection and classification for traffic management and
+  autonomous systems using yolov10. Alexandria Engineering Journal
+  \textbf{127},  804--816 (2025).
+  \doi{https://doi.org/10.1016/j.aej.2025.06.049},
+  \url{https://www.sciencedirect.com/science/article/pii/S1110016825007999}
+
+\bibitem{9790745}
+Kharina, N., Chernyadyev, S.: Software for car license plates recognition with
+  minimal computing resources. In: 2022 24th International Conference on
+  Digital Signal Processing and its Applications (DSPA). pp.~1--4 (2022).
+  \doi{10.1109/DSPA53304.2022.9790745}
+
+\bibitem{6755945}
+Krause, J., Stark, M., Deng, J., Fei-Fei, L.: 3d object representations for
+  fine-grained categorization. In: 2013 IEEE International Conference on
+  Computer Vision Workshops. pp. 554--561 (Dec 2013).
+  \doi{10.1109/ICCVW.2013.77}
+
+\bibitem{li2023litedetrinterleaved}
+Li, F., Zeng, A., Liu, S., Zhang, H., Li, H., Zhang, L., Ni, L.M.: Lite detr :
+  An interleaved multi-scale encoder for efficient detr (2023),
+  \url{https://arxiv.org/abs/2303.07335}
+
+\bibitem{li2022dndetracceleratedetrtraining}
+Li, F., Zhang, H., Liu, S., Guo, J., Ni, L.M., Zhang, L.: Dn-detr: Accelerate
+  detr training by introducing query denoising (2022),
+  \url{https://arxiv.org/abs/2203.01305}
+
+\bibitem{LI201814}
+Li, H., Wang, P., You, M., Shen, C.: Reading car license plates using deep
+  neural networks. Image and Vision Computing  \textbf{72},  14--23 (2018).
+  \doi{https://doi.org/10.1016/j.imavis.2018.02.002},
+  \url{https://www.sciencedirect.com/science/article/pii/S0262885618300155}
+
+\bibitem{s24103088}
+Liang, L., Ma, H., Zhao, L., Xie, X., Hua, C., Zhang, M., Zhang, Y.: Vehicle
+  detection algorithms for autonomous driving: A review. Sensors
+  \textbf{24}(10) (2024). \doi{10.3390/s24103088},
+  \url{https://www.mdpi.com/1424-8220/24/10/3088}
+
+\bibitem{LIU2026106893}
+Liu, H., Ma, R.: Full-view digital pavement reconstruction for practical
+  traffic scenarios through altitude-robust vehicle detection and
+  traffic-adaptive optimization. Automation in Construction  \textbf{186},
+  106893 (2026). \doi{https://doi.org/10.1016/j.autcon.2026.106893},
+  \url{https://www.sciencedirect.com/science/article/pii/S0926580526001342}
+
+\bibitem{liu2022dabdetrdynamicanchorboxes}
+Liu, S., Li, F., Zhang, H., Yang, X., Qi, X., Su, H., Zhu, J., Zhang, L.:
+  Dab-detr: Dynamic anchor boxes are better queries for detr (2022),
+  \url{https://arxiv.org/abs/2201.12329}
+
+\bibitem{Meesad2025}
+Meesad, P., Thumthong, W.: Advanced deep learning techniques for automated
+  license plate recognition. Scientific Reports  \textbf{15}(1),  41194 (Nov
+  2025). \doi{10.1038/s41598-025-24967-9},
+  \url{https://doi.org/10.1038/s41598-025-24967-9}
+
+\bibitem{meng2023conditionaldetrfasttraining}
+Meng, D., Chen, X., Fan, Z., Zeng, G., Li, H., Yuan, Y., Sun, L., Wang, J.:
+  Conditional detr for fast training convergence (2023),
+  \url{https://arxiv.org/abs/2108.06152}
+
+\bibitem{Meyer_2025}
+Meyer, F., Guichard, L., Coquenet, D., Gravier, G., Soullard, Y., Coüasnon,
+  B.: Relaxed Syntax Modeling in Transformers for Future-Proof License Plate
+  Recognition, p. 154–171. Springer Nature Switzerland (sept 2025).
+  \doi{10.1007/978-3-032-04627-7_9},
+  \url{http://dx.doi.org/10.1007/978-3-032-04627-7_9}
+
+\bibitem{Moussaoui2024}
+Moussaoui, H., Akkad, N.E., Benslimane, M., El-Shafai, W., Baihan, A., Hewage,
+  C., Rathore, R.S.: Enhancing automated vehicle identification by integrating
+  yolo v8 and ocr techniques for high-precision license plate detection and
+  recognition. Scientific Reports  \textbf{14}(1),  14389 (Jun 2024).
+  \doi{10.1038/s41598-024-65272-1},
+  \url{https://doi.org/10.1038/s41598-024-65272-1}
+
+\bibitem{nadiminti2022explorationendtoendautomaticnumberplate}
+Nadiminti, S.S., Gaur, P.K., Bhardwaj, A.: Exploration of an end-to-end
+  automatic number-plate recognition neural network for indian datasets (2022),
+  \url{https://arxiv.org/abs/2207.06657}
+
+\bibitem{NARDES2026102654}
+Nardes, G.B., Rausch, T.H., Pereira, B.H., Melo, D.R., Zeferino, C.A.: A
+  resource-constrained cnn accelerator for real-time license plate character
+  recognition on fpga platforms. Integration  \textbf{108},  102654 (2026).
+  \doi{https://doi.org/10.1016/j.vlsi.2026.102654},
+  \url{https://www.sciencedirect.com/science/article/pii/S016792602600009X}
+
+\bibitem{neupane2023shinedeeplearningbasedaccessible}
+Neupane, D., Bhattarai, A., Aryal, S., Bouadjenek, M.R., Seok, U.M., Seok, J.:
+  Shine: Deep learning-based accessible parking management system (2023),
+  \url{https://arxiv.org/abs/2302.00837}
+
+\bibitem{Pradhan2025}
+Pradhan, G., Prusty, M.R., Negi, V.S., Chinara, S.: Advanced iot-integrated
+  parking systems with automated license plate recognition and payment
+  management. Scientific Reports  \textbf{15}(1), ~2388 (Jan 2025).
+  \doi{10.1038/s41598-025-86441-w},
+  \url{https://doi.org/10.1038/s41598-025-86441-w}
+
+\bibitem{RAMAJOBALLESTER2024104608}
+Álvaro Ramajo-Ballester, {Armingol Moreno}, J.M., {de la Escalera Hueso}, A.:
+  Dual license plate recognition and visual features encoding for vehicle
+  identification. Robotics and Autonomous Systems  \textbf{172},  104608
+  (2024). \doi{https://doi.org/10.1016/j.robot.2023.104608},
+  \url{https://www.sciencedirect.com/science/article/pii/S0921889023002476}
+
+\bibitem{ramzan2023enhancingvehicleentranceparking}
+Ramzan, M.U., Ali, U., Naqvi, S.H.A., Aslam, Z., Tehseen, Ali, H., Faheem, M.:
+  Enhancing vehicle entrance and parking management: Deep learning solutions
+  for efficiency and security (2023), \url{https://arxiv.org/abs/2312.02699}
+
+\bibitem{11213146}
+Rathod, V.V., Chouhan, R., Rana, D.P., Mehta, R.G., Dhamaniya, A.: Uav-based
+  vehicle detection and classification under varying lighting conditions for
+  indian traffic. In: 2025 International Conference on Emerging Technology in
+  Autonomous Aerial Vehicles (ETAAV). pp.~1--5 (2025).
+  \doi{10.1109/ETAAV66793.2025.11213146}
+
+\bibitem{articleReddy}
+Reddy, N., .Poojitha, L., Shashikanth, M., Irfan, M.: Yolov10-driven enhanced
+  vehicle detection in low-light on-board environments. International Journal
+  of Scientific Research in Engineering and Management  \textbf{10}, ~1--9 (03
+  2026). \doi{10.55041/IJSREM57670}
+
+\bibitem{roh2022sparsedetrefficientendtoend}
+Roh, B., Shin, J., Shin, W., Kim, S.: Sparse detr: Efficient end-to-end object
+  detection with learnable sparsity (2022),
+  \url{https://arxiv.org/abs/2111.14330}
+
+\bibitem{SAIVEENA2026111086}
+Saiveena, K., Praveen, P.: Edge intelligence-enabled vision transformer with
+  yolov5 for accurate vehicle detection and image segmentation using adaptive
+  multiscale deep learning mechanism. Computers and Electrical Engineering
+  \textbf{134},  111086 (2026).
+  \doi{https://doi.org/10.1016/j.compeleceng.2026.111086},
+  \url{https://www.sciencedirect.com/science/article/pii/S0045790626001588}
+
+\bibitem{Sanchez-Iborra2026}
+Sanchez-Iborra, R., Kouvakis, V., Trevlakis, S.E., Alarcon-Hellin, G.,
+  Tsiftsis, T., Bernal-Escobedo, L., Asensio-Garriga, R., Boulogeorgos, A.A.A.,
+  Skarmeta, A.: Dataset for multi-perspective traffic video analysis.
+  Scientific Data  (Feb 2026). \doi{10.1038/s41597-026-06907-y},
+  \url{https://doi.org/10.1038/s41597-026-06907-y}
+
+\bibitem{sapkota2026yolo26keyarchitecturalenhancements}
+Sapkota, R., Cheppally, R.H., Sharda, A., Karkee, M.: Yolo26: Key architectural
+  enhancements and performance benchmarking for real-time object detection
+  (2026), \url{https://arxiv.org/abs/2509.25164}
+
+\bibitem{shao2019objects365}
+Shao, S., Li, Z., Zhang, T., Peng, C., Yu, G., Li, J., Zhang, X., Sun, J.:
+  Objects365: A large-scale, high-quality dataset for object detection. In:
+  Proceedings of the IEEE/CVF International Conference on Computer Vision. pp.
+  8425--8434 (2019)
+
+\bibitem{10984828}
+Shirulkar, S., Makode, R., Khandelwal, R.: Adaptive traffic signal management
+  using real-time vehicle detection and tracking. In: 2025 IEEE International
+  Conference on Interdisciplinary Approaches in Technology and Management for
+  Social Innovation (IATMSI). vol.~3, pp.~1--6 (2025).
+  \doi{10.1109/IATMSI64286.2025.10984828}
+
+\bibitem{trananh2023licenseplaterecognitionbased}
+Tran-Anh, D., Tran, K.L., Vu, H.N.: License plate recognition based on
+  multi-angle view model (2023), \url{https://arxiv.org/abs/2309.12972}
+
+\bibitem{wang2022anchordetrquerydesign}
+Wang, Y., Zhang, X., Yang, T., Sun, J.: Anchor detr: Query design for
+  transformer-based object detection (2022),
+  \url{https://arxiv.org/abs/2109.07107}
+
+\bibitem{WEN2020102907}
+Wen, L., Du, D., Cai, Z., Lei, Z., Chang, M.C., Qi, H., Lim, J., Yang, M.H.,
+  Lyu, S.: Ua-detrac: A new benchmark and protocol for multi-object detection
+  and tracking. Computer Vision and Image Understanding  \textbf{193},  102907
+  (2020). \doi{https://doi.org/10.1016/j.cviu.2020.102907},
+  \url{https://www.sciencedirect.com/science/article/pii/S1077314220300035}
+
+\bibitem{XU2026108842}
+Xu, L., Shang, Z., Chen, X., Zeng, T., Dai, W., Zhao, J.: Deep learning
+  algorithms for license plate recognition: A review. Neural Networks
+  \textbf{200},  108842 (2026).
+  \doi{https://doi.org/10.1016/j.neunet.2026.108842},
+  \url{https://www.sciencedirect.com/science/article/pii/S0893608026003047}
+
+\bibitem{xu2018towards}
+Xu, Z., Yang, W., Meng, A., Lu, N., Huang, H.: Towards end-to-end license plate
+  detection and recognition: A large dataset and baseline. In: Proceedings of
+  the European Conference on Computer Vision (ECCV). pp. 255--271 (2018)
+
+\bibitem{yao2021efficientdetrimprovingendtoend}
+Yao, Z., Ai, J., Li, B., Zhang, C.: Efficient detr: Improving end-to-end object
+  detector with dense prior (2021), \url{https://arxiv.org/abs/2104.01318}
+
+\bibitem{bdd100k}
+Yu, F., Chen, H., Wang, X., Xian, W., Chen, Y., Liu, F., Madhavan, V., Darrell,
+  T.: Bdd100k: A diverse driving dataset for heterogeneous multitask learning.
+  In: The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)
+  (June 2020)
+
+\bibitem{zhang2022dinodetrimproveddenoising}
+Zhang, H., Li, F., Liu, S., Zhang, L., Su, H., Zhu, J., Ni, L.M., Shum, H.Y.:
+  Dino: Detr with improved denoising anchor boxes for end-to-end object
+  detection (2022), \url{https://arxiv.org/abs/2203.03605}
+
+\bibitem{zhao2024detrsbeatyolosrealtime}
+Zhao, Y., Lv, W., Xu, S., Wei, J., Wang, G., Dang, Q., Liu, Y., Chen, J.: Detrs
+  beat yolos on real-time object detection (2024),
+  \url{https://arxiv.org/abs/2304.08069}
+
+\bibitem{zherzdev2018lprnetlicenseplaterecognition}
+Zherzdev, S., Gruzdev, A.: Lprnet: License plate recognition via deep neural
+  networks (2018), \url{https://arxiv.org/abs/1806.10447}
+
+\bibitem{ZHU2026120336}
+Zhu, W., Liu, B., Chen, B., Wang, L., Meng, X., Chang, K., Zhao, J.: Dfem-net:
+  A dynamic adaptive feature extraction network based deep learning model for
+  pedestrian and vehicle detection. Measurement  \textbf{266},  120336 (2026).
+  \doi{https://doi.org/10.1016/j.measurement.2026.120336},
+  \url{https://www.sciencedirect.com/science/article/pii/S026322412600045X}
+
+\bibitem{zhu2021deformabledetrdeformabletransformers}
+Zhu, X., Su, W., Lu, L., Li, B., Wang, X., Dai, J.: Deformable detr: Deformable
+  transformers for end-to-end object detection (2021),
+  \url{https://arxiv.org/abs/2010.04159}
+
+\end{thebibliography}
