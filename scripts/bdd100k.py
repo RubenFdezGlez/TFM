@@ -122,3 +122,5 @@ if __name__ == '__main__':
         classes_names = classes,
         dst_path = "./../datasets/bdd100k_yolo/"
     )
+
+    dr.organize()

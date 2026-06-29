@@ -68,15 +68,17 @@ source .muriap/bin/activate
 
 ## Package installation
 
-The Python packages needed for the programs to work are gonna be installed from the file named requirements.txt. ADDITIONAL_NOTE: If this command gives an error on the torch library, execute the next command with your specific version of CUDA:
+The environment (and the packages installed) has been tested using CUDA 13.2 so if you are using another version consider reinstalling PyTorch with the following command (and changing the CUDA version):
+```bash
+uv pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu132 
+```
+
+The Python packages needed for the programs to work are gonna be installed from the file named requirements.txt:
 ```bash
 uv pip install -r requirements.txt
 ```
 
-NOTE: The environment (and the packages installed) has been tested using CUDA 13.2 so if you are using another version consider reinstalling PyTorch with the following command (and changing the CUDA version):
-```bash
-uv pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu132 
-```
+
 
 
 ___
@@ -105,7 +107,7 @@ export KAGGLE_API_TOKEN=xxxxxxxxxxxxxx
 echo '{"username":"your_username","key":"your_apitoken"}' > ~/.kaggle/kaggle.json
 ```
 
-4. Download the dataset:
+4. Download the dataset to the **datasets** folder:
 ```bash
 uv run kaggle datasets download solesensei/solesensei_bdd100k -p datasets --unzip -o -q
 ```
@@ -143,6 +145,14 @@ After all of these changes, the complete dataset should look like these:
 </pre>
 
 
+#### BDD-100K dataset
+
+1. Download the dataset:
+```bash
+uv run kaggle datasets download bratjay/ua-detrac-orig -p datasets --unzip -o -q
+```
+
+
 
 ### License plate datasets
 
@@ -176,8 +186,19 @@ uv run yolococo yolo2coco --images datasets/UC3M-LP/.-yolo/LP/images/train --lab
 uv run yolococo yolo2coco --images datasets/UC3M-LP/.-yolo/LP/images/val --labels datasets/UC3M-LP/.-yolo/LP/labels/val --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/UC3M-LP/.-yolo/LP/val/val.json
 ```
 
+#### CCPD
 
-___
+Download the dataset saved on google drive through the command **gdown**, installed through uv:
+```bash
+uv run gdown https://drive.google.com/file/d/1rdEsCUcIUaYOVRkx5IMTRNA7PcGMmSgc/view?usp=sharing
+```
+
+The compressed folder can not be extracted through the unzip command, so we have to use the command **tar**:.  
+```bash
+tar -xf CCPD2019.tar.xz
+```
+
+
 
 
 ## Tesseract-OCR installation
