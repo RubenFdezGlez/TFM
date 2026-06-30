@@ -156,7 +156,7 @@
 \vspace{-1em}
 \begin{longtable}{|p{16cm}|}
     \textbf{RESUMEN}:\\
-    El objetivo de este proyecto ha sido realizar un programa que pueda realizar múltiples funciones útiles para \\
+    El objetivo de este proyecto ha sido realizar un programa que pueda realizar múltiples funciones útiles para ayudar a la gestión del tráfico urbano, comenzando con la base de la detección y reconocimiento de vehículos y la detección y lectura de sus matrículas. Esta tarea es realizada a partir de archivos (vídeos e imágenes) y múltiples cámaras, que el programa lee, reconoce y procesa para tener los resultados de la detección \\
     \hline
 \end{longtable}
 
@@ -218,12 +218,6 @@
 
 \item[mAP]: \textit{Mean Average Precision} es la métrica más utilizada en la tarea de la detección de objetos. Se calcula como la media ponderada de las AP de cada una de las clases que se utilizan en el problema.
 
-\item[MLP]: \textit{Multilayer Perceptron} es una red neuronal con sus nodos totalmente conectados entre sí. La entrada es insertada en la red, atraviesa una o varias capas de nodos ocultas y se transforma en otro dato hasta su salida en la última capa. El objetivo es construir relaciones complejas entre la entrada y la salida.
-
-\item[PCA]: \textit{Principal Component Analysis} es una técnica que reduce el número de características manteniendo la máxima información. PCA usa álgebra lineal para estandarizar los datos y seleccionar dónde hay un cambio de valor más amplio, que es donde se ubican los datos más valiosos.
-
-\item[Puntos locales extremos]: Denominado también \textit{Local extrema}, son valores mínimos y máximos en una curva o trazo que cambia de dirección en múltiples ocasiones. Estos se detectan comprobando si su valor en una imagen es menor o mayor que el de todos sus píxeles colindantes.
-
 \item[One-stage Detector]: Los detectores de una sola fase son una clase de modelos de \textit{Deep Learning} diseñados para ser más eficientes y veloces que sus contrapartes de dos etapas. La segunda diferencia clave con estos últimos es la fusión de las acciones de detección y clasificación en una sola pasada en la red neuronal.
 
 \item[Overfitting]: Problema en \textit{Machine Learning} en el que el modelo que se está entrenando se sobreajusta demasiado al conjunto de datos. En vez de saber generalizar para cualquier conjunto de datos, el modelo intenta memorizar directamente los resultados. Se puede resolver aumentando el conjunto de datos y/o aplicando \textit{Data Augmentation} al dataset existente o con ciertos métodos de regularización.
@@ -244,21 +238,32 @@
 
 \section{Contexto del problema}
 
-La Inteligencia Artificial se está implementando actualmente en cualquier trabajo o proyecto sin ningún tipo de control y sin importar si es realmente necesario. Un ejemplo claro es el artículo de investigación de Gina Belmonte et Al.\cite{BELMONTE2025103154} en el que entrenan un modelo para segmentar tejido cerebral, concretamente para aplicaciones de neuroimagen y radioterapia. Otro ejemplo de tarea muy importante actualmente, debido al crecimiento de la industria de coches autónomos, es la detección e identificación de vehículos en tiempo real, donde unos sensores se encargan de detectar otros vehículos en las proximidades para poder razonar y actuar gracias a esta informacion, como puede ser al aparcar, puedan detectar y medir distancias a un vehículo próximo. Y no sólo es importante para los coches autónomos también lo es para:
+La Inteligencia Artificial se está implementando actualmente en cualquier trabajo o proyecto sin ningún tipo de control y sin importar si es realmente necesario. Un ejemplo claro de una implementación beneficiosa es el artículo de investigación de Gina Belmonte et Al.\cite{BELMONTE2025103154} en el que entrenan un modelo para segmentar tejido cerebral, concretamente para aplicaciones de neuroimagen y radioterapia. Debido al crecimiento de la industria de coches autónomos, surge otro claro ejemplo de beneficio muy importante: detección e identificación de vehículos en tiempo real, donde unos sensores se encargan de detectar otros vehículos en las proximidades para poder razonar y actuar gracias a esta informacion. Un caso claro puede ser que, al aparcar, un vehículo pueda detectar y medir distancias a los vehículo próximo. Y no sólo es importante para los coches autónomos, también lo es para:
 \begin{itemize}
     \item \textbf{Control del tráfico:} Se puede implementar un programa para que detecte y cuente la cantidad y tipo de vehículos de una intersección para variar dinámicamente el estado de los semaforos.
-    \item \textbf{Coches robados:} Simplemente se puede hacer una deteccion de los coches y compararlos uno a uno con una base de datos de coches (o vehículos en general) robados y poder realizar avisos a las autoridades.
+    \item \textbf{Coches robados:} Simplemente se puede hacer una deteccion de los coches y compararlos uno a uno con una base de datos de vehículos robados y poder realizar avisos a las autoridades. Aquí también se incluyen casos en los que el coche no esté en las condiciones correctas de circulación (ITV no renovada, por ejemplo).
 \end{itemize}
 
-Este tipo de programas son una realidad muy común ya, con múltiples investigaciones y proyectos en partes del mundo variadas como China o India para algunas de las implementaciones de detección de vehículos y/o matrículas Un ejemplo claro puede ser el caso del proyecto de Sarvesh Shirulkar et Al.\cite{10984828} con YOLO para controlar las senales de tráfico según las detecciones del modelo YOLO. Otro ejemplo es el de Anning Ji y Xintao Ma\cite{JI2025804}, en el que utilizan como base un modelo YOLO10 al que se le modifica la parte de extraccion de características. Aunque estos modelos predominen la eleccion de investigadores, hay otras opciones con diferentes arquitecturas que pueden ser muy útiles en escenarios similares, como puede ser la red neuronal de Leyre Encio et Al.\cite{articleEncio} basada en CenterNet, que trata de reproducir un diseño similar a la de los transformadores con su codificador-decodificador.
+Y estos 2 casos son particularmente el propósito de este trabajo: ambas tareas requieren la atención constante de experto y/o sistemas electrónicos automatizados (como puede ser en el caso de los semáforos, ya que la mayoria de ellos simplemente funcionan a base de un temporizador) que analicen uno a uno los vehículos en busca de irregularidades.
+
+Este tipo de programas son ya una realidad muy extendida, con múltiples investigaciones y proyectos en partes del mundo variadas como China o India para algunas de las implementaciones de detección de vehículos y/o matrículas u otros análisis del tráfico. Un ejemplo claro puede ser el caso del proyecto de Sarvesh Shirulkar et Al.\cite{10984828} con YOLO para controlar las senales de tráfico según las detecciones del modelo YOLO. Otro ejemplo es el de Anning Ji y Xintao Ma\cite{JI2025804}, en el que utilizan como base un modelo YOLO10 al que se le modifica la parte de extraccion de características. Aunque estos modelos predominen la elección de los investigadores, hay otras opciones con diferentes arquitecturas que pueden ser muy útiles en estos mismos escenarios, como puede ser la red neuronal de Leyre Encio et Al.\cite{articleEncio} basada en CenterNet, que trata de reproducir un diseño similar a la de los transformadores con su codificador-decodificador.
 
 \section{Objetivos}
 
-El objetivo principal de este proyecto es la realización de un programa que pueda ayudar en gran medida a la gestión del tráfico urbano mediante la detección, reconocimiento y lectura de vehículos y matrículas. Este sistema debe realizar estas tareas en un tiempo ínfimo (en cuestión de centésimas de segundo) y con una gran precisión
+El objetivo principal de este proyecto es la realización de un programa que pueda ayudar en gran medida a la gestión del tráfico urbano mediante la detección, reconocimiento y lectura de vehículos y matrículas. Este sistema debe realizar estas tareas en un tiempo ínfimo (en cuestión de centésimas de segundo) y con una gran precisión y, es por ello que se han analizado diversas arquitecturas, entrenándose con diferentes configuraciones, logrando así los mejores resultados posibles.
 
-Los objetos secundarios son:
+Los objetos secundarios han sido:
 \begin{itemize}
-    \item Analizar el estado del arte en la materia de
+    \item Analizar el estado del arte en la materia de detección y reconocimiento de vehículos y matrículas, así como analizar las herramientas de lectura óptica para leer matrículas.
+
+    \item Seleccionar y preparar distintos conjuntos de datos con anotaciones representativos para estas tareas.
+    
+    \item Integrar las tareas de detección y lectura óptica en un mismo flujo capaz de realizar inferencias completas a partir de imágenes, vídeos o cámaras.
+    
+    \item Diseñar una aplicación web sencilla e intuitiva con la librería Streamlit que permita al usuario cargar un archivo o activar cámaras para obtener predicciones visuales y textuales.
+    
+    \item Comparar el rendimiento de las configuraciones finales de los modelos utilizando métricas estándar de detección y reconocimiento como mAP50, mAP50-95, precision, recall y F1-score.
+    \item Analizar las limitaciones del sistema y proponer futuras mejoras que permitan realizar más funciones y que hagan más eficiente este programa.
 \end{itemize}
 
 \section{Estructura del trabajo}
@@ -279,14 +284,14 @@ Las normativas y licencias aplicables a este proyecto se comentan en el capítul
 
 Todo trabajo lleva incorporado un desarrollo, así que en el capítulo \ref{Gestión de proyecto software} o \textbf{Gestión del proyecto software} se habla de la gestión que se ha llevado a cabo en el proyecto, los posibles riesgos que se pudiesen producir (o que se han producido) y el coste de desplegar este mismo proyecto en un entorno real.
 
-Por último, en el capítulo \ref{Conclusión} o \textbf{Conclusión} se discuten los problemas encontrados durante el desarrollo del proyecto, las posibles ampliaciones aplicables, opiniones personales sobre este trabajo y los agradecimientos.
+Por último, en el capítulo \ref{Conclusión} o \textbf{Conclusión} se discuten los problemas encontrados durante el desarrollo del proyecto, las posibles mejoras aplicables, opiniones personales sobre este trabajo y agradecimientos a las personas que me han ayudado, directa o indirectamente, para realizar este proyecto.
 
 
 
 \chapter{Estado del arte}
 \label{Estado del arte}
 
-En la mayoría de artículos, los investigadores usan alguno de los tantos modelos YOLO existentes. Ya que este tipo de modelos destaca en cualquier tipo de tarea gracias a su flexibilidad, es especialmente prominente a dar buenos resultados en la tarea de deteccion y reconocimiento tanto de vehículos como de matrículas.
+En la mayoría de artículos de investigación, los investigadores usan alguno de los tantos modelos YOLO existentes, principalmente porque este tipo de modelos destaca gracias a su flexibilidad y facilidad de implementar y además son especialmente prominentes a dar buenos resultados no solo en las tareas de deteccion y reconocimiento tanto de vehículos como de matrículas, sino en cualquier tarea de detección de objetos
 
 \section{Detección de vehículos}
 
@@ -1283,7 +1288,7 @@ Este conjunto de datos \cite{bdd100k} es uno de los más grandes y diversos en c
 
 \subsection{UA-DETRAC}
 
-UA-DETRAC\cite{WEN2020102907} es un conjunto de datos creado por investigadores de la universidad de Albany, para la detección y seguimiento de múltiples vehículos en escenas de tráfico real. El conjunto está formado por 100 vídeos desafiantes para los modelos que juntan en total más de 140.000 bounding boxes con anotaciones manuales que incluyen iluminación, vehículo (coches, autobuses, camiones) u oclusión, además de las bounding boxes. Estos vídeos, grabados a 25 fps a una resolución de 960x540 píxeles, han sido seleccionados a partir de más de 10 horas de secuencias de imágenes en 24 localizaciones diferentes 
+UA-DETRAC\cite{WEN2020102907} es un conjunto de datos creado por investigadores de la universidad de Albany, para la detección y seguimiento de múltiples vehículos en escenas de tráfico real. El conjunto está formado por 100 vídeos desafiantes para los modelos que juntan en total más de 140000 bounding boxes con anotaciones manuales que incluyen iluminación, vehículo (coches, autobuses, camiones) u oclusión, además de las bounding boxes. Estos vídeos, grabados a 25 fps a una resolución de 960x540 píxeles, han sido seleccionados a partir de más de 10 horas de secuencias de imágenes en 24 localizaciones diferentes 
 La figura \ref{fig:detrac-example} muestra varios ejemplos del dataset con distintas situaciones de visibilidad e iluminación.
 
 \begin{figure}[htb]
@@ -1328,7 +1333,7 @@ Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. Los m
 
 \subsection{CCPD}
 
-El último dataset en la lista\cite{xu2018towards}, está enfocado a la detección y reconocimiento de matrículas en entornos con condiciones no controlables, como pueden ser rotaciones, nieve, niebla, distorsiones, iluminación o la ambigüedad en las imágenes. Este conjunto de datos, consolidado gracias a millones de coches está extraído de aparcamientos a lo largo de todas las calles de una capital de provincia en China. El conjunto de imágenes supera las 250.000, con una resolución de 720x1160 y anotaciones detalladas puestas en el nombre de la propia imagen. Por ejemplo, una imagen con nombre "025-95\_113-154\&383\_386\&473-386\&473\_177\&454\_154\&383\_363\&402-0\_0\_22\_27\_27\_33\_16-37-15.jpg" se puede dividir en siete campos, delimitados por el guión (-):
+El último dataset en la lista\cite{xu2018towards}, está enfocado a la detección y reconocimiento de matrículas en entornos con condiciones no controlables, como pueden ser rotaciones, nieve, niebla, distorsiones, iluminación o la ambigüedad en las imágenes. Este conjunto de datos, consolidado gracias a millones de coches está extraído de aparcamientos a lo largo de todas las calles de una capital de provincia en China. El conjunto de imágenes supera las 250000, con una resolución de 720x1160 y anotaciones detalladas puestas en el nombre de la propia imagen. Por ejemplo, una imagen con nombre "025-95\_113-154\&383\_386\&473-386\&473\_177\&454\_154\&383\_363\&402-0\_0\_22\_27\_27\_33\_16-37-15.jpg" se puede dividir en siete campos, delimitados por el guión (-):
 \begin{itemize}
     \item Relación entre el área de la matrícula y el área total de la imagen.
 
@@ -1879,7 +1884,7 @@ El desarrollo ha durado en torno a los cinco meses. La tabla \ref{Actividades} i
         \hline
         Implementación web & . & . & .\\
         \hline
-        Documentación & . & . & 15/07/2026\\
+        Documentación & . & . & 12/07/2026\\
         \hline
     \end{tabular}
     \label{Actividades}
@@ -1963,21 +1968,17 @@ En la siguiente tabla \ref{Coste-Personal} se refleja el sueldo bruto \footnote{
         & \textbf{totales} & \textbf{por hora} & & \textbf{seguridad} & \textbf{empleador (2)}\\
         & & & & \textbf{social (1)} & \\
         \hline
-        Ingeniero IA & 140 h & 30,26€/h & 4236,4€ & 266,89€ & 999,79€\\ 
+        Ingeniero IA & 140h & 30.26€/h & 4236.4€ & 266.89€ & 999.79€\\ 
         \hline
-        Desarrollador Web & . & . & . & . & .\\
+        Desarrollador Web & 50h & 27.60€/h & 1380€ & 86.94€ & 325.68€\\
         \hline
-        \multicolumn{3}{|c|}{\textbf{Coste total}} & \textbf{.} & \textbf{.} & \textbf{.}\\
+        \multicolumn{3}{|c|}{\textbf{Coste total}} & \textbf{5616.4€} & \textbf{353.83€} & \textbf{1325.47€}\\
         \hline
     \end{tabular}
     \label{Coste-Personal}
 \end{table}
 
 Los costes de la seguridad social y del empleador se han sacado de la página de Cuestiones Laborales \footnote{\url{https://www.cuestioneslaborales.es/porcentaje-de-cotizacion-a-la-seguridad-social-del-trabajador-y-empresa/}}. Donde la cotización a cargo de la empresa se divide en: \textbf{(2)} Cotizaciones comunes (23,6\%) y \textbf{(1)} Formación, desempleo, FOGASA, accidentes, etc. (en torno al 6,3\%).
-
-
-
-\subsection{Coste software}
 
 \subsection{Coste software}
 
@@ -2015,9 +2016,9 @@ En la tabla \ref{Coste-SW} se enumeran los costes asociados a los recursos softw
         \hline
         Coste del software & 0€\\
         \hline
-        Coste de personal & .\\
+        Coste de personal & 5616.4€\\
         \hline
-        {\textbf{Coste total del proyecto}} & \textbf{.}\\
+        {\textbf{Coste total del proyecto}} & \textbf{5833.07€}\\
         \hline
     \end{tabular}
     \label{Coste-Total}
