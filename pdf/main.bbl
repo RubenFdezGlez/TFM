@@ -3,12 +3,6 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
-\bibitem{q2bstudioUNSOOrtogonalizacixF3n}
-{U}{N}{S}{O}: {O}rtogonalizaci\&\#x{F}3;n {U}nificada de {N}ewton {S}chulz ---
-  q2bstudio.com.
-  \url{https://www.q2bstudio.com/nuestro-blog/606893/unificado-de-newton-schulz-metodo-de-ortogonalizacion-aplicado-en-calculos-cientificos},
-  [Accessed 09-04-2026]
-
 \bibitem{aldahoul2024advancingvehicleplaterecognition}
 AlDahoul, N., Tan, M.J.T., Tera, R.R., Karim, H.A., Lim, C.H., Mishra, M.K.,
   Zaki, Y.: Advancing vehicle plate recognition: Multitasking visual language
@@ -209,6 +203,12 @@ Pradhan, G., Prusty, M.R., Negi, V.S., Chinara, S.: Advanced iot-integrated
   management. Scientific Reports  \textbf{15}(1), ~2388 (Jan 2025).
   \doi{10.1038/s41598-025-86441-w},
   \url{https://doi.org/10.1038/s41598-025-86441-w}
+
+\bibitem{q2bstudioUNSOOrtogonalizacixF3n}
+Q2BSTUDIO: {U}{N}{S}{O}: {O}rtogonalizaci\&\#x{F}3;n {U}nificada de {N}ewton
+  {S}chulz --- q2bstudio.com.
+  \url{https://www.q2bstudio.com/nuestro-blog/606893/unificado-de-newton-schulz-metodo-de-ortogonalizacion-aplicado-en-calculos-cientificos},
+  [Accessed 09-04-2026]
 
 \bibitem{RAMAJOBALLESTER2024104608}
 Álvaro Ramajo-Ballester, {Armingol Moreno}, J.M., {de la Escalera Hueso}, A.:

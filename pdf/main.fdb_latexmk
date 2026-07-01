@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1782768869.23351 "main.aux" "main.bbl" "main" 1782768885.66332 0
-  "./references.bib" 1782764330 52042 37bd3033bdcf10d054c35ef1468279b2 ""
+["bibtex main"] 1782911039.41403 "main.aux" "main.bbl" "main" 1782911047.59702 0
+  "./references.bib" 1782768960 52051 6ce03a14707a42e8f7d39034b1907b7b ""
   "./splncs04.bst" 1782140700 33694 ee21ae2a29028dc8ad842a97200982c7 ""
-  "main.aux" 1782768884 46504 e231b52c9a1de29090990fa1a71a7830 "pdflatex"
+  "main.aux" 1782911046 46382 34fa8ffcab7c52c177dc89fa07ff21d4 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1782768877.66633 "c:/Users/troll/Documents/TFM/pdf/main.tex" "main.pdf" "main" 1782768885.66389 0
+["pdflatex"] 1782911040.01041 "c:/Users/troll/Documents/TFM/pdf/main.tex" "main.pdf" "main" 1782911047.59777 0
   "C:/Users/troll/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1782767675 81107 70b8516c68c2e617189c5e44bfd16b96 ""
   "C:/Users/troll/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0800.pk" 1782768763 19872 86c3d053ece91f25a1c5a485b527fa90 ""
   "C:/Users/troll/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1095.pk" 1782768777 28976 5d1e7f9cabb787484c57376d8cfeb2c5 ""
@@ -181,7 +181,7 @@
   "C:/Users/troll/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/troll/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/troll/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty" 1641733940 4675 e4b8c405820368c2dfb03526e16d725a ""
-  "c:/Users/troll/Documents/TFM/pdf/main.tex" 1782768885 174973 f061bbd2e46f5062f59d17162ed1b679 ""
+  "c:/Users/troll/Documents/TFM/pdf/main.tex" 1782910699 178236 a4bdbd7e2992eba4448cd691bc049575 ""
   "figures/ar_vdn.png" 1782140700 347569 9b85ce62e0b5c1315a75937443cc114e ""
   "figures/art3.png" 1782140700 1416165 e71db5f3cbd572582332d69deb686604 ""
   "figures/bdd100k.png" 1782140700 177005 bc21fb847435e95456b4068b27b2ca20 ""
@@ -240,13 +240,13 @@
   "figures/yolo8_vdet.png" 1782140700 112590 44d39839171dd184cd4d2df43263e154 ""
   "figures/yolo_stats.png" 1782140700 502685 81988a12c7b480c7f8e0ad865330f9ab ""
   "figures/yolov7_veh.png" 1782140700 84851 e7a145cebdb05ca03d6160d657767863 ""
-  "main.aux" 1782768884 46504 e231b52c9a1de29090990fa1a71a7830 "pdflatex"
-  "main.bbl" 1782768869 17054 204f80de6b6a6bdda6a5b8dc76897956 "bibtex main"
-  "main.lof" 1782768884 12052 7a864be3e8c59a3cad3fa6210a4c76de "pdflatex"
-  "main.lot" 1782768884 3767 cec4d76ecf50e8ad2836f2e66a6997da "pdflatex"
-  "main.out" 1782768884 8600 066f9edb529a39295391ea16fd4f8804 "pdflatex"
-  "main.tex" 1782768885 174973 f061bbd2e46f5062f59d17162ed1b679 ""
-  "main.toc" 1782768884 4833 013ff8178911d27a3371d9ed023f8bf4 "pdflatex"
+  "main.aux" 1782911046 46382 34fa8ffcab7c52c177dc89fa07ff21d4 "pdflatex"
+  "main.bbl" 1782911039 17065 de5da43ed9b54762c0f0d4c4d94753a6 "bibtex main"
+  "main.lof" 1782911046 12052 a4935e6edef08c6d2b0a3989b13a0423 "pdflatex"
+  "main.lot" 1782911046 3769 6ba126d53466499ab307106266508220 "pdflatex"
+  "main.out" 1782911046 8465 a05cd3a3a045d8f28f29bae3d401687a "pdflatex"
+  "main.tex" 1782910699 178236 a4bdbd7e2992eba4448cd691bc049575 ""
+  "main.toc" 1782911046 4748 ffabdac0a1fef98c667c7723f1d4e37e "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

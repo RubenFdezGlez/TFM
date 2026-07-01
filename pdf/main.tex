@@ -1247,8 +1247,6 @@ La metodología que se ha empleado es la habitual en el desarrollo de programas 
     \label{fig:metodologia-dl}
 \end{figure}
 
-
-
 \section{Extracción de datos}
 
 Se han investigado y recopilado varios conjuntos de datos desde varias fuente, sobre todo desde Kaggle y Github. Los mejores datasets para el proyecto tendrían que tener tanto imágenes del mismo vehículo desde diferentes ángulos/cámaras como que la matrícula sea legible. Lamentablemente, el tipo de datasets que cumplan ambas funciones son bastante raros, aunque se han podido sacar 2 datasets que lo cumplen y otros que, aunque no hay posibilidad de variedad de cámaras hacia el mismo objetivo, aportan con gran cantidad de vehículos y sus matrículas.
@@ -1362,46 +1360,53 @@ Un ejemplo de matrícula del dataset se encuentra en la figura \ref{fig:ccpd-exa
 
 Ya que los datasets tienen por defecto una estructura diferente a la pedida por los modelos YOLO y/o COCO, se han creado varios programas sencillos que reconstruyen los conjuntos de datos, creando unos nuevos, de forma que cada uno de los dataset quede con la siguiente estructura:
 
-% \dirtree{%
-% .1 datasets.
-% .2 bdd100k_yolo.
-% .3 yolo.yaml.
-% .3 train.
-% .4 images.
-% .5 *.jpg.
-% .4 labels.
-% .5 *.txt.
-% .4 train.json
-% .3 test.
-% .3 val.
-% }
+\dirtree{%
+    .1 datasets.
+    .2 bdd100k\_yolo.
+    .3 yolo.yaml.
+    .3 train.
+    .4 images.
+    .5 *.jpg.
+    .4 labels.
+    .5 *.txt.
+    .4 train.json.
+    .3 test.
+    .3 val.
+}
 
-Ahora que se tienen todas las imágenes para poder entrenar, validar y probar el modelo YOLO, se tienen que transformar las etiquetas por defecto del conjunto de datos al formato \textbf{<class\_id> <center\_x> <center\_y> <width> <height>}, correspondientes al número identificador de la clase, las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Estos cuatro últimos valores están normalizados al rango [0,1].
+Debido a la gran cantidad de datos que existen, tanto para detección de vehículos como para detección de matrículas, se han utilizado varios datasets para cada tarea, de forma que, aunque no estén los conjuntos de entrenamiento, validación y pruebas balanceados entre sí, tengan muchos datos para cada una de las tareas. Por eso es que cada dataset tendrá un propósito detallado a continuación:
+\begin{itemize}
+    \item \textbf{Multi-perspective traffic video analysis:} Este dataset será el único que no será modificado, solamente se usará para la prueba de concepto del programa, como una forma de demostración de uso del programa en un entorno real (sin números).
+    
+    \item \textbf{BDD100K:} Se usará para entrenar y validar los modelos de detección de vehículos.
+    
+    \item \textbf{UA-DETRAC:} Este dataset es uno de los dos escogidos para probar y obtener los resultados experimentales de los modelos de detección de vehículos. Se ha seleccionado debido a que al estar construido sobre vídeos, se pretender valorar el rendimiento de los modelos a seguir detectando los mismos vehículos durante la secuencia de imágenes.
+    
+    \item \textbf{UC3M-LP:} Se usará para entrenar y validar los modelos de detección de matrículas.
+    
+    \item \textbf{UC3M-VRI:} Segundo dataset para probar y obtener los resultados experimentales de los modelos de detección de vehículos. En este caso, se pretende medir la eficicacia de los modelos ante diferentes perspectivas.
+    
+    \item \textbf{CCPD:} Es el único que se usará para obtener los resultados de los modelos de detección de matrículas.
+\end{itemize}
 
-Esta estructura es la requerida para YOLO, pero el modelo RT-DETR requiere una estructura COCO (ya que este modelo fue entrenado en este dataset). Sin embargo, esta adición es muy sencilla, pues en vez de tener que generar un archivo \textbf{.txt} por cada imagen, el formato COCO necesita de un archivo \textbf{.json} por cada conjunto (entrenamiento, validación y pruebas) y que se puede transformar directamente con el paquete yolococo y donde el archivo .txt almacena una lista de las clases del dataset en orden y en 3 líneas diferentes. 
+Cada dataset tiene que tener como mucho 3 carpetas, para los conjuntos de entrenamiento, validación y pruebas, y un archivo .yaml con las rutas absolutas (el uso de rutas relativas han dado problemas) a cada conjunto. En cada carpeta, hay otras 2: una para las imágenes (images) y otra para las etiquetas (labels). Cada imagen (no importa el formato) tiene que tener asociada una etiqueta en la otra carpeta con el mismo nombre con formato .txt y que contiene una línea con 5 números: \textbf{<class\_id> <center\_x> <center\_y> <width> <height>}, correspondientes al número identificador de la clase, las coordenadas x e y del centro de la \textit{bounding box} y el ancho y altura de esta última. Salvo el identificador de clase, los demás valores están normalizados al rango [0,1].
+
+Esta estructura es la requerida para YOLO, pero el modelo RT-DETR requiere una estructura COCO (ya que este modelo fue entrenado en este dataset). Sin embargo, no es necesario ninguna modificación completa al dataset. Únicamente se tiene que añadir un archivo \textbf{.json} a cada conjunto que se puede crear directamente con el paquete yolococo a partir de las etiquetas yolo. El comando descrito a continuación contiene varios argumentos:
+\begin{itemize}
+    \item \textbf{Images:} Ruta a la carpeta con las imágenes.
+    
+    \item \textbf{Labels:} Ruta a la carpeta con las etiquetas.
+    
+    \item \textbf{Classes:} Archivo que almacena una lista de las clases del dataset en orden y en 3 líneas diferentes.
+    
+    \item \textbf{Bbox-round:} Decimales de redondeo de las coordenadas de las \textit{bounding boxes}.
+    
+    \item \textbf{Out:} Ruta donde se crea el archivo con formato json.
+\end{itemize}  
+
 \begin{lstlisting}
 uv run yolococo yolo2coco --images datasets/bdd100k_yolo/train/images/ --labels datasets/bdd100k_yolo/train/labels --classes classes.txt  --bbox-round 3 --file-name-mode name --out datasets/bdd100k_yolo/train/train.json
-
-uv run yolococo yolo2coco --images datasets/bdd100k_yolo/val/images --labels datasets/bdd100k_yolo/val/labels --classes classes.txt  --bbox-round 3 --file-name-mode name --out datasets/bdd100k_yolo/val/val.json
 \end{lstlisting}
-
-El esquema de archivos quedaría de la siguiente manera:
-% \dirtree{%
-% .1 *.py.
-% .1 datasets.
-% .2 bdd100k_yolo.
-% .3 train1.yaml.
-% .3 train.
-% .4 train.json.
-% .4 images.
-% .5 *.jpg.
-% .4 labels.
-% .5 *.txt.
-% .3 test.
-% .3 val.
-% .2 UC3M-LP.
-% }
-
 
 
 \section{Entrenamiento}

@@ -667,6 +667,7 @@ INPUT .\figures\ccpd_example.png
 INPUT .\figures\ccpd_example.png
 INPUT .\figures\ccpd_example.png
 INPUT .\figures\ccpd_example.png
+INPUT C:\Users\troll\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1200.tfm
 INPUT C:\Users\troll\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm0800.tfm
 INPUT C:\Users\troll\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx0800.tfm
 INPUT .\figures\yaml.png
@@ -698,7 +699,6 @@ INPUT .\figures\confmatrix.png
 INPUT .\figures\confmatrix.png
 INPUT .\figures\confmatrix.png
 INPUT .\figures\confmatrix.png
-INPUT C:\Users\troll\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1200.tfm
 INPUT .\figures\git.png
 INPUT .\figures\git.png
 INPUT .\figures\git.png
@@ -712,14 +712,14 @@ INPUT main.bbl
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
-INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
-INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcbx0800.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcbx0800.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0800.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0800.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm0800.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm0800.pk
+INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
+INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcbx1200.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcbx1200.pk
 INPUT C:\Users\troll\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk

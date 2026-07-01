@@ -13,27 +13,27 @@
 \contentsline {table}{\numberline {3.1}{\ignorespaces Resultados de los distintos modelos YOLO26 de detección}}{61}{table.caption.56}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Resultados de rendimiento}}{85}{table.caption.73}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Resultados de detección}}{86}{table.caption.74}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Resultados de detección}}{86}{table.caption.75}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Resultados de rendimiento}}{86}{table.caption.73}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Resultados de detección}}{87}{table.caption.74}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Resultados de detección}}{87}{table.caption.75}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces Requisitos funcionales}}{94}{table.caption.77}%
-\contentsline {table}{\numberline {8.2}{\ignorespaces Requisitos no funcionales}}{94}{table.caption.78}%
-\contentsline {table}{\numberline {8.3}{\ignorespaces Duración de las partes del proyecto (en días)}}{95}{table.caption.79}%
-\contentsline {table}{\numberline {8.4}{\ignorespaces Coste de las herramientas de hardware}}{96}{table.caption.80}%
-\contentsline {table}{\numberline {8.5}{\ignorespaces Costes imputables sobre los equipos usados}}{97}{table.caption.81}%
-\contentsline {table}{\numberline {8.6}{\ignorespaces Coste de los empleados}}{97}{table.caption.82}%
-\contentsline {table}{\numberline {8.7}{\ignorespaces Costes de software}}{98}{table.caption.83}%
-\contentsline {table}{\numberline {8.8}{\ignorespaces Coste total del proyecto}}{98}{table.caption.84}%
-\contentsline {table}{\numberline {8.9}{\ignorespaces Gestión de riesgos por categoría}}{99}{table.caption.85}%
-\contentsline {table}{\numberline {8.10}{\ignorespaces Riesgo incompatibilidad entre librerías}}{99}{table.caption.86}%
-\contentsline {table}{\numberline {8.11}{\ignorespaces Riesgo errores de memoria}}{100}{table.caption.87}%
-\contentsline {table}{\numberline {8.12}{\ignorespaces Riesgo dataset con errores}}{100}{table.caption.88}%
-\contentsline {table}{\numberline {8.13}{\ignorespaces Riesgo pérdida de datos}}{100}{table.caption.89}%
-\contentsline {table}{\numberline {8.14}{\ignorespaces Riesgo errores al integrar modelos}}{101}{table.caption.90}%
-\contentsline {table}{\numberline {8.15}{\ignorespaces Riesgo tiempo insuficiente}}{101}{table.caption.91}%
-\contentsline {table}{\numberline {8.16}{\ignorespaces Riesgo escasa precisión}}{101}{table.caption.92}%
-\contentsline {table}{\numberline {8.17}{\ignorespaces Riesgo overfitting en el entrenamiento}}{101}{table.caption.93}%
+\contentsline {table}{\numberline {8.1}{\ignorespaces Requisitos funcionales}}{95}{table.caption.77}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Requisitos no funcionales}}{95}{table.caption.78}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Duración de las partes del proyecto (en días)}}{96}{table.caption.79}%
+\contentsline {table}{\numberline {8.4}{\ignorespaces Coste de las herramientas de hardware}}{97}{table.caption.80}%
+\contentsline {table}{\numberline {8.5}{\ignorespaces Costes imputables sobre los equipos usados}}{98}{table.caption.81}%
+\contentsline {table}{\numberline {8.6}{\ignorespaces Coste de los empleados}}{98}{table.caption.82}%
+\contentsline {table}{\numberline {8.7}{\ignorespaces Costes de software}}{99}{table.caption.83}%
+\contentsline {table}{\numberline {8.8}{\ignorespaces Coste total del proyecto}}{99}{table.caption.84}%
+\contentsline {table}{\numberline {8.9}{\ignorespaces Gestión de riesgos por categoría}}{100}{table.caption.85}%
+\contentsline {table}{\numberline {8.10}{\ignorespaces Riesgo incompatibilidad entre librerías}}{100}{table.caption.86}%
+\contentsline {table}{\numberline {8.11}{\ignorespaces Riesgo errores de memoria}}{101}{table.caption.87}%
+\contentsline {table}{\numberline {8.12}{\ignorespaces Riesgo dataset con errores}}{101}{table.caption.88}%
+\contentsline {table}{\numberline {8.13}{\ignorespaces Riesgo pérdida de datos}}{101}{table.caption.89}%
+\contentsline {table}{\numberline {8.14}{\ignorespaces Riesgo errores al integrar modelos}}{102}{table.caption.90}%
+\contentsline {table}{\numberline {8.15}{\ignorespaces Riesgo tiempo insuficiente}}{102}{table.caption.91}%
+\contentsline {table}{\numberline {8.16}{\ignorespaces Riesgo escasa precisión}}{102}{table.caption.92}%
+\contentsline {table}{\numberline {8.17}{\ignorespaces Riesgo overfitting en el entrenamiento}}{102}{table.caption.93}%
 \addvspace {10\p@ }

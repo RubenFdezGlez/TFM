@@ -53,14 +53,14 @@
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Ejemplo del dataset UA\_DETRAC \footnotesize {Fuente: \textit {https://www.sciencedirect.com/science/article/pii/S1077314220300035}}}}{70}{figure.caption.63}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Ejemplos del dataset UC3M-LP \footnotesize {Fuente: \textit {https://github.com/ramajoballester/UC3M-LP}}}}{71}{figure.caption.64}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Ejemplos del dataset UC3M-VRI \footnotesize {Fuente: \textit {https://github.com/ramajoballester/UC3M-VRI}}}}{72}{figure.caption.65}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Ejemplo del dataset CCPD \footnotesize {Fuente: \textit {https://github.com/detectRecog/CCPD}}}}{82}{figure.caption.66}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Ejemplo de archivo .yaml de configuración para entrenar un modelo YOLO}}{83}{figure.caption.68}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Gráfica de la evolución de las pérdida de detección de entrenamiento y validación sin multiscale}}{83}{figure.caption.70}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Gráfica de la evolución de las pérdida de detección de entrenamiento y validación con multiscale}}{83}{figure.caption.71}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Ejemplo de matriz de confusión}}{84}{figure.caption.72}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Ejemplo del dataset CCPD \footnotesize {Fuente: \textit {https://github.com/detectRecog/CCPD}}}}{83}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Ejemplo de archivo .yaml de configuración para entrenar un modelo YOLO}}{84}{figure.caption.68}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Gráfica de la evolución de las pérdida de detección de entrenamiento y validación sin multiscale}}{84}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Gráfica de la evolución de las pérdida de detección de entrenamiento y validación con multiscale}}{84}{figure.caption.71}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Ejemplo de matriz de confusión}}{85}{figure.caption.72}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Ejemplo de commit en GitHub}}{93}{figure.caption.76}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Ejemplo de commit en GitHub}}{94}{figure.caption.76}%
 \addvspace {10\p@ }
