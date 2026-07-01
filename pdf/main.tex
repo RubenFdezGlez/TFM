@@ -15,8 +15,7 @@
 \usepackage{eurosym}  % Para el símbolo del EURO (€).
 \usepackage{graphicx} % Paquete de imágenes.
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\usepackage[usenames,dvipsnames]{color} % Texto en colores.
-\usepackage{xcolor}   % Extra colors.
+\usepackage[dvipsnames]{xcolor} % Texto en colores.
 \usepackage{url}      % Para escritura de URLs.
 \usepackage[breaklinks]{hyperref} % Hiperreferencias.
 \usepackage{amsmath,amssymb} % Para los símbolos matemáticos.
@@ -544,7 +543,7 @@ Este siguiente trabajo de Liang Liang et Al.\cite{s24103088} contribuye con un a
 
 
 
-\subsection{Detección y lectura de matrículas}
+\section{Detección y lectura de matrículas}
 
 Esta tarea no es un problema que se ha podido resolver recientemente; ya hace 8 años, Hui Li et Al.\cite{LI201814} crean un sistema de detección y reconocimiento de matrículas usando redes neuronales profundas (DNNs). Una red neuronal se entrena con imágenes de texto para poder reconocer las letras y números de la matrícula y se entrena una segunda red neuronal para diferenciar entre la matrícula y otras apariciones de caracteres alfanuméricos. La primera CNN consta de 4 capas con la estructura visible en la figura \ref{fig:st-cnn-1}, para reconocer 26 letras, 10 números y una clase para no-caracteres.
 
@@ -1064,7 +1063,7 @@ Este modelo logra altos resultados de rendimiento en los datasets de UFPR, con u
 
 Para este proyecto se han escogido dos implementaciones completamente diferentes para hacer comparaciones entre ellas tanto en el rendimiento como en la precisión en la tarea de detección. Los métodos seleccionados son:
 
-\subsection{YOLOv26n}
+\section{YOLOv26n}
 
 YOLO26\cite{sapkota2026yolo26keyarchitecturalenhancements}, publicado en Septiembre de 2025, es la versión más novedosa entre los modelos YOLO, con más mejoras en cuestión de eficiencia, precisión y despliegue en dispositivos de menor rendimiento; algo que se puede observar en la figura \ref{fig:yolo-stats} en comparación con anteriores modelos. 
 
@@ -1078,7 +1077,7 @@ YOLO26\cite{sapkota2026yolo26keyarchitecturalenhancements}, publicado en Septiem
 
 
 
-\subsubsection{Arquitectura de YOLO26}
+\subsection{Arquitectura de YOLO26}
 
 Esta nueva arquitectura, visible en la figura \ref{fig:yolo26-arch}, elimina el \textit{Distribution Focal Loss} (DFL) \footnote{Función de pérdida que cuantifica el objetivo de la regresión en múltiples celdas o contenedores, permitiendo que sea más flexible la representación de las \textit{bounding boxes}.} e integrando\cite{chakrabarty2026yolo26analysisnmsfreeend}:
 
@@ -1143,7 +1142,7 @@ Esta nueva arquitectura, visible en la figura \ref{fig:yolo26-arch}, elimina el 
 
 
 
-\subsubsection{Modelos YOLO}
+\subsection{Modelos YOLO}
 
 Aunque YOLO se creó con la principal finalidad de la tarea de detección, se han ido creando distintos modelos a lo largo de las versiones de YOLO con diferentes fines: clasificación, segmentación de instancias, detección de puntos claves/poses y detección de objetos orientados. Actualmente, Ultralytics construye 5 modelos distintos con la misma estructura, aunque con diferentes tamaños de capas. Para esta última versión de detección de YOLO, YOLO26, hay 5 modelos más o menos potentes (dependiendo del número de parámetros), cuyas especificaciones se pueden observar en la tabla \ref{tab:yolo-models} usando imágenes de 640 x 640 píxeles, redimensionadas del conjunto de datos COCO.
 
@@ -1170,7 +1169,7 @@ Aunque YOLO se creó con la principal finalidad de la tarea de detección, se ha
 
 
 
-\subsection{RT-DETR}
+\section{RT-DETR}
 
 \textbf{RT-DETR}\cite{zhao2024detrsbeatyolosrealtime} es, como su propio nombre indica, el primer detector end-to-end en tiempo real: debido al impacto negativo del uso de la función NMS en los modelos YOLO (anteriores a YOLO26, el cual elimina esta función), estos modelos perdían precisión y velocidad. Estos detectores de objetos se caracterizan por un proceso optimizado cuya base de este algoritmo (DETR)\cite{carion2020endtoendobjectdetectiontransformers} es un detector basado en un transformador que modela la detección de objetos como una tarea de predicción y asigna las etiquetas por emparejamiento de grafos bipartitos\footnote{Forma de emparejar vértices de dos conjuntos diferentes de forma que cada vértice esté conectado por un borde a 1 solo vértice del otro conjunto.}. A pesar de tener bastantes ventajas, DETR sufría de una cconvergencia en el entrenamiento muy lenta, un coste computacional alto y unas colas difíciles de optimizar; algo que los modelos DETR posteriores tratan de solucionar: 
 \begin{itemize}
@@ -1210,7 +1209,7 @@ Las comparaciones con modelos YOLO muestran resultados muy satisfactorios en una
 
 
 
-\subsection{Tesseract OCR}
+\section{Tesseract OCR}
 
 Como intérprete y lector del texto de las matrículas, se ha seleccionado Tesseract OCR\cite{tesseractocrTesseractWorlds}. Este motor óptico de reconocimiento de caracteres de código abierto utiliza redes neuronales LSTM \textit{(Long Short Term Memory)} para extraer el texto de las imágenes con un 99\% de precisión en más de 100 idiomas.
 
@@ -1283,7 +1282,6 @@ Este conjunto de datos \cite{bdd100k} es uno de los más grandes y diversos en c
     \label{fig:bdd-example}
 \end{figure}
 
-
 \subsection{UA-DETRAC}
 
 UA-DETRAC\cite{WEN2020102907} es un conjunto de datos creado por investigadores de la universidad de Albany, para la detección y seguimiento de múltiples vehículos en escenas de tráfico real. El conjunto está formado por 100 vídeos desafiantes para los modelos que juntan en total más de 140000 bounding boxes con anotaciones manuales que incluyen iluminación, vehículo (coches, autobuses, camiones) u oclusión, además de las bounding boxes. Estos vídeos, grabados a 25 fps a una resolución de 960x540 píxeles, han sido seleccionados a partir de más de 10 horas de secuencias de imágenes en 24 localizaciones diferentes 
@@ -1309,7 +1307,6 @@ Este conjunto de datos creado por investigadores de la universidad Carlos III de
     \label{fig:uc3mlp-example}
 \end{figure}
 
-
 \subsection{UC3M-VRI}
 
 Este conjunto de datos es la otra mitad de la investigación del dataset anterior \cite{RAMAJOBALLESTER2024104608} y está orientado a reidentificación de vehículos. Se almacenan 1611 imágenes de 286 vehículos distintos todas sacadas de día y divididas en dos subconjuntos:
@@ -1326,8 +1323,6 @@ Algunos ejemplos se pueden observar en la figura \ref{fig:uc3mlp-example}. Los m
     \footnotesize{Fuente: \textit{https://github.com/ramajoballester/UC3M-VRI}}}
     \label{fig:uc3mvri-example}
 \end{figure}
-
-
 
 \subsection{CCPD}
 
@@ -1414,58 +1409,70 @@ uv run yolococo yolo2coco --images datasets/bdd100k_yolo/train/images/ --labels 
 En este apartado se mostrarán los diferentes parámetros y configuraciones aplicadas o que se han probado en los entrenamientos de los modelos YOLO y DINO-DETR.
 
 
-\subsubsection{YOLO}
+\subsection{YOLO}
 
 Gracias a Ultralytics \footnote{Toda la información de la librería de Ultralytics es de código abierto y está disponible en \url{https://github.com/ultralytics/ultralytics}}, está a disposición de estudiantes e investigadores una librería entera con montones de recursos para poder entrenar, validar y probar los modelos YOLO. De entre todos los parámetros disponibles, para el entrenamiento de este modelo se han utilizado o experimentado con los siguientes:
 
 \begin{itemize}
-    \item \textbf{Model}: Modelo que será entrenado.
-
     \item \textbf{Data}: Archivo de configuración del dataset con formato \textit{.yaml}. En este archivo se fijan las rutas a las carpetas de entrenamiento, validación y pruebas, el número de clases y la asignación de IDs a cada clase. El archivo usado para entrenar el modelo YOLO se puede observar en la figura \ref{fig:yaml}.
 
+    \item \textbf{Cfg}: Archivo de configuración del entrenamiento con formato \textit{.yaml}. En este archivo se fijan los parámetros de entrenamiento que vienen en esta lista a continuación, incluida la tasa de aprendizaje o el Data Augmentation.
+    
     \item \textbf{Epochs}: Cada época representa una pasada por el dataset entero.
     
     \item \textbf{Time}: Tiempo máximo del entrenamiento. Si este campo no está vacío, se usará en vez del parámetro de las iteraciones.
-    
+
     \item \textbf{Patience}: Número de etapas que hay que esperar antes de parar el entrenamiento durante las cuales las métricas de validación no mejoran.
 
     \item \textbf{Batch}: El tamaño de lote significa el número de datos de entrenamiento procesadas por el modelo en una sola iteración. En vez de procesarse el dataset entero, este se divide en unos grupos de datos o \textit{batches}.
 
     \item \textbf{Imgsz}: Tamaño de imagen usado en el entrenamiento. Si las imágenes del conjunto de datos no están a este tamaño se redimensionan antes de introducirlas en el modelo.
 
+    \item \textbf{Save}: Decide si se guardan los pesos durante el entrenamiento para fijar puntos de control temporales. Esto permite resumir el entrenamiento a posteriori
+    
+    \item \textbf{Save\_period}: Cada cuántas épocas se realiza el guardado de pesos.
+
+    \item \textbf{Cache}: Decide si se quiere guardar en memoria RAM o disco las imágenes del conjunto de datos. Mejora la velocidad de entrenamiento a costa de un mayor uso de memoria.
+
     \item \textbf{Device}: Especifica si se quiere usar la \textbf{CPU}, una única \textbf{GPU} o múltiples \textbf{GPUs} para maximizar la eficiencia del modelo y tardar mucho menos en este proceso.
 
-    \item \textbf{Workers}: Número de hilos trabajadores para la carga de datos. Influye especialmente en la velocidad del procesamiento si se está usando la \textit{GPU}.
+    \item \textbf{Workers}: Número de hilos trabajadores para la carga de datos. Influye especialmente en la velocidad de procesamiento si se está usando la \textit{GPU}.
+
+    \item \textbf{Project}: Nombre del directorio donde se guardarán los resultados de entrenamiento.
+
+    \item \textbf{Name}: Nombre del entrenamiento, subdirectorio dentro de la carpeta de \textit{project}.
+    
+    \item \textbf{Exist\_ok}: Decidir si se sobrescribe la carpeta donde se guardan los archivos de entrenamiento.
+
+    \item \textbf{Pretrained}: Determina si se utilizan los pesos preentrenados. Puede ser \textbf{True} o \textbf{False} o una ruta hacia los pesos.
 
     \item \textbf{Optimizer}: Escoger el optimizador para el entrenamiento entre \textbf{SGD}, \textbf{Adam}, \textbf{AdamW}, etc. Afecta a la estabilidad y a la velocidad de convergencia. Por defecto, se selecciona por sí solo en función del modelo.
-    
-    \item \textbf{Multiscale}: Permite redimensionar un paquete de imágenes (por ejemplo, un valor de 0.25 crearía imágenes de 0.75x a 1.25x).
+
+    \item \textbf{Seed}: Fija una semilla para el entrenamiento para reproducir los resultados.
+
+    \item \textbf{Deterministic}: Fuerza el uso de algoritmos determinísticos para reproducir resultados.
+
+    \item \textbf{Single\_cls}: El modelo trata todas las clases del archivo de configuración como una sola. Es útil para centrar al modelo en solamente la tarea de detección.
 
     \item \textbf{Cos\_lr}: Se utiliza un \textit{scheduler} o programador de la tasa de aprendizaje coseno, ajustando la tasa de aprendizaje siguiendo una curva coseno a lo largo de los \textit{epochs} para mejorar la convergencia.
+
+    \item \textbf{Close\_mosaic}: Deshabilita Data Augmentation en las N últimas iteraciones para estabilizar el entrenamiento.
+
+    \item \textbf{Amp}: Activa el uso de \textbf{Automatic Mixed Precision} (AMP), reduciendo el uso de memoria y acelerando el entrenamiento por un mínimo coste en la precisión.
 
     \item \textbf{Freeze}: Número de primeras capas del modelo a congelar para reducir el número de parámetros entrenables.
 
     \item \textbf{Lr0}: Tasa de aprendizaje inicial, influye en la rapidez con la que se actualizan los pesos del modelo.
 
-    \item \textbf{Lrf}: Factor de la tasa de aprendizaje, que sirve junto a la tasa de aprendizaje inicial, para calcular la tasa de aprendizaje final de la forma: $lr\_final = lr0 \times lrf$. Se usa en conjunto con el \textit{scheduler} (como el coseno) para ajustar la tasa de aprendizaje a lo largo del entrenamiento.
+    \item \textbf{Lrf}: Factor de la tasa de aprendizaje, que sirve junto a la tasa de aprendizaje inicial, para calcular la tasa de aprendizaje final de la forma: $lr\_final = lr0 \times lrf$. Se usa en conjunto con el \textit{scheduler} (como el \textit{cosine scheduler}) para ajustar la tasa de aprendizaje a lo largo del entrenamiento.
 
-    \item \textbf{Weight decay}: Valor de regularización L2, que penaliza los pesos grandes para evitar que el modelo se sobreajuste a los datos de entrenamiento (overfitting).
+    \item \textbf{Momentum}: Factor de momento para los optimizadores Adam y SGD, que influencia la incorporación de anteriores gradientes.
 
-    \item \textbf{Dropout}: Tasa de pérdida de nodos del modelo para la regularización en tareas de clasificación, que evita el sobreajuste omitiendo aleatoriamente unidades durante el entrenamiento.
+    \item \textbf{Weight\_decay}: Valor de regularización L2, que penaliza los pesos grandes para evitar que el modelo se sobreajuste a los datos de entrenamiento (overfitting).
 
-    \item \textbf{Cache}: Decide si se quiere guardar en memoria RAM o disco las imágenes del conjunto de datos. Mejora la velocidad de entrenamiento a costa de un mayor uso de memoria.
+    \item \textbf{Plots}: Dibujar gráficas de las métricas de entrenamiento y validación al acabar de entrenar el modelo. Además, se guardan varias imágenes con las predicciones hechas por el modelo YOLO para comprobar su rendimiento.  
 
-    \item \textbf{Plots}: Dibujar gráficas de las métricas de entrenamiento y validación al acabar de entrenar el modelo. Además, se guardan varias imágenes con las predicciones hechas por el modelo YOLO para comprobar su rendimiento. 
-
-    \item \textbf{Exist\_ok}: Decidir si se sobrescribe la carpeta donde se guardan los archivos de entrenamiento.
-    
-    \item \textbf{Save}: Decide si se guardan los pesos durante el entrenamiento para fijar puntos de control temporales. Esto permite resumir el entrenamiento a posteriori
-    
-    \item \textbf{Save\_period}: Cada cuántas épocas se realiza el guardado de pesos.
-
-    \item \textbf{Single\_cls}: El modelo trata todas las clases del archivo de configuración como una sola. Es útil para centrar al modelo en solamente la tarea de detección.
-    
-    \item \textbf{Project}: Nombre del directorio donde se guardarán los resultados de entrenamiento.
+    \item \textbf{Label\_smoothing}: Suavizado de etiquetas, para ``lijar`` el valor de pérdida y que el modelo no tenga un exceso de confianza en las predicciones.
 \end{itemize}
 
 \begin{figure}[htb]
@@ -1497,9 +1504,10 @@ results_val = model.train(data = "./datasets/vehicles/train1.yaml",
 )
 \end{lstlisting}
 
+\subsubsection{YOLO Data Augmentation}
 
+Es habitual encontrarse este apartado en la sección de preprocesamiento de datos, pero debido a que en el caso del modelo YOLO se envían los parámetros de \textit{Data Augmentation} a través de la misma función que los demás hiperparámetros de entrenamiento:
 
-Es habitual encontrarse este apartado en la sección de preprocesamiento de datos, pero debido a que en este caso del modelo YOLO, se pueden enviar parámetros de data augmentation a través de la misma función que los hiperparámetros:
 \begin{itemize}
     \item \textbf{hsv\_h}: Ajusta la tonalidad de la imagen para ayudar al modelo a generalizar ante diferentes condiciones de iluminación. Por defecto, tiene el valor 0.015 (0.0 - 1.0).
     \item \textbf{hsv\_s}: Ajusta la saturación de la imagen para ayudar al modelo a generalizar ante distintos entornos. Por defecto, tiene el valor 0.7 (0.0 - 1.0).
@@ -1521,13 +1529,11 @@ Es habitual encontrarse este apartado en la sección de preprocesamiento de dato
     \item \textbf{erasing}: Borra regiones aleatorias de la imagen para ayudar al modelo a enfocarse en características menos obvias. Por defecto, tiene el valor 0.4 (0.0 - 1.0).
 \end{itemize}
 
-
-
-\subsubsection{DINO-DETR}
+\subsection{RT-DETR}
 
 Gracias a la librería de \textbf{Huggingface}, \textbf{transformers}\footnote{Toda la información de la librería de transformers es de código abierto y está disponible en \url{https://huggingface.co/docs/transformers}}, está a disposición de estudiantes e investigadores una librería entera con montones de recursos para poder entrenar y validar diferentes tipos de transformadores. De entre todos los parámetros disponibles, para el entrenamiento de este modelo se han utilizado o experimentado con los siguientes:
 \begin{itemize}
-    \item \textbf{output\_dir}: 
+    \item \textbf{output\_dir}: Ruta donde se archivan los modelos entrenados y los archivos con la configuración del entrenamiento.
     \item \textbf{per\_device\_train\_batch\_size} y \textbf{per\_device\_val\_batch\_size}: Tamaño de lote por dispositivo. 
     \item \textbf{num\_train\_epochs}: Número total de iteraciones sobre los conjuntos de entrenamiento y validación.
     \item \textbf{learning\_rate}: Tasa de aprendizaje inicial del optimizador.
@@ -1567,7 +1573,61 @@ training_args = TrainingArguments(
 )
 \end{lstlisting}
 
+\subsubsection{RT-DETR Data Augmentation}
 
+En el caso del modelo RT-DETR, existen dos modelos (los dos más grandes) que se pueden entrenar con la librería de Ultralytics. Sin embargo, ya que aquí se utiliza el modelo más pequeño, \textbf{rtdetr\_r18vd\_coco\_o365}, se utiliza la librería de \textbf{Albumentations} de \textbf{Huggingface} para aplicar \textit{Data Augmentation} al conjunto de datos. De entre todos los parámetros disponibles, para el entrenamiento de este modelo se han utilizado o experimentado con los siguientes:
+
+\begin{itemize}
+    \item \textbf{Affine}: Aplica una transformación afín a la imagen, esto puede incluir: traslación, rotación, escalado y cizallamiento (mover un lado de la imagen, formando un trapezoide).
+    \item \textbf{ColorJitter}: Aleatoriamente cambia el brillo, contraste, saturación y el tono de la imagen.
+    \item \textbf{CoarseDropout}: Aleatoriamente suelta zonas rectangulares de la imagen 
+    \item \textbf{GaussNoise}: Aplica ruido Gaussiano a la imagen.
+    \item \textbf{GridDistortion}: Divide la imagen en celdas y aleatoriamente distorsiona cada una de ellas, creando efectos localizados de deformación.
+    \item \textbf{HorizontalFlip}: Voltea la imagen horizontalmente.
+    \item \textbf{HueSaturationValue}: Transforma los canales HSV de la imagen.
+    \item \textbf{MotionBlur}: Aplica desenfoque de movimiento a la imagen usando un \textit{kernel} direccional, simulando efectos causados debido al movimiento de la cámara o de otros objetos durante la toma de una imagen.
+    \item \textbf{Perspective}: Aplica 4 transformaciones a las esquinas de la imagen.
+    \item \textbf{RandomBrightnessContrast}: Aleatoriamente cambia el brillo y contraste de la imagen.
+    \item \textbf{RandomFog}: Genera un efecto de niebla a través de capas semitransparentes.
+    \item \textbf{RandomGamma}: Aplica una corrección gamma aleatoria a la imagen. Esta transformación ajusta el brillo de la imagen preservando las diferencias entre zonas oscuras e iluminadas para ayudar al modelo a simular diferentes condiciones de iluminación.
+    \item \textbf{RandomRotate90}: Aleatoriamente rota la imagen en 90 grados cero o más veces.
+    \item \textbf{RandomShadow}: Reproduce sombras en la imagen reduciendo el brillo en zonas oscuras para ayudar al modelo a analizar zonas con poca iluminación.
+    \item \textbf{RandomSizedBBoxSafeCrop}: Recorta una parte aleatoria de la imagen y la reescala a un tamaño especificado sin perder bounding boxes.
+    \item \textbf{RGBShift}: Aleatoriamente cambia los valores de los canales RGB de una imagen.
+    \item \textbf{SaltAndPepper}: Aplica un ruido de \textbf{sal y pimienta} a la imagen.
+\end{itemize}
+
+Los parámetros de Data Augmentation utilizados se enumeran a continuación:
+\begin{lstlisting}
+train_transform = A.Compose([
+    # Geometric (preserving identity)
+    A.HorizontalFlip(p=0.5),
+    A.RandomRotate90(p=0.3),
+    A.Affine(scale=0.85, rotate=20, p=0.5, shear=0.05),
+    
+    # Scale variations
+    A.RandomSizedBBoxSafeCrop(height=640, width=640, erosion_rate=0.1, p=0.3),
+    
+    # Photometric (moderate)
+    A.RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2, p=0.5),
+    A.HueSaturationValue(hue_shift_limit=10, sat_shift_limit=25, val_shift_limit=20, p=0.4),
+    A.RandomGamma(gamma_limit=(90, 110), p=0.3),
+    
+    # Realistic effects
+    A.RandomShadow(p=0.2),
+    A.RandomFog(p=0.1),
+    
+    # Occlusion handling
+    A.CoarseDropout(num_holes_range=(1,2), hole_height_range=(8,40), hole_width_range=(8,40), fill=0, p=0.2),
+    
+    # Noise (small amount for robustness)
+    A.GaussNoise(p=0.1),
+
+    # Resize to the same size as the YOLO model works
+    A.Resize(height=640, width=640, p=1),
+], bbox_params=A.BboxParams(format="coco", label_fields=["category_ids"], min_visibility=0.3, min_area=25),
+)
+\end{lstlisting}
 
 \subsection{Rastreo del Overfitting}
 
@@ -1619,6 +1679,34 @@ Además de estas métricas, se analizará también la diferenciación entre clas
     \label{fig:cm}
 \end{figure}
 
+\section{Entorno y Herramientas}
+\label{Entorno y herramientas}
+
+El desarrollo del programa y la ejecución de los modelos se han realizado en equipos separados debido a la gran cantidad de recursos que requiere ejecutar los modelos YOLO. 
+
+El desarrollo de todo el código se ha realizado en un portátil MSI GF63 Thin 9SC con el sistema operativo Windows 11 con un procesador Intel Core i7-9750-H. La GPU es una tarjeta gráfica \textbf{NVIDIA GTX 1650} con \textbf{16 GB} de \textbf{RAM} y \textbf{4 GB} de \textbf{VRAM}.
+
+La estación de trabajo para el entrenamiento y pruebas de los modelos tiene las siguientes especificaciones:
+
+\begin{itemize}
+    \item \textbf{Sistema operativo}: Ubuntu 20.04.6 LTS.
+    
+    \item \textbf{Procesador}: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz.
+    
+    \item \textbf{Memoria RAM}: 130 GB.
+    
+    \item \textbf{GPU}: NVIDIA Titan XP con 12 GB de VRAM.
+\end{itemize}
+
+Como entorno para el desarrollo del proyecto se ha utilizado el programa de código abierto \textbf{Visual Studio Code}, utilizando el lenguaje \textbf{Python} en la versión \textbf{3.12.13} junto con un conjunto de librerías, incluida la lista completa en el repositorio del trabajo en un archivo requirements.txt, para facilitar el tratamiento de imágenes, el entrenamiento de redes neuronales y la visualización de resultados, entre otras cosas:
+
+\begin{itemize}
+    \item \textbf{Matplotlib 3.10.9}: Librería para visualizar resultados usando gráficos sencillos sobre, por ejemplo, las pérdidas de entrenamiento y validación.
+
+    \item \textbf{PyTorch 2.12.1}: Framework principal para el uso de la GPU para entrenar todos los modelos.
+
+    \item \textbf{Ultralytics 8.4.51}: Herramienta principal que proporciona la implementación de los modelos YOLO y su interfaz simplificada para tareas de detección y clasificación.
+\end{itemize}
 
 
 
@@ -1626,7 +1714,6 @@ Además de estas métricas, se analizará también la diferenciación entre clas
 \label{Resultados experimentales}
 
 En este apartado se presentan los resultados obtenidos tras el entrenamiento, evaluación y pruebas de los distintos modelos de detección de vehículos y matrículas. Se comparan los rendimientos alcanzados por cada método, así como la precisión en la inferencia sobre las imágenes de prueba. Para ello, como antes se explicó en la extracción de datos, se utiliza el subconjunto de pruebas del dataset CCPD para calcular estos resultados.
-
 
 \section{Resultados de rendimiento}
 
