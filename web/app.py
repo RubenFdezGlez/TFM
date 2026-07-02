@@ -82,69 +82,6 @@ def lp_detected(lp):
     st.write(f":red[La matrícula {lp} ha sido detectada]")
 
 
-def combineDetections(v_results, lp_results, img):
-    """Joins both vehicle detection and license plate detection with the recognition on the license plate on a single image: with the bounding boxes and the license plate characters visible on the image.
-    
-    Args:
-        v_results (Results): Results object obtained from the vehicle detection on the image/frame.
-        lp_results (Results): Results object obtained from the license plate detection on the image/frame.
-        img (MatLike): Image object from the cv2 module.
-    
-    Returns:
-        img_copy (MatLike): Image object from the cv2 module with the bounding boxes and license plate text drawn on it.
-    """
-    img_copy = img
-
-    for box in v_results[0].boxes:
-        x1, y1, x2, y2 = map(int, box.xyxy[0])
-        conf = box.conf[0].item()
-        cls = int(box.cls[0].item())
-        label = vehicle_model.names[cls]
-        cv2.rectangle(img_copy, (x1, y1), (x2, y2), (0, 255, 0), 2)
-        cv2.putText(img_copy, f"{label} {conf:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-
-    for box in lp_results[0].boxes:
-        x1, y1, x2, y2 = map(int, box.xyxy[0])
-        cropped_img = img[y1:y2, x1:x2]
-
-        text = getTesseractText(cropped_img)
-        text = text.replace(" ", "")
-
-        conf = box.conf[0].item()
-        cls = int(box.cls[0].item())
-        label = lp_model.names[cls]
-        cv2.rectangle(img_copy, (x1, y1), (x2, y2), (255, 0, 0), 2)
-        cv2.putText(img_copy, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 4)
-
-        if os.path.exists("./web/lp.txt"):
-            file = open("./web/lp.txt", "r")
-            for line in file:
-                if line != "" and text == line:
-                    lp_detected(text)
-            file.close()
-    
-    return img_copy
-
-
-@st.cache_resource
-def load_lp():
-    """Load the license plates from the file.
-    
-    Returns:
-        lps (list): A list of license plates to be detected, obtained from the file.
-    """
-    lps = []
-    
-    if os.path.exists("./web/lp.txt"):
-        file = open("./web/lp.txt", "r")
-        for line in file:
-            if line != "":
-                lps.append(line)
-        file.close()
-
-    return lps
-
-
 def valid_lp(lp):
     """Check if the license plate has the correct structure for Spanish license plates.
     
@@ -182,6 +119,89 @@ def valid_lp(lp):
     elif re.fullmatch(r'((CD|CC)[0-9]{2}|(TA|OI)[0-9]{3})[0-9]{3}', lp):
         return True
     return False
+
+
+def combineDetections(v_results, lp_results, img):
+    """Joins both vehicle detection and license plate detection with the recognition on the license plate on a single image: with the bounding boxes and the license plate characters visible on the image.
+    
+    Args:
+        v_results (Results): Results object obtained from the vehicle detection on the image/frame.
+        lp_results (Results): Results object obtained from the license plate detection on the image/frame.
+        img (MatLike): Image object from the cv2 module.
+    
+    Returns:
+        img_copy (MatLike): Image object from the cv2 module with the bounding boxes and license plate text drawn on it.
+    """
+    img_copy = img
+
+    for box in v_results[0].boxes:
+        x1, y1, x2, y2 = map(int, box.xyxy[0])
+        conf = box.conf[0].item()
+        cls = int(box.cls[0].item())
+        label = vehicle_model.names[cls]
+        cv2.rectangle(img_copy, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        cv2.putText(img_copy, f"{label} {conf:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+
+    for box in lp_results[0].boxes:
+
+        x1, y1, x2, y2 = map(int, box.xyxy[0])
+        cropped_img = img[y1:y2, x1:x2]
+        # cropped_img = cv2.resize(cropped_img, None, fx=5, fy=5, interpolation=cv2.INTER_CUBIC)
+        # cropped_img = cv2.cvtColor(cropped_img, cv2.COLOR_BGR2RGB)
+        # cv2.imshow('Imagen', cropped_img)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+
+        # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        # gray = cv2.bilateralFilter(gray, 11, 17, 17)
+        # _, thresh = cv2.threshold(
+        #     gray, 0, 255,
+        #     cv2.THRESH_BINARY + cv2.THRESH_OTSU
+        # )
+        # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+        text = pytesseract.image_to_string(
+            cropped_img,
+            config='--oem 3 --psm 6 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 load_system_dawg=0 load_freq_dawg=0'
+        )
+        if text != "":  text = text.replace(text[-1],"")
+
+
+        conf = box.conf[0].item()
+        cls = int(box.cls[0].item())
+        label = lp_model.names[cls]
+        cv2.rectangle(img_copy, (x1, y1), (x2, y2), (255, 0, 0), 2)
+        # if valid_lp(text):
+        print(text)
+        cv2.putText(img_copy, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
+
+        if os.path.exists("./web/lp.txt"):
+            file = open("./web/lp.txt", "r")
+            for line in file:
+                if line != "" and text == line:
+                    lp_detected(text)
+            file.close()
+    
+    return img_copy
+
+
+@st.cache_resource
+def load_lp():
+    """Load the license plates from the file.
+    
+    Returns:
+        lps (list): A list of license plates to be detected, obtained from the file.
+    """
+    lps = []
+    
+    if os.path.exists("./web/lp.txt"):
+        file = open("./web/lp.txt", "r")
+        for line in file:
+            if line != "":
+                lps.append(line)
+        file.close()
+
+    return lps
 
 
 @st.dialog("Lista de matrículas")
