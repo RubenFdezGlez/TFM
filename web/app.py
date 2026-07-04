@@ -163,22 +163,19 @@ def combineDetections(v_results, lp_results, img):
         text = pytesseract.image_to_string(
             cropped_img,
             config='--oem 3 --psm 6 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 load_system_dawg=0 load_freq_dawg=0'
-        )
-        if text != "":  text = text.replace(text[-1],"")
-
+        ).strip()
 
         conf = box.conf[0].item()
         cls = int(box.cls[0].item())
         label = lp_model.names[cls]
         cv2.rectangle(img_copy, (x1, y1), (x2, y2), (255, 0, 0), 2)
         # if valid_lp(text):
-        print(text)
         cv2.putText(img_copy, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
-
+        
         if os.path.exists("./web/lp.txt"):
             file = open("./web/lp.txt", "r")
             for line in file:
-                if line != "" and text == line:
+                if line != "" and text == line.strip():
                     lp_detected(text)
             file.close()
     
