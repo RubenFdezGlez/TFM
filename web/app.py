@@ -176,7 +176,7 @@ def combineDetections(v_results, lp_results, img):
             file = open("./web/lp.txt", "r")
             for line in file:
                 if line != "" and text == line.strip():
-                    lp_detected(text)
+                    st.session_state.lp_detected = text
             file.close()
     
     return img_copy
@@ -293,8 +293,13 @@ if 'video_processing' not in st.session_state:
     st.session_state.video_processing = False
 # State variables for option "Multi-cam" for changing the buttons values to start or stop doing predictions.
 if 'predictions_state' not in st.session_state:
-    st.session_state.predictions_state = ["Activar predicción","Activar predicción","Activar predicción","Activar predicción"]
-
+    st.session_state.predictions_state = ["Activar predicción", "Activar predicción", "Activar predicción", "Activar predicción"]
+# State variable for the modal of the license plate list
+if 'lp_list' not in st.session_state:
+    st.session_state.lp_list = False
+# State variable for the modal of the license plate detected
+if 'lp_detected' not in st.session_state:
+    st.session_state.lp_detected = ""
 
 with st.sidebar:
     st.header("Selecciona una opción:")
@@ -310,10 +315,9 @@ with st.sidebar:
 
     st.divider()
 
-    if "lp_list" not in st.session_state:
-        st.write("Lista de matrículas")
-        if st.button("Cambiar", key="changeLpList"):
-            lp_list()
+    st.write("Lista de matrículas")
+    if st.button("Cambiar", key="changeLpList"):
+        st.session_state.lp_list = True
 
     st.divider()
 
@@ -477,3 +481,11 @@ with st.container():
 if st.session_state.imagen_actual is not None:
     st.subheader("Resultado de la detección:")
     st.image(st.session_state.imagen_actual, channels="BGR", width='stretch')
+
+if st.session_state.lp_list == True:
+    lp_list()
+    st.session_state.lp_list = False
+    
+elif st.session_state.lp_detected != "":
+    lp_detected(st.session_state.lp_detected)
+    st.session_state.lp_detected = ""
