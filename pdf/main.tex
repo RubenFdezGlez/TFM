@@ -155,14 +155,14 @@
 \vspace{-1em}
 \begin{longtable}{|p{16cm}|}
     \textbf{RESUMEN}:\\
-    El objetivo de este proyecto ha sido realizar un programa que pueda realizar múltiples funciones útiles para ayudar a la gestión del tráfico urbano, comenzando con la base de la detección y reconocimiento de vehículos y la detección y lectura de sus matrículas. Esta tarea es realizada a partir de archivos (vídeos e imágenes) y múltiples cámaras, que el programa lee, reconoce y procesa para tener los resultados de la detección \\
+    El objetivo de este proyecto ha sido realizar un programa que pueda realizar múltiples funciones útiles para ayudar a la gestión del tráfico urbano, comenzando con la base de: (1) detección y reconocimiento de vehículos y (2) detección y lectura de matrículas. Esta tarea es realizada a partir de archivos (vídeos e imágenes) y múltiples cámaras, que el programa lee, reconoce y procesa para tener los resultados de la detección. El estado del arte en este campo es muy extenso, con multitud de implementaciones sencillas utilizando mayoritariamente modelos YOLO junto con tecnologías OCR como EasyOCR, por lo que en cuestión de rendimiento, se podrán realizar comparaciones rápidas con otros proyectos y programas. Para realizar estas tareas,se han escogido dos modelos de detección con implementaciones completamente diferentes: el modelo YOLOv26n (el más pequeño de su última versión) y el modelo RT-DETR, un modelo novedoso que trata de equiparar la velocidad del modelo YOLO usando transformadores aplicados a detección de objetos. Para leer los caracteres de las matrículas se ha escogido la tecnología TesseractOCR, la cual destaca en todos los ámbitos gracias a su precisión. Para comparar los dos métodos de forma equitativa, se han comenzado por recolectar varios conjuntos de datos de vehículos y matrículas, se han reorganizado para poder ser procesados por los modelos y se han puesto a entrenar con diferentes configuraciones. Gracias al uso de métricas comunes para ambos, como mAP50 y mAp50-95, se ha podido extraer que el método que mejores resultados provee es el modelo YOLOv26n, para ambas tareas de detección, debido a su alta precisión y su tiempo de procesamiento, que lo hacen apto para su uso en vídeos y\\ múltiples cámaras en tiempo real. Los modelos seleccionados, entrenados y validados se introducen en un programa desarrollado en Python completamente con la librería Streamlit para desplegar esta "página web" y se accede a través de un navegador web. Los resultados obtenidos validan la eficacia del sistema y abren la puerta a futuras mejoras, como el entrenamiento con datos con imperfecciones (como oclusiones, mala iluminación,...), la ampliación a dispositivos móviles y otras implementaciones que ayuden a las labores de gestión del tráfico, como reconocer la dirección de un vehículo.\\
     \hline
 \end{longtable}
 
 \vspace{-1em}
 \begin{longtable}{|p{16cm}|}    
     \textbf{ABSTRACT}:\\
-    The objective of this project has been to develop a program...\\
+    The goal of this project was to develop a program capable of performing multiple useful functions to assist with urban traffic management, based on: (1) vehicle detection and recognition, and (2) license plate detection and reading. This task is carried out using files (videos and images) and multiple cameras, which the program reads, recognizes, and processes to generate detection results. The state of the art in this field is very extensive, with a multitude of simple implementations that primarily use YOLO models alongside OCR technologies such as EasyOCR; therefore, in terms of performance, quick comparisons can be made with other projects and programs. To perform these tasks, two detection models with completely different implementations have been chosen: the YOLOv26n model (the smallest in its latest version) and the RT-DETR model, a novel model that aims to match the speed of the YOLO model by using transformers applied to object detection. To read the characters on license plates, we have chosen TesseractOCR technology, which excels in all areas thanks to its accuracy. To compare the two methods fairly, we began by collecting several datasets of vehicles and license plates, reorganized them so they could be processed by the models, and trained them using different configurations. By using common metrics for both, such as mAP50 and mAP50-95, we were able to determine that the YOLOv26n model provides the best results for both detection tasks, due to its high accuracy and processing speed, which make it suitable for use with videos and multiple cameras in real time. The selected, trained, and validated models are integrated into a program developed entirely in Python using the Streamlit library to display this “web page,” which is accessed via a web browser. The results obtained validate the system’s effectiveness and pave the way for future improvements, such as training with imperfect data (e.g., occlusions, poor lighting, etc.), expansion to mobile devices, and other implementations that aid in traffic\\ management tasks, such as recognizing a vehicle’s direction.\\
     \hline
     \textbf{Palabras clave}: Detección, Redes neuronales, YOLO, vehículos, RT-DETR, reconocimiento, Tesseract, OCR, CNN.\\
     \hline
@@ -216,6 +216,8 @@
 \item[Machine Learning]: Es una categoría de la Inteligencia Artificial que trata de desarrollar algoritmos descubran patrones recurrentes en ciertos conjuntos de datos con el objetivo de empeñar tareas específicas.
 
 \item[mAP]: \textit{Mean Average Precision} es la métrica más utilizada en la tarea de la detección de objetos. Se calcula como la media ponderada de las AP de cada una de las clases que se utilizan en el problema.
+
+\item[OCR]: \textit{Optical Character Recognition} es una tecnología que convierte imágenes que contienen algún tipo de texto escrito a máquina o a mano a caracteres encodificados que una máquina puede entender, leer y modificar.
 
 \item[One-stage Detector]: Los detectores de una sola fase son una clase de modelos de \textit{Deep Learning} diseñados para ser más eficientes y veloces que sus contrapartes de dos etapas. La segunda diferencia clave con estos últimos es la fusión de las acciones de detección y clasificación en una sola pasada en la red neuronal.
 
@@ -1649,6 +1651,8 @@ En los experimentos realizados se ha prestado especial atención a la diferencia
     \label{fig:g-ms}
 \end{figure}
 
+
+
 \section{Métricas}
 
 Para poder validar de forma equitativa los distintos métodos de detección, se tienen que seguir unas métricas a seguir para todos. Para empezar, se tiene que hablar del tiempo de procesamiento por imagen, ya que la velocidad de inferencia es prioritaria a la hora de detectar y reconocer claramente el vehículo y su matrícula.
@@ -1793,12 +1797,96 @@ Esta configuración, ... , es la más óptima para este proyecto y su integraci�
 \chapter{Aplicación web}
 \label{Aplicación web}
 
-...
+Para probar el programa en un entorno real, se ha desplegado una aplicación web sencilla que procesa imágenes, vídeos o cámaras web en vivo. Toda imagen o fotograma se envía a los modelos de detección para que sea inferida y se devuelva la imagen o fotograma con cajas delimitadoras alrededor del vehículo y la matrícula. Además, fuera del cuadro del vehículo se muestra la clase del vehículo detectado y la confianza de que lo sea. En vez de esta información, fuera del cuadro de la matrícula se muestra la matrícula. El programa desarrollado tiene varias opciones de procesamiento:
+\begin{itemize}
+    \item \textbf{Imagen}: Se muestra un selector de archivos del sistema, del que sólo se puede seleccionar una única imagen con los típicos formatos (jpeg, jpg, png) para pasarla a los modelos de vehículos y matrículas para que devuelvan la imagen con el procesamiento.
+    \item \textbf{Vídeo}: Se muestra otro selector de archivos del sistema; en este caso se permite un único vídeo con formatos típicos (mp4, avi, mov, mkv, webm) que no se procesa automáticamente, sino que depende de un botón de iniciar para empezar a enseñar el vídeo con las inferencias. Hay un segundo botón para detener completamente el vídeo y su procesamiento.
+    \item \textbf{Cámara}: Se extraen los fotogramas de la cámara principal del sistema para procesarse y mostrarlos ya con las inferencias hechas continuamente y mientras la cámara esté conectada al sistema.
+    \item \textbf{Multi-cam}: Función más extendida que la de una sola cámara, pues en este caso son 4 el número de cámaras que se pueden procesar, como máximo. Además, tienen otras funciones adicionales: (1) poder activar o desactivar la predicción en aquellas cámaras que se consideren oportunas y (2) generar un informe con los datos asociados a la correspondiente cámara de lugar, tiempo y fecha.
+\end{itemize}
 
+Existen 2 deslizadores para cambiar el umbral de confianza de cada modelo, lo que determina si se dibuja la caja delimitadora alrededor de un vehículo o matrícula. Este umbral está comprendido entre 0 y 1 (lo que se traduce a porcentajes: "El modelo tiene la confianza de un 80\% de que esto es un coche") y se puede cambiar en intervalos de 0.05, aunque por defecto se fija en 0.7. 
+
+Otra implementación es una lista de matrículas que se revisa cada vez que se detecta y lee por parte de alguna de las funciones. A la lista se le pueden añadir y eliminar matrículas a conveniencia. Si la matrícula leída por el motor OCR se encuentra en la lista, saltará un aviso notificándolo.
 
 \section{El producto de desarrollo}
 
-Casos de uso...
+En este apartado se relatarán, respaldados con imágenes, los distintos casos de uso que el programa tiene:
+
+Al ejecutar el programa y acceder a través de un navegador web, la página principal es la mostrada en la figura \ref{fig:caso0}.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso1_1.png}
+    \caption{Página principal de la aplicación}
+    \label{fig:caso0}
+\end{figure}
+
+Para el primer caso de uso no hace falta moverse: se hace clic en el botón \textbf{Upload}, se selecciona una imagen y se pasa a los modelos que devuelven las detecciones y en el navegador se muestra la imagen con las detecciones y las matrículas. Esto se muestra en la figura \ref{fig:caso1_1}.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso1_1.png}
+    \caption{Página de procesamiento de imagen}
+    \label{fig:caso1_1}
+\end{figure}
+
+En el segundo caso se selecciona la opción de cámara en la barra lateral. En este caso lo que se muestra es la cámara en vivo: se pasan los fotogramas de la cámara al programa, saca las detecciones y las dibuja en la imagen, la cual se muestra en la pantalla, tal y como se muestra en la figura \ref{fig:caso2_1}.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso1_1.png}
+    \caption{Página de procesamiento de la cámara}
+    \label{fig:caso2_1}
+\end{figure}
+
+En el tercer caso se selecciona la opción de vídeo en la barra lateral. Se hace clic en el botón \textbf{Upload} y se selecciona un vídeo. El vídeo no se reproduce automáticamente, como se puede mostrar en la figura \ref{fig:caso3_1}. Al pulsar el botón de \textbf{Iniciar}, el vídeo comienza a reproducirse y, al igual que con la cámara se dibujan las detecciones en la imagen según avanza el vídeo, como se observa en la figura \ref{fig:caso3_2}. Si se pulsa en el botón de \textbf{Detener}, la página volverá al estado encontrado en la figura \ref{fig:caso3_1}.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso3_1.png}
+    \caption{Página de procesamiento de un vídeo antes de reproducirlo}
+    \label{fig:caso3_1}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso3_2.png}
+    \caption{Página de procesamiento de un vídeo reproduciéndose}
+    \label{fig:caso3_2}
+\end{figure}
+
+En el cuarto caso, se selecciona la opción de múltiples cámaras en la barra lateral. Al igual que en la opción de una sola cámara, se inicia automáticamente la transmisión de fotogramas, como se puede observar en la figura \ref{fig:caso4_1}. El procesamiento de cada una de las cámaras no comienza hasta que se pulsa el botón de \textbf{Activar Predicción}, debajo de la cámara correspondiente. El otro botón, \textbf{Generar Informe}, genera un informe con formato .xlsx con los datos asociados a la correspondiente cámara de lugar, tiempo y fecha.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso4_1.png}
+    \caption{Página de procesamiento de múltiples cámaras} %TODO Cambiar imagen
+    \label{fig:caso4_1}
+\end{figure}
+
+La lista de matrículas se abre pulsando sobre el botón en la barra lateral. Se mostrará una ventana como la de la figura \ref{fig:caso5_1}, la cual mostrará dos botones y una lista de matrículas, las cuales tienen cada una un botón a la derecha para eliminarlade la lista. El primer botón abrirá un desplegable, visto en la figura \ref{fig:caso5_2}, donde se podrá introducir la matrícula para añadir a la lista. El segundo botón guardará los cambios realizados en la lista de matriculas en un archivo persistente. Se puede visualizar en la figura \ref{fig:caso6_1} la ventana que se muestra cuando en una imagen o fotograma se detecta alguna de las matrículas de la lista.
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso5_1.png}
+    \caption{Ventana de lista de matrículas} 
+    \label{fig:caso5_1}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso5_2.png}
+    \caption{Ventana de adición a la lista de matrículas} 
+    \label{fig:caso5_2}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/caso6_1.png}
+    \caption{Ventana de aviso de detección de una matrícula} 
+    \label{fig:caso6_1}
+\end{figure}
 
 
 
@@ -1823,12 +1911,11 @@ Casos de uso...
     \item \textbf{Ley de Propiedad Intelectual} \url{https://www.boe.es/boe/dias/2019/03/02/pdfs/BOE-A-2019-2974.pdf}: Durante el desarrollo de este proyecto se han utilizado imágenes, datasets y modelos de redes neuronales que pueden estar protegidos por la legislación vigente. Se ha procurado en todo momento citar adecuadamente las fuentes utilizadas y no vulnerar los derechos de autor. Asimismo, cualquier contenido generado a partir de estos recursos ha sido producido de forma original dentro del marco del proyecto.
 \end{itemize}
 
-
 \section{Licencias}
 
 Los modelos y datasets utilizados durante el desarrollo de este proyecto tienen una serie de licencias a atribuir, incluso teniendo en cuenta el objetivo académico y experimental de este proyecto.
 
-Para empezar, la citación de los cinco datasets utilizados; \cite{Sanchez-Iborra2026}, \cite{bdd100k}, \cite{RAMAJOBALLESTER2024104608} (datasets UC3M) y \cite{xu2018towards}. Todos estos conjuntos de datos han sido creados para fines experimentales y de investigación en relación con el propósito de este proyecto. 
+Para empezar, la citación de los datasets utilizados; \cite{Sanchez-Iborra2026}, \cite{bdd100k}, \cite{WEN2020102907}, \cite{RAMAJOBALLESTER2024104608} (datasets UC3M) y \cite{xu2018towards}. Todos estos conjuntos de datos han sido creados para fines experimentales y de investigación en relación con el propósito de este proyecto. 
 
 El modelo \textbf{RT-DETR} aunque forma parte del conjunto de modelos disponibles en Hugging Face, está sujeto a licencias propias.
 
@@ -1852,6 +1939,10 @@ Se ha utilizado un modelo \textbf{YOLO} desarrollado por Ultralytics, el cual ha
 
 Todos los modelos utilizados han sido integrados respetando sus respectivas licencias. En ningún momento se ha modificado su arquitectura interna ni se han distribuido fuera del entorno local de desarrollo. Su uso se limita a un entorno académico y experimental, en el contexto de un Trabajo de Fin de Máster.
 
+\section{Declaración de uso de herramientas de Inteligencia Artificial (IA) generativa}
+
+Durante la elaboración de este Trabajo Fin de Máster se ha utilizado la herramienta ChatGPT, desarrollada por OpenAI, con carácter exclusivamente auxiliar. Su uso se ha limitado al apoyo en la organización de contenidos, explicación de errores en el código, y contraste de explicaciones técnicas relacionadas con la hiperparametrización en la metodología experimental, la interpretación de resultados y el diseño del sistema propuesto. Estas herramientas no se han utilizado como fuente científica primaria ni para sustituir la realización de los experimentos, el análisis de los datos o la toma de decisiones técnicas del trabajo. Los resultados experimentales, tablas, modelos y la interpretación científica presentada en la memoria han sido revisados, validados y asumidos íntegramente por el autor. El uso de estas herramientas ha tenido, por tanto, una finalidad de asistencia en la redacción, organización visual y apoyo técnico, sin eximir al autor de la responsabilidad sobre la originalidad, veracidad, rigor científico y autoría del contenido presentado.
+
 
 
 \chapter{Gestión de proyecto software}
@@ -1860,7 +1951,6 @@ Todos los modelos utilizados han sido integrados respetando sus respectivas lice
 \section{Diseño del sistema}
 
 La arquitectura general del sistema sigue una clara y sencilla arquitectura cliente-servidor donde el cliente es el navegador web del usuario y el servidor es la aplicación Streamlit. El sistema desarrollado consiste en una aplicación web implementada en Python mediante Streamlit que permite realizar tareas de detección de vehículos y matrículas utilizando modelos de \textit{Deep Learning} previamente entrenados y reconocimiento de caracteres en matrículas usando un modelo OCR. La aplicación admite diferentes fuentes de entrada (imágenes, vídeos y cámaras) y devuelve como salida las imágenes o fotogramas con las detecciones obtenidas y los caracteres de la matrícula.
-
 
 \section{Control de versiones}
 
@@ -1874,8 +1964,6 @@ A lo largo del desarrollo se han realizado varios \textit{commits}, con el fin d
     \caption{Ejemplo de commit en GitHub}
     \label{fig:git}
 \end{figure}
-
-
 
 \section{Requisitos del sistema}
 
@@ -1904,10 +1992,17 @@ Las acciones concretas que el sistema debe ser capaz de realizar se describen en
         \hline
         RF6 & El sistema debe permitir procesar vídeo en tiempo real mostrando detecciones y matrículas.\\
         \hline
+        RF7 & El sistema debe permitir crear una lista de matrículas donde añadir y eliminar matrículas.\\
+        \hline
+        RF8 & El sistema debe avisar cuando reconozca una matrícula que se encuentre en la lista.\\
+        \hline 
+        RF9 & El sistema debe permitir generar informes con datos de fecha, tiempo y lugar en la función de múltiples cámaras.\\
+        \hline
+        RF10 & El sistema debe permitir activar y desactivar las inferencias en las cámaras que se necesite en la función de múltiples cámaras.\\
+        \hline
     \end{tabularx}
     \label{Req-Func}
 \end{table}
-
 
 \subsection{Requisitos no funcionales}
 
@@ -1934,7 +2029,6 @@ Las condiciones de calidad bajo las que debe funcionar el sistema se describen e
     \label{Req-No-Func}
 \end{table}
 
-
 \section{Planificación del trabajo}
 \label{Plan de trabajo}
 
@@ -1957,7 +2051,7 @@ Para el desarrollo del proyecto se han seguido las siguientes fases:
 
 \section{Cronograma}
 
-El desarrollo ha durado en torno a los cinco meses. La tabla \ref{Actividades} indica las duraciones de cada una de las fases y en la figura ... se muestra el cronograma del proyecto a lo largo de los meses.
+El desarrollo ha durado en torno a los cinco meses. La tabla \ref{Actividades} indica las duraciones de cada una de las fases y en la figura \ref{fig:gantt} se muestra el cronograma del proyecto a lo largo de los meses.
 
 \begin{table}[ht]
     \centering
@@ -1966,23 +2060,28 @@ El desarrollo ha durado en torno a los cinco meses. La tabla \ref{Actividades} i
         \hline
         \textbf{Tarea} & \textbf{Duración} & \textbf{Fecha de inicio} & \textbf{Fecha final}\\
         \hline
-        Estado del arte & . & 18/03/2026 & .\\
+        Estado del arte & 49 & 18/03/2026 & 05/05/2026\\
         \hline
-        Preparación del dataset & . & . & .\\
+        Preparación del dataset & 37 & 07/04/2026 & 13/05/2026\\
         \hline
-        Entrenamiento de modelos & . & . & .\\
+        Entrenamiento de modelos & 80 & 10/04/2026 & 28/06/2026\\
         \hline
-        Evaluación & . & . & .\\
+        Evaluación & 18 & 19/06/2026 & 05/07/2026\\
         \hline
-        Implementación web & . & . & .\\
+        Implementación web & 63 & 04/05/2026 & 05/07/2026\\
         \hline
-        Documentación & . & . & 12/07/2026\\
+        Documentación & 25 & 19/06/2026 & 12/07/2026\\
         \hline
     \end{tabular}
     \label{Actividades}
 \end{table}
 
-
+\begin{figure}[htb]
+\centering
+    \includegraphics[width=.85\textwidth]{figures/gantt.png}
+    \caption{Diagrama Gantt del proyecto}
+    \label{fig:gantt}
+\end{figure}
 
 \section{Presupuesto}
 
@@ -2137,9 +2236,9 @@ A lo largo del desarrollo de este proyecto, se han identificado distintos factor
         \hline
         R4 & Pérdida de datos & Humano & Alta & Muy Baja\\
         \hline
-        R5 & Errores al integrar modelos & Técnico & Media & Media\\
+        R5 & Coste computacional insuficiente & Rendimiento & Media & Alta\\
         \hline
-        R6 & Tiempo insuficiente & Humano & Alta & Media\\
+        R6 & Tiempo insuficiente & Humano & Alta & Alta\\
         \hline
         R7 & Escasa precisión & Técnico & Alta & Alta\\
         \hline
@@ -2171,9 +2270,9 @@ A lo largo del desarrollo de este proyecto, se han identificado distintos factor
         \hline
         \multicolumn{2}{|c|}{\textbf{R2}}\\
         \hline 
-        \textbf{Causa} & Sobrecarga de GPU o errores CUDA. Uso intensivo de la gráfica durante el entrenamiento. Limpieza de memoria de GPU o CPU no realizada efectivamente.\\
+        \textbf{Causa} & Sobrepasar el uso de utilización de la GPU o errores CUDA. Uso intensivo de la gráfica durante el entrenamiento. Limpieza de memoria de GPU o CPU no realizada después del entrenamiento o pruebas.\\
         \hline 
-        \textbf{Estrategia de mitigación} & Implementación de limpieza automática de la RAM a través de la librería \textit{PyTorch}.\\
+        \textbf{Estrategia de mitigación} & Revisión continua del porcentaje de uso de la GPU durante y posterior al entrenamiento y pruebas de los modelos. Limpieza manual de la VRAM de la GPU en casos donde no se haya gestionado correcta y automáticamente.\\
         \hline
     \end{tabularx}
     \label{R2}
@@ -2188,7 +2287,7 @@ A lo largo del desarrollo de este proyecto, se han identificado distintos factor
         \hline 
         \textbf{Causa} &  Dataset con etiquetas, imágenes o errores en su estructura.\\
         \hline 
-        \textbf{Estrategia de mitigación} & Script para la revisión automática para revisar el dataset entero en busca de errores en las etiquetas, carpetas y otro tipo de fallos en el conjunto de datos.\\
+        \textbf{Estrategia de mitigación} & Script para la revisión automática para revisar el dataset entero en busca de errores en las etiquetas, imágenes y/o imágenes.\\
         \hline
     \end{tabularx}
     \label{R3}
@@ -2201,7 +2300,7 @@ A lo largo del desarrollo de este proyecto, se han identificado distintos factor
         \hline
         \multicolumn{2}{|c|}{\textbf{R4}}\\
         \hline 
-        \textbf{Causa} &  Fallos de disco al guardar o errores humanos.\\
+        \textbf{Causa} &  Fallos de disco al guardar o errores humanos que provocan pérdidas relevantes de algún tipo de datos.\\
         \hline 
         \textbf{Estrategia de mitigación} & Guardado periódico en el repositorio con cambios importantes. Impresión de registros con las ejecuciones.\\
         \hline
@@ -2211,14 +2310,14 @@ A lo largo del desarrollo de este proyecto, se han identificado distintos factor
 
 \begin{table}[ht]
     \centering
-    \caption{Riesgo errores al integrar modelos}
+    \caption{Riesgo coste computacional insuficiente}
     \begin{tabularx}{1\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
         \hline
         \multicolumn{2}{|c|}{\textbf{R5}}\\
         \hline 
-        \textbf{Causa} &  Modelos incompatibles entre sí o en Flask.\\
+        \textbf{Causa} &  Coste computacional demasiado alto para recoger datos de diferentes cámaras, procesarlos y mostrar los resultados en un tiempo mínimo que permita una ejecución del programa lo más limpia posible.\\
         \hline 
-        \textbf{Estrategia de mitigación} & Comprobación de las librerías necesarias y pruebas de compatibilidad.\\
+        \textbf{Estrategia de mitigación} & Maximizar la eficiencia del código y procesar cada ciertos fotogramas en vez de continuamente.\\
         \hline
     \end{tabularx}
     \label{R5}
@@ -2233,7 +2332,7 @@ A lo largo del desarrollo de este proyecto, se han identificado distintos factor
         \hline 
         \textbf{Causa} &  Retrasos en fases anteriores.\\
         \hline 
-        \textbf{Estrategia de mitigación} & Optimización de las pruebas y del tiempo requerido.\\
+        \textbf{Estrategia de mitigación} & Optimización de las pruebas y del tiempo requerido para cada una de las tareas.\\
         \hline
     \end{tabularx}
     \label{R6}
@@ -2273,30 +2372,31 @@ La identificación y gestión de estos riesgos ha permitido anticipar problemas 
 
 
 
-
-
 \chapter{Conclusión y posibles mejoras}
 \label{Conclusión}
 
-El proyecto ha cumplido con los objetivos planteados, demostrando la viabilidad técnica de aplicar redes neuronales al problema de la detección, identificación y análisis de vehículos. Los resultados obtenidos avalan la validez del enfoque y asientan una base sólida para futuras ampliaciones. Posibles mejoras permitirían incrementar la precisión y escalabilidad del sistema en distintos escenarios.
-
-
+El proyecto ha cumplido con los objetivos planteados, demostrando la viabilidad técnica de aplicar técnicas de Visión Artificial al problema de la detección, identificación y análisis de vehículos. Los resultados obtenidos avalan la validez del enfoque y asientan una base sólida para futuras ampliaciones. Posibles mejoras permitirían incrementar la precisión y escalabilidad del sistema en distintos escenarios.
 
 \section{Problemas encontrados}
 
-A pesar de los buenos resultados...
-
-
+A pesar de los buenos resultados, se encontraron varios problemas que fueron finalmente resueltos:
+\begin{itemize}
+    \item Fallos de lectura en las matrículas: en repetidas ocasiones, el motor OCR no reconocía correctamente las matrículas. El error más común que comete es reconocer una letra en la banda azul que indica la pertenencia a la Unión Europea.
+    \item Problemas de aprendizaje del modelo RT-DETR: Este modelo necesita la modificación de muchos más hiperparámetros en comparación con otros modelos más comunes de detección de objetos y además son necesarias muchas iteraciones al conjunto de datos para que solamente comience a aprender sobre la tarea en la que se está haciendo el trabajo.
+    \item Problemas en las diferencias de versiones entre librerías, entornos y sistemas operativos: Debido al uso solamente de dos entornos de trabajo diferentes, uno para entrenar los modelos y otro para ejecutar la aplicación web para realizar cambios en el código rápidos y con fluidez, hubo varias incompatibilidades al tratar de hacer funcionar distintas versiones de CUDA, Python, Windows/Ubuntu, etc.
+\end{itemize}
 
 \section{Mejoras y ampliación a futuro}
 
 Algunas de las propuestas de mejora aplicables a este proyecto pueden ser:
 
 \begin{itemize}
-    \item ...
+    \item Entrenar los modelos con grandes datasets donde los objetos estén parcialmente ocluidos, con baja iluminación, cambios de contraste, rotaciones, etc.
+    \item Aplicar técnicas de aprendizaje semisupervisado para mejorar los resultados con menos datos anotados.
+    \item Modificar el sistema, y optimizar si fuera necesario, para su uso en dispositivos alternativos, como en móviles.
+    \item Añadir un nuevo modelo específico para marcas de vehículos o modificar el anterior detector de vehículos para entrenarse en conjuntos de datos donde la etiqueta (o una de ellas) sea la marca y/o modelo del vehículo.
+    \item Indicar la dirección del vehículo cuando se detecta uno que esté en la lista de matrículas.
 \end{itemize}
-
-
 
 \section{Agradecimientos}
 

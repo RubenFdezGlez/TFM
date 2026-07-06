@@ -1,63 +1,64 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\'{I}ndice de figuras}{4}{chapter*.2}%
-\contentsline {chapter}{\'{I}ndice de tablas}{7}{chapter*.3}%
-\contentsline {chapter}{Glosario de términos}{9}{chapter*.4}%
-\contentsline {chapter}{\numberline {1}Introducción}{11}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Contexto del problema}{11}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Objetivos}{12}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Estructura del trabajo}{13}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Estado del arte}{15}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Detección de vehículos}{15}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Detección y lectura de matrículas}{30}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Métodos seleccionados}{57}{chapter.3}%
-\contentsline {section}{\numberline {3.1}YOLOv26n}{57}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Arquitectura de YOLO26}{58}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Modelos YOLO}{60}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}RT-DETR}{61}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Tesseract OCR}{64}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Metodología experimental}{67}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Extracción de datos}{68}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Multi-perspective traffic video analysis}{68}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Bdd100k}{68}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}UA-DETRAC}{70}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}UC3M-LP}{70}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}UC3M-VRI}{71}{subsection.4.1.5}%
-\contentsline {subsection}{\numberline {4.1.6}CCPD}{72}{subsection.4.1.6}%
-\contentsline {section}{\numberline {4.2}Preprocesado de datos}{73}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Entrenamiento}{75}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}YOLO}{75}{subsection.4.3.1}%
-\contentsline {subsubsection}{YOLO Data Augmentation}{78}{section*.66}%
-\contentsline {subsection}{\numberline {4.3.2}RT-DETR}{80}{subsection.4.3.2}%
-\contentsline {subsubsection}{RT-DETR Data Augmentation}{81}{section*.67}%
-\contentsline {subsection}{\numberline {4.3.3}Rastreo del Overfitting}{84}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Métricas}{84}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Entorno y Herramientas}{85}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Resultados experimentales}{90}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Resultados de rendimiento}{90}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Resultados de detección de vehículos}{91}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Resultados de detección de matrículas}{91}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Limitaciones detectadas}{91}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Modelo seleccionado}{91}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Aplicación web}{93}{chapter.6}%
-\contentsline {section}{\numberline {6.1}El producto de desarrollo}{93}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Legislación y normativa}{94}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Normativa nacional}{94}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Licencias}{96}{section.7.2}%
-\contentsline {chapter}{\numberline {8}Gestión de proyecto software}{97}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Diseño del sistema}{97}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Control de versiones}{97}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Requisitos del sistema}{98}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Requisitos funcionales}{98}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Requisitos no funcionales}{98}{subsection.8.3.2}%
-\contentsline {section}{\numberline {8.4}Planificación del trabajo}{99}{section.8.4}%
-\contentsline {section}{\numberline {8.5}Cronograma}{100}{section.8.5}%
-\contentsline {section}{\numberline {8.6}Presupuesto}{101}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Coste hardware}{101}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Coste de personal}{102}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Coste software}{103}{subsection.8.6.3}%
-\contentsline {section}{\numberline {8.7}Gestión de riesgos}{103}{section.8.7}%
-\contentsline {chapter}{\numberline {9}Conclusión y posibles mejoras}{107}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Problemas encontrados}{107}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Mejoras y ampliación a futuro}{107}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Agradecimientos}{107}{section.9.3}%
-\contentsline {chapter}{Lista de referencias}{109}{chapter*.92}%
+\contentsline {chapter}{\'{I}ndice de tablas}{8}{chapter*.3}%
+\contentsline {chapter}{Glosario de términos}{10}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Introducción}{13}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Contexto del problema}{13}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos}{14}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Estructura del trabajo}{15}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Estado del arte}{17}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Detección de vehículos}{17}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Detección y lectura de matrículas}{32}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Métodos seleccionados}{59}{chapter.3}%
+\contentsline {section}{\numberline {3.1}YOLOv26n}{59}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Arquitectura de YOLO26}{60}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Modelos YOLO}{62}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}RT-DETR}{63}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Tesseract OCR}{66}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Metodología experimental}{69}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Extracción de datos}{70}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Multi-perspective traffic video analysis}{70}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Bdd100k}{70}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}UA-DETRAC}{72}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}UC3M-LP}{72}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}UC3M-VRI}{73}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}CCPD}{74}{subsection.4.1.6}%
+\contentsline {section}{\numberline {4.2}Preprocesado de datos}{75}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Entrenamiento}{77}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}YOLO}{77}{subsection.4.3.1}%
+\contentsline {subsubsection}{YOLO Data Augmentation}{80}{section*.66}%
+\contentsline {subsection}{\numberline {4.3.2}RT-DETR}{82}{subsection.4.3.2}%
+\contentsline {subsubsection}{RT-DETR Data Augmentation}{83}{section*.67}%
+\contentsline {subsection}{\numberline {4.3.3}Rastreo del Overfitting}{86}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Métricas}{86}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Entorno y Herramientas}{87}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Resultados experimentales}{92}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados de rendimiento}{92}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Resultados de detección de vehículos}{93}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Resultados de detección de matrículas}{93}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Limitaciones detectadas}{93}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modelo seleccionado}{93}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Aplicación web}{95}{chapter.6}%
+\contentsline {section}{\numberline {6.1}El producto de desarrollo}{96}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Legislación y normativa}{101}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Normativa nacional}{101}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Licencias}{103}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Declaración de uso de herramientas de Inteligencia Artificial (IA) generativa}{104}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Gestión de proyecto software}{105}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Diseño del sistema}{105}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Control de versiones}{105}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Requisitos del sistema}{106}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Requisitos funcionales}{106}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Requisitos no funcionales}{106}{subsection.8.3.2}%
+\contentsline {section}{\numberline {8.4}Planificación del trabajo}{107}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Cronograma}{108}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Presupuesto}{109}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Coste hardware}{109}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Coste de personal}{111}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Coste software}{111}{subsection.8.6.3}%
+\contentsline {section}{\numberline {8.7}Gestión de riesgos}{112}{section.8.7}%
+\contentsline {chapter}{\numberline {9}Conclusión y posibles mejoras}{117}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Problemas encontrados}{117}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Mejoras y ampliación a futuro}{118}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Agradecimientos}{118}{section.9.3}%
+\contentsline {chapter}{Lista de referencias}{119}{chapter*.102}%

@@ -1,39 +1,39 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Resultados de YOLOv8 y YOLOv11 en entornos de tráfico}}{19}{table.caption.9}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Resultados de YOLOv8 y YOLOv11 en entornos de tráfico}}{24}{table.caption.16}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Resultados de la arquitectura con Hourglass en los datasets BDD100K y BVDN}}{27}{table.caption.18}%
-\contentsline {table}{\numberline {2.4}{\ignorespaces Resultados de diferentes arquitecturas en la tarea de detección de matrículas de vehículos}}{34}{table.caption.25}%
-\contentsline {table}{\numberline {2.5}{\ignorespaces Resultados de diferentes arquitecturas en la tarea de reconocimiento de matrículas de vehículos}}{36}{table.caption.27}%
-\contentsline {table}{\numberline {2.6}{\ignorespaces Resultados de diferentes arquitecturas en el reconocimiento de matrículas tailandesas}}{42}{table.caption.32}%
-\contentsline {table}{\numberline {2.7}{\ignorespaces Resultados de los modelos de detección usados en el sistema Shine}}{46}{table.caption.37}%
-\contentsline {table}{\numberline {2.8}{\ignorespaces Resultados de diferentes VLMs en reconocimiento de matrículas}}{50}{table.caption.41}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Resultados de YOLOv8 y YOLOv11 en entornos de tráfico}}{21}{table.caption.9}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Resultados de YOLOv8 y YOLOv11 en entornos de tráfico}}{26}{table.caption.16}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Resultados de la arquitectura con Hourglass en los datasets BDD100K y BVDN}}{29}{table.caption.18}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Resultados de diferentes arquitecturas en la tarea de detección de matrículas de vehículos}}{36}{table.caption.25}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Resultados de diferentes arquitecturas en la tarea de reconocimiento de matrículas de vehículos}}{38}{table.caption.27}%
+\contentsline {table}{\numberline {2.6}{\ignorespaces Resultados de diferentes arquitecturas en el reconocimiento de matrículas tailandesas}}{44}{table.caption.32}%
+\contentsline {table}{\numberline {2.7}{\ignorespaces Resultados de los modelos de detección usados en el sistema Shine}}{48}{table.caption.37}%
+\contentsline {table}{\numberline {2.8}{\ignorespaces Resultados de diferentes VLMs en reconocimiento de matrículas}}{52}{table.caption.41}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Resultados de los distintos modelos YOLO26 de detección}}{61}{table.caption.54}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Resultados de rendimiento}}{90}{table.caption.71}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Resultados de detección}}{91}{table.caption.72}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Resultados de detección}}{91}{table.caption.73}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Resultados de los distintos modelos YOLO26 de detección}}{63}{table.caption.54}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Resultados de rendimiento}}{92}{table.caption.71}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Resultados de detección}}{93}{table.caption.72}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Resultados de detección}}{93}{table.caption.73}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces Requisitos funcionales}}{99}{table.caption.75}%
-\contentsline {table}{\numberline {8.2}{\ignorespaces Requisitos no funcionales}}{99}{table.caption.76}%
-\contentsline {table}{\numberline {8.3}{\ignorespaces Duración de las partes del proyecto (en días)}}{100}{table.caption.77}%
-\contentsline {table}{\numberline {8.4}{\ignorespaces Coste de las herramientas de hardware}}{101}{table.caption.78}%
-\contentsline {table}{\numberline {8.5}{\ignorespaces Costes imputables sobre los equipos usados}}{102}{table.caption.79}%
-\contentsline {table}{\numberline {8.6}{\ignorespaces Coste de los empleados}}{102}{table.caption.80}%
-\contentsline {table}{\numberline {8.7}{\ignorespaces Costes de software}}{103}{table.caption.81}%
-\contentsline {table}{\numberline {8.8}{\ignorespaces Coste total del proyecto}}{103}{table.caption.82}%
-\contentsline {table}{\numberline {8.9}{\ignorespaces Gestión de riesgos por categoría}}{104}{table.caption.83}%
-\contentsline {table}{\numberline {8.10}{\ignorespaces Riesgo incompatibilidad entre librerías}}{104}{table.caption.84}%
-\contentsline {table}{\numberline {8.11}{\ignorespaces Riesgo errores de memoria}}{105}{table.caption.85}%
-\contentsline {table}{\numberline {8.12}{\ignorespaces Riesgo dataset con errores}}{105}{table.caption.86}%
-\contentsline {table}{\numberline {8.13}{\ignorespaces Riesgo pérdida de datos}}{105}{table.caption.87}%
-\contentsline {table}{\numberline {8.14}{\ignorespaces Riesgo errores al integrar modelos}}{106}{table.caption.88}%
-\contentsline {table}{\numberline {8.15}{\ignorespaces Riesgo tiempo insuficiente}}{106}{table.caption.89}%
-\contentsline {table}{\numberline {8.16}{\ignorespaces Riesgo escasa precisión}}{106}{table.caption.90}%
-\contentsline {table}{\numberline {8.17}{\ignorespaces Riesgo overfitting en el entrenamiento}}{106}{table.caption.91}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Requisitos funcionales}}{107}{table.caption.84}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Requisitos no funcionales}}{108}{table.caption.85}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Duración de las partes del proyecto (en días)}}{109}{table.caption.86}%
+\contentsline {table}{\numberline {8.4}{\ignorespaces Coste de las herramientas de hardware}}{110}{table.caption.88}%
+\contentsline {table}{\numberline {8.5}{\ignorespaces Costes imputables sobre los equipos usados}}{110}{table.caption.89}%
+\contentsline {table}{\numberline {8.6}{\ignorespaces Coste de los empleados}}{111}{table.caption.90}%
+\contentsline {table}{\numberline {8.7}{\ignorespaces Costes de software}}{112}{table.caption.91}%
+\contentsline {table}{\numberline {8.8}{\ignorespaces Coste total del proyecto}}{112}{table.caption.92}%
+\contentsline {table}{\numberline {8.9}{\ignorespaces Gestión de riesgos por categoría}}{113}{table.caption.93}%
+\contentsline {table}{\numberline {8.10}{\ignorespaces Riesgo incompatibilidad entre librerías}}{113}{table.caption.94}%
+\contentsline {table}{\numberline {8.11}{\ignorespaces Riesgo errores de memoria}}{114}{table.caption.95}%
+\contentsline {table}{\numberline {8.12}{\ignorespaces Riesgo dataset con errores}}{114}{table.caption.96}%
+\contentsline {table}{\numberline {8.13}{\ignorespaces Riesgo pérdida de datos}}{115}{table.caption.97}%
+\contentsline {table}{\numberline {8.14}{\ignorespaces Riesgo coste computacional insuficiente}}{115}{table.caption.98}%
+\contentsline {table}{\numberline {8.15}{\ignorespaces Riesgo tiempo insuficiente}}{115}{table.caption.99}%
+\contentsline {table}{\numberline {8.16}{\ignorespaces Riesgo escasa precisión}}{116}{table.caption.100}%
+\contentsline {table}{\numberline {8.17}{\ignorespaces Riesgo overfitting en el entrenamiento}}{116}{table.caption.101}%
 \addvspace {10\p@ }
