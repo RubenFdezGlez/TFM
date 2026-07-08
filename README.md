@@ -145,7 +145,7 @@ After all of these changes, the complete dataset should look like these:
 </pre>
 
 
-#### BDD-100K dataset
+#### UA-DETRAC dataset
 
 1. Download the dataset:
 ```bash
@@ -176,7 +176,7 @@ pip install -r requirements.txt
 
 4. Run the script to transform the dataset to YOLO format. It will create 2 versions of the dataset, one for LP detection from the whole image and another one for LP recognition from the cropped LP region. The script will resize the images to the specified dimensions and save the resulting images and labels in in new directories. You can specify the desired dimensions for the images as arguments of the script.
 ```bash
-python3 scripts/labels2yolo.py . 640 320
+uv run scripts/labels2yolo.py . 640 320
 ```
 
 5. To convert it to COCO format, we continue using the library **yolococo**.
@@ -188,17 +188,41 @@ uv run yolococo yolo2coco --images datasets/UC3M-LP/.-yolo/LP/images/val --label
 
 #### CCPD
 
-Download the dataset saved on google drive through the command **gdown**, installed through uv:
+1. Download the dataset saved on google drive through the command **gdown**, installed through uv:
 ```bash
 uv run gdown https://drive.google.com/file/d/1rdEsCUcIUaYOVRkx5IMTRNA7PcGMmSgc/view?usp=sharing
 ```
 
-The compressed folder can not be extracted through the unzip command, so we have to use the command **tar**:.  
+2. The compressed folder can not be extracted through the unzip command, so we have to use the command **tar**:.  
 ```bash
 tar -xf CCPD2019.tar.xz
 ```
 
+3. Execute the script to convert it to yolo format:
+```bash
+uv run .\scripts\ccpd.py
+```
 
+5. To convert it to COCO format, we use the library **yolococo**.
+```bash
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_base/test/images --labels datasets/ccpd_yolo/ccpd_base/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_base/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_blur/test/images --labels datasets/ccpd_yolo/ccpd_blur/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_blur/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_challenge/test/images --labels datasets/ccpd_yolo/ccpd_challenge/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_challenge/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_db/test/images --labels datasets/ccpd_yolo/ccpd_db/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_db/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_fn/test/images --labels datasets/ccpd_yolo/ccpd_fn/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_fn/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_np/test/images --labels datasets/ccpd_yolo/ccpd_np/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_np/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_rotate/test/images --labels datasets/ccpd_yolo/ccpd_rotate/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_rotate/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_tilt/test/images --labels datasets/ccpd_yolo/ccpd_tilt/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_tilt/test/test.json
+
+uv run yolococo yolo2coco --images datasets/ccpd_yolo/ccpd_weather/test/images --labels datasets/ccpd_yolo/ccpd_weather/test/labels --classes class.txt  --bbox-round 3 --file-name-mode name --out datasets/ccpd_yolo/ccpd_weather/test/test.json
+```
 
 
 ## Tesseract-OCR installation

@@ -55,8 +55,8 @@ class CCPDYOLOReorganizer:
                             im = Image.open(img_path)
                             img_width, img_height = im.size 
 
-                            center_x = (int(br_x) + int(ul_x)) / 2 * img_width
-                            center_y = (int(br_y) + int(ul_y)) / 2 * img_height
+                            center_x = (int(br_x) + int(ul_x)) / 2 / img_width
+                            center_y = (int(br_y) + int(ul_y)) / 2 / img_height
 
                             width = (int(br_x) - int(center_x)) / img_width
                             height = (int(br_y) - int(center_y)) / img_height
@@ -71,8 +71,8 @@ class CCPDYOLOReorganizer:
 if __name__ == '__main__':
 
     cc = CCPDYOLOReorganizer(
-        images_path = "./../datasets/CCPD2019/",
-        dst_path = "./../datasets/ccpd_yolo/"
+        images_path = "./datasets/CCPD2019/",
+        dst_path = "./datasets/ccpd_yolo/"
     )
 
     cc.reorganize()

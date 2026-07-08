@@ -1,3 +1,5 @@
+train: ''
+val: ''
 test: '/home/ruben/clase/Practicas/datasets/ccpd_yolo/ccpd_db/test/images'
 
 nc: 1
