@@ -1,14 +1,14 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\'{I}ndice de figuras}{4}{chapter*.2}%
-\contentsline {chapter}{\'{I}ndice de tablas}{8}{chapter*.3}%
-\contentsline {chapter}{Glosario de términos}{10}{chapter*.4}%
-\contentsline {chapter}{\numberline {1}Introducción}{13}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Contexto del problema}{13}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Objetivos}{14}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Estructura del trabajo}{15}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Estado del arte}{17}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Detección de vehículos}{17}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Detección y lectura de matrículas}{32}{section.2.2}%
+\contentsline {chapter}{\'{I}ndice de tablas}{7}{chapter*.3}%
+\contentsline {chapter}{Glosario de términos}{9}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Introducción}{12}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Contexto del problema}{12}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos}{13}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Estructura del trabajo}{14}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Estado del arte}{16}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Detección de vehículos}{16}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Detección y lectura de matrículas}{31}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Métodos seleccionados}{59}{chapter.3}%
 \contentsline {section}{\numberline {3.1}YOLOv26n}{59}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Arquitectura de YOLO26}{60}{subsection.3.1.1}%
@@ -25,40 +25,40 @@
 \contentsline {subsection}{\numberline {4.1.6}CCPD}{74}{subsection.4.1.6}%
 \contentsline {section}{\numberline {4.2}Preprocesado de datos}{75}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Entrenamiento}{77}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}YOLO}{77}{subsection.4.3.1}%
-\contentsline {subsubsection}{YOLO Data Augmentation}{80}{section*.66}%
-\contentsline {subsection}{\numberline {4.3.2}RT-DETR}{82}{subsection.4.3.2}%
-\contentsline {subsubsection}{RT-DETR Data Augmentation}{83}{section*.67}%
-\contentsline {subsection}{\numberline {4.3.3}Rastreo del Overfitting}{86}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Métricas}{86}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Entorno y Herramientas}{87}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Resultados experimentales}{92}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Resultados de rendimiento}{92}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Resultados de detección de vehículos}{93}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Resultados de detección de matrículas}{93}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Limitaciones detectadas}{93}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Modelo seleccionado}{93}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Aplicación web}{95}{chapter.6}%
-\contentsline {section}{\numberline {6.1}El producto de desarrollo}{96}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Legislación y normativa}{101}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Normativa nacional}{101}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Licencias}{103}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Declaración de uso de herramientas de Inteligencia Artificial (IA) generativa}{104}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Gestión de proyecto software}{105}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Diseño del sistema}{105}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Control de versiones}{105}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Requisitos del sistema}{106}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Requisitos funcionales}{106}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Requisitos no funcionales}{106}{subsection.8.3.2}%
-\contentsline {section}{\numberline {8.4}Planificación del trabajo}{107}{section.8.4}%
-\contentsline {section}{\numberline {8.5}Cronograma}{108}{section.8.5}%
-\contentsline {section}{\numberline {8.6}Presupuesto}{109}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Coste hardware}{109}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Coste de personal}{111}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Coste software}{111}{subsection.8.6.3}%
-\contentsline {section}{\numberline {8.7}Gestión de riesgos}{112}{section.8.7}%
-\contentsline {chapter}{\numberline {9}Conclusión y posibles mejoras}{117}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Problemas encontrados}{117}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Mejoras y ampliación a futuro}{118}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Agradecimientos}{118}{section.9.3}%
-\contentsline {chapter}{Lista de referencias}{119}{chapter*.102}%
+\contentsline {subsection}{\numberline {4.3.1}YOLO}{78}{subsection.4.3.1}%
+\contentsline {subsubsection}{YOLO Data Augmentation}{81}{section*.68}%
+\contentsline {subsection}{\numberline {4.3.2}RT-DETR}{83}{subsection.4.3.2}%
+\contentsline {subsubsection}{RT-DETR Data Augmentation}{84}{section*.69}%
+\contentsline {subsection}{\numberline {4.3.3}Rastreo del Overfitting}{87}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Métricas}{87}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Entorno y Herramientas}{89}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Resultados experimentales}{91}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados de rendimiento}{91}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Resultados de detección de vehículos}{92}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Resultados de detección de matrículas}{92}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Limitaciones detectadas}{92}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modelo seleccionado}{92}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Aplicación web}{94}{chapter.6}%
+\contentsline {section}{\numberline {6.1}El producto de desarrollo}{95}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Legislación y normativa}{100}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Normativa nacional}{100}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Licencias}{102}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Declaración de uso de herramientas de Inteligencia Artificial (IA) generativa}{103}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Gestión de proyecto software}{104}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Diseño del sistema}{104}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Control de versiones}{104}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Requisitos del sistema}{105}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Requisitos funcionales}{105}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Requisitos no funcionales}{105}{subsection.8.3.2}%
+\contentsline {section}{\numberline {8.4}Planificación del trabajo}{106}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Cronograma}{107}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Presupuesto}{108}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Coste hardware}{108}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Coste de personal}{110}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Coste software}{110}{subsection.8.6.3}%
+\contentsline {section}{\numberline {8.7}Gestión de riesgos}{111}{section.8.7}%
+\contentsline {chapter}{\numberline {9}Conclusión y posibles mejoras}{116}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Problemas encontrados}{116}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Mejoras y ampliación a futuro}{117}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Agradecimientos}{117}{section.9.3}%
+\contentsline {chapter}{Lista de referencias}{118}{chapter*.103}%
