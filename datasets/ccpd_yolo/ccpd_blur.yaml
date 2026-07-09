@@ -3,3 +3,6 @@ val: ''
 test: '/home/ruben/clase/Practicas/datasets/ccpd_yolo/ccpd_blur/test/images'
 
 nc: 1
+
+names:
+  0: lp
