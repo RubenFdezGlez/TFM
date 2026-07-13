@@ -1,7 +1,7 @@
 """
     Package imports:
 
-    os: File and directory management, including folder creation and file copying.
+    os: Creates folders, creates paths and lists files on folders.
     PIL: Opens the image from the dataset to extract the original width and height.
     shutil: Copying image files to corresponding folders.
 """
@@ -24,13 +24,13 @@ class CCPDYOLOReorganizer:
     def reorganize(self):
         os.makedirs(self.dst_path, exist_ok=True)
 
+        """Reorganize in each ccpd subdataset."""
         for ccpd_folder in os.listdir(self.images_path):
 
             old_path = os.path.join(self.images_path, ccpd_folder)
             new_path = os.path.join(self.dst_path, ccpd_folder, "test")
 
             if os.path.isdir(old_path) and ccpd_folder.startswith("ccpd"):
-
                 imgs_path = os.path.join(new_path, "images")
                 labels_path = os.path.join(new_path, "labels")
 
@@ -46,7 +46,7 @@ class CCPDYOLOReorganizer:
                             img_extension = img.split(".")[-1]
                             label_path = os.path.join(labels_path, img).replace(img_extension, "txt")
 
-                            # Get the YOLO annotations
+                            """Get the YOLO annotations from the images names."""
                             coords = img.split("-")[2]
                             up_left, bottom_right = coords.split("_")
                             ul_x, ul_y = up_left.split("&")
@@ -58,8 +58,8 @@ class CCPDYOLOReorganizer:
                             center_x = (int(br_x) + int(ul_x)) / 2 / img_width
                             center_y = (int(br_y) + int(ul_y)) / 2 / img_height
 
-                            width = (int(br_x) - int(center_x)) / img_width
-                            height = (int(br_y) - int(center_y)) / img_height
+                            width = (int(br_x) - int(ul_x)) / img_width
+                            height = (int(br_y) - int(ul_y)) / img_width
 
                             shutil.copy(img_path, dst_path)
                             with open(label_path, 'w') as f:

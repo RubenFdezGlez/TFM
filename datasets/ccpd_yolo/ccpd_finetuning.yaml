@@ -1,0 +1,7 @@
+train: '/home/ruben/clase/Practicas/datasets/ccpd_yolo/ccpd_challenge/test/images'
+val: '/home/ruben/clase/Practicas/datasets/ccpd_yolo/ccpd_blur/test/images'
+
+nc: 1
+
+names:
+  0: lp

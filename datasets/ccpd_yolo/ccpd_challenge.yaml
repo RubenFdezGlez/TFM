@@ -1,8 +1,0 @@
-train: ''
-val: ''
-test: '/home/ruben/clase/Practicas/datasets/ccpd_yolo/ccpd_challenge/test/images'
-
-nc: 1
-
-names:
-  0: lp
